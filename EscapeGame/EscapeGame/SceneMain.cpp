@@ -26,13 +26,15 @@ CSceneMain::~CSceneMain()
 void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
-	Draw::LoadImageW(L"image.png", 0, TEX_SIZE_512);
+	Draw::LoadImageW(L"image2.png", 0, TEX_SIZE_512);
+	Draw::LoadImageW(L"text.png", 1, TEX_SIZE_512);
+	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
 	Objs::InsertObj(obj, OBJ_HERO, 10);
 
-	//ブロックオブジェクト作成
+	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock();
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
 }
