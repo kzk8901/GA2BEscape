@@ -13,6 +13,8 @@ public:
 	void Init();   //イニシャライズ
 	void Action(); //アクション
 	void Draw();   //ドロー
+
+	bool ThereIsBlock(int vec);
 private:
 	int m_map[20][20];//マップ情報
 	int hero_x; //主人公位置（X）

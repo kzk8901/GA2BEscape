@@ -13,6 +13,9 @@ class CObjHero : public CObj
 	   void Init();    //イニシャライズ
 	   void Action();  //アクション
 	   void Draw();    //ドロー
+
+	   void SetPX(float x) { m_px = x; }
+	   void SetPY(float y) { m_py = y; }
   private:
 	  float m_px; //位置
 	  float m_py;
@@ -23,4 +26,8 @@ class CObjHero : public CObj
 
 	  int m_ani_time;
 	  int m_ani_frame;
+	  int m_vec;      //動く方向を決める変数
+	  int m_time;     //動いてる時の時間管理
+
+	  bool move_flag; //動くためのフラグ
 };
