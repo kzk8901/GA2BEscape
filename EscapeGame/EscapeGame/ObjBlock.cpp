@@ -32,6 +32,19 @@ void CObjBlock::Init()
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
 		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, },
 	};
+
+	for (int i = 0; i < 20; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (m_map[i][j] == 3)
+			{
+				hero_x = j;
+				hero_y = i;
+			}
+		}
+	}
+
 	//マップデータをコピー
 	memcpy(m_map, block_data, sizeof(int)*(15 * 20));
 }
@@ -39,88 +52,26 @@ void CObjBlock::Init()
 //アクション
 void CObjBlock::Action()
 {
-	//主人公の位置を取得
-	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	float hx = hero->GetX();
-	float hy = hero->GetY();
-
-	//主人公の衝突状態確認用フラグの初期化
-	hero->SetUp(false);
-	hero->SetDown(false);
-	hero->SetLeft(false);
-	hero->SetRight(false);
-
-
-	//m_mapの全要素にアクセス
-	for(int i=0;i<15;i++)
+	//キーの入力方向
+	if (Input::GetVKey(VK_RIGHT) == true)
 	{
-		for(int j=0;j<20;j++)
-		{
-			if(m_map[i][j]>0)
-			{
-				//要素番号を座標に変更
-				float x = j*32.0f;
-				float y = i*32.0f;
-
-				//主人公とブロックの当たり判定
-				if((hx+32.0f>x)&&(hx<x+32.0f)&&(hy+32.0f>y)&&(hy<y+32.0f))
-				{
-					//上下左右判定
-
-					//vectorの作成
-					float vx = hx - x;
-					float vy = hy - y;
-
-					//長さを求める
-					float len = sqrt(vx*vx + vy*vy);
-
-					//角度を求める
-					float r = atan2(vy, vx);
-					r = r*180.0f / 3.14f;
-
-					if (r <= 0.0f)
-						r = abs(r);
-					else
-						r = 360.0f - abs(r);
-
-					if (len < 44.0f)
-					{
-						//角度で上下左右を判定
-						if (r < 45 && r>0 || r > 315)
-						{
-							//右
-							hero->SetRight(true);
-							hero->SetX(x + 32.0f);
-							hero->SetVX(0.0f);
-						}
-						if (r > 45 && r < 135)
-						{
-							//上
-							hero->SetDown(true);
-							hero->SetY(y - 32.0f);
-							hero->SetVY(0.0f);
-						}
-						if (r > 135 && r < 225)
-						{
-							//左
-							hero->SetLeft(true);
-							hero->SetX(x - 32.0f);
-							hero->SetVX(0.0f);
-						}
-						if (r > 225 && r < 315)
-						{
-							//下
-							hero->SetUp(true);
-							hero->SetY(y + 32.0f);
-							if (hero->GetVY() < 0)
-							{
-								hero->SetVY(0.0f);
-							}
-						}
-					}
-				}
-			}
-		}
+		//hero_x + 1;
+	}
+	else if (Input::GetVKey(VK_LEFT) == true)
+	{
+		//hero_x - 1;
+	}
+	else if (Input::GetVKey(VK_UP) == true)
+	{
+		//hero_y - 1;
+	}
+	else if (Input::GetVKey(VK_DOWN) == true)
+	{
+		//hero_y + 1;
+	}
+	else
+	{
+		;
 	}
 }
 
