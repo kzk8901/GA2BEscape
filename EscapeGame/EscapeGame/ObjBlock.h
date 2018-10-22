@@ -15,4 +15,6 @@ public:
 	void Draw();   //ドロー
 private:
 	int m_map[20][20];//マップ情報
+	int hero_x; //主人公位置（X）
+	int hero_y; //主人公位置（Y）
 };
