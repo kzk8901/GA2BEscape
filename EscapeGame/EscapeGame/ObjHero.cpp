@@ -13,11 +13,11 @@ using namespace GameL;
 //イニシャライズ
 void CObjHero::Init()
 {
-	m_px = 0.0f; //位置ベクトル
+	m_px = 32.0f; //位置ベクトル
 	m_py = 0.0f;
 	m_vx = 0.0f; //移動ベクトル
 	m_vy = 0.0f;
-	m_posture = 1.0f; //右向き0.0f 左向き　1.0f
+	m_posture = 1.0f; //右向き0.0f 左向き1.0f
 	m_speed = 2.0f;
 
 	m_ani_time = 0;
@@ -207,10 +207,10 @@ void CObjHero::Draw()
 	src.m_bottom = 64.0f;
 
 	//表示位置の設定
-	dst.m_top = 0.0f + m_py;
+	dst.m_top = 32.0f +m_py;
 	dst.m_left = (32.0f * m_posture) + m_px;
 	dst.m_right =(32- 32.0f*m_posture) + m_px;
-	dst.m_bottom = 32.0f + m_py;
+	dst.m_bottom = 64.0f + m_py;
 
 	Draw::Draw(0, &src, &dst, c, 0.0f);
 }
