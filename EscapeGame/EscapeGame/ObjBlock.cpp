@@ -6,6 +6,7 @@
 
 #include "GameHead.h"
 #include "ObjBlock.h"
+#include "ObjHero.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -13,6 +14,9 @@ using namespace GameL;
 //イニシャライズ
 void CObjBlock::Init()
 {
+	//主人公の位置を設定
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+
 	//マップ情報
 	int block_data[15][20] =
 	{
@@ -29,50 +33,31 @@ void CObjBlock::Init()
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
 		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
-		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,1, },
 		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, },
 	};
 
-	for (int i = 0; i < 20; i++)
+	//マップデータをコピー
+	memcpy(m_map, block_data, sizeof(int)*(15 * 20));
+
+	for (int i = 0; i < 15; i++)
 	{
 		for (int j = 0; j < 20; j++)
 		{
-			if (m_map[i][j] == 3)
+			if (m_map[i][j] == 2)
 			{
-				hero_x = j;
-				hero_y = i;
+				hero_x = j; hero_y = i;
+				hero->SetPX(32.0f * j);
+				hero->SetPY(32.0f * i);
 			}
 		}
 	}
-
-	//マップデータをコピー
-	memcpy(m_map, block_data, sizeof(int)*(15 * 20));
 }
 
 //アクション
 void CObjBlock::Action()
 {
-	//キーの入力方向
-	if (Input::GetVKey(VK_RIGHT) == true)
-	{
-		//hero_x + 1;
-	}
-	else if (Input::GetVKey(VK_LEFT) == true)
-	{
-		//hero_x - 1;
-	}
-	else if (Input::GetVKey(VK_UP) == true)
-	{
-		//hero_y - 1;
-	}
-	else if (Input::GetVKey(VK_DOWN) == true)
-	{
-		//hero_y + 1;
-	}
-	else
-	{
-		;
-	}
+	
 }
 
 //ドロー
@@ -129,7 +114,7 @@ void CObjBlock::Draw()
 	{
 		for(int j=0;j<20;j++)
 		{
-			if(m_map[i][j]>0)
+			if(m_map[i][j] == 1)
 			{
 				//表示位置の設定
 	            dst.m_top = i*32.0f;
@@ -143,4 +128,56 @@ void CObjBlock::Draw()
 		}
 	}
 	
+}
+
+bool CObjBlock::ThereIsBlock(int vec)
+{
+	if (vec == 1)
+	{
+		if (m_map[hero_x + 1][hero_y] != 1)
+		{
+			hero_x + 1;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	if (vec == 2)
+	{
+		if (m_map[hero_x - 1][hero_y] != 1)
+		{
+			hero_x - 1;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	if (vec == 3)
+	{
+		if (m_map[hero_x][hero_y - 1] != 1)
+		{
+			hero_y - 1;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	if (vec == 4)
+	{
+		if (m_map[hero_x][hero_y + 1] != 1)
+		{
+			hero_y + 1;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
