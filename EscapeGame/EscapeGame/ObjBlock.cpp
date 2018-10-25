@@ -132,11 +132,12 @@ void CObjBlock::Draw()
 
 bool CObjBlock::ThereIsBlock(int vec)
 {
+	//‰E“®‚­‚Ì“®ì
 	if (vec == 1)
 	{
-		if (m_map[hero_x + 1][hero_y] != 1)
+		if (m_map[hero_y][hero_x + 1] != 1)
 		{
-			hero_x + 1;
+			hero_x = hero_x + 1;
 			return true;
 		}
 		else
@@ -144,11 +145,12 @@ bool CObjBlock::ThereIsBlock(int vec)
 			return false;
 		}
 	}
+	//¶“®‚­‚Ì“®ì
 	if (vec == 2)
 	{
-		if (m_map[hero_x - 1][hero_y] != 1)
+		if (m_map[hero_y][hero_x - 1] != 1)
 		{
-			hero_x - 1;
+			hero_x = hero_x - 1;
 			return true;
 		}
 		else
@@ -156,11 +158,12 @@ bool CObjBlock::ThereIsBlock(int vec)
 			return false;
 		}
 	}
+	//ã“®‚­‚Ì“®ì
 	if (vec == 3)
 	{
-		if (m_map[hero_x][hero_y - 1] != 1)
+		if (m_map[hero_y - 1][hero_x] != 1)
 		{
-			hero_y - 1;
+			hero_y = hero_y - 1;
 			return true;
 		}
 		else
@@ -168,11 +171,12 @@ bool CObjBlock::ThereIsBlock(int vec)
 			return false;
 		}
 	}
+	//‰º“®‚­‚Æ‚«‚Ì“®ì
 	if (vec == 4)
 	{
-		if (m_map[hero_x][hero_y + 1] != 1)
+		if (m_map[hero_y + 1][hero_x] != 1)
 		{
-			hero_y + 1;
+			hero_y = hero_y + 1;
 			return true;
 		}
 		else
