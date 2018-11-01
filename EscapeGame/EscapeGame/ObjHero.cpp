@@ -163,7 +163,11 @@ void CObjHero::Action()
 		}
 	}
 
-
+	//マップ切り替え用
+	if (move_flag == false)
+	{
+		block->Mapchange();
+	}
 	/*
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
