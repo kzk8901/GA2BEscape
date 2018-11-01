@@ -37,7 +37,7 @@ enum HIT_ELEMENTS
 struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
-	
+	bool item1; //鍵
 };
 //------------------------------------------------
 

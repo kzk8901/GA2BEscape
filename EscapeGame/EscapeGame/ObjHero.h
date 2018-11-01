@@ -28,6 +28,7 @@ class CObjHero : public CObj
 	  int m_ani_frame;
 	  int m_vec;      //“®‚­•ûŒü‚ğŒˆ‚ß‚é•Ï”
 	  int m_time;     //“®‚¢‚Ä‚é‚ÌŠÔŠÇ—
+	  int m_savevec;  //ˆêŒÂ‘O‚ÌˆÚ“®•ûŒü‚ğ•Û‘¶‚·‚é•Ï”
 
 	  bool move_flag; //“®‚­‚½‚ß‚Ìƒtƒ‰ƒO
 };

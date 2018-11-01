@@ -24,6 +24,7 @@ void CObjHero::Init()
 	m_ani_frame = 1;
 	m_vec = 0;
 	m_time = 0;
+	m_savevec = 0;
 
 	move_flag = false;
 }
@@ -46,7 +47,12 @@ void CObjHero::Action()
 			if (block->ThereIsBlock(1) == true)
 			{
 				m_vec = 1;
+				m_savevec = 1;
 				move_flag = true;
+			}
+			else
+			{
+				m_savevec = 1;
 			}
 		}
 		else if (Input::GetVKey(VK_LEFT) == true)
@@ -54,7 +60,12 @@ void CObjHero::Action()
 			if (block->ThereIsBlock(2) == true)
 			{
 				m_vec = 2;
+				m_savevec = 2;
 				move_flag = true;
+			}
+			else
+			{
+				m_savevec = 2;
 			}
 		}
 		else if (Input::GetVKey(VK_UP))
@@ -62,7 +73,12 @@ void CObjHero::Action()
 			if (block->ThereIsBlock(3) == true)
 			{
 				m_vec = 3;
+				m_savevec = 3;
 				move_flag = true;
+			}
+			else
+			{
+				m_savevec = 3;
 			}
 		}
 		else if (Input::GetVKey(VK_DOWN) == true)
@@ -70,8 +86,17 @@ void CObjHero::Action()
 			if (block->ThereIsBlock(4) == true)
 			{
 				m_vec = 4;
+				m_savevec = 4;
 				move_flag = true;
 			}
+			else
+			{
+				m_savevec = 4;
+			}
+		}
+		else if ((Input::GetVKey('Z') == true))
+		{
+			block->HeroAction(m_savevec);
 		}
 	}
 	else

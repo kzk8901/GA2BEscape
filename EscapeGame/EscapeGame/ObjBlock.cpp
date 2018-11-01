@@ -3,6 +3,7 @@
 #include "GameL\WinInputs.h"
 #include "GameL\SceneManager.h"
 #include "GameL\SceneManager.h"
+#include "GameL\UserData.h"
 
 #include "GameHead.h"
 #include "ObjBlock.h"
@@ -56,6 +57,26 @@ void CObjBlock::Init()
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 
+	//マップ情報
+	int block_data[15][20] =
+	{
+		{ 1,1,1,1,1,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1, },
+		{ 1,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,1, },
+		{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, },
+	};
+
 	//マップデータをコピー
 	memcpy(m_map, block_data_neutral, sizeof(int)*(15 * 20));
 
@@ -71,6 +92,8 @@ void CObjBlock::Init()
 			}
 		}
 	}
+
+	((UserData*)Save::GetData())->item1 = false;
 }
 
 //アクション
@@ -128,17 +151,25 @@ void CObjBlock::Draw()
 
 	//マップチップによるblock設置
 	//切り取り位置の設定
+	/*
 	src.m_top = 0.0f;
 	src.m_left = 320.5f;
 	src.m_right =src.m_left+64.0f;
 	src.m_bottom = 64.0f;
+	*/
 
 	for(int i=0;i<15;i++)
 	{
 		for(int j=0;j<20;j++)
 		{
+			//ブロック表示
 			if(m_map[i][j] == 1)
 			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 320.5f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = 64.0f;
 				//表示位置の設定
 	            dst.m_top = i*32.0f;
 	            dst.m_left = j*32.0f;
@@ -148,6 +179,42 @@ void CObjBlock::Draw()
 	            //描画
 	            Draw::Draw(0, &src, &dst, c, 0.0f);
 			}
+			//鍵付き扉表示
+			if (m_map[i][j] == 3)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 320.5f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(3, &src, &dst, c, 0.0f);
+			}
+			//鍵表示
+			if (m_map[i][j] == 4)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 384.0f;
+				src.m_right = 448.0f;
+				src.m_bottom = 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(0, &src, &dst, c, 0.0f);
+			}
+		}
+	}
 			if (m_map[i][j] == 99)
 			{
 				//表示位置の設定
@@ -162,14 +229,27 @@ void CObjBlock::Draw()
 		}
 	}
 	
+	//アイテム表示
+	if (((UserData*)Save::GetData())->item1 == true)
+	{
+		src.m_top = 0.0f;
+		src.m_left = 384.0f;
+		src.m_right = 448.0f;
+		src.m_bottom = 64.0f;
+		dst.m_top = 32.0f;
+		dst.m_left = 650.0f;
+		dst.m_right = dst.m_left + 64.0f;
+		dst.m_bottom = dst.m_top + 64.0f;
+		Draw::Draw(0, &src, &dst, c, 0.0f);
+	}
 }
-
+//動く方向にブロックがあるかどうかの判定
 bool CObjBlock::ThereIsBlock(int vec)
 {
 	//右動く時の動作
 	if (vec == 1)
 	{
-		if (m_map[hero_y][hero_x + 1] != 1)
+		if (m_map[hero_y][hero_x + 1] != 1 && m_map[hero_y][hero_x + 1] != 3)
 		{
 			hero_x = hero_x + 1;
 			return true;
@@ -182,7 +262,7 @@ bool CObjBlock::ThereIsBlock(int vec)
 	//左動く時の動作
 	if (vec == 2)
 	{
-		if (m_map[hero_y][hero_x - 1] != 1)
+		if (m_map[hero_y][hero_x - 1] != 1 && m_map[hero_y][hero_x - 1] != 3)
 		{
 			hero_x = hero_x - 1;
 			return true;
@@ -195,7 +275,7 @@ bool CObjBlock::ThereIsBlock(int vec)
 	//上動く時の動作
 	if (vec == 3)
 	{
-		if (m_map[hero_y - 1][hero_x] != 1)
+		if (m_map[hero_y - 1][hero_x] != 1 && m_map[hero_y - 1][hero_x] != 3)
 		{
 			hero_y = hero_y - 1;
 			return true;
@@ -208,7 +288,7 @@ bool CObjBlock::ThereIsBlock(int vec)
 	//下動くときの動作
 	if (vec == 4)
 	{
-		if (m_map[hero_y + 1][hero_x] != 1)
+		if (m_map[hero_y + 1][hero_x] != 1 && m_map[hero_y + 1][hero_x] != 3)
 		{
 			hero_y = hero_y + 1;
 			return true;
@@ -216,6 +296,49 @@ bool CObjBlock::ThereIsBlock(int vec)
 		else
 		{
 			return false;
+		}
+	}
+}
+//主人公アクション
+void CObjBlock::HeroAction(int vec)
+{
+	//鍵判定
+	if (m_map[hero_y][hero_x] == 4)
+	{
+		m_map[hero_y][hero_x] = 0;
+		((UserData*)Save::GetData())->item1 = true;
+	}
+
+	//右
+	if (vec == 1)
+	{
+		if (m_map[hero_y][hero_x + 1] == 3)
+		{
+			;
+		}
+	}
+	//左
+	if (vec == 2)
+	{
+		if (m_map[hero_y][hero_x - 1] == 3)
+		{
+			;
+		}
+	}
+	//上
+	if (vec == 3)
+	{
+		if (m_map[hero_y - 1][hero_x] == 3 && ((UserData*)Save::GetData())->item1 == true)
+		{
+			((UserData*)Save::GetData())->item1 = false;
+			m_map[hero_y - 1][hero_x] = 0;
+		}
+	}
+	if (vec == 4)
+	{
+		if (m_map[hero_y - 1][hero_x] == 3 && ((UserData*)Save::GetData())->item1 == true)
+		{
+			m_map[hero_y - 1][hero_x] = 0;
 		}
 	}
 }
