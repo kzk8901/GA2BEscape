@@ -29,7 +29,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"image2.png", 0, TEX_SIZE_512);
 	Draw::LoadImageW(L"hakkou1.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
-	Draw::LoadImageW(L"it.png", 3, TEX_SIZE_512);
+	Draw::LoadImageW(L"it.png", 4, TEX_SIZE_512);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
 
 	//主人公オブジェクト作成
