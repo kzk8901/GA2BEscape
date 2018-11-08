@@ -65,7 +65,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 690.0f - time;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：ハァイ　ジョージィ", 108, 590 - time, 16, c);
 		}
 		else
@@ -79,7 +79,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：ハァイ　ジョージィ", 108, 490, 16, c);
 		}
 	}
@@ -96,7 +96,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：カプテテフGXって2枚持ってる？", 108, 590 - time, 16, c);
 		}
 		else
@@ -109,7 +109,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：カプテテフGXって2枚持ってる？", 108, 490, 16, c);
 		}
 	}
@@ -127,7 +127,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f + x;
 			dst.m_right = 106.0f + x;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：（首振り）", 108, 590 - time, 16, c);
 		}
 		else if (time <= 80 && time > 40)
@@ -141,7 +141,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f + x;
 			dst.m_right = 106.0f + x;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：（首振り）", 108, 590 - time, 16, c);
 		}
 		else if (time <= 40 && time > 1)
@@ -156,7 +156,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f + x;
 			dst.m_right = 106.0f + x;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：（首振り）", 108, 590 - time, 16, c);
 		}
 		else
@@ -169,7 +169,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：（首振り）", 108, 490, 16, c);
 		}
 	}
@@ -185,7 +185,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：えー　強いのに？", 108, 590 - time, 16, c);
 		}
 		else
@@ -199,7 +199,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：えー　強いのに？", 108, 490, 16, c);
 		}
 	}
@@ -215,7 +215,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：売るよ？", 108, 590 - time, 16, c);
 		}
 		else
@@ -229,7 +229,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：売るよ？", 108, 490, 16, c);
 		}
 	}
@@ -245,7 +245,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：どうせ5000円するんでしょ？", 108, 590 - time, 16, c);
 		}
 		else
@@ -259,7 +259,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：どうせ5000円するんでしょ？", 108, 490, 16, c);
 		}
 	}
@@ -275,7 +275,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：騙されんぞ", 108, 590 - time, 16, c);
 		}
 		else
@@ -289,7 +289,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：騙されんぞ", 108, 490, 16, c);
 		}
 	}
@@ -305,7 +305,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：確かに今は5000円するが", 108, 590 - time, 16, c);
 		}
 		else
@@ -319,7 +319,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：確かに今は5000円するが", 108, 490, 16, c);
 		}
 	}
@@ -335,7 +335,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：11月2日発売のウルトラシャイニーで再録されるんだ", 108, 590 - time, 16, c);
 		}
 		else
@@ -349,7 +349,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：11月2日発売のウルトラシャイニーで再録されるんだ", 108, 490, 16, c);
 		}
 	}
@@ -365,7 +365,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：安そう！", 108, 590 - time, 16, c);
 		}
 		else
@@ -379,7 +379,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：安そう！", 108, 490, 16, c);
 		}
 	}
@@ -395,7 +395,7 @@ void CObjText::Draw()
 			dst.m_left = 10 - time;
 			dst.m_right = 106 - time;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：じゃあ転売してくるわ", 108, 590 - time, 16, c);
 		}
 		else
@@ -408,7 +408,7 @@ void CObjText::Draw()
 			dst.m_left = 0.0f;
 			dst.m_right = 0.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：じゃあ転売してくるわ", 108, 490, 16, c);
 		}
 	}
@@ -425,7 +425,7 @@ void CObjText::Draw()
 			dst.m_left = -90 + time;
 			dst.m_right = 6 + time;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, d, 0.0f);
+			Draw::Draw(4, &src, &dst, d, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：待てや！", 50, 200, 64, c);
 		}
 		else
@@ -439,7 +439,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, d, 0.0f);
+			Draw::Draw(4, &src, &dst, d, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：待てや！", 50,200, 64, c);
 		}
 
@@ -457,7 +457,7 @@ void CObjText::Draw()
 			dst.m_left = -90 + time;
 			dst.m_right = 6 + time;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：いいからこれを", 108, 590 - time, 16, c);
 		}
 		else
@@ -471,7 +471,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：いいからこれを", 108, 490, 16, c);
 		}
 	}
@@ -487,7 +487,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ:あ！僕のカプテテフGX！", 108, 590 - time, 16, c);
 		}
 		else
@@ -501,7 +501,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ:あ！僕のカプテテフGX！", 108, 490, 16, c);
 		}
 	}
@@ -517,7 +517,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：返す代わりにもう一枚買うんだ", 108, 590 - time, 16, c);
 		}
 		else
@@ -531,7 +531,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：返す代わりにもう一枚買うんだ", 108, 490, 16, c);
 		}
 	}
@@ -547,7 +547,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：・・・", 108, 590 - time, 16, c);
 		}
 		else
@@ -561,7 +561,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：・・・", 108, 490, 16, c);
 		}
 	}
@@ -577,7 +577,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：おう…", 108, 590 - time, 16, c);
 		}
 		else
@@ -591,7 +591,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：おう…", 108, 490, 16, c);
 		}
 	}
@@ -607,7 +607,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：そんなに嫌な顔せんでも", 108, 590 - time, 16, c);
 		}
 		else
@@ -621,7 +621,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：そんなに嫌な顔せんでも", 108, 490, 16, c);
 		}
 	}
@@ -637,7 +637,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：うわっ　素で引いてる", 108, 590 - time, 16, c);
 		}
 		else
@@ -651,7 +651,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：うわっ　素で引いてる", 108, 490, 16, c);
 		}
 	}
@@ -667,7 +667,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：だが再録がめちゃくちゃ豪華なんだぜ", 108, 590 - time, 16, c);
 		}
 		else
@@ -681,7 +681,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：だが再録がめちゃくちゃ豪華なんだぜ", 108, 490, 16, c);
 		}
 	}
@@ -697,7 +697,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：封入率はわからんが", 108, 590 - time, 16, c);
 		}
 		else
@@ -711,7 +711,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：封入率はわからんが", 108, 490, 16, c);
 		}
 	}
@@ -727,7 +727,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：本当に出やすい？", 108, 590 - time, 16, c);
 		}
 		else
@@ -741,7 +741,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ジョージ：本当に出やすい？", 108, 490, 16, c);
 		}
 	}
@@ -757,7 +757,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：えっ　うん", 108, 590 - time, 16, c);
 		}
 		else
@@ -770,7 +770,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：えっ　うん", 108, 490, 16, c);
 		}
 	}
@@ -787,7 +787,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：ポケカはいいぞ　ジョージィ", 108, 590 - time, 16, c);
 		}
 		else
@@ -801,7 +801,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：ポケカはいいぞ　ジョージィ", 108, 490, 16, c);
 		}
 	}
@@ -817,7 +817,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：深いぞ", 108, 590 - time, 16, c);
 		}
 		else
@@ -830,7 +830,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：深いぞ", 108, 490, 16, c);
 		}
 	}
@@ -846,7 +846,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：君もハマるから", 108, 590 - time, 16, c);
 		}
 		else
@@ -859,7 +859,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：君もハマるから", 108, 490, 16, c);
 		}
 	}
@@ -875,7 +875,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：お前もヤルカポケカするんだよ！！", 108, 590 - time, 16, c);
 		}
 		else
@@ -889,7 +889,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズ：お前もヤルカポケカするんだよ！！", 108, 490, 16, c);
 		}
 	}
@@ -905,7 +905,7 @@ void CObjText::Draw()
 			dst.m_left =  400- 4*time;
 			dst.m_right = 464 +4*time;
 			dst.m_bottom = 364.0f+3*time;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 		}
 		else
 		{
@@ -918,7 +918,7 @@ void CObjText::Draw()
 			dst.m_left = 0.0f;
 			dst.m_right = 800.0f;
 			dst.m_bottom = 600.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 		}
 	}
 	else if (word == 29)
@@ -933,7 +933,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズは死んだ", 108, 590 - time, 16, c);
 			Font::StrDraw(L"カプテテフが2枚引けなかったのだ", 108, 606 - time, 16, c);
 		}
@@ -948,7 +948,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"ペニーワイズは死んだ", 108, 490, 16, c);
 			Font::StrDraw(L"カプテテフが2枚引けなかったのだ", 108, 506, 16, c);
 		}
@@ -965,7 +965,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"でも再録が素晴らしく", 108, 590 - time, 16, c);
 			Font::StrDraw(L"デッキ必須パーツがたくさん入っている", 108, 606 - time, 16, c);
 		}
@@ -980,7 +980,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"でも再録が素晴らしく", 108, 490, 16, c);
 			Font::StrDraw(L"デッキ必須パーツがたくさん入っている", 108, 506, 16, c);
 		}
@@ -997,7 +997,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"そんな豪華再録沢山で新規も入ってる", 108, 590 - time, 16, c);
 			Font::StrDraw(L"ウルトラシャイニーは11月2日発売だ！", 108, 606 - time, 16, c);
 		}
@@ -1012,7 +1012,7 @@ void CObjText::Draw()
 			dst.m_left = 10.0f;
 			dst.m_right = 106.0f;
 			dst.m_bottom = 590.0f;
-			Draw::Draw(3, &src, &dst, c, 0.0f);
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"そんな豪華再録沢山で新規も入ってる", 108, 490, 16, c);
 			Font::StrDraw(L"ウルトラシャイニーは11月2日発売だ！", 108, 506, 16, c);
 		}

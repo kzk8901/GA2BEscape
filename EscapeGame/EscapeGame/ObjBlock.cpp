@@ -232,8 +232,6 @@ void CObjBlock::Draw()
 				//ï`âÊ
 				Draw::Draw(3, &src, &dst, c, 0.0f);
 			}
-		}
-	}
 			if (m_map[i][j] == 99)
 			{
 				//ï\é¶à íuÇÃê›íË
