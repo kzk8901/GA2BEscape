@@ -28,6 +28,8 @@ class CObjHero : public CObj
 	  int m_ani_frame;
 	  int m_vec;      //動く方向を決める変数
 	  int m_time;     //動いてる時の時間管理
+	  int word;   //テキストウィンドウ制御
 
 	  bool move_flag; //動くためのフラグ
+	  bool key_flag;//長押し防止
 };

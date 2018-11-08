@@ -201,7 +201,7 @@ list< unique_ptr<CFontCharTex>>::iterator CDrawFont::SetChar(wchar_t c)
 	return m_ListData->begin(); 
 }
 
-
+int time = 0;
 //文字列描画メソッド
 void CDrawFont::StrDraw(wchar_t* str,float x,float y,float size,float color[4])
 {
@@ -229,10 +229,9 @@ void CDrawFont::StrDraw(wchar_t* str,float x,float y,float size,float color[4])
 		{
 			itr=SetChar(str[i]);
 		}
-		
-		//描画
-		Draw::DrawStr((*itr)->m_pTexResView,x+j,y,size,color);
 
+		//描画
+		Draw::DrawStr((*itr)->m_pTexResView, x + j, y, size, color);
 		//大文字か小文字で次の描画位置を変える
 		char mc[3];
 		int len;

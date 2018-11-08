@@ -27,8 +27,9 @@ void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
 	Draw::LoadImageW(L"image2.png", 0, TEX_SIZE_512);
-	Draw::LoadImageW(L"text.png", 1, TEX_SIZE_512);
+	Draw::LoadImageW(L"hakkou1.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
+	Draw::LoadImageW(L"it.png", 3, TEX_SIZE_512);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
@@ -37,6 +38,10 @@ void CSceneMain::InitScene()
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock();
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
+	//blockオブジェクト作成
+	CObjText* objt = new CObjText();
+	Objs::InsertObj(objt, OBJ_TEXT, 11);
+
 }
 
 //実行中メソッド

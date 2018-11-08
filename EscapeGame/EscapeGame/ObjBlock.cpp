@@ -127,7 +127,6 @@ void CObjBlock::Draw()
 			}
 		}
 	}
-	
 }
 
 bool CObjBlock::ThereIsBlock(int vec)

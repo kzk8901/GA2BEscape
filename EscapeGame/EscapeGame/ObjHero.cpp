@@ -1,4 +1,5 @@
 //使用するヘッダーファイル
+#include"GameL\DrawFont.h"
 #include"GameL\DrawTexture.h"
 #include"GameL\WinInputs.h"
 #include"GameL\Scenemanager.h"
@@ -24,6 +25,7 @@ void CObjHero::Init()
 	m_ani_frame = 1;
 	m_vec = 0;
 	m_time = 0;
+
 
 	move_flag = false;
 }
@@ -138,7 +140,6 @@ void CObjHero::Action()
 		}
 	}
 
-
 	/*
 	if (Input::GetVKey(VK_RIGHT) == true)
 	{
@@ -211,6 +212,6 @@ void CObjHero::Draw()
 	dst.m_left = m_px + (32.0f * m_posture);
 	dst.m_right = m_px + 32.0f + (- 32.0f * m_posture);
 	dst.m_bottom = 32.0f + m_py;
-
+	
 	Draw::Draw(0, &src, &dst, c, 0.0f);
 }
