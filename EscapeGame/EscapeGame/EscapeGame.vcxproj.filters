@@ -16,6 +16,9 @@
     <Filter Include="ソース ファイル\タイトル">
       <UniqueIdentifier>{01a9635a-2998-4407-92c4-9b99c6c7ead2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\テキスト">
+      <UniqueIdentifier>{7fe4677e-0c93-4e9f-ac23-8951bfe0b8f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -72,6 +75,9 @@
     <ClInclude Include="ObjTitle.h">
       <Filter>ソース ファイル\タイトル</Filter>
     </ClInclude>
+    <ClInclude Include="text.h">
+      <Filter>ソース ファイル\テキスト</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -124,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="Objtitle.cpp">
       <Filter>ソース ファイル\タイトル</Filter>
+    </ClCompile>
+    <ClCompile Include="text.cpp">
+      <Filter>ソース ファイル\テキスト</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

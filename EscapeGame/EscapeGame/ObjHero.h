@@ -29,6 +29,8 @@ class CObjHero : public CObj
 	  int m_vec;      //動く方向を決める変数
 	  int m_time;     //動いてる時の時間管理
 	  int m_savevec;  //一個前の移動方向を保存する変数
+	  int word;   //テキストウィンドウ制御
 
 	  bool move_flag; //動くためのフラグ
+	  bool key_flag;//長押し防止
 };

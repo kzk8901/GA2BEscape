@@ -231,7 +231,25 @@ void CObjBlock::Draw()
 				//描画
 				Draw::Draw(0, &src, &dst, c, 0.0f);
 			}
+			//ナンバーロックドア
+			if (m_map[i][j] == 5)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 320.5f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
 
+				//描画
+				Draw::Draw(3, &src, &dst, c, 0.0f);
+			}
+		}
+	}
 			if (m_map[i][j] == 99)
 			{
 				//表示位置の設定
@@ -269,7 +287,7 @@ bool CObjBlock::ThereIsBlock(int vec)
 	//右動く時の動作
 	if (vec == 1)
 	{
-		if (m_map[hero_y][hero_x + 1] != 1 && m_map[hero_y][hero_x + 1] != 3)
+		if (m_map[hero_y][hero_x + 1] != 1 && m_map[hero_y][hero_x + 1] != 3 && m_map[hero_y][hero_x + 1] != 5)
 		{
 			hero_x = hero_x + 1;
 			return true;
@@ -282,7 +300,7 @@ bool CObjBlock::ThereIsBlock(int vec)
 	//左動く時の動作
 	if (vec == 2)
 	{
-		if (m_map[hero_y][hero_x - 1] != 1 && m_map[hero_y][hero_x - 1] != 3)
+		if (m_map[hero_y][hero_x - 1] != 1 && m_map[hero_y][hero_x - 1] != 3 && m_map[hero_y][hero_x - 1] != 5)
 		{
 			hero_x = hero_x - 1;
 			return true;
@@ -295,7 +313,7 @@ bool CObjBlock::ThereIsBlock(int vec)
 	//上動く時の動作
 	if (vec == 3)
 	{
-		if (m_map[hero_y - 1][hero_x] != 1 && m_map[hero_y - 1][hero_x] != 3)
+		if (m_map[hero_y - 1][hero_x] != 1 && m_map[hero_y - 1][hero_x] != 3 && m_map[hero_y - 1][hero_x] != 5)
 		{
 			hero_y = hero_y - 1;
 			return true;
@@ -308,7 +326,7 @@ bool CObjBlock::ThereIsBlock(int vec)
 	//下動くときの動作
 	if (vec == 4)
 	{
-		if (m_map[hero_y + 1][hero_x] != 1 && m_map[hero_y + 1][hero_x] != 3)
+		if (m_map[hero_y + 1][hero_x] != 1 && m_map[hero_y + 1][hero_x] != 3 && m_map[hero_y + 1][hero_x] != 5)
 		{
 			hero_y = hero_y + 1;
 			return true;

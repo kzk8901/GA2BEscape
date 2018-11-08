@@ -52,6 +52,7 @@ namespace GameL
 			static ID3D11DeviceContext* m_pDeviceContext;
 			static D3D11_TEXTURE2D_DESC m_desc;
 
+
 			//フォント情報を格納リスト
 			static list< unique_ptr<CFontCharTex>>*	m_ListData;		//文字リスト
 	}Font;

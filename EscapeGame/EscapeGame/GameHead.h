@@ -8,6 +8,7 @@ enum OBJ_NAME
 	//OBJ_○○と表記
 	OBJ_HERO,
 	OBJ_BLOCK,
+	OBJ_TEXT,
 
 	OBJ_TITLE,
 };
@@ -38,6 +39,7 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	bool item1; //鍵
+	bool number1; //数あってるか
 };
 //------------------------------------------------
 
@@ -55,6 +57,7 @@ struct UserData
 //ゲームシーンオブジェクトヘッダ------------------
 #include "ObjBlock.h"
 #include"ObjHero.h"
+#include"text.h"
 
 #include"ObjTitle.h"
 //------------------------------------------------
