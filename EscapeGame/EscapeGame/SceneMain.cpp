@@ -30,6 +30,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"hakkou1.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"it.png", 3, TEX_SIZE_512);
+	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
