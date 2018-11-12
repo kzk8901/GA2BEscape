@@ -363,27 +363,3 @@ void CObjHero::Draw()
 		}
 	}
 }
-//ナンバーロック判定
-bool CObjHero::locknumber()
-{
-	action_flag = true;
-
-	while (1)
-	{
-		if (Input::GetVKey(VK_UP) == true)
-		{
-
-		}
-		else if (Input::GetVKey(VK_DOWN) == true)
-		{
-
-		}
-
-		if (Input::GetVKey('Z') == true)
-		{
-			break;
-		}
-	}
-
-	return false;
-}

@@ -19,7 +19,6 @@ class CObjHero : public CObj
 	   void SetActionflag(bool a) { action_flag = a; }
 	   void SetNumlock(bool n) { numlock_flag = n; }
 	   void SetLockpiece(int p) { wpiece = p; }
-	   bool locknumber();
   private:
 	  float m_px; //ˆÊ’u
 	  float m_py;
