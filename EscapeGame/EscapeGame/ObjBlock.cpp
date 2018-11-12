@@ -12,6 +12,7 @@
 //使用するネームスペース
 using namespace GameL;
 
+int text_m = 0;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
 //4 = 鍵おいてます, 5 = ナンバーロックドア
@@ -91,10 +92,10 @@ int block_data_test[15][20] =
 	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1, },
 };
 //マップ情報-------------------------------------------------
-
 //イニシャライズ
 void CObjBlock::Init()
 {
+
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 
@@ -158,13 +159,24 @@ void CObjBlock::Draw()
 	//テキストウィンドウ2（縦向き）
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 234.0f;
+	src.m_right = 230.0f;
 	src.m_bottom = 512.0f;
 	dst.m_top = 0.0f;
 	dst.m_left =640.0f;
 	dst.m_right =800.0f;
 	dst.m_bottom = 480.0f;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
+
+	//テキストウィンドウ3（右下）
+	src.m_top = 136.0f;
+	src.m_left = 0.0f;
+	src.m_right = 160.0f;
+	src.m_bottom = 256.0f;
+	dst.m_top = 480.0f;
+	dst.m_left = 640.0f;
+	dst.m_right = 800.0f;
+	dst.m_bottom =600.0f;
+	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
 	//マップチップによるblock設置
@@ -476,6 +488,7 @@ void CObjBlock::Mapchange()
 		//マップデータをコピー
 		if (m_map[hero_y][hero_x] == 99)
 		{
+			text_m = 1;
 			m_map[hero_y + 1][hero_x] = 2;
 			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
 			memcpy(m_map, block_data_new, sizeof(int)*(15 * 20));
@@ -484,6 +497,7 @@ void CObjBlock::Mapchange()
 		//マップデータをコピー
 		if (m_map[hero_y][hero_x] == 97)
 		{
+			text_m = 2;
 			m_map[hero_y][hero_x - 1] = 2;
 			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
 			memcpy(m_map, block_data_test, sizeof(int)*(15 * 20));
@@ -507,6 +521,7 @@ void CObjBlock::Mapchange()
 	//マップ切り替え判定
 	if (m_map[hero_y][hero_x] == 98)
 	{
+		text_m = 0;
 		//マップデータをコピー
 		m_map[hero_y - 1][hero_x] = 2;
 		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
@@ -530,6 +545,7 @@ void CObjBlock::Mapchange()
 	//マップ切り替え判定
 	if (m_map[hero_y][hero_x] == 96)
 	{
+		text_m = 0;
 		//マップデータをコピー
 		m_map[hero_y][hero_x + 1] = 2;
 		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
