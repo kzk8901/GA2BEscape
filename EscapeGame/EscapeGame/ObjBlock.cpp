@@ -117,7 +117,7 @@ void CObjBlock::Init()
 	}
 
 	((UserData*)Save::GetData())->item1 = false;
-	((UserData*)Save::GetData())->number1 = 127;
+	((UserData*)Save::GetData())->number1 = 1145141919810;
 }
 
 //ƒAƒNƒVƒ‡ƒ“
@@ -387,7 +387,7 @@ void CObjBlock::HeroAction(int vec)
 		if (m_map[hero_y - 1][hero_x] == 5)
 		{
 			hero->SetActionflag(true);
-			hero->SetLockpiece(3);
+			hero->SetLockpiece(13);
 			hero->SetNumlock(true);
 		}
 	}

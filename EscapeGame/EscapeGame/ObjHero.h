@@ -35,7 +35,7 @@ class CObjHero : public CObj
 	  int m_time;     //動いてる時の時間管理
 	  int m_savevec;  //一個前の移動方向を保存する変数
 	  int wpiece;     //何桁かの変数
-	  int unlocknum[5];  //解読中のナンバー
+	  int unlocknum[20];  //解読中のナンバー
 	  int selectnum;  //左から何番目の数を動かすのか
 	  int word;   //テキストウィンドウ制御
 

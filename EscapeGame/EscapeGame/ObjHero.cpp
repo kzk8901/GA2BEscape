@@ -27,7 +27,7 @@ void CObjHero::Init()
 	m_vec = 0;
 	m_time = 0;
 	m_savevec = 0;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 20; i++)
 		unlocknum[i] = 0;
 	selectnum = 0;
 
