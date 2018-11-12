@@ -139,6 +139,7 @@
     <ClInclude Include="ObjTitle.h" />
     <ClInclude Include="SceneMain.h" />
     <ClInclude Include="SceneTitle.h" />
+    <ClInclude Include="text.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ObjBlock.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="Objtitle.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="SceneTitle.cpp" />
+    <ClCompile Include="text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GameL\Draw2DTex.hlsl" />

@@ -36,8 +36,10 @@ class CObjHero : public CObj
 	  int wpiece;     //何桁かの変数
 	  int unlocknum[5];  //解読中のナンバー
 	  int selectnum;  //左から何番目の数を動かすのか
+	  int word;   //テキストウィンドウ制御
 
 	  bool move_flag; //動くためのフラグ
+	  bool key_flag;//長押し防止
 	  bool action_flag; //動いてもいいか
 	  bool numlock_flag; //ナンバーロックを解いているか
 	  bool Key_flag;     //キー制御フラグ
