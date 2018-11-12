@@ -3,7 +3,7 @@
 #include "GameL\SceneObjManager.h"
 //使用するネームスペース
 using namespace GameL;
-
+extern int text_m;
 //オブジェクト：ブロック＆背景
 class CObjBlock : public CObj
 {
