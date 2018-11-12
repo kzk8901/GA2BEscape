@@ -15,7 +15,7 @@ using namespace GameL;
 //マップ情報
 int block_data_neutral[15][20] =
 {
-	{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1, 1, },
+	{ 1,1,1,1,1,1,1,1,1,5,1,1,1,1,1,1,1,1,1, 1, },
 	{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 1, },
 	{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 1, },
 	{ 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 1, },
@@ -96,6 +96,7 @@ void CObjBlock::Init()
 	}
 
 	((UserData*)Save::GetData())->item1 = false;
+	((UserData*)Save::GetData())->number1 = 127;
 }
 
 //アクション
@@ -232,8 +233,6 @@ void CObjBlock::Draw()
 				//描画
 				Draw::Draw(3, &src, &dst, c, 0.0f);
 			}
-		}
-	}
 			if (m_map[i][j] == 99)
 			{
 				//表示位置の設定
@@ -247,7 +246,6 @@ void CObjBlock::Draw()
 			}
 		}
 	}
-	
 	//アイテム表示
 	if (((UserData*)Save::GetData())->item1 == true)
 	{
@@ -321,6 +319,9 @@ bool CObjBlock::ThereIsBlock(int vec)
 //主人公アクション
 void CObjBlock::HeroAction(int vec)
 {
+	//主人公の位置を設定
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+
 	//鍵判定
 	if (m_map[hero_y][hero_x] == 4)
 	{
@@ -352,12 +353,26 @@ void CObjBlock::HeroAction(int vec)
 			((UserData*)Save::GetData())->item1 = false;
 			m_map[hero_y - 1][hero_x] = 0;
 		}
+		if (m_map[hero_y - 1][hero_x] == 5)
+		{
+			hero->SetActionflag(true);
+			hero->SetLockpiece(3);
+			hero->SetNumlock(true);
+		}
 	}
 	if (vec == 4)
 	{
-		if (m_map[hero_y - 1][hero_x] == 3 && ((UserData*)Save::GetData())->item1 == true)
+		if (m_map[hero_y + 1][hero_x] == 3 && ((UserData*)Save::GetData())->item1 == true)
 		{
-			m_map[hero_y - 1][hero_x] = 0;
+			m_map[hero_y + 1][hero_x] = 0;
 		}
+	}
+}
+//鍵ロック解除関数
+void CObjBlock::UnlockDoor(int vec, int num)
+{
+	if (((UserData*)Save::GetData())->number1 == num)
+	{
+		m_map[hero_y - 1][hero_x] = 0;
 	}
 }
