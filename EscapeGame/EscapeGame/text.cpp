@@ -42,6 +42,22 @@ void CObjText::Action()
 			}
 		}
 	}
+	if (text_m == 4)
+	{
+		if (time==101)
+		{
+			time = 118;
+		}
+		else if (time == 119)
+		{
+			time = 118;
+		}
+		else if (time >= 120)
+		{
+			time = 0;
+		}
+		
+	}
 }
 //ドロー
 void CObjText::Draw()
@@ -57,6 +73,39 @@ void CObjText::Draw()
 	{
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"居間", 685, 532, 32, c);
+	}
+	if (text_m == 4)
+	{
+		Font::StrDraw(L"1F", 700, 500, 32, c);
+		Font::StrDraw(L"居間", 685, 532, 32, c);
+		if (time < 100)
+		{
+			//背景表示
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
+			src.m_bottom = 64.0f;
+			dst.m_top = 590.0f - time;
+			dst.m_left = 10.0f;
+			dst.m_right = 106.0f;
+			dst.m_bottom = 690.0f - time;
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"ペニーワイズ：ハァイ　ジョージィ", 108, 590 - time, 32, c);
+		}
+		else
+		{
+			//背景表示
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
+			src.m_bottom = 64.0f;
+			dst.m_top = 490.0f;
+			dst.m_left = 10.0f;
+			dst.m_right = 106.0f;
+			dst.m_bottom = 590.0f;
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"ペニーワイズ：ハァイ　ジョージィ", 108, 490, 32, c);
+		}
 	}
 	if (text_m == 1)
 	{
@@ -76,7 +125,7 @@ void CObjText::Draw()
 				dst.m_right = 106.0f;
 				dst.m_bottom = 690.0f - time;
 				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ペニーワイズ：ハァイ　ジョージィ", 108, 590 - time, 16, c);
+				Font::StrDraw(L"ペニーワイズ:隣の部屋ぶりだね　ジョージィ", 108, 590 - time, 16, c);
 			}
 			else
 			{
@@ -90,7 +139,7 @@ void CObjText::Draw()
 				dst.m_right = 106.0f;
 				dst.m_bottom = 590.0f;
 				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ペニーワイズ：ハァイ　ジョージィ", 108, 490, 16, c);
+				Font::StrDraw(L"ペニーワイズ：隣の部屋ぶりだね　ジョージィ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 2)

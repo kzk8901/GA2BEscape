@@ -411,7 +411,7 @@ void CObjBlock::Mapchange()
 		//マップデータをコピー
 		if (m_map[hero_y][hero_x] == 99)
 		{
-			text_m = 1;
+			text_m = 2;
 			m_map[hero_y + 1][hero_x] = 2;
 			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
 			memcpy(m_map, block_data_new, sizeof(int)*(15 * 20));
@@ -420,7 +420,7 @@ void CObjBlock::Mapchange()
 		//マップデータをコピー
 		if (m_map[hero_y][hero_x] == 97)
 		{
-			text_m = 2;
+			text_m = 1;
 			m_map[hero_y][hero_x - 1] = 2;
 			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
 			memcpy(m_map, block_data_test, sizeof(int)*(15 * 20));
@@ -494,5 +494,6 @@ void CObjBlock::UnlockDoor(int vec, int num)
 	if (((UserData*)Save::GetData())->number1 == num)
 	{
 		m_map[hero_y - 1][hero_x] = 0;
+		text_m = 4;
 	}
 }
