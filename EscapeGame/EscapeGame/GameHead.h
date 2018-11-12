@@ -39,7 +39,7 @@ struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
 	bool item1; //鍵
-	bool number1; //数あってるか
+	int  number1; //数あってるか
 };
 //------------------------------------------------
 

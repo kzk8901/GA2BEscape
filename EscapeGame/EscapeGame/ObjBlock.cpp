@@ -117,6 +117,7 @@ void CObjBlock::Init()
 	}
 
 	((UserData*)Save::GetData())->item1 = false;
+	((UserData*)Save::GetData())->number1 = 127;
 }
 
 //アクション
@@ -274,8 +275,6 @@ void CObjBlock::Draw()
 			}
 		}
 	}
-			
-	
 	//アイテム表示
 	if (((UserData*)Save::GetData())->item1 == true)
 	{
@@ -354,88 +353,6 @@ void CObjBlock::HeroAction(int vec)
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 
-	/*
-	//マップ切り替え判定
-	if (m_map[hero_y][hero_x] == 99|| m_map[hero_y][hero_x] == 97)
-	{
-		//マップデータをコピー
-		if (m_map[hero_y][hero_x] == 99)
-		{
-			m_map[hero_y + 1][hero_x] = 2;
-			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-			memcpy(m_map, block_data_new, sizeof(int)*(15 * 20));
-			memcpy(block_data_neutral, block_data_save, sizeof(int)*(15 * 20));
-		}
-		//マップデータをコピー
-		if (m_map[hero_y][hero_x] == 97)
-		{
-			m_map[hero_y][hero_x-1] = 2;
-			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-			memcpy(m_map, block_data_test, sizeof(int)*(15 * 20));
-			memcpy(block_data_neutral, block_data_save, sizeof(int)*(15 * 20));
-		}
-		for (int i = 0; i < 15; i++)
-		{
-			for (int j = 0; j < 20; j++)
-			{
-				if (m_map[i][j] == 2)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					m_map[i][j] = 0;
-				}
-			}
-		}
-	}
-
-	//マップ切り替え判定
-	if (m_map[hero_y][hero_x] == 98)
-	{
-		//マップデータをコピー
-		m_map[hero_y - 1][hero_x] = 2;
-		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-		memcpy(m_map, block_data_neutral, sizeof(int)*(15 * 20));
-		memcpy(block_data_new, block_data_save, sizeof(int)*(15 * 20));
-		for (int i = 0; i < 15; i++)
-		{
-			for (int j = 0; j < 20; j++)
-			{
-				if (m_map[i][j] == 2)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					m_map[i][j] = 0;
-				}
-			}
-		}	
-	}
-
-	//マップ切り替え判定
-	if (m_map[hero_y][hero_x] == 96)
-	{
-		//マップデータをコピー
-		m_map[hero_y][hero_x + 1] = 2;
-		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-		memcpy(m_map, block_data_neutral, sizeof(int)*(15 * 20));
-		memcpy(block_data_test, block_data_save, sizeof(int)*(15 * 20));
-		for (int i = 0; i < 15; i++)
-		{
-			for (int j = 0; j < 20; j++)
-			{
-				if (m_map[i][j] == 2)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					m_map[i][j] = 0;
-				}
-			}
-		}
-	}
-	*/
-
 	//鍵判定
 	if (m_map[hero_y][hero_x] == 4)
 	{
@@ -466,6 +383,12 @@ void CObjBlock::HeroAction(int vec)
 		{
 			((UserData*)Save::GetData())->item1 = false;
 			m_map[hero_y - 1][hero_x] = 99;
+		}
+		if (m_map[hero_y - 1][hero_x] == 5)
+		{
+			hero->SetActionflag(true);
+			hero->SetLockpiece(3);
+			hero->SetNumlock(true);
 		}
 	}
 	if (vec == 4)
