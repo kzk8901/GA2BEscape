@@ -3,7 +3,7 @@
 #include "GameL\SceneObjManager.h"
 //使用するネームスペース
 using namespace GameL;
-
+extern int text_m;
 //オブジェクト：ブロック＆背景
 class CObjBlock : public CObj
 {
@@ -18,6 +18,7 @@ public:
 	void HeroAction(int vec);
 	void Mapchange();
 
+	void UnlockDoor(int vec, int num);
 private:
 	int m_map[15][20];//マップ情報
 	int hero_x; //主人公位置（X）

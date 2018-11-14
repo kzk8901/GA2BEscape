@@ -3,6 +3,8 @@
 #include"GameL\DrawTexture.h"
 #include"GameL\WinInputs.h"
 #include"GameL\Scenemanager.h"
+#include"GameL\DrawFont.h"
+#include"GameL\UserData.h"
 
 #include "GameHead.h"
 #include "ObjHero.h"
@@ -10,7 +12,6 @@
 
 //使用するネームスペース
 using namespace GameL;
-
 //イニシャライズ
 void CObjHero::Init()
 {
@@ -26,9 +27,15 @@ void CObjHero::Init()
 	m_vec = 0;
 	m_time = 0;
 	m_savevec = 0;
+	for (int i = 0; i < 20; i++)
+		unlocknum[i] = 0;
+	selectnum = 0;
 
 
 	move_flag = false;
+	action_flag = false;
+	numlock_flag = false;
+	Key_flag = false;
 }
 
 //アクション
@@ -42,125 +49,215 @@ void CObjHero::Action()
 	m_vy = 0.0f;
 
 	//キーの入力方向
-	if (move_flag == false)
+	if (action_flag == false)
 	{
-		if (Input::GetVKey(VK_RIGHT) == true)
+		if (move_flag == false)
 		{
-			if (block->ThereIsBlock(1) == true)
+			if (Input::GetVKey(VK_RIGHT) == true)
 			{
-				m_vec = 1;
-				m_savevec = 1;
-				move_flag = true;
+				if (block->ThereIsBlock(1) == true)
+				{
+					m_vec = 1;
+					m_savevec = 1;
+					move_flag = true;
+				}
+				else
+				{
+					m_savevec = 1;
+				}
+			}
+			else if (Input::GetVKey(VK_LEFT) == true)
+			{
+				if (block->ThereIsBlock(2) == true)
+				{
+					m_vec = 2;
+					m_savevec = 2;
+					move_flag = true;
+				}
+				else
+				{
+					m_savevec = 2;
+				}
+			}
+			else if (Input::GetVKey(VK_UP))
+			{
+				if (block->ThereIsBlock(3) == true)
+				{
+					m_vec = 3;
+					m_savevec = 3;
+					move_flag = true;
+				}
+				else
+				{
+					m_savevec = 3;
+				}
+			}
+			else if (Input::GetVKey(VK_DOWN) == true)
+			{
+				if (block->ThereIsBlock(4) == true)
+				{
+					m_vec = 4;
+					m_savevec = 4;
+					move_flag = true;
+				}
+				else
+				{
+					m_savevec = 4;
+				}
+			}
+			else if ((Input::GetVKey('Z') == true))
+			{
+				if (Key_flag == false)
+				{
+					block->HeroAction(m_savevec);
+					Key_flag = true;
+				}
 			}
 			else
 			{
-				m_savevec = 1;
+				Key_flag = false;
 			}
 		}
-		else if (Input::GetVKey(VK_LEFT) == true)
+		else
 		{
-			if (block->ThereIsBlock(2) == true)
+			if (m_vec == 1)
 			{
-				m_vec = 2;
-				m_savevec = 2;
-				move_flag = true;
+				//右に動くプログラム
+				m_vx = +m_speed;
+				m_posture = 1.0f;
+				m_time++;            //動いている時間
+				if (m_time % 4 == 0) //4フレームに一回アニメーション動かす
+					m_ani_frame++;
+				if (m_time == 16)    //16フレーム(32pixel)動いたら止める
+				{
+					m_time = 0;
+					m_vec = 0;
+					move_flag = false;
+				}
 			}
-			else
+			if (m_vec == 2)
 			{
-				m_savevec = 2;
+				//左に動くプログラム
+				m_vx = -m_speed;
+				m_posture = 0.0f;
+				m_time++;
+				if (m_time % 4 == 0)
+					m_ani_frame++;
+				if (m_time == 16)
+				{
+					m_time = 0;
+					m_vec = 0;
+					move_flag = false;
+				}
 			}
-		}
-		else if (Input::GetVKey(VK_UP))
-		{
-			if (block->ThereIsBlock(3) == true)
+			if (m_vec == 3)
 			{
-				m_vec = 3;
-				m_savevec = 3;
-				move_flag = true;
+				//上に動くプログラム
+				m_vy = -m_speed;
+				//m_posture = -1.0f;
+				m_time++;
+				if (m_time % 4 == 0)
+					m_ani_frame++;
+				if (m_time == 16)
+				{
+					m_time = 0;
+					m_vec = 0;
+					move_flag = false;
+				}
 			}
-			else
+			if (m_vec == 4)
 			{
-				m_savevec = 3;
+				//下に動くプログラム
+				m_vy = +m_speed;
+				//m_posture = -1.0f;
+				m_time++;
+				if (m_time % 4 == 0)
+					m_ani_frame++;
+				if (m_time == 16)
+				{
+					m_time = 0;
+					m_vec = 0;
+					move_flag = false;
+				}
 			}
-		}
-		else if (Input::GetVKey(VK_DOWN) == true)
-		{
-			if (block->ThereIsBlock(4) == true)
-			{
-				m_vec = 4;
-				m_savevec = 4;
-				move_flag = true;
-			}
-			else
-			{
-				m_savevec = 4;
-			}
-		}
-		else if ((Input::GetVKey('Z') == true))
-		{
-			block->HeroAction(m_savevec);
 		}
 	}
 	else
 	{
-		if (m_vec == 1)
+		if (numlock_flag == true)
 		{
-			//右に動くプログラム
-			m_vx = +m_speed;     
-			m_posture = 1.0f;
-			m_time++;            //動いている時間
-			if (m_time % 4 == 0) //4フレームに一回アニメーション動かす
-				m_ani_frame++;
-			if (m_time == 16)    //16フレーム(32pixel)動いたら止める
+			if (Input::GetVKey(VK_RIGHT) == true)
 			{
-				m_time = 0;
-				m_vec = 0;
-				move_flag = false;
+				if (Key_flag == false)
+				{
+					selectnum++;
+					if (selectnum == wpiece)
+					{
+						selectnum = 0;
+					}
+					Key_flag = true;
+				}
 			}
-		}
-		if (m_vec == 2)
-		{
-			//左に動くプログラム
-			m_vx = -m_speed;
-			m_posture = 0.0f;
-			m_time++;
-			if (m_time % 4 == 0)
-				m_ani_frame++;
-			if (m_time == 16)
+			else if (Input::GetVKey(VK_LEFT) == true)
 			{
-				m_time = 0;
-				m_vec = 0;
-				move_flag = false;
+				if (Key_flag == false)
+				{
+					selectnum--;
+					if (selectnum == -1)
+					{
+						selectnum = wpiece - 1;
+					}
+					Key_flag = true;
+				}
 			}
-		}
-		if (m_vec == 3)
-		{
-			//上に動くプログラム
-			m_vy = -m_speed;
-			//m_posture = -1.0f;
-			m_time++;
-			if (m_time % 4 == 0)
-				m_ani_frame++;
-			if (m_time == 16)
+			else if (Input::GetVKey(VK_UP) == true)
 			{
-				m_time = 0;
-				m_vec = 0;
-				move_flag = false;
+				if (Key_flag == false)
+				{
+					unlocknum[selectnum]++;
+					if (unlocknum[selectnum] >= 10)
+					{
+						unlocknum[selectnum] = 0;
+					}
+					Key_flag = true;
+				}
 			}
-		}
-		if (m_vec == 4)
-		{
-			//下に動くプログラム
-			m_vy = +m_speed;
-			//m_posture = -1.0f;
-			m_time++;
-			if (m_time % 4 == 0)
-				m_ani_frame++;
-			if (m_time == 16)
+			else if (Input::GetVKey(VK_DOWN) == true)
 			{
-				m_time = 0;
-				m_vec = 0;
-				move_flag = false;
+				if (Key_flag == false)
+				{
+					unlocknum[selectnum]--;
+					if (unlocknum[selectnum] <= -1)
+					{
+						unlocknum[selectnum] = 9;
+					}
+					Key_flag = true;
+				}
+			}
+			else if (Input::GetVKey('Z') == true)
+			{
+				if (Key_flag == false)
+				{
+					int u = 0;
+					int j = 1;
+					for (int i = wpiece - 1; i >= 0; i--)
+					{
+						u += unlocknum[i] * j;
+						j *= 10;
+					}
+					block->UnlockDoor(1, u);
+					for (int i = 0; i < wpiece; i++)
+						unlocknum[i] = 0;
+					selectnum = 0;
+					wpiece = 0;
+					numlock_flag = false;
+					action_flag = false;
+					Key_flag = true;
+				}
+			}
+			else
+			{
+				Key_flag = false;
 			}
 		}
 	}
@@ -244,4 +341,24 @@ void CObjHero::Draw()
 	dst.m_bottom = 32.0f + m_py;
 	
 	Draw::Draw(0, &src, &dst, c, 0.0f);
+
+	//ナンバーロック表示
+	if (numlock_flag)
+	{
+		for (int i = 0; i < wpiece; i++)
+		{
+			wchar_t str[256];
+			swprintf_s(str, L"%d", unlocknum[i]);
+			if (selectnum == i)
+			{
+				c[2] = 0.5f;
+			}
+			else
+			{
+				c[2] = 1.0f;
+			}
+
+			Font::StrDraw(str, 30 + i * 30, 500, 30, c);
+		}
+	}
 }
