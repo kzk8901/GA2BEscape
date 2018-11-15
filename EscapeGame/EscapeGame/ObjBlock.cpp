@@ -383,6 +383,7 @@ void CObjBlock::HeroAction(int vec)
 	{
 		m_map[hero_y][hero_x] = 0;
 		((UserData*)Save::GetData())->item1 = true;
+		text_m = 3;
 	}
 
 	//‰E
@@ -408,6 +409,7 @@ void CObjBlock::HeroAction(int vec)
 		{
 			((UserData*)Save::GetData())->item1 = false;
 			m_map[hero_y - 1][hero_x] = 99;
+			text_m = 4;
 		}
 		if (m_map[hero_y - 1][hero_x] == 5)
 		{
@@ -550,6 +552,5 @@ void CObjBlock::UnlockDoor(int vec, int num)
 	if (((UserData*)Save::GetData())->number1 == num)
 	{
 		m_map[hero_y - 1][hero_x] = 0;
-		text_m = 4;
 	}
 }
