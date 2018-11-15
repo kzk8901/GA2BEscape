@@ -31,6 +31,12 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"it.png", 4, TEX_SIZE_512);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
+	Draw::LoadImageW(L"whitewindow.png", 5, TEX_SIZE_1024);
+
+	//アイテムオブジェクト作成
+	CObjItem* obji = new CObjItem();
+	Objs::InsertObj(obji, OBJ_ITEM, 15);
+
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
@@ -39,7 +45,8 @@ void CSceneMain::InitScene()
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock();
 	Objs::InsertObj(objb, OBJ_BLOCK, 9);
-	//blockオブジェクト作成
+
+	//textオブジェクト作成
 	CObjText* objt = new CObjText();
 	Objs::InsertObj(objt, OBJ_TEXT, 11);
 

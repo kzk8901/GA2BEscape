@@ -9,6 +9,7 @@ enum OBJ_NAME
 	OBJ_HERO,
 	OBJ_BLOCK,
 	OBJ_TEXT,
+	OBJ_ITEM,
 
 	OBJ_TITLE,
 };
@@ -38,8 +39,10 @@ enum HIT_ELEMENTS
 struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
-	bool item1; //鍵
 	int  number1; //数あってるか
+
+	//所持アイテム管理
+	int item[8];
 };
 //------------------------------------------------
 
@@ -58,6 +61,7 @@ struct UserData
 #include "ObjBlock.h"
 #include"ObjHero.h"
 #include"text.h"
+#include "ObjItem.h"
 
 #include"ObjTitle.h"
 //------------------------------------------------
