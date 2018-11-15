@@ -19,6 +19,9 @@
     <Filter Include="ソース ファイル\テキスト">
       <UniqueIdentifier>{7fe4677e-0c93-4e9f-ac23-8951bfe0b8f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\アイテム">
+      <UniqueIdentifier>{5d2ea3ef-6556-4bd7-8ac9-e0effcf311f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameL\Audio.h">
@@ -78,6 +81,9 @@
     <ClInclude Include="text.h">
       <Filter>ソース ファイル\テキスト</Filter>
     </ClInclude>
+    <ClInclude Include="ObjItem.h">
+      <Filter>ソース ファイル\アイテム</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -133,6 +139,9 @@
     </ClCompile>
     <ClCompile Include="text.cpp">
       <Filter>ソース ファイル\テキスト</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjItem.cpp">
+      <Filter>ソース ファイル\アイテム</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

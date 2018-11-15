@@ -44,4 +44,5 @@ class CObjHero : public CObj
 	  bool action_flag; //動いてもいいか
 	  bool numlock_flag; //ナンバーロックを解いているか
 	  bool Key_flag;     //キー制御フラグ
+	  bool Itemcheck;    //アイテム詳細確認中フラグ
 };

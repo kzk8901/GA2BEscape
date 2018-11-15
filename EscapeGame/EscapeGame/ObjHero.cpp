@@ -9,6 +9,7 @@
 #include "GameHead.h"
 #include "ObjHero.h"
 #include "ObjBlock.h"
+#include "ObjItem.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -36,6 +37,7 @@ void CObjHero::Init()
 	action_flag = false;
 	numlock_flag = false;
 	Key_flag = false;
+	Itemcheck = false;
 }
 
 //アクション
@@ -43,6 +45,8 @@ void CObjHero::Action()
 {
 	//ブロックの位置取得
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
+	//アイテム参照
+	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
 
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
@@ -111,6 +115,110 @@ void CObjHero::Action()
 				{
 					block->HeroAction(m_savevec);
 					Key_flag = true;
+				}
+			}
+			else if (Input::GetVKey('1')|| Input::GetVKey(VK_NUMPAD1))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[0] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[0]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
+				}
+			}
+			else if (Input::GetVKey('2') || Input::GetVKey(VK_NUMPAD2))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[1] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[1]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
+				}
+			}
+			else if (Input::GetVKey('3') || Input::GetVKey(VK_NUMPAD3))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[2] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[2]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
+				}
+			}
+			else if (Input::GetVKey('4') || Input::GetVKey(VK_NUMPAD4))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[3] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[3]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
+				}
+			}
+			else if (Input::GetVKey('5') || Input::GetVKey(VK_NUMPAD5))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[4] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[4]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
+				}
+			}
+			else if (Input::GetVKey('6') || Input::GetVKey(VK_NUMPAD6))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[5] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[5]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
+				}
+			}
+			else if (Input::GetVKey('7') || Input::GetVKey(VK_NUMPAD7))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[6] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[6]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
+				}
+			}
+			else if (Input::GetVKey('8') || Input::GetVKey(VK_NUMPAD8))
+			{
+				if (Key_flag == false)
+				{
+					if (((UserData*)Save::GetData())->item[7] != 0)
+					{
+						itm->SetShowItem(((UserData*)Save::GetData())->item[7]);
+						Itemcheck = true;
+						Key_flag = true;
+						action_flag = true;
+					}
 				}
 			}
 			else
@@ -258,6 +366,15 @@ void CObjHero::Action()
 			else
 			{
 				Key_flag = false;
+			}
+		}
+		if (Itemcheck == true)
+		{
+			if (Input::GetVKey('X') == true)
+			{
+				itm->SetShow(false);
+				Itemcheck = false;
+				action_flag = false;
 			}
 		}
 	}

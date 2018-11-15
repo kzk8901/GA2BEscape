@@ -6,6 +6,7 @@
 #include "GameL\UserData.h"
 
 #include "GameHead.h"
+#include "ObjItem.h"
 #include "ObjBlock.h"
 #include "ObjHero.h"
 
@@ -15,9 +16,7 @@ using namespace GameL;
 int text_m = 0;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
-//4 = 鍵おいてます, 5 = ナンバーロックドア
-
-//保存マップ
+//4 = 鍵おいてます, 5 = ナンバーロックドア , 6 = 偽アイテム
 int block_data_save[15][20] =
 {
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, },
@@ -141,8 +140,7 @@ void CObjBlock::Init()
 		}
 	}
 
-	((UserData*)Save::GetData())->item1 = false;
-	((UserData*)Save::GetData())->number1 = 1145141919810;
+	((UserData*)Save::GetData())->number1 = 402;
 }
 
 //アクション
@@ -286,6 +284,23 @@ void CObjBlock::Draw()
 				//描画
 				Draw::Draw(3, &src, &dst, c, 0.0f);
 			}
+			//偽鍵表示
+			if (m_map[i][j] == 6)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 384.0f;
+				src.m_right = 448.0f;
+				src.m_bottom = 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(0, &src, &dst, c, 0.0f);
+			}
 
 			if (m_map[i][j] == 99)
 			{
@@ -299,19 +314,6 @@ void CObjBlock::Draw()
 				Draw::Draw(0, &src, &dst, c, 0.0f);
 			}
 		}
-	}
-	//アイテム表示
-	if (((UserData*)Save::GetData())->item1 == true)
-	{
-		src.m_top = 0.0f;
-		src.m_left = 384.0f;
-		src.m_right = 448.0f;
-		src.m_bottom = 64.0f;
-		dst.m_top = 32.0f;
-		dst.m_left = 650.0f;
-		dst.m_right = dst.m_left + 64.0f;
-		dst.m_bottom = dst.m_top + 64.0f;
-		Draw::Draw(0, &src, &dst, c, 0.0f);
 	}
 }
 //動く方向にブロックがあるかどうかの判定
@@ -393,6 +395,18 @@ void CObjBlock::HeroAction(int vec)
 		{
 			;
 		}
+		//鍵判定
+		if (m_map[hero_y][hero_x + 1] == 4)
+		{
+			m_map[hero_y][hero_x + 1] = 0;
+			itm->GetItem(1);
+		}
+		//偽鍵判定
+		if (m_map[hero_y][hero_x + 1] == 6)
+		{
+			m_map[hero_y][hero_x + 1] = 0;
+			itm->GetItem(2);
+		}
 	}
 	//左
 	if (vec == 2)
@@ -401,28 +415,70 @@ void CObjBlock::HeroAction(int vec)
 		{
 			;
 		}
+		//鍵判定
+		if (m_map[hero_y][hero_x - 1] == 4)
+		{
+			m_map[hero_y][hero_x - 1] = 0;
+			itm->GetItem(1);
+		}
+		//偽鍵判定
+		if (m_map[hero_y][hero_x - 1] == 6)
+		{
+			m_map[hero_y][hero_x - 1] = 0;
+			itm->GetItem(2);
+		}
 	}
 	//上
 	if (vec == 3)
 	{
-		if (m_map[hero_y - 1][hero_x] == 3 && ((UserData*)Save::GetData())->item1 == true)
+		//鍵付きドア判定
+		if (m_map[hero_y - 1][hero_x] == 3 && itm->CheckItem(1))
 		{
-			((UserData*)Save::GetData())->item1 = false;
+			itm->DeleteItem(1,false);
 			m_map[hero_y - 1][hero_x] = 99;
 			text_m = 4;
 		}
-		if (m_map[hero_y - 1][hero_x] == 5)
-		{
-			hero->SetActionflag(true);
-			hero->SetLockpiece(13);
-			hero->SetNumlock(true);
-		}
-	}
-	if (vec == 4)
-	{
-		if (m_map[hero_y - 1][hero_x] == 3 && ((UserData*)Save::GetData())->item1 == true)
+		//鍵判定
+		if (m_map[hero_y - 1][hero_x] == 4)
 		{
 			m_map[hero_y - 1][hero_x] = 0;
+			itm->GetItem(1);
+		}
+		//ナンバーロックドア判定
+		if (m_map[hero_y - 1][hero_x] == 5)
+		{
+			//解いてる間動かないようにする
+			hero->SetActionflag(true);
+			//ナンバーロックの桁数
+			hero->SetLockpiece(4);
+			//ナンバーロック解いてるフラグを立てる
+			hero->SetNumlock(true);
+		}
+		//偽鍵判定
+		if (m_map[hero_y - 1][hero_x] == 6)
+		{
+			m_map[hero_y - 1][hero_x] = 0;
+			itm->GetItem(2);
+		}
+	}
+	//下
+	if (vec == 4)
+	{
+		if (m_map[hero_y + 1][hero_x] == 3 && itm->CheckItem(1))
+		{
+			m_map[hero_y + 1][hero_x] = 0;
+		}
+		//鍵判定
+		if (m_map[hero_y + 1][hero_x] == 4)
+		{
+			m_map[hero_y + 1][hero_x] = 0;
+			itm->GetItem(1);
+		}
+		//偽鍵判定
+		if (m_map[hero_y + 1][hero_x] == 6)
+		{
+			m_map[hero_y + 1][hero_x] = 0;
+			itm->GetItem(2);
 		}
 	}
 }
@@ -547,6 +603,7 @@ void CObjBlock::Mapchange()
 		}
 	}
 }
+//ナンバーロックドア開けるための関数
 void CObjBlock::UnlockDoor(int vec, int num)
 {
 	if (((UserData*)Save::GetData())->number1 == num)
