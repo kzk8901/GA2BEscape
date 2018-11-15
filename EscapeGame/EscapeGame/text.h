@@ -15,7 +15,7 @@ public:
 	void Draw();
 private:
 	bool m_key_flag;//キーフラグ
-	int word;
+	int word[5];
 	int time;
 	int x, y;
 };
