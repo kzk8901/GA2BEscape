@@ -379,12 +379,15 @@ void CObjBlock::HeroAction(int vec)
 {
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	//アイテム参照
+	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
 
 	//鍵判定
 	if (m_map[hero_y][hero_x] == 4)
 	{
 		m_map[hero_y][hero_x] = 0;
-		((UserData*)Save::GetData())->item1 = true;
+		itm->GetItem(1);
+		//((UserData*)Save::GetData())->item1 = true;
 		text_m = 3;
 	}
 
