@@ -151,7 +151,7 @@ void CObjBlock::Action()
 
 	if (m_map[hero_y][hero_x] == 50)
 	{
-		m_map[hero_y][hero_x] = 2;
+		m_map[hero_y][hero_x] = 0;
 		hero->SetEventFlag(true,1);
 	}
 }

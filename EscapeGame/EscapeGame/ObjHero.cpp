@@ -58,6 +58,7 @@ void CObjHero::Action()
 	{
 		if (eventnumber == 1 && move_flag == false)
 		{
+			//1,‰E 2,¶ 3,ã 4,‰º
 			if (block->GetX() > 5 && block->ThereIsBlock(2) == true)
 			{
 				m_vec = 2;
