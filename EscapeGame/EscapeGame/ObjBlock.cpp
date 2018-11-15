@@ -386,8 +386,17 @@ void CObjBlock::HeroAction(int vec)
 {
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	//アイテム所持確認用
+	//アイテム参照
 	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
+
+	//鍵判定
+	if (m_map[hero_y][hero_x] == 4)
+	{
+		m_map[hero_y][hero_x] = 0;
+		itm->GetItem(1);
+		//((UserData*)Save::GetData())->item1 = true;
+		text_m = 3;
+	}
 
 	//右
 	if (vec == 1)
@@ -437,6 +446,7 @@ void CObjBlock::HeroAction(int vec)
 		{
 			itm->DeleteItem(1,false);
 			m_map[hero_y - 1][hero_x] = 99;
+			text_m = 4;
 		}
 		//鍵判定
 		if (m_map[hero_y - 1][hero_x] == 4)
@@ -609,6 +619,5 @@ void CObjBlock::UnlockDoor(int vec, int num)
 	if (((UserData*)Save::GetData())->number1 == num)
 	{
 		m_map[hero_y - 1][hero_x] = 0;
-		text_m = 4;
 	}
 }
