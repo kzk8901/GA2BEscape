@@ -21,6 +21,7 @@ class CObjHero : public CObj
 	   void SetActionflag(bool a) { action_flag = a; }
 	   void SetNumlock(bool n) { numlock_flag = n; }
 	   void SetLockpiece(int p) { wpiece = p; }
+	   void SetEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
   private:
 	  float m_px; //位置
 	  float m_py;
@@ -38,7 +39,9 @@ class CObjHero : public CObj
 	  int unlocknum[20];  //解読中のナンバー
 	  int selectnum;  //左から何番目の数を動かすのか
 	  int word;   //テキストウィンドウ制御
+	  int eventnumber; //どのイベントを動かすか
 
+	  bool eventflag; //イベントフラグ
 	  bool move_flag; //動くためのフラグ
 	  bool key_flag;//長押し防止
 	  bool action_flag; //動いてもいいか

@@ -31,8 +31,9 @@ void CObjHero::Init()
 	for (int i = 0; i < 20; i++)
 		unlocknum[i] = 0;
 	selectnum = 0;
+	eventnumber = 0;
 
-
+	eventflag = false;
 	move_flag = false;
 	action_flag = false;
 	numlock_flag = false;
@@ -51,6 +52,29 @@ void CObjHero::Action()
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
 	m_vy = 0.0f;
+
+	//イベント用フラグ
+	if (eventflag == true)
+	{
+		if (eventnumber == 1 && move_flag == false)
+		{
+			if (block->GetX() > 5 && block->ThereIsBlock(2) == true)
+			{
+				m_vec = 2;
+				move_flag = true;
+			}
+			else if (block->GetY() < 13 && block->ThereIsBlock(4) == true)
+			{
+				m_vec = 4;
+				move_flag = true;
+			}
+			else
+			{
+				eventflag = false;
+				eventnumber = 0;
+			}
+		}
+	}
 
 	//キーの入力方向
 	if (action_flag == false)

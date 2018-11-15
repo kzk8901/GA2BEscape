@@ -13,6 +13,8 @@ public:
 	void Init();   //イニシャライズ
 	void Action(); //アクション
 	void Draw();   //ドロー
+	int  GetX() { return hero_x; }
+	int  GetY() { return hero_y; }
 
 	bool ThereIsBlock(int vec);
 	void HeroAction(int vec);
