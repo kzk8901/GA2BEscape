@@ -56,17 +56,17 @@ void CObjHero::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
+		//イベントナンバー１　左の部屋入ってからスタート
+		//X = 5, Y = 13の位置まで移動(テスト用)
 		if (eventnumber == 1 && move_flag == false)
 		{
 			if (block->GetX() > 5 && block->ThereIsBlock(2) == true)
 			{
-				m_vec = 2;
-				move_flag = true;
+				SetMoveVec(2);
 			}
 			else if (block->GetY() < 13 && block->ThereIsBlock(4) == true)
 			{
-				m_vec = 4;
-				move_flag = true;
+				SetMoveVec(4);
 			}
 			else
 			{
@@ -74,65 +74,94 @@ void CObjHero::Action()
 				eventnumber = 0;
 			}
 		}
+		//イベント1終了
+
+		//イベントナンバー２　右の部屋入ってからスタート
+		//X = 8, Y = 3の位置まで移動
+		if (eventnumber == 2 && move_flag == false)
+		{
+			if (block->GetY() > 3 && block->ThereIsBlock(3) == true)
+			{
+				SetMoveVec(3);
+			}
+			else if (block->GetX() < 8 && block->ThereIsBlock(1) == true)
+			{
+				SetMoveVec(1);
+			}
+			else
+			{
+				eventflag = false;
+				eventnumber = 0;
+			}
+		}
+		//イベント1終了
 	}
 
-	//キーの入力方向
+	//キーの入力
+	//動く行動できない状況なら入らない（ナンバーロック解いてる、アイテム確認中など）
 	if (action_flag == false)
 	{
+		//動いている途中じゃないか
 		if (move_flag == false)
 		{
+			//右押したとき
 			if (Input::GetVKey(VK_RIGHT) == true)
 			{
+				//右にブロックなければそのまま動く
 				if (block->ThereIsBlock(1) == true)
 				{
-					m_vec = 1;
-					m_savevec = 1;
-					move_flag = true;
+					SetMoveVec(1);
 				}
+				//ブロックがあればその方向だけ向く
 				else
 				{
 					m_savevec = 1;
 				}
 			}
+			//左押したとき
 			else if (Input::GetVKey(VK_LEFT) == true)
 			{
+				//左にブロックがなければそのまま動く
 				if (block->ThereIsBlock(2) == true)
 				{
-					m_vec = 2;
-					m_savevec = 2;
-					move_flag = true;
+					SetMoveVec(2);
 				}
+				//ブロックがあればその方向だけ向く
 				else
 				{
 					m_savevec = 2;
 				}
 			}
+			//上押したとき
 			else if (Input::GetVKey(VK_UP))
 			{
+				//上にブロックがなければそのまま動く
 				if (block->ThereIsBlock(3) == true)
 				{
-					m_vec = 3;
-					m_savevec = 3;
-					move_flag = true;
+					SetMoveVec(3);
 				}
+				//ブロックがあればその方向だけ向く
 				else
 				{
 					m_savevec = 3;
 				}
 			}
+			//下押したとき
 			else if (Input::GetVKey(VK_DOWN) == true)
 			{
+				//下にブロックがなければそのまま動く
 				if (block->ThereIsBlock(4) == true)
 				{
-					m_vec = 4;
-					m_savevec = 4;
-					move_flag = true;
+					SetMoveVec(4);
 				}
+				//ブロックがあればその方向だけ向く
 				else
 				{
 					m_savevec = 4;
 				}
 			}
+			//アクションボタン押したとき
+			//各動作はブロックに書いている
 			else if ((Input::GetVKey('Z') == true))
 			{
 				if (Key_flag == false)
@@ -141,16 +170,15 @@ void CObjHero::Action()
 					Key_flag = true;
 				}
 			}
+			//↓こっから先はそれぞれの番号に登録しているアイテムの参照プログラム
+			//SetshowItemNumber(num)←numの所に参照したいアイテムの番号を入れる
 			else if (Input::GetVKey('1')|| Input::GetVKey(VK_NUMPAD1))
 			{
 				if (Key_flag == false)
 				{
 					if (((UserData*)Save::GetData())->item[0] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[0]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(1);
 					}
 				}
 			}
@@ -160,10 +188,7 @@ void CObjHero::Action()
 				{
 					if (((UserData*)Save::GetData())->item[1] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[1]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(2);
 					}
 				}
 			}
@@ -173,10 +198,7 @@ void CObjHero::Action()
 				{
 					if (((UserData*)Save::GetData())->item[2] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[2]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(3);
 					}
 				}
 			}
@@ -186,10 +208,7 @@ void CObjHero::Action()
 				{
 					if (((UserData*)Save::GetData())->item[3] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[3]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(4);
 					}
 				}
 			}
@@ -199,10 +218,7 @@ void CObjHero::Action()
 				{
 					if (((UserData*)Save::GetData())->item[4] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[4]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(5);
 					}
 				}
 			}
@@ -212,10 +228,7 @@ void CObjHero::Action()
 				{
 					if (((UserData*)Save::GetData())->item[5] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[5]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(6);
 					}
 				}
 			}
@@ -225,10 +238,7 @@ void CObjHero::Action()
 				{
 					if (((UserData*)Save::GetData())->item[6] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[6]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(7);
 					}
 				}
 			}
@@ -238,15 +248,13 @@ void CObjHero::Action()
 				{
 					if (((UserData*)Save::GetData())->item[7] != 0)
 					{
-						itm->SetShowItem(((UserData*)Save::GetData())->item[7]);
-						Itemcheck = true;
-						Key_flag = true;
-						action_flag = true;
+						SetShowItemNumber(8);
 					}
 				}
 			}
 			else
 			{
+				//キー制御
 				Key_flag = false;
 			}
 		}
@@ -316,36 +324,47 @@ void CObjHero::Action()
 	}
 	else
 	{
+		//ナンバーロック解いているなら入る
 		if (numlock_flag == true)
 		{
+			//右に移動
 			if (Input::GetVKey(VK_RIGHT) == true)
 			{
 				if (Key_flag == false)
 				{
+					//右にずれる
 					selectnum++;
 					if (selectnum == wpiece)
 					{
+						//上限より右に行ったら一番左に戻る
 						selectnum = 0;
 					}
+					//キー制御
 					Key_flag = true;
 				}
 			}
+			//左に移動
 			else if (Input::GetVKey(VK_LEFT) == true)
 			{
 				if (Key_flag == false)
 				{
+					//左にずれる
 					selectnum--;
 					if (selectnum == -1)
 					{
+						//一番左より左に行くと一番右に戻る
 						selectnum = wpiece - 1;
 					}
+					//キー制御
 					Key_flag = true;
 				}
 			}
+			//数を一つ上げる
 			else if (Input::GetVKey(VK_UP) == true)
 			{
 				if (Key_flag == false)
 				{
+					//
 					unlocknum[selectnum]++;
 					if (unlocknum[selectnum] >= 10)
 					{
@@ -354,6 +373,7 @@ void CObjHero::Action()
 					Key_flag = true;
 				}
 			}
+			//数を一つ下げる
 			else if (Input::GetVKey(VK_DOWN) == true)
 			{
 				if (Key_flag == false)
@@ -366,6 +386,7 @@ void CObjHero::Action()
 					Key_flag = true;
 				}
 			}
+			//決定
 			else if (Input::GetVKey('Z') == true)
 			{
 				if (Key_flag == false)
@@ -387,6 +408,7 @@ void CObjHero::Action()
 					Key_flag = true;
 				}
 			}
+			//キーフラグ制御
 			else
 			{
 				Key_flag = false;
@@ -492,14 +514,28 @@ void CObjHero::Draw()
 			swprintf_s(str, L"%d", unlocknum[i]);
 			if (selectnum == i)
 			{
+				//選択している数は色を黄色くする
 				c[2] = 0.5f;
 			}
 			else
 			{
+				//それ以外は白字にする
 				c[2] = 1.0f;
 			}
 
 			Font::StrDraw(str, 30 + i * 30, 500, 30, c);
 		}
 	}
+}
+//アイテム表示用関数
+void CObjHero::SetShowItemNumber(int i)
+{
+	//アイテム参照
+	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
+
+	//渡されたナンバーの番号に入っているアイテムを参照　　　↓そのための-1
+	itm->SetShowItem(((UserData*)Save::GetData())->item[i - 1]);
+	Itemcheck = true;
+	Key_flag = true;
+	action_flag = true;
 }
