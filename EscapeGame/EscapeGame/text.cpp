@@ -13,7 +13,7 @@ using namespace GameL;
 void CObjText::Init()
 {
 	m_key_flag = false;
-	time = 120;
+	time = 300;
 	word[0] = 0;
 	word[1] = 0;
 	word[2] = 0;
@@ -32,7 +32,7 @@ void CObjText::Action()
 		{
 			if (m_key_flag == true)
 			{
-				if (time > 120)
+				if (time > 300)
 				{
 					if (text_m == 0&&word[0]<=20)
 					{

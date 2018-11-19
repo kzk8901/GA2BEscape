@@ -60,6 +60,7 @@ void CObjHero::Action()
 		//X = 5, Y = 13の位置まで移動(テスト用)
 		if (eventnumber == 1 && move_flag == false)
 		{
+			//1,右 2,左 3,上 4,下
 			if (block->GetX() > 5 && block->ThereIsBlock(2) == true)
 			{
 				SetMoveVec(2);
