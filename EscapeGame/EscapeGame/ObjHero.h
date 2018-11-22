@@ -15,6 +15,7 @@ class CObjHero : public CObj
 	   void Init();    //イニシャライズ
 	   void Action();  //アクション
 	   void Draw();    //ドロー
+	   bool GetMoveFlag() { return move_flag; }
 
 	   void SetPX(float x) { m_px = x; }
 	   void SetPY(float y) { m_py = y; }

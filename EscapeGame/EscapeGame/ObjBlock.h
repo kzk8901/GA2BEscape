@@ -18,11 +18,14 @@ public:
 
 	bool ThereIsBlock(int vec);
 	void HeroAction(int vec);
-	void Mapchange();
+	void Mapchange(int mapn);
+	void SetHero();
 
 	void UnlockDoor(int vec, int num);
+	void Set_Map_Num(int n) { mapnum = n; }//マップナンバーをセットする
 private:
-	int m_map[15][20];//マップ情報
+	int m_map[5][15][20];//マップ情報
 	int hero_x; //主人公位置（X）
 	int hero_y; //主人公位置（Y）
+	int mapnum; //マップナンバー
 };
