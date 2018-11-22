@@ -23,6 +23,8 @@ class CObjHero : public CObj
 	   void SetNumlock(bool n) { numlock_flag = n; }
 	   void SetLockpiece(int p) { wpiece = p; }
 	   void SetEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
+	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  move_flag = true; }
+	   void SetShowItemNumber(int i);
   private:
 	  float m_px; //ˆÊ’u
 	  float m_py;
