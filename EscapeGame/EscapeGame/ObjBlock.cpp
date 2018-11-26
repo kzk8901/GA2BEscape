@@ -540,134 +540,27 @@ void CObjBlock::HeroAction(int vec)
 	}
 }
 //マップ切り替え用関数
-void CObjBlock::Mapchange()
+void CObjBlock::Mapchange(int mapn)
 {
-	//主人公の位置を設定
-	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
-
-	//マップ切り替え判定
-	if (m_map[hero_y][hero_x] == 99 || m_map[hero_y][hero_x] == 97 || m_map[hero_y][hero_x] == 95)
+	
+	//マップ保存-------------------------------------------
+	for (int i = 0; i < 15; i++)
 	{
-		//スタートマップデータをコピー
-		if (m_map[hero_y][hero_x] == 99)
+		for (int j = 0; j < 20; j++)
 		{
-			text_m = 2;
-			m_map[hero_y + 1][hero_x] = 2;
-			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-			memcpy(m_map, block_data_up_1F, sizeof(int)*(15 * 20));
-			memcpy(block_data_neutral_1F, block_data_save, sizeof(int)*(15 * 20));
-		}
-		//スタートマップデータをコピー
-		if (m_map[hero_y][hero_x] == 97)
-		{
-			text_m = 1;
-			m_map[hero_y][hero_x - 1] = 2;
-			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-			memcpy(m_map, block_data_right_1F, sizeof(int)*(15 * 20));
-			memcpy(block_data_neutral_1F, block_data_save, sizeof(int)*(15 * 20));
-		}
-		//スタートマップデータをコピー
-		if (m_map[hero_y][hero_x] == 95)
-		{
-			m_map[hero_y][hero_x + 1] = 2;
-			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-			memcpy(m_map, block_data_left_1F, sizeof(int)*(15 * 20));
-			memcpy(block_data_neutral_1F, block_data_save, sizeof(int)*(15 * 20));
-		}
-		for (int i = 0; i < 15; i++)
-		{
-			for (int j = 0; j < 20; j++)
-			{
-				if (m_map[i][j] == 2)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					m_map[i][j] = 0;
-					i = 15; j = 20;
-				}
-				if (m_map[i][j] == 50 || m_map[i][j] == 51)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					//m_map[i][j] = 0;
-					i = 15; j = 20;
-				}
-			}
+			block_data_map[mapnum][i][j] = m_map[mapnum][i][j];
 		}
 	}
 
-	//奏多マップ1F切り替え判定
-	if (m_map[hero_y][hero_x] == 98)
+	//ローディング-----------------------------------------
+	for (int i = 0; i < 15; i++)
 	{
-		text_m = 0;
-		//マップデータをコピー
-		m_map[hero_y - 1][hero_x] = 2;
-		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-		memcpy(m_map, block_data_neutral_1F, sizeof(int)*(15 * 20));
-		memcpy(block_data_up_1F, block_data_save, sizeof(int)*(15 * 20));
-		for (int i = 0; i < 15; i++)
+		for (int j = 0; j < 20; j++)
 		{
-			for (int j = 0; j < 20; j++)
-			{
-				if (m_map[i][j] == 2)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					m_map[i][j] = 0;
-				}
-			}
+			m_map[mapn][i][j] = block_data_map[mapn][i][j];
 		}
 	}
-
-	//永遠マップ1F切り替え判定
-	if (m_map[hero_y][hero_x] == 96)
-	{
-		text_m = 0;
-		//マップデータをコピー
-		m_map[hero_y][hero_x + 1] = 2;
-		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-		memcpy(m_map, block_data_neutral_1F, sizeof(int)*(15 * 20));
-		memcpy(block_data_right_1F, block_data_save, sizeof(int)*(15 * 20));
-		for (int i = 0; i < 15; i++)
-		{
-			for (int j = 0; j < 20; j++)
-			{
-				if (m_map[i][j] == 2)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					m_map[i][j] = 0;
-				}
-			}
-		}
-	}
-
-	//きららマップ1F切り替え判定
-	if (m_map[hero_y][hero_x] == 94)
-	{
-		//マップデータをコピー
-		m_map[hero_y][hero_x - 1] = 2;
-		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
-		memcpy(m_map, block_data_neutral_1F, sizeof(int)*(15 * 20));
-		memcpy(block_data_left_1F, block_data_save, sizeof(int)*(15 * 20));
-		for (int i = 0; i < 15; i++)
-		{
-			for (int j = 0; j < 20; j++)
-			{
-				if (m_map[i][j] == 2)
-				{
-					hero_x = j; hero_y = i;
-					hero->SetPX(32.0f * j);
-					hero->SetPY(32.0f * i);
-					m_map[i][j] = 0;
-				}
-			}
-		}
-	}
+	
 }
 
 //ナンバーロックドア開けるための関数
