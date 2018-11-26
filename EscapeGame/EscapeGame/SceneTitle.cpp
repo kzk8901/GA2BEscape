@@ -28,7 +28,7 @@ CSceneTitle::~CSceneTitle()
 //ゲームメイン初期化メソッド
 void CSceneTitle::InitScene()
 {
-	Font::SetStrTex(L"脱出ゲームやん？");
+	Font::SetStrTex(L"脱出ゲーム");
 
 	//タイトルオブジェクト作成
 	CObjTitle* obj = new CObjTitle();
