@@ -13,7 +13,7 @@
 //使用するネームスペース
 using namespace GameL;
 
-int text_m = 0;
+int text_m = -1;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
 //4 = 鍵おいてます, 5 = ナンバーロックドア , 6 = 偽アイテム
@@ -534,6 +534,7 @@ void CObjBlock::Mapchange()
 		//スタートマップデータをコピー
 		if (m_map[hero_y][hero_x] == 95)
 		{
+			text_m = 0;
 			m_map[hero_y][hero_x + 1] = 2;
 			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
 			memcpy(m_map, block_data_left_1F, sizeof(int)*(15 * 20));
@@ -566,7 +567,7 @@ void CObjBlock::Mapchange()
 	//奏多マップ1F切り替え判定
 	if (m_map[hero_y][hero_x] == 98)
 	{
-		text_m = 0;
+		text_m = -1;
 		//マップデータをコピー
 		m_map[hero_y - 1][hero_x] = 2;
 		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
@@ -590,7 +591,7 @@ void CObjBlock::Mapchange()
 	//永遠マップ1F切り替え判定
 	if (m_map[hero_y][hero_x] == 96)
 	{
-		text_m = 0;
+		text_m = -1;
 		//マップデータをコピー
 		m_map[hero_y][hero_x + 1] = 2;
 		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
@@ -614,6 +615,7 @@ void CObjBlock::Mapchange()
 	//きららマップ1F切り替え判定
 	if (m_map[hero_y][hero_x] == 94)
 	{
+		text_m = -1;
 		//マップデータをコピー
 		m_map[hero_y][hero_x - 1] = 2;
 		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
