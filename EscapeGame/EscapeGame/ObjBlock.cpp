@@ -228,13 +228,13 @@ void CObjBlock::Action()
 			if (blockdeleteYN == true)
 			{
 				if (blockmovevec == 1)
-					m_map[blocky][blockx + 1] = 1;
+					m_map[mapnum][blocky][blockx + 1] = 1;
 				if (blockmovevec == 2)
-					m_map[blocky][blockx - 1] = 1;
+					m_map[mapnum][blocky][blockx - 1] = 1;
 				if (blockmovevec == 3)
-					m_map[blocky - 1][blockx] = 1;
+					m_map[mapnum][blocky - 1][blockx] = 1;
 				if (blockmovevec == 4)
-					m_map[blocky + 1][blockx] = 1;
+					m_map[mapnum][blocky + 1][blockx] = 1;
 			}
 			//後処理（初期化等）-----------
 			if (blockmovevec == 1 || blockmovevec == 2)
@@ -242,7 +242,7 @@ void CObjBlock::Action()
 			if (blockmovevec == 3 || blockmovevec == 4)
 				blockm_y = 0.0;
 			//------------------------------
-			m_map[blocky][blockx] = 0;
+			m_map[mapnum][blocky][blockx] = 0;
 		}
 	}
 }
@@ -400,7 +400,7 @@ void CObjBlock::Draw()
 				Draw::Draw(0, &src, &dst, c, 0.0f);
 			}
 			//偽ブロック表示
-			if (m_map[i][j] == 7)
+			if (m_map[mapnum][i][j] == 7)
 			{
 				//切り取り位置の設定
 				src.m_top = 0.0f;
@@ -533,7 +533,7 @@ void CObjBlock::HeroAction(int vec)
 			itm->GetItem(2);
 		}
 		//偽壁判定
-		if (m_map[hero_y][hero_x + 1] == 7)
+		if (m_map[mapnum][hero_y][hero_x + 1] == 7)
 		{
 			blockmovevec = 4;
 			blockx = hero_x + 1; blocky = hero_y;
@@ -568,20 +568,18 @@ void CObjBlock::HeroAction(int vec)
 		if (m_map[mapnum][hero_y - 1][hero_x] == 3 && itm->CheckItem(1))
 		{
 			itm->DeleteItem(1,false);
-			m_map[mapnum][hero_y - 1][hero_x] = 99;
 			itm->DeleteItem(2, true);
 			for (int i = 0; i < 15; i++)
 			{
 				for (int j = 0; j < 20; j++)
 				{
-					if (m_map[i][j] == 6)
+					if (m_map[mapnum][i][j] == 6)
 					{
-						m_map[i][j] = 0;
+						m_map[mapnum][i][j] = 0;
 					}
 				}
 			}
-			m_map[hero_y - 1][hero_x] = 99;
-			text_m = 4;
+			m_map[mapnum][hero_y - 1][hero_x] = 99;
 		}
 		//鍵判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 4)
