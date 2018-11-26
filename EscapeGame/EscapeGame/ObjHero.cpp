@@ -103,7 +103,7 @@ void CObjHero::Action()
 	if (action_flag == false)
 	{
 		//“®‚¢‚Ä‚¢‚é“r’†‚¶‚á‚È‚¢‚©
-		if (move_flag == false)
+		if (move_flag == false && eventflag == false)
 		{
 			//‰E‰Ÿ‚µ‚½‚Æ‚«
 			if (Input::GetVKey(VK_RIGHT) == true)
