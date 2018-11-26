@@ -2181,7 +2181,7 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"探索しよう！", 50, 490, 32, c);
 		}
-		else if (word[2] == 8)
+		else if (word[2] == 10)
 		{
 			if (time < 100)
 			{
@@ -2194,7 +2194,7 @@ void CObjText::Draw()
 				dst.m_right = 106.0f;
 				dst.m_bottom = 590.0f;
 				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"主人公:はい", 108, 590 - time, 16, c);
+				Font::StrDraw(L"主人公:鍵見つかりましたよ", 108, 590 - time, 16, c);
 			}
 			else
 			{
@@ -2208,9 +2208,252 @@ void CObjText::Draw()
 				dst.m_right = 106.0f;
 				dst.m_bottom = 590.0f;
 				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"主人公:はい", 108, 490, 16, c);
+				Font::StrDraw(L"主人公:鍵見つかりましたよ", 108, 490, 16, c);
 			}
 		}
+		else if (word[2] == 11)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:ありがとう。開けてみよっか", 108, 590 - time, 16, c);
+			}
+			else
+			{
 
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:ありがとう。開けてみよっか", 108, 490, 16, c);
+			}
+		}
+		else if (word[2] == 12)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:開かないですね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:開かないですね", 108, 490, 16, c);
+			}
+		}
+		else if (word[2] == 12)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:他にもないか探してみよう", 108, 590 - time, 16, c);
+			}
+			else
+			{
+
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:他にもないか探してみよう", 108, 490, 16, c);
+			}
+		}
+		else if (word[2] == 12)
+		{
+			Font::StrDraw(L"探索しよう！", 50, 490, 32, c);
+		}
+		else if (word[2] == 13)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:先輩それっぽい鍵見つけましたよ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:先輩それっぽい鍵見つけましたよ", 108, 490, 16, c);
+			}
+		}
+		else if (word[2] == 14)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:ありがとう。それじゃあ開けてみようか。", 108, 590 - time, 16, c);
+			}
+			else
+			{
+
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:ありがとう。それじゃあ開けてみようか。", 108, 490, 16, c);
+			}
+		}
+		else if (word[2] == 15)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:これは、何かのメモかな？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:これは、何かのメモかな？", 108, 490, 16, c);
+			}
+		}
+		else if (word[2] == 16)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:みたいですね。メモの内容的には本棚に何かあるみたいですが…", 108, 590 - time, 16, c);
+			}
+			else
+			{
+
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:みたいですね。メモの内容的には本棚に何かあるみたいですが…", 108, 490, 16, c);
+			}
+		}
+		else if (word[2] == 17)
+		{
+			if (time < 100)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:もしかしたら他にもメモがあるかもしれないね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+
+				src.m_top = 0.0f;
+				src.m_left = 320.0f;
+				src.m_right = 384.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:もしかしたら他にもメモがあるかもしれないね", 108, 490, 16, c);
+			}
+		}
 	}
 }
