@@ -25,4 +25,13 @@ private:
 	int m_map[15][20];//マップ情報
 	int hero_x; //主人公位置（X）
 	int hero_y; //主人公位置（Y）
+
+	bool eventclockflag; //イベント中のフラグ
+	int  eventclocktime; //イベント中の時間管理
+	int  blockmovevec;   //ブロックの動く方向
+	int   blockx;
+	int   blocky;
+	bool  blockdeleteYN;
+	float blockm_x;
+	float blockm_y;
 };

@@ -78,10 +78,10 @@ void CObjHero::Action()
 		//イベント1終了
 
 		//イベントナンバー２　右の部屋入ってからスタート
-		//X = 8, Y = 3の位置まで移動
+		//X = 8, Y = 2の位置まで移動
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (block->GetY() > 3 && block->ThereIsBlock(3) == true)
+			if (block->GetY() > 2 && block->ThereIsBlock(3) == true)
 			{
 				SetMoveVec(3);
 			}

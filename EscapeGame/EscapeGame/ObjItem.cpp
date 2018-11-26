@@ -120,6 +120,11 @@ void CObjItem::DeleteItem(int item, bool all)
 			for (int j = i + 1; j < 8; j++)
 			{
 				((UserData*)Save::GetData())->item[j - 1] = ((UserData*)Save::GetData())->item[j];
+				((UserData*)Save::GetData())->item[j] = 0;
+				if (all == true)
+				{
+					i--;
+				}
 			}
 
 			if (all == false)
