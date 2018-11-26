@@ -28,7 +28,7 @@ void CObjText::Init()
 void CObjText::Action()
 {
 	time += 1;
-		if (Input::GetVKey('A') == true)
+		if (Input::GetVKey('Z') == true)
 		{
 			if (m_key_flag == true)
 			{
@@ -85,7 +85,7 @@ void CObjText::Draw()
 		Font::StrDraw(L"居間", 685, 532, 32, c);
 		if (word[0] == 0)
 		{
-			Font::StrDraw(L"Aキーで会話進行", 50, 490, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 50, 490, 32, c);
 		}
 	    else if (word[0] == 1)
 		{
@@ -699,7 +699,7 @@ void CObjText::Draw()
 		Font::StrDraw(L"居間", 685, 532, 32, c);
 		if (word[0] == 21)
 		{
-			Font::StrDraw(L"Aキーで会話進行", 50, 490, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 50, 490, 32, c);
 		}
 		else if (word[0] == 22)
 		{
@@ -893,7 +893,7 @@ void CObjText::Draw()
 		Font::StrDraw(L"居間", 685, 532, 32, c);
 	    if (word[0] == 28)
 	    {
-		    Font::StrDraw(L"Aキーで会話進行", 50, 490, 32, c);
+		    Font::StrDraw(L"Zキーで会話進行", 50, 490, 32, c);
 	    }
 		else if (word[0] == 29)
 		{
@@ -1323,7 +1323,7 @@ void CObjText::Draw()
 		Font::StrDraw(L"図書室", 670, 532, 32, c);
 		if (word[1] == 0)
 		{
-			Font::StrDraw(L"Aキーで会話進行", 50, 490, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 50, 490, 32, c);
 		}
 		if (word[1] == 1)
 		{
@@ -1933,7 +1933,7 @@ void CObjText::Draw()
 		Font::StrDraw(L"和室", 685, 532, 32, c);
 		if (word[2] == 0)
 		{
-			Font::StrDraw(L"Aキーで会話進行", 50, 490, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 50, 490, 32, c);
 		}
 		else if (word[2] == 1)
 		{
