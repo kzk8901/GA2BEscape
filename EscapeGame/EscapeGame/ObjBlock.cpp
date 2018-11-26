@@ -13,7 +13,7 @@
 //使用するネームスペース
 using namespace GameL;
 
-int text_m = 0;
+int text_m = -1;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
 //4 = 鍵おいてます, 5 = ナンバーロックドア , 6 = 偽アイテム
@@ -540,42 +540,131 @@ void CObjBlock::HeroAction(int vec)
 	}
 }
 //マップ切り替え用関数
-void CObjBlock::Mapchange(int mapn)
-{
-	//マップ保存-------------------------------------------
-	for (int i = 0; i < 15; i++)
-	{
-		for (int j = 0; j < 20; j++)
-		{
-			block_data_map[mapnum][i][j] = m_map[mapnum][i][j];
-		}
-	}
-
-	//ローディング-----------------------------------------
-	for (int i = 0; i < 15; i++)
-	{
-		for (int j = 0; j < 20; j++)
-		{
-			m_map[mapn][i][j] = block_data_map[mapn][i][j];
-		}
-	}
-}
-
-void CObjBlock::SetHero()
+void CObjBlock::Mapchange()
 {
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 
-	for (int i = 0; i < 15; i++)
+	//マップ切り替え判定
+	if (m_map[hero_y][hero_x] == 99 || m_map[hero_y][hero_x] == 97 || m_map[hero_y][hero_x] == 95)
 	{
-		for (int j = 0; j < 20; j++)
+		//スタートマップデータをコピー
+		if (m_map[hero_y][hero_x] == 99)
 		{
-			if (m_map[mapnum][i][j] == 2)
+			text_m = 2;
+			m_map[hero_y + 1][hero_x] = 2;
+			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
+			memcpy(m_map, block_data_up_1F, sizeof(int)*(15 * 20));
+			memcpy(block_data_neutral_1F, block_data_save, sizeof(int)*(15 * 20));
+		}
+		//スタートマップデータをコピー
+		if (m_map[hero_y][hero_x] == 97)
+		{
+			text_m = 1;
+			m_map[hero_y][hero_x - 1] = 2;
+			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
+			memcpy(m_map, block_data_right_1F, sizeof(int)*(15 * 20));
+			memcpy(block_data_neutral_1F, block_data_save, sizeof(int)*(15 * 20));
+		}
+		//スタートマップデータをコピー
+		if (m_map[hero_y][hero_x] == 95)
+		{
+			m_map[hero_y][hero_x + 1] = 2;
+			memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
+			memcpy(m_map, block_data_left_1F, sizeof(int)*(15 * 20));
+			memcpy(block_data_neutral_1F, block_data_save, sizeof(int)*(15 * 20));
+		}
+		for (int i = 0; i < 15; i++)
+		{
+			for (int j = 0; j < 20; j++)
 			{
-				hero_x = j; hero_y = i;
-				hero->SetPX(32.0f * j);
-				hero->SetPY(32.0f * i);
-				m_map[mapnum][i][j] = 0;
+				if (m_map[i][j] == 2)
+				{
+					hero_x = j; hero_y = i;
+					hero->SetPX(32.0f * j);
+					hero->SetPY(32.0f * i);
+					m_map[i][j] = 0;
+					i = 15; j = 20;
+				}
+				if (m_map[i][j] == 50 || m_map[i][j] == 51)
+				{
+					hero_x = j; hero_y = i;
+					hero->SetPX(32.0f * j);
+					hero->SetPY(32.0f * i);
+					//m_map[i][j] = 0;
+					i = 15; j = 20;
+				}
+			}
+		}
+	}
+
+	//奏多マップ1F切り替え判定
+	if (m_map[hero_y][hero_x] == 98)
+	{
+		text_m = 0;
+		//マップデータをコピー
+		m_map[hero_y - 1][hero_x] = 2;
+		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
+		memcpy(m_map, block_data_neutral_1F, sizeof(int)*(15 * 20));
+		memcpy(block_data_up_1F, block_data_save, sizeof(int)*(15 * 20));
+		for (int i = 0; i < 15; i++)
+		{
+			for (int j = 0; j < 20; j++)
+			{
+				if (m_map[i][j] == 2)
+				{
+					hero_x = j; hero_y = i;
+					hero->SetPX(32.0f * j);
+					hero->SetPY(32.0f * i);
+					m_map[i][j] = 0;
+				}
+			}
+		}
+	}
+
+	//永遠マップ1F切り替え判定
+	if (m_map[hero_y][hero_x] == 96)
+	{
+		text_m = 0;
+		//マップデータをコピー
+		m_map[hero_y][hero_x + 1] = 2;
+		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
+		memcpy(m_map, block_data_neutral_1F, sizeof(int)*(15 * 20));
+		memcpy(block_data_right_1F, block_data_save, sizeof(int)*(15 * 20));
+		for (int i = 0; i < 15; i++)
+		{
+			for (int j = 0; j < 20; j++)
+			{
+				if (m_map[i][j] == 2)
+				{
+					hero_x = j; hero_y = i;
+					hero->SetPX(32.0f * j);
+					hero->SetPY(32.0f * i);
+					m_map[i][j] = 0;
+				}
+			}
+		}
+	}
+
+	//きららマップ1F切り替え判定
+	if (m_map[hero_y][hero_x] == 94)
+	{
+		//マップデータをコピー
+		m_map[hero_y][hero_x - 1] = 2;
+		memcpy(block_data_save, m_map, sizeof(int)*(15 * 20));
+		memcpy(m_map, block_data_neutral_1F, sizeof(int)*(15 * 20));
+		memcpy(block_data_left_1F, block_data_save, sizeof(int)*(15 * 20));
+		for (int i = 0; i < 15; i++)
+		{
+			for (int j = 0; j < 20; j++)
+			{
+				if (m_map[i][j] == 2)
+				{
+					hero_x = j; hero_y = i;
+					hero->SetPX(32.0f * j);
+					hero->SetPY(32.0f * i);
+					m_map[i][j] = 0;
+				}
 			}
 		}
 	}
