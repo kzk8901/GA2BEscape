@@ -134,6 +134,7 @@ void CObjBlock::Action()
 		m_map[mapnum][hero_y][hero_x] == 96 && hero->GetMoveFlag() == false||
 		m_map[mapnum][hero_y][hero_x] == 94 && hero->GetMoveFlag() == false)
 	{
+		text_m = -1;
 		//主人公の位置保存
 		//奏多
 		if (m_map[mapnum][hero_y][hero_x] == 98)
@@ -155,6 +156,7 @@ void CObjBlock::Action()
 	//奏多マップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 99 && hero->GetMoveFlag() == false)
 	{
+		text_m = 1;
 		//主人公の位置保存
 		m_map[mapnum][hero_y + 1][hero_x] = 2;
 		//次に行くナンバーを渡す
@@ -168,6 +170,7 @@ void CObjBlock::Action()
 	//永遠マップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 97 && hero->GetMoveFlag() == false)
 	{
+		text_m = 2;
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x - 1] = 2;
 		//次に行くナンバーを渡す
@@ -181,6 +184,7 @@ void CObjBlock::Action()
 	//きららマップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 95 && hero->GetMoveFlag() == false)
 	{
+		text_m = 0;
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x + 1] = 2;
 		//次に行くナンバーを渡す
@@ -442,7 +446,6 @@ void CObjBlock::HeroAction(int vec)
 		m_map[mapnum][hero_y][hero_x] = 0;
 		itm->GetItem(1);
 		//((UserData*)Save::GetData())->item1 = true;
-		text_m = 3;
 	}
 
 	//右
