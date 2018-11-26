@@ -563,6 +563,27 @@ void CObjBlock::Mapchange(int mapn)
 	
 }
 
+void CObjBlock::SetHero()
+{
+
+	//主人公の位置を設定
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (m_map[mapnum][i][j] == 2)
+			{
+				hero_x = j; hero_y = i;
+				hero->SetPX(32.0f*j);
+				hero->SetPY(32.0f*i);
+				m_map[mapnum][i][j] = 0;
+			}
+		}
+	}
+}
+
 //ナンバーロックドア開けるための関数
 void CObjBlock::UnlockDoor(int vec, int num)
 {
