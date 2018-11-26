@@ -446,7 +446,6 @@ void CObjBlock::HeroAction(int vec)
 		m_map[mapnum][hero_y][hero_x] = 0;
 		itm->GetItem(1);
 		//((UserData*)Save::GetData())->item1 = true;
-		text_m = 3;
 	}
 
 	//‰E
