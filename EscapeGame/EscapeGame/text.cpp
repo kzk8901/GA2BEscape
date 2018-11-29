@@ -13,6 +13,7 @@ using namespace GameL;
 void CObjText::Init()
 {
 	m_key_flag = false;
+	skip_flag = false;
 	time = 120;
 	word[0] = 0;
 	word[1] = 0;
@@ -23,42 +24,65 @@ void CObjText::Init()
 	x = 0;
 	y = 0;
 }
-
 //アクション
 void CObjText::Action()
 {
 	time += 1;
-		if (Input::GetVKey('Z') == true)
+	if (Input::GetVKey('Z') == true)
 		{
 			if (m_key_flag == true)
 			{
-				if (time > 120)
+				if (skip_flag == false)
 				{
-					if (text_m == 0&&word[0]<=20|| text_m == 3 && word[0] <= 27|| text_m == 4)
+					if (time > 120)
 					{
-						word[0] += 1;
-						m_key_flag = false;
-						time = 0;
-					}
-					else if (text_m == 1 && word[1] <= 12)
-					{
-						word[1] += 1;
-						m_key_flag = false;
-						time = 0;
-					}
-					else if (text_m == 2 && word[2] <= 8)
-					{
-						word[2] += 1;
-						m_key_flag = false;
-						time = 0;
+				        if (text_m == 0 && word[0] <= 20 || text_m == 3 && word[0] <= 27 || text_m == 4)
+						{
+							word[0] += 1;
+							m_key_flag = false;
+							time = 0;
+							skip_flag = true;
+						}
+						else if (text_m == 1 && word[1] <= 12)
+						{
+							word[1] += 1;
+							m_key_flag = false;
+							time = 0;
+							skip_flag = true;
+						}
+						else if (text_m == 2 && word[2] <= 8)
+						{
+							word[2] += 1;
+							m_key_flag = false;
+							time = 0;
+							skip_flag = true;
+						}
+						else if (text_m == -1&&word[3]<=52)
+						{
+							word[3] += 1;
+							m_key_flag = false;
+							time = 0;
+							skip_flag = true;
+
+						}
 					}
 				}
-			}
-			else
-			{
-				m_key_flag = true;
+				else if(time<100)
+				{
+					time = 100;
+				}
+				else if(time>120)
+				{
+					skip_flag = false;
+				}
+
+
 			}
 		}
+	else
+	{
+		m_key_flag = true;
+	}
 }
 //ドロー
 void CObjText::Draw()
@@ -69,15 +93,1632 @@ void CObjText::Draw()
 
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画表示位置
-	//きららマップ
-	//進入時　word[0]=0～20
-	//鍵取得時時　word[0]=22～27
-	//解除後時　word[0]=29～42
+	//オープニング
 	if (text_m == -1)
 	{
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"玄関", 685, 532, 32, c);
+		if (word[3] == 0)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:ねえ奏多…雨いつやむかな？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:ねえ奏多…雨いつやむかな？", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 1)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:この感じだとすぐやむと思いますが", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:この感じだとすぐやむと思いますが", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 2)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"???:ここなら雨宿りできそうだな…", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"???:ここなら雨宿りできそうだな…", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 3)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:誰!?", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:誰!?", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 4)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"???:先客がいたのか", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"???:先客がいたのか", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 5)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"???:俺の名前はsyamu。オフ会0人学園の二年だ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"???:俺の名前はsyamu。オフ会0人学園の二年だ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 6)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:あら、同じ学校のセンパイ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:あら、同じ学校のセンパイ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 7)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:あたしの名前は大星きらら♪アイドルやってます！", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:あたしの名前は大星きらら♪アイドルやってます！", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 8)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:運悪く通り雨に降られ急遽雨宿りしてるの", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:運悪く通り雨に降られ急遽雨宿りしてるの", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 9)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:そっか", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:そっか", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 10)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:こっちは私のマネージャーの奏多よ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:こっちは私のマネージャーの奏多よ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 11)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:岸野奏多です。", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:岸野奏多です。", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 12)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:きらら様のマネージャー兼メイドです", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:きらら様のマネージャー兼メイドです", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 13)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:先客が多いね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:先客が多いね", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 14)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:確かあなたは…", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:確かあなたは…", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 15)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:生徒会長の北上永遠さんですね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:生徒会長の北上永遠さんですね", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 16)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:そうだよ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:そうだよ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 17)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:君は大橋さん家のメイドさんだね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:君は大橋さん家のメイドさんだね", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 18)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:岸野奏多です", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:岸野奏多です", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 19)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:あ、雨やみ始めてますね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:あ、雨やみ始めてますね",  108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 20)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:奏多!とっとと帰るわよ！", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:奏多!とっとと帰るわよ！",  108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 21)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:かしこまりました。それでは失礼します", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:かしこまりました。それでは失礼します", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 22)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:俺も帰ろう", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:俺も帰ろう", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 23)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:僕も帰らなきゃ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:僕も帰らなきゃ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 24)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:ん？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:ん？", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 25)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:ドアが開かないぞ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:ドアが開かないぞ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 26)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:そんなわけないでしょ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:そんなわけないでしょ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 27)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:失礼します", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:失礼します", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 28)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:開きませんね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:開きませんね", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 29)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:本当かい？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:本当かい？", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 30)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:さて、どうしたものか", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:さて、どうしたものか", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 31)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:こっちのドアは開くわよ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:こっちのドアは開くわよ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 32)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:ならそっちを探索するか？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:ならそっちを探索するか？", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 33)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:あまりお勧めはしませんね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:あまりお勧めはしませんね", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 34)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:時間がたてば我が家の救助チームが駆け付けますのでしばしお待ちください", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:時間がたてば我が家の救助チームが駆け付けますのでしばしお待ちください", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 35)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:時間がたてば我が家の救助チームが駆け付けますのでしばしお待ちください", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:時間がたてば我が家の救助チームが駆け付けますのでしばしお待ちください", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 36)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:でも、こんな機会滅多にないし僕は探索に賛成かな", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:でも、こんな機会滅多にないし僕は探索に賛成かな", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 37)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:私も探索したいわ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:私も探索したいわ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 38)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:奏多、救助チームの手配は待ちなさい", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:奏多、救助チームの手配は待ちなさい", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 39)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:しかし…", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:しかし…", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 40)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:奏多！", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:奏多！", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 41)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:かしこまりました", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:かしこまりました", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 42)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:でしたら私がまず全部屋の安全を確かめます", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:でしたら私がまず全部屋の安全を確かめます", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 43)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:その後皆さんに探索してもらうということで…", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:その後皆さんに探索してもらうということで…", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 44)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:そんなことしたら絶対許さないからね？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:そんなことしたら絶対許さないからね？", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 45)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:でしたら正面の部屋の探索ならよろしいでしょう？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:でしたら正面の部屋の探索ならよろしいでしょう？", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 46)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:それならいいわ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:それならいいわ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 47)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:それじゃあ僕はあっちの部屋を探索するよ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:それじゃあ僕はあっちの部屋を探索するよ", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 48)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:お願いしますね先輩", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:お願いしますね先輩", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 49)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:謎の館の探索の開始だー！", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"永遠:謎の館の探索の開始だー！", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 50)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:おー！", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:おー！", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 51)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:お、おー…", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:お、おー…", 108, 490, 16, c);
+			}
+		}
+		else if (word[3] == 52)
+		{
+			Font::StrDraw(L"部屋をえらんで探索しよう", 50, 490, 32, c);
+		}
 	}
+	//きららマップ
+	//進入時　word[0]=0～20
+	//鍵取得時時　word[0]=22～27
+	//解除後時　word[0]=29～42
 	//きららマップ進入時会話-----------------------------------------------------------------------
 	if (text_m == 0)
 	{
@@ -2453,6 +4094,166 @@ void CObjText::Draw()
 				dst.m_bottom = 590.0f;
 				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"永遠:もしかしたら他にもメモがあるかもしれないね", 108, 490, 16, c);
+			}
+		}
+	}
+	if (text_m == 3)
+	{
+		Font::StrDraw(L"1F", 700, 500, 32, c);
+		Font::StrDraw(L"玄関", 685, 532, 32, c);
+		if (word[4] == 0)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:3つのメモがそろったみたいだな", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:3つのメモがそろったみたいだな", 108, 490, 16, c);
+			}
+		}
+		else if (word[4] == 1)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:いいわね", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:いいわね", 108, 490, 16, c);
+			}
+		}
+		else if (word[4] == 2)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:脱出ゲームっぽくなってきたわ！", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"きらら:脱出ゲームっぽくなってきたわ！", 108, 490, 16, c);
+			}
+		}
+		else if (word[4] == 3)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:それでメモになんて書いているんですか？", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"奏多:それでメモになんて書いているんですか？", 108, 490, 16, c);
+			}
+		}
+		else if (word[4] == 4)
+		{
+			if (time < 100)
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 590.0f - time;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 690.0f - time;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:「ミスミソウ」「イフェイオン」「サクラソウ」だ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				//背景表示
+				src.m_top = 0.0f;
+				src.m_left = 128.0f;
+				src.m_right = 192.0f;
+				src.m_bottom = 64.0f;
+				dst.m_top = 490.0f;
+				dst.m_left = 10.0f;
+				dst.m_right = 106.0f;
+				dst.m_bottom = 590.0f;
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				Font::StrDraw(L"主人公:「ミスミソウ」「イフェイオン」「サクラソウ」だ", 108, 490, 16, c);
 			}
 		}
 	}
