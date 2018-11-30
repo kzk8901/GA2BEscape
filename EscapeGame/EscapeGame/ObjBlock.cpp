@@ -13,6 +13,7 @@
 //使用するネームスペース
 using namespace GameL;
 
+bool text_loop = true;
 int text_m = -1;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
@@ -141,6 +142,7 @@ void CObjBlock::Action()
 		m_map[mapnum][hero_y][hero_x] == 96 && hero->GetMoveFlag() == false||
 		m_map[mapnum][hero_y][hero_x] == 94 && hero->GetMoveFlag() == false)
 	{
+		text_loop = true;
 		text_m = -1;
 		//主人公の位置保存
 		//奏多
@@ -163,6 +165,8 @@ void CObjBlock::Action()
 	//奏多マップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 99 && hero->GetMoveFlag() == false)
 	{
+		word=0;
+		text_loop = true;
 		text_m = 1;
 		//主人公の位置保存
 		m_map[mapnum][hero_y + 1][hero_x] = 2;
@@ -177,6 +181,8 @@ void CObjBlock::Action()
 	//永遠マップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 97 && hero->GetMoveFlag() == false)
 	{
+		word = 0;
+		text_loop = true;
 		text_m = 2;
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x - 1] = 2;
@@ -191,6 +197,8 @@ void CObjBlock::Action()
 	//きららマップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 95 && hero->GetMoveFlag() == false)
 	{
+		word = 0;
+		text_loop = true;
 		text_m = 0;
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x + 1] = 2;

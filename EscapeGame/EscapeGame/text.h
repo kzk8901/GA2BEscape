@@ -3,7 +3,8 @@
 #include"GameL\SceneObjManager.h"
 //使用するネームスペース
 using namespace GameL;
-
+extern bool text_move;
+extern int word;
 //オブジェクト:タイトル
 class CObjText :public CObj
 {
@@ -16,7 +17,6 @@ public:
 private:
 	bool m_key_flag;//キーフラグ
 	bool skip_flag;//スキップフラグ
-	int word[5];
 	int time;
 	int x, y;
 };

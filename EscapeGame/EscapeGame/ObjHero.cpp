@@ -10,7 +10,6 @@
 #include "ObjHero.h"
 #include "ObjBlock.h"
 #include "ObjItem.h"
-
 //使用するネームスペース
 using namespace GameL;
 //イニシャライズ
@@ -102,326 +101,329 @@ void CObjHero::Action()
 	//動く行動できない状況なら入らない（ナンバーロック解いてる、アイテム確認中など）
 	if (action_flag == false)
 	{
-		//動いている途中じゃないか
-		if (move_flag == false && eventflag == false)
+		if (text_move == false)
 		{
-			//右押したとき
-			if (Input::GetVKey(VK_RIGHT) == true)
+			//動いている途中じゃないか
+			if (move_flag == false && eventflag == false)
 			{
-				//右にブロックなければそのまま動く
-				if (block->ThereIsBlock(1) == true)
+				//右押したとき
+				if (Input::GetVKey(VK_RIGHT) == true)
 				{
-					SetMoveVec(1);
+					//右にブロックなければそのまま動く
+					if (block->ThereIsBlock(1) == true)
+					{
+						SetMoveVec(1);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 1;
+					}
 				}
-				//ブロックがあればその方向だけ向く
+				//左押したとき
+				else if (Input::GetVKey(VK_LEFT) == true)
+				{
+					//左にブロックがなければそのまま動く
+					if (block->ThereIsBlock(2) == true)
+					{
+						SetMoveVec(2);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 2;
+					}
+				}
+				//上押したとき
+				else if (Input::GetVKey(VK_UP))
+				{
+					//上にブロックがなければそのまま動く
+					if (block->ThereIsBlock(3) == true)
+					{
+						SetMoveVec(3);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 3;
+					}
+				}
+				//下押したとき
+				else if (Input::GetVKey(VK_DOWN) == true)
+				{
+					//下にブロックがなければそのまま動く
+					if (block->ThereIsBlock(4) == true)
+					{
+						SetMoveVec(4);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 4;
+					}
+				}
+				//アクションボタン押したとき
+				//各動作はブロックに書いている
+				else if ((Input::GetVKey('Z') == true))
+				{
+					if (Key_flag == false)
+					{
+						block->HeroAction(m_savevec);
+						Key_flag = true;
+					}
+				}
+				//↓こっから先はそれぞれの番号に登録しているアイテムの参照プログラム
+				//SetshowItemNumber(num)←numの所に参照したいアイテムの番号を入れる
+				else if (Input::GetVKey('1') || Input::GetVKey(VK_NUMPAD1))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[0] != 0)
+						{
+							SetShowItemNumber(1);
+						}
+					}
+				}
+				else if (Input::GetVKey('2') || Input::GetVKey(VK_NUMPAD2))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[1] != 0)
+						{
+							SetShowItemNumber(2);
+						}
+					}
+				}
+				else if (Input::GetVKey('3') || Input::GetVKey(VK_NUMPAD3))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[2] != 0)
+						{
+							SetShowItemNumber(3);
+						}
+					}
+				}
+				else if (Input::GetVKey('4') || Input::GetVKey(VK_NUMPAD4))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[3] != 0)
+						{
+							SetShowItemNumber(4);
+						}
+					}
+				}
+				else if (Input::GetVKey('5') || Input::GetVKey(VK_NUMPAD5))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[4] != 0)
+						{
+							SetShowItemNumber(5);
+						}
+					}
+				}
+				else if (Input::GetVKey('6') || Input::GetVKey(VK_NUMPAD6))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[5] != 0)
+						{
+							SetShowItemNumber(6);
+						}
+					}
+				}
+				else if (Input::GetVKey('7') || Input::GetVKey(VK_NUMPAD7))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[6] != 0)
+						{
+							SetShowItemNumber(7);
+						}
+					}
+				}
+				else if (Input::GetVKey('8') || Input::GetVKey(VK_NUMPAD8))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[7] != 0)
+						{
+							SetShowItemNumber(8);
+						}
+					}
+				}
 				else
 				{
-					m_savevec = 1;
-				}
-			}
-			//左押したとき
-			else if (Input::GetVKey(VK_LEFT) == true)
-			{
-				//左にブロックがなければそのまま動く
-				if (block->ThereIsBlock(2) == true)
-				{
-					SetMoveVec(2);
-				}
-				//ブロックがあればその方向だけ向く
-				else
-				{
-					m_savevec = 2;
-				}
-			}
-			//上押したとき
-			else if (Input::GetVKey(VK_UP))
-			{
-				//上にブロックがなければそのまま動く
-				if (block->ThereIsBlock(3) == true)
-				{
-					SetMoveVec(3);
-				}
-				//ブロックがあればその方向だけ向く
-				else
-				{
-					m_savevec = 3;
-				}
-			}
-			//下押したとき
-			else if (Input::GetVKey(VK_DOWN) == true)
-			{
-				//下にブロックがなければそのまま動く
-				if (block->ThereIsBlock(4) == true)
-				{
-					SetMoveVec(4);
-				}
-				//ブロックがあればその方向だけ向く
-				else
-				{
-					m_savevec = 4;
-				}
-			}
-			//アクションボタン押したとき
-			//各動作はブロックに書いている
-			else if ((Input::GetVKey('Z') == true))
-			{
-				if (Key_flag == false)
-				{
-					block->HeroAction(m_savevec);
-					Key_flag = true;
-				}
-			}
-			//↓こっから先はそれぞれの番号に登録しているアイテムの参照プログラム
-			//SetshowItemNumber(num)←numの所に参照したいアイテムの番号を入れる
-			else if (Input::GetVKey('1')|| Input::GetVKey(VK_NUMPAD1))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[0] != 0)
-					{
-						SetShowItemNumber(1);
-					}
-				}
-			}
-			else if (Input::GetVKey('2') || Input::GetVKey(VK_NUMPAD2))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[1] != 0)
-					{
-						SetShowItemNumber(2);
-					}
-				}
-			}
-			else if (Input::GetVKey('3') || Input::GetVKey(VK_NUMPAD3))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[2] != 0)
-					{
-						SetShowItemNumber(3);
-					}
-				}
-			}
-			else if (Input::GetVKey('4') || Input::GetVKey(VK_NUMPAD4))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[3] != 0)
-					{
-						SetShowItemNumber(4);
-					}
-				}
-			}
-			else if (Input::GetVKey('5') || Input::GetVKey(VK_NUMPAD5))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[4] != 0)
-					{
-						SetShowItemNumber(5);
-					}
-				}
-			}
-			else if (Input::GetVKey('6') || Input::GetVKey(VK_NUMPAD6))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[5] != 0)
-					{
-						SetShowItemNumber(6);
-					}
-				}
-			}
-			else if (Input::GetVKey('7') || Input::GetVKey(VK_NUMPAD7))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[6] != 0)
-					{
-						SetShowItemNumber(7);
-					}
-				}
-			}
-			else if (Input::GetVKey('8') || Input::GetVKey(VK_NUMPAD8))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[7] != 0)
-					{
-						SetShowItemNumber(8);
-					}
+					//キー制御
+					Key_flag = false;
 				}
 			}
 			else
 			{
-				//キー制御
-				Key_flag = false;
+				if (m_vec == 1)
+				{
+					//右に動くプログラム
+					m_vx = +m_speed;
+					m_posture = 1.0f;
+					m_time++;            //動いている時間
+					if (m_time % 4 == 0) //4フレームに一回アニメーション動かす
+						m_ani_frame++;
+					if (m_time == 16)    //16フレーム(32pixel)動いたら止める
+					{
+						m_time = 0;
+						m_vec = 0;
+						move_flag = false;
+					}
+				}
+				if (m_vec == 2)
+				{
+					//左に動くプログラム
+					m_vx = -m_speed;
+					m_posture = 0.0f;
+					m_time++;
+					if (m_time % 4 == 0)
+						m_ani_frame++;
+					if (m_time == 16)
+					{
+						m_time = 0;
+						m_vec = 0;
+						move_flag = false;
+					}
+				}
+				if (m_vec == 3)
+				{
+					//上に動くプログラム
+					m_vy = -m_speed;
+					//m_posture = -1.0f;
+					m_time++;
+					if (m_time % 4 == 0)
+						m_ani_frame++;
+					if (m_time == 16)
+					{
+						m_time = 0;
+						m_vec = 0;
+						move_flag = false;
+					}
+				}
+				if (m_vec == 4)
+				{
+					//下に動くプログラム
+					m_vy = +m_speed;
+					//m_posture = -1.0f;
+					m_time++;
+					if (m_time % 4 == 0)
+						m_ani_frame++;
+					if (m_time == 16)
+					{
+						m_time = 0;
+						m_vec = 0;
+						move_flag = false;
+					}
+				}
 			}
 		}
 		else
 		{
-			if (m_vec == 1)
+			//ナンバーロック解いているなら入る
+			if (numlock_flag == true)
 			{
-				//右に動くプログラム
-				m_vx = +m_speed;
-				m_posture = 1.0f;
-				m_time++;            //動いている時間
-				if (m_time % 4 == 0) //4フレームに一回アニメーション動かす
-					m_ani_frame++;
-				if (m_time == 16)    //16フレーム(32pixel)動いたら止める
+				//右に移動
+				if (Input::GetVKey(VK_RIGHT) == true)
 				{
-					m_time = 0;
-					m_vec = 0;
-					move_flag = false;
-				}
-			}
-			if (m_vec == 2)
-			{
-				//左に動くプログラム
-				m_vx = -m_speed;
-				m_posture = 0.0f;
-				m_time++;
-				if (m_time % 4 == 0)
-					m_ani_frame++;
-				if (m_time == 16)
-				{
-					m_time = 0;
-					m_vec = 0;
-					move_flag = false;
-				}
-			}
-			if (m_vec == 3)
-			{
-				//上に動くプログラム
-				m_vy = -m_speed;
-				//m_posture = -1.0f;
-				m_time++;
-				if (m_time % 4 == 0)
-					m_ani_frame++;
-				if (m_time == 16)
-				{
-					m_time = 0;
-					m_vec = 0;
-					move_flag = false;
-				}
-			}
-			if (m_vec == 4)
-			{
-				//下に動くプログラム
-				m_vy = +m_speed;
-				//m_posture = -1.0f;
-				m_time++;
-				if (m_time % 4 == 0)
-					m_ani_frame++;
-				if (m_time == 16)
-				{
-					m_time = 0;
-					m_vec = 0;
-					move_flag = false;
-				}
-			}
-		}
-	}
-	else
-	{
-		//ナンバーロック解いているなら入る
-		if (numlock_flag == true)
-		{
-			//右に移動
-			if (Input::GetVKey(VK_RIGHT) == true)
-			{
-				if (Key_flag == false)
-				{
-					//右にずれる
-					selectnum++;
-					if (selectnum == wpiece)
+					if (Key_flag == false)
 					{
-						//上限より右に行ったら一番左に戻る
+						//右にずれる
+						selectnum++;
+						if (selectnum == wpiece)
+						{
+							//上限より右に行ったら一番左に戻る
+							selectnum = 0;
+						}
+						//キー制御
+						Key_flag = true;
+					}
+				}
+				//左に移動
+				else if (Input::GetVKey(VK_LEFT) == true)
+				{
+					if (Key_flag == false)
+					{
+						//左にずれる
+						selectnum--;
+						if (selectnum == -1)
+						{
+							//一番左より左に行くと一番右に戻る
+							selectnum = wpiece - 1;
+						}
+						//キー制御
+						Key_flag = true;
+					}
+				}
+				//数を一つ上げる
+				else if (Input::GetVKey(VK_UP) == true)
+				{
+					if (Key_flag == false)
+					{
+						//
+						unlocknum[selectnum]++;
+						if (unlocknum[selectnum] >= 10)
+						{
+							unlocknum[selectnum] = 0;
+						}
+						Key_flag = true;
+					}
+				}
+				//数を一つ下げる
+				else if (Input::GetVKey(VK_DOWN) == true)
+				{
+					if (Key_flag == false)
+					{
+						unlocknum[selectnum]--;
+						if (unlocknum[selectnum] <= -1)
+						{
+							unlocknum[selectnum] = 9;
+						}
+						Key_flag = true;
+					}
+				}
+				//決定
+				else if (Input::GetVKey('Z') == true)
+				{
+					if (Key_flag == false)
+					{
+						int u = 0;
+						int j = 1;
+						for (int i = wpiece - 1; i >= 0; i--)
+						{
+							u += unlocknum[i] * j;
+							j *= 10;
+						}
+						block->UnlockDoor(1, u);
+						for (int i = 0; i < wpiece; i++)
+							unlocknum[i] = 0;
 						selectnum = 0;
+						wpiece = 0;
+						numlock_flag = false;
+						action_flag = false;
+						Key_flag = true;
 					}
-					//キー制御
-					Key_flag = true;
+				}
+				//キーフラグ制御
+				else
+				{
+					Key_flag = false;
 				}
 			}
-			//左に移動
-			else if (Input::GetVKey(VK_LEFT) == true)
+			if (Itemcheck == true)
 			{
-				if (Key_flag == false)
+				if (Input::GetVKey('X') == true)
 				{
-					//左にずれる
-					selectnum--;
-					if (selectnum == -1)
-					{
-						//一番左より左に行くと一番右に戻る
-						selectnum = wpiece - 1;
-					}
-					//キー制御
-					Key_flag = true;
-				}
-			}
-			//数を一つ上げる
-			else if (Input::GetVKey(VK_UP) == true)
-			{
-				if (Key_flag == false)
-				{
-					//
-					unlocknum[selectnum]++;
-					if (unlocknum[selectnum] >= 10)
-					{
-						unlocknum[selectnum] = 0;
-					}
-					Key_flag = true;
-				}
-			}
-			//数を一つ下げる
-			else if (Input::GetVKey(VK_DOWN) == true)
-			{
-				if (Key_flag == false)
-				{
-					unlocknum[selectnum]--;
-					if (unlocknum[selectnum] <= -1)
-					{
-						unlocknum[selectnum] = 9;
-					}
-					Key_flag = true;
-				}
-			}
-			//決定
-			else if (Input::GetVKey('Z') == true)
-			{
-				if (Key_flag == false)
-				{
-					int u = 0;
-					int j = 1;
-					for (int i = wpiece - 1; i >= 0; i--)
-					{
-						u += unlocknum[i] * j;
-						j *= 10;
-					}
-					block->UnlockDoor(1, u);
-					for (int i = 0; i < wpiece; i++)
-						unlocknum[i] = 0;
-					selectnum = 0;
-					wpiece = 0;
-					numlock_flag = false;
+					itm->SetShow(false);
+					Itemcheck = false;
 					action_flag = false;
-					Key_flag = true;
 				}
-			}
-			//キーフラグ制御
-			else
-			{
-				Key_flag = false;
-			}
-		}
-		if (Itemcheck == true)
-		{
-			if (Input::GetVKey('X') == true)
-			{
-				itm->SetShow(false);
-				Itemcheck = false;
-				action_flag = false;
 			}
 		}
 	}

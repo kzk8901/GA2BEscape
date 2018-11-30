@@ -4,6 +4,7 @@
 //使用するネームスペース
 using namespace GameL;
 extern int text_m;
+extern bool text_loop;
 //オブジェクト：ブロック＆背景
 class CObjBlock : public CObj
 {
