@@ -32,11 +32,12 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"it.png", 4, TEX_SIZE_512);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
 	Draw::LoadImageW(L"whitewindow.png", 5, TEX_SIZE_1024);
+	Draw::LoadImageW(L"hero.png", 10, TEX_SIZE_128);
+
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
 	Objs::InsertObj(obji, OBJ_ITEM, 15);
-
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
