@@ -10,7 +10,6 @@
 #include "ObjHero.h"
 #include "ObjBlock.h"
 #include "ObjItem.h"
-
 //使用するネームスペース
 using namespace GameL;
 //イニシャライズ
