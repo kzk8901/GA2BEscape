@@ -3,8 +3,9 @@
 #include "GameL\SceneObjManager.h"
 //使用するネームスペース
 using namespace GameL;
-extern int text_m;
-extern bool text_loop;
+extern int text_m;//テキストの種類管理
+extern bool text_loop;//テキストループ対策
+extern bool room_c[3];
 //オブジェクト：ブロック＆背景
 class CObjBlock : public CObj
 {

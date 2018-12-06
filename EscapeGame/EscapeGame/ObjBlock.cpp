@@ -12,7 +12,7 @@
 
 //使用するネームスペース
 using namespace GameL;
-
+bool room_c[3] = { false,false,false };
 bool text_loop = true;
 int text_m = -1;
 //マップ情報--------------------------------------------
@@ -143,7 +143,7 @@ void CObjBlock::Action()
 		m_map[mapnum][hero_y][hero_x] == 94 && hero->GetMoveFlag() == false)
 	{
 		text_loop = true;
-		text_m = -1;
+		text_m = -2;
 		//主人公の位置保存
 		//奏多
 		if (m_map[mapnum][hero_y][hero_x] == 98)
@@ -167,7 +167,15 @@ void CObjBlock::Action()
 	{
 		word=0;
 		text_loop = true;
-		text_m = 1;
+		if (room_c[0] == false)
+		{
+			text_m = 1;
+			room_c[0] == true;
+		}
+		else if(room_c[0] == true)
+		{
+			text_m = -4;
+		}
 		//主人公の位置保存
 		m_map[mapnum][hero_y + 1][hero_x] = 2;
 		//次に行くナンバーを渡す
@@ -183,7 +191,15 @@ void CObjBlock::Action()
 	{
 		word = 0;
 		text_loop = true;
-		text_m = 2;
+		if (room_c[1] == false)
+		{
+			text_m = 2;
+			room_c[1] = true;
+		}
+		else if (room_c[1] == true)
+		{
+			text_m = -5;
+		}
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x - 1] = 2;
 		//次に行くナンバーを渡す
@@ -199,7 +215,15 @@ void CObjBlock::Action()
 	{
 		word = 0;
 		text_loop = true;
-		text_m = 0;
+		if (room_c[2] == false)
+		{
+			text_m = 0;
+			room_c[2] = true;
+		}
+		else if (room_c[2] == true)
+		{
+			text_m = -3;
+		}
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x + 1] = 2;
 		//次に行くナンバーを渡す

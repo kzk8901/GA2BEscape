@@ -8,8 +8,9 @@
 #include"ObjBlock.h"
 //Žg—p‚·‚éƒl[ƒ€ƒXƒy[ƒX
 using namespace GameL;
+
 bool text_move=true;
-int word=52;
+int word=0;
 //ƒCƒjƒVƒƒƒ‰ƒCƒY
 void CObjText::Init()
 {
@@ -24,6 +25,11 @@ void CObjText::Init()
 void CObjText::Action()
 {
 	time += 1;
+	//ƒI[ƒvƒjƒ“ƒO@-1
+	//‚«‚ç‚ç@-3 0 3
+	//‘t‘½ -4 1 4
+	//‰i‰“ -5 2 5
+    //–‹ŠÔ 6 7
 	if (Input::GetVKey('Z') == true)
 		{
 			if (m_key_flag == true)
@@ -34,10 +40,10 @@ void CObjText::Action()
 					{
 						if (time > 120)
 						{
-							if (text_m == 0 && word <= 20 || text_m == 3 && word <= 27 || text_m == 4 ||
-								text_m == 1 && word <= 12 || text_m == 2 && word <= 8  || text_m == -1 && word < 53||
-								text_m == 5 && word <= 13 || text_m == 6 && word <= 25 || text_m == 7 && word <= 15 ||
-								text_m == 8 && word <= 27)
+							if (text_m == 0 && word <= 10 || text_m == 3 && word <= 22 || 
+								text_m == 1 && word <= 12 || text_m == 2 && word < 10  || text_m == -1 && word < 52||
+								text_m == 5 && word < 20 || text_m == 4 && word < 19 || text_m == 7 && word <= 15 ||
+								text_m == 6 && word <= 5)
 							{
 								word += 1;
 								m_key_flag = false;
@@ -73,1626 +79,644 @@ void CObjText::Draw()
 
 	RECT_F src; //•`‰æŒ³Ø‚èŽæ‚èˆÊ’u
 	RECT_F dst; //•`‰æ•\Ž¦ˆÊ’u
-	//ƒI[ƒvƒjƒ“ƒO
-	if (text_m == -1)
+	src.m_top = 0.0f;
+	src.m_left = 0.0f;
+	src.m_right = 465.0f;
+	src.m_bottom = 463.0f;
+	dst.m_top = 490.0f;
+	dst.m_left = 10.0f;
+	dst.m_right = 106.0f;
+	dst.m_bottom = 590.0f;
+	if (text_m == -2)
 	{
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"ŒºŠÖ", 685, 532, 32, c);
-		if (word == 1)
+	}
+	//ƒI[ƒvƒjƒ“ƒO
+	else if (text_m == -1)
+	{
+		Font::StrDraw(L"1F", 700, 500, 32, c);
+		Font::StrDraw(L"ŒºŠÖ", 685, 532, 32, c);
+		if (word == 0)
 		{
 			text_move = true;
+			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
+		}
+		else if (word == 1)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚Ë‚¦‘t‘½c‰J‚¢‚Â‚â‚Þ‚©‚ÈH", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚Ë‚¦‘t‘½c‰J‚¢‚Â‚â‚Þ‚©‚ÈH", 108, 490, 16, c);
 			}
 		}
 		else if (word == 2)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚±‚ÌŠ´‚¶‚¾‚Æ‚·‚®‚â‚Þ‚ÆŽv‚¢‚Ü‚·‚ª", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚±‚ÌŠ´‚¶‚¾‚Æ‚·‚®‚â‚Þ‚ÆŽv‚¢‚Ü‚·‚ª", 108, 490, 16, c);
 			}
 		}
 		else if (word == 3)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"???:‚±‚±‚È‚ç‰Jh‚è‚Å‚«‚»‚¤‚¾‚Èc", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"???:‚±‚±‚È‚ç‰Jh‚è‚Å‚«‚»‚¤‚¾‚Èc", 108, 490, 16, c);
 			}
 		}
 		else if (word == 4)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:’N!?", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:’N!?", 108, 490, 16, c);
 			}
 		}
 		else if (word == 5)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"???:æ‹q‚ª‚¢‚½‚Ì‚©", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"???:æ‹q‚ª‚¢‚½‚Ì‚©", 108, 490, 16, c);
 			}
 		}
 		else if (word == 6)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"???:‰´‚Ì–¼‘O‚ÍsyamuBƒIƒt‰ï0lŠw‰€‚Ì“ñ”N‚¾", 108, 590 - time, 16, c);
+				Font::StrDraw(L"???:‰´‚Ì–¼‘O‚Í–PˆêŽ÷BŒN‚Æ“¯‚¶ŠwZ‚Ì“ñ”N‚¾", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"???:‰´‚Ì–¼‘O‚ÍsyamuBƒIƒt‰ï0lŠw‰€‚Ì“ñ”N‚¾", 108, 490, 16, c);
+				Font::StrDraw(L"???:‰´‚Ì–¼‘O‚Í–PˆêŽ÷BŒN‚Æ“¯‚¶ŠwZ‚Ì“ñ”N‚¾", 108, 490, 16, c);
 			}
 		}
 		else if (word == 7)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚çA“¯‚¶ŠwZ‚ÌƒZƒ“ƒpƒC", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚çA“¯‚¶ŠwZ‚ÌƒZƒ“ƒpƒC", 108, 490, 16, c);
 			}
 		}
 		else if (word == 8)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚½‚µ‚Ì–¼‘O‚Í‘å¯‚«‚ç‚çôƒAƒCƒhƒ‹‚â‚Á‚Ä‚Ü‚·I", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚½‚µ‚Ì–¼‘O‚Í‘å¯‚«‚ç‚çôƒAƒCƒhƒ‹‚â‚Á‚Ä‚Ü‚·I", 108, 490, 16, c);
 			}
 		}
 		else if (word == 9)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‰^ˆ«‚­’Ê‚è‰J‚É~‚ç‚ê‹}ç¯‰Jh‚è‚µ‚Ä‚é‚Ì", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‰^ˆ«‚­’Ê‚è‰J‚É~‚ç‚ê‹}ç¯‰Jh‚è‚µ‚Ä‚é‚Ì", 108, 490, 16, c);
 			}
 		}
 		else if (word == 10)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚Á‚©", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚»‚Á‚©", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚Á‚©", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚»‚Á‚©", 108, 490, 16, c);
 			}
 		}
 		else if (word == 11)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Á‚¿‚ÍŽ„‚Ìƒ}ƒl[ƒWƒƒ[‚Ì‘t‘½‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Á‚¿‚ÍŽ„‚Ìƒ}ƒl[ƒWƒƒ[‚Ì‘t‘½‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word== 12)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:ŠÝ–ì‘t‘½‚Å‚·B", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:ŠÝ–ì‘t‘½‚Å‚·B", 108, 490, 16, c);
 			}
 		}
 		else if (word == 13)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚«‚ç‚ç—l‚Ìƒ}ƒl[ƒWƒƒ[Œ“ƒƒCƒh‚Å‚·", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚«‚ç‚ç—l‚Ìƒ}ƒl[ƒWƒƒ[Œ“ƒƒCƒh‚Å‚·", 108, 490, 16, c);
 			}
 		}
 		else if (word== 14)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:æ‹q‚ª‘½‚¢‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:æ‹q‚ª‘½‚¢‚Ë", 108, 490, 16, c);
 			}
 		}
 		else if (word == 15)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:Šm‚©‚ ‚È‚½‚Íc", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:Šm‚©‚ ‚È‚½‚Íc", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:Šm‚©‚ ‚È‚½‚Íc", 108, 490, 16, c);
+				Font::StrDraw(L"–P:Šm‚©‚ ‚È‚½‚Íc", 108, 490, 16, c);
 			}
 		}
 		else if (word == 16)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:¶“k‰ï’·‚Ì–kã‰i‰“‚³‚ñ‚Å‚·‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:¶“k‰ï’·‚Ì–kã‰i‰“‚³‚ñ‚Å‚·‚Ë", 108, 490, 16, c);
 			}
 		}
 		else if (word == 17)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:‚»‚¤‚¾‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:‚»‚¤‚¾‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 18)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:ŒN‚Í‘å‹´‚³‚ñ‰Æ‚ÌƒƒCƒh‚³‚ñ‚¾‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:ŒN‚Í‘å‹´‚³‚ñ‰Æ‚ÌƒƒCƒh‚³‚ñ‚¾‚Ë", 108, 490, 16, c);
 			}
 		}
 		else if (word == 19)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:ŠÝ–ì‘t‘½‚Å‚·", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:ŠÝ–ì‘t‘½‚Å‚·", 108, 490, 16, c);
 			}
 		}
 		else if (word == 20)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚ A‰J‚â‚ÝŽn‚ß‚Ä‚Ü‚·‚Ë", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚ A‰J‚â‚ÝŽn‚ß‚Ä‚Ü‚·‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚ A‰J‚â‚ÝŽn‚ß‚Ä‚Ü‚·‚Ë",  108, 490, 16, c);
+				Font::StrDraw(L"–P:‚ A‰J‚â‚ÝŽn‚ß‚Ä‚Ü‚·‚Ë",  108, 490, 16, c);
 			}
 		}
 		else if (word == 21)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½!‚Æ‚Á‚Æ‚Æ‹A‚é‚í‚æI", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½!‚Æ‚Á‚Æ‚Æ‹A‚é‚í‚æI",  108, 490, 16, c);
 			}
 		}
 		else if (word == 22)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½B‚»‚ê‚Å‚ÍŽ¸—ç‚µ‚Ü‚·", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½B‚»‚ê‚Å‚ÍŽ¸—ç‚µ‚Ü‚·", 108, 490, 16, c);
 			}
 		}
 		else if (word == 23)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰´‚à‹A‚ë‚¤", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‰´‚à‹A‚ë‚¤", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰´‚à‹A‚ë‚¤", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‰´‚à‹A‚ë‚¤", 108, 490, 16, c);
 			}
 		}
 		else if (word == 24)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:–l‚à‹A‚ç‚È‚«‚á", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:–l‚à‹A‚ç‚È‚«‚á", 108, 490, 16, c);
 			}
 		}
 		else if (word == 25)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚ñH", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚ñH", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚ñH", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚ñH", 108, 490, 16, c);
 			}
 		}
 		else if (word == 26)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ƒhƒA‚ªŠJ‚©‚È‚¢‚¼", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:ƒhƒA‚ªŠJ‚©‚È‚¢‚¼", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ƒhƒA‚ªŠJ‚©‚È‚¢‚¼", 108, 490, 16, c);
+				Font::StrDraw(L"–P:ƒhƒA‚ªŠJ‚©‚È‚¢‚¼", 108, 490, 16, c);
 			}
 		}
 		else if (word == 27)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ñ‚È‚í‚¯‚È‚¢‚Å‚µ‚å", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ñ‚È‚í‚¯‚È‚¢‚Å‚µ‚å", 108, 490, 16, c);
 			}
 		}
 		else if (word == 28)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:Ž¸—ç‚µ‚Ü‚·", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:Ž¸—ç‚µ‚Ü‚·", 108, 490, 16, c);
 			}
 		}
 		else if (word == 29)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:ŠJ‚«‚Ü‚¹‚ñ‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:ŠJ‚«‚Ü‚¹‚ñ‚Ë", 108, 490, 16, c);
 			}
 		}
 		else if (word == 30)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:–{“–‚©‚¢H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:–{“–‚©‚¢H", 108, 490, 16, c);
 			}
 		}
 		else if (word == 31)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚³‚ÄA‚Ç‚¤‚µ‚½‚à‚Ì‚©", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚³‚ÄA‚Ç‚¤‚µ‚½‚à‚Ì‚©", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚³‚ÄA‚Ç‚¤‚µ‚½‚à‚Ì‚©", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚³‚ÄA‚Ç‚¤‚µ‚½‚à‚Ì‚©", 108, 490, 16, c);
 			}
 		}
 		else if (word == 32)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Á‚¿‚ÌƒhƒA‚ÍŠJ‚­‚í‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Á‚¿‚ÌƒhƒA‚ÍŠJ‚­‚í‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 33)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚È‚ç‚»‚Á‚¿‚ð’Tõ‚·‚é‚©H", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚È‚ç‚»‚Á‚¿‚ð’Tõ‚·‚é‚©H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚È‚ç‚»‚Á‚¿‚ð’Tõ‚·‚é‚©H", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚È‚ç‚»‚Á‚¿‚ð’Tõ‚·‚é‚©H", 108, 490, 16, c);
 			}
 		}
 		else if (word == 34)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚ ‚Ü‚è‚¨Š©‚ß‚Í‚µ‚Ü‚¹‚ñ‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚ ‚Ü‚è‚¨Š©‚ß‚Í‚µ‚Ü‚¹‚ñ‚Ë", 108, 490, 16, c);
 			}
 		}
 		else if (word== 35)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:ŽžŠÔ‚ª‚½‚Ä‚Î‰ä‚ª‰Æ‚Ì‹~•ƒ`[ƒ€‚ª‹ì‚¯•t‚¯‚Ü‚·‚Ì‚Å‚µ‚Î‚µ‚¨‘Ò‚¿‚­‚¾‚³‚¢", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‘t‘½:ŽžŠÔ‚ª‚½‚Ä‚Î‰ä‚ª‰Æ‚Ì‹~•ƒ`[ƒ€‚ª‹ì‚¯•t‚¯‚Ü‚·‚Ì‚Å", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‚µ‚Î‚µ‚¨‘Ò‚¿‚­‚¾‚³‚¢", 108, 606 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:ŽžŠÔ‚ª‚½‚Ä‚Î‰ä‚ª‰Æ‚Ì‹~•ƒ`[ƒ€‚ª‹ì‚¯•t‚¯‚Ü‚·‚Ì‚Å‚µ‚Î‚µ‚¨‘Ò‚¿‚­‚¾‚³‚¢", 108, 490, 16, c);
+				Font::StrDraw(L"‘t‘½:ŽžŠÔ‚ª‚½‚Ä‚Î‰ä‚ª‰Æ‚Ì‹~•ƒ`[ƒ€‚ª‹ì‚¯•t‚¯‚Ü‚·‚Ì‚Å", 108, 490, 16, c);
+				Font::StrDraw(L"‚µ‚Î‚µ‚¨‘Ò‚¿‚­‚¾‚³‚¢", 108, 506, 16, c);
 			}
 		}
 		else if (word == 36)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:ŽžŠÔ‚ª‚½‚Ä‚Î‰ä‚ª‰Æ‚Ì‹~•ƒ`[ƒ€‚ª‹ì‚¯•t‚¯‚Ü‚·‚Ì‚Å‚µ‚Î‚µ‚¨‘Ò‚¿‚­‚¾‚³‚¢", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:ŽžŠÔ‚ª‚½‚Ä‚Î‰ä‚ª‰Æ‚Ì‹~•ƒ`[ƒ€‚ª‹ì‚¯•t‚¯‚Ü‚·‚Ì‚Å‚µ‚Î‚µ‚¨‘Ò‚¿‚­‚¾‚³‚¢", 108, 490, 16, c);
-			}
-		}
-		else if (word == 37)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:‚Å‚àA‚±‚ñ‚È‹@‰ï–Å‘½‚É‚È‚¢‚µ–l‚Í’Tõ‚ÉŽ^¬‚©‚È", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:‚Å‚àA‚±‚ñ‚È‹@‰ï–Å‘½‚É‚È‚¢‚µ–l‚Í’Tõ‚ÉŽ^¬‚©‚È", 108, 490, 16, c);
 			}
 		}
-		else if (word == 38)
+		else if (word == 37)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚à’Tõ‚µ‚½‚¢‚í", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚à’Tõ‚µ‚½‚¢‚í", 108, 490, 16, c);
 			}
 		}
-		else if (word == 39)
+		else if (word == 38)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½A‹~•ƒ`[ƒ€‚ÌŽè”z‚Í‘Ò‚¿‚È‚³‚¢", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½A‹~•ƒ`[ƒ€‚ÌŽè”z‚Í‘Ò‚¿‚È‚³‚¢", 108, 490, 16, c);
 			}
 		}
-		else if (word == 40)
+		else if (word ==39)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚µ‚©‚µc", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚µ‚©‚µc", 108, 490, 16, c);
 			}
 		}
-		else if (word == 41)
+		else if (word == 40)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½I", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½I", 108, 490, 16, c);
 			}
 		}
-		else if (word == 42)
+		else if (word == 41)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½", 108, 490, 16, c);
 			}
 		}
-		else if (word == 43)
+		else if (word == 42)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚Å‚µ‚½‚çŽ„‚ª‚Ü‚¸‘S•”‰®‚ÌˆÀ‘S‚ðŠm‚©‚ß‚Ü‚·", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚Å‚µ‚½‚çŽ„‚ª‚Ü‚¸‘S•”‰®‚ÌˆÀ‘S‚ðŠm‚©‚ß‚Ü‚·", 108, 490, 16, c);
 			}
 		}
-		else if (word == 44)
+		else if (word == 43)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚»‚ÌŒãŠF‚³‚ñ‚É’Tõ‚µ‚Ä‚à‚ç‚¤‚Æ‚¢‚¤‚±‚Æ‚Åc", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚»‚ÌŒãŠF‚³‚ñ‚É’Tõ‚µ‚Ä‚à‚ç‚¤‚Æ‚¢‚¤‚±‚Æ‚Åc", 108, 490, 16, c);
 			}
 		}
-		else if (word == 45)
+		else if (word == 44)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ñ‚È‚±‚Æ‚µ‚½‚çâ‘Î‹–‚³‚È‚¢‚©‚ç‚ËH", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ñ‚È‚±‚Æ‚µ‚½‚çâ‘Î‹–‚³‚È‚¢‚©‚ç‚ËH", 108, 490, 16, c);
 			}
 		}
-		else if (word== 46)
+		else if (word== 45)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚Å‚µ‚½‚ç³–Ê‚Ì•”‰®‚Ì’Tõ‚È‚ç‚æ‚ë‚µ‚¢‚Å‚µ‚å‚¤H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚Å‚µ‚½‚ç³–Ê‚Ì•”‰®‚Ì’Tõ‚È‚ç‚æ‚ë‚µ‚¢‚Å‚µ‚å‚¤H", 108, 490, 16, c);
 			}
 		}
-		else if (word == 47)
+		else if (word == 46)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ê‚È‚ç‚¢‚¢‚í", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ê‚È‚ç‚¢‚¢‚í", 108, 490, 16, c);
 			}
 		}
-		else if (word == 48)
+		else if (word == 47)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚ –l‚Í‚ ‚Á‚¿‚Ì•”‰®‚ð’Tõ‚·‚é‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚ –l‚Í‚ ‚Á‚¿‚Ì•”‰®‚ð’Tõ‚·‚é‚æ", 108, 490, 16, c);
 			}
 		}
-		else if (word == 49)
+		else if (word == 48)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚¨Šè‚¢‚µ‚Ü‚·‚Ëæ”y", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚¨Šè‚¢‚µ‚Ü‚·‚Ëæ”y", 108, 490, 16, c);
 			}
 		}
-		else if (word == 50)
+		else if (word == 49)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:“ä‚ÌŠÙ‚Ì’Tõ‚ÌŠJŽn‚¾[I", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‰i‰“:“ä‚ÌŠÙ‚Ì’Tõ‚ÌŠJŽn‚¾[I", 108, 490, 16, c);
 			}
 		}
-		else if (word == 51)
+		else if (word == 50)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				text_move = true;
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚¨[I", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚¨[I", 108, 490, 16, c);
 			}
 		}
-		else if (word == 52)
+		else if (word == 51)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚¨A‚¨[c", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚¨A‚¨[c", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚¨A‚¨[c", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚¨A‚¨[c", 108, 490, 16, c);
 			}
 		}
-		else if (word == 53)
+		else if (word == 52)
 		{
 			text_move = false;
 			Font::StrDraw(L"•”‰®‚ð‚¦‚ç‚ñ‚Å’Tõ‚µ‚æ‚¤", 50, 490, 32, c);
@@ -1700,11 +724,15 @@ void CObjText::Draw()
 		}
 	}
 	//‚«‚ç‚çƒ}ƒbƒv
-	//i“üŽž@word=0`20
-	//Œ®Žæ“¾ŽžŽž@word=22`27
-	//‰ðœŒãŽž@word=29`42
+	//i“üŽž@word=0`10
+	//‰ðœŒãŽž@word=11`22
+	else if (text_m == -3)
+	{
+		Font::StrDraw(L"1F", 700, 500, 32, c);
+		Font::StrDraw(L"‹ŠÔ", 685, 532, 32, c);
+	}
 	//‚«‚ç‚çƒ}ƒbƒvi“üŽž‰ï˜b-----------------------------------------------------------------------
-	if (text_m == 0)
+	else if (text_m == 0)
 	{
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"‹ŠÔ", 685, 532, 32, c);
@@ -1713,1239 +741,263 @@ void CObjText::Draw()
 			text_move = true;
 			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
 		}
-	    else if (word == 1)
+		else if (word == 1)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚±‚Ì•”‰®‚Í‰½‚©‚ ‚é‚©‚È", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:‚ A–PŒNI", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚±‚Ì•”‰®‚Í‰½‚©‚ ‚é‚©‚È", 108, 490, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:‚ A–PŒNI", 108, 490, 16, c);
 			}
 		}
 		else if (word == 2)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚ AŽålŒöI", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‘å¯H‚Ç‚¤‚µ‚½‚ñ‚¾‚±‚ñ‚ÈŠ‚Å", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 0.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚ AŽålŒöI", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‘å¯H‚Ç‚¤‚µ‚½‚ñ‚¾‚±‚ñ‚ÈŠ‚Å", 108, 490, 16, c);
 			}
 		}
 		else if (word == 3)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‘å¯H‚Ç‚¤‚µ‚½‚ñ‚¾‚±‚ñ‚ÈŠ‚Å", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‘å¯H‚Ç‚¤‚µ‚½‚ñ‚¾‚±‚ñ‚ÈŠ‚Å", 108, 490, 16, c);
-			}
-		}
-		else if (word== 4)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 192.0f;
-				src.m_right = 255.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Ì•”‰®‚¢‚ë‚¢‚ë’²‚×‚Ä‚ñ‚Ì‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 192.0f;
-				src.m_right = 255.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Ì•”‰®‚¢‚ë‚¢‚ë’²‚×‚Ä‚ñ‚Ì‚æ", 108, 490, 16, c);
+			}
+		}
+		else if (word == 4)
+		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"–P:‚»‚¤‚©c‰½‚©¬‰Ê‚Í‚ ‚Á‚½‚©H", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"–P:‚»‚¤‚©c‰½‚©¬‰Ê‚Í‚ ‚Á‚½‚©H", 108, 490, 16, c);
 			}
 		}
 		else if (word == 5)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚¤‚©c‰½‚©¬‰Ê‚Í‚ ‚Á‚½‚©H", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:‰½‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚íc", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚¤‚©c‰½‚©¬‰Ê‚Í‚ ‚Á‚½‚©H", 108, 490, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:‰½‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚íc", 108, 490, 16, c);
 			}
 		}
 		else if (word == 6)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚Æc“–‘R‚Å‚µ‚åH", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‹C‚É‚·‚é‚È", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚Æc“–‘R‚Å‚µ‚åH", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‹C‚É‚·‚é‚È", 108, 490, 16, c);
 			}
 		}
 		else if (word == 7)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Ù‚ñ‚Æ‚©IH", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‰´‚àˆê‚É’T‚·‚©‚ç", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Ù‚ñ‚Æ‚©IH", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‰´‚àˆê‚É’T‚·‚©‚ç", 108, 490, 16, c);
 			}
 		}
 		else if (word == 8)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 383.0f;
-				src.m_right = 447.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚àc‚à‚¿‚ë‚ñ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 383.0f;
-				src.m_right = 447.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚àc‚à‚¿‚ë‚ñ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 9)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰½‚ðŒ©‚Â‚¯‚½‚ñ‚¾H", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰½‚ðŒ©‚Â‚¯‚½‚ñ‚¾H", 108, 490, 16, c);
-			}
-		}
-		else if (word == 10)
-		{
-			if (time < 100)
-			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:cc‚å", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:cc‚å", 108, 490, 16, c);
-			}
-		}
-		else if (word== 11)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ˆ«‚¢A•·‚±‚¦‚È‚©‚Á‚½", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ˆ«‚¢A•·‚±‚¦‚È‚©‚Á‚½", 108, 490, 16, c);
-			}
-		}
-		else if (word == 12)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‰½‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚Á‚ÄŒ¾‚Á‚Ä‚é‚Ì‚æ!!", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‰½‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚Á‚ÄŒ¾‚Á‚Ä‚é‚Ì‚æ!!", 108, 490, 16, c);
-			}
-
-		}
-		else if (word == 13)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:c‚¦H", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:c‚¦H", 108, 490, 16, c);
-			}
-		}
-		else if (word == 14)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:Œ®‚àŒ®ŒŠ‚à‰B‚µ”à‚à“®‚­–{’I‚à‰½‚É‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚í‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:Œ®‚àŒ®ŒŠ‚à‰B‚µ”à‚à“®‚­–{’I‚à‰½‚É‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚í‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 15)
-		{
-			if (time < 100)
-			{
-				src.m_top = 64.0f;
-				src.m_left = 384.0f;
-				src.m_right = 448.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚¨A‚¨‚¤cˆ«‚¢", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 64.0f;
-				src.m_left = 384.0f;
-				src.m_right = 448.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚¨A‚¨‚¤cˆ«‚¢", 108, 490, 16, c);
-			}
-		}
-		else if (word == 16)
-		{
-			if (time < 100)
-			{
-				src.m_top = 64.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:c‚²‚ß‚ñ‚È‚³‚¢", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 64.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:c‚²‚ß‚ñ‚È‚³‚¢", 108, 490, 16, c);
-			}
-		}
-		else if (word == 17)
-		{
-			if (time < 100)
-			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚È‚½‚É‚ ‚½‚Á‚Ä‚àŽd•û‚È‚¢‚à‚Ì‚Ë", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚È‚½‚É‚ ‚½‚Á‚Ä‚àŽd•û‚È‚¢‚à‚Ì‚Ë", 108, 490, 16, c);
-			}
-		}
-		else if (word == 18)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‹C‚É‚·‚é‚È‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‹C‚É‚·‚é‚È‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 19)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰´‚àˆê‚É’T‚·‚©‚ç", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰´‚àˆê‚É’T‚·‚©‚ç", 108, 490, 16, c);
-			}
-		}
-		else if (word == 20)
-		{
-			if (time < 100)
-			{
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚è‚ª‚Æ‚¤", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚è‚ª‚Æ‚¤", 108, 490, 16, c);
 			}
 		}
-		else if (word == 21)
+		else if (word == 9)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ê‚¶‚á‚ ‚Æ‚Á‚Æ‚ÆŽèŠ|‚©‚èŒ©‚Â‚¯‚é‚í‚æI", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ê‚¶‚á‚ ‚Æ‚Á‚Æ‚ÆŽèŠ|‚©‚èŒ©‚Â‚¯‚é‚í‚æI", 108, 490, 16, c);
+			}
+		}
+		else if (word == 10)
 		{
 			text_move = false;
 			Font::StrDraw(L"’Tõ‚µ‚æ‚¤I", 50, 490, 32, c);
 		}
 	}
-	//‚«‚ç‚çŒ®Žæ“¾Œã----------------------------------------
-	else if (text_m == 3)
+	//‚«‚ç‚ç“š‚¦“ü—ÍŒã----------------------------------------
+	else if(text_m==3)
 	{
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"‹ŠÔ", 685, 532, 32, c);
-		if (word == 21)
+		if (word == 11)
 		{
 			text_move = true;
 			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
 		}
-		else if (word == 22)
+		if (word== 12)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‰½‚©Œ©‚Â‚©‚Á‚½‚©‚µ‚ç?", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‘å¯Iƒƒ‚Œ©‚Â‚¯‚½‚¼", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‰½‚©Œ©‚Â‚©‚Á‚½‚©‚µ‚ç?", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‘å¯Iƒƒ‚Œ©‚Â‚¯‚½‚¼", 108, 490, 16, c);
+			}
+		}
+		else if (word == 13)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚Ù‚ñ‚ÆH", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚Ù‚ñ‚ÆH", 108, 490, 16, c);
+			}
+		}
+		else if (word == 14)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:Œ‹‹ÇŽ„‰½‚àŒ©‚Â‚¯‚ç‚ê‚È‚©‚Á‚½‚í", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:Œ‹‹ÇŽ„‰½‚àŒ©‚Â‚¯‚ç‚ê‚È‚©‚Á‚½‚í", 108, 490, 16, c);
+			}
+		}
+		else if (word == 15)
+		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"–P:‚ ‚ñ‚Ü‚è‹C‚É‚·‚é‚È‚æH", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"–P:‚ ‚ñ‚Ü‚è‹C‚É‚·‚é‚È‚æH", 108, 490, 16, c);
+			}
+		}
+		else if (word == 16)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:S”z‚È‚¢‚í", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:S”z‚È‚¢‚í", 108, 490, 16, c);
+			}
+		}
+		else if (word == 17)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:¡“x‚±‚»‰½‚©Œ©‚Â‚ß‚Ä‚ ‚°‚é", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:¡“x‚±‚»‰½‚©Œ©‚Â‚ß‚Ä‚ ‚°‚é", 108, 490, 16, c);
+			}
+		}
+		else if (word == 18)
+		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"–P:Šæ’£‚é‚Ì‚Í‚¢‚¢‚¯‚Ç–³’ƒ‚·‚é‚È‚æH", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"–P:Šæ’£‚é‚Ì‚Í‚¢‚¢‚¯‚Ç–³’ƒ‚·‚é‚È‚æH", 108, 490, 16, c);
+			}
+		}
+		else if (word == 19)
+		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"–P:‰´‚Íˆá‚¤•”‰®‚ð’Tõ‚µ‚Ä‚­‚é‚æ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"–P:‰´‚Íˆá‚¤•”‰®‚ð’Tõ‚µ‚Ä‚­‚é‚æ", 108, 490, 16, c);
+			}
+		}
+		else if (word == 20)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚Í‚à‚¤­‚µ‚±‚±‚ð’Tõ‚µ‚Ä‚é‚í", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚Í‚à‚¤­‚µ‚±‚±‚ð’Tõ‚µ‚Ä‚é‚í", 108, 490, 16, c);
+			}
+		}
+		else if (word == 21)
+		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"ŽålŒö:‚¢‚¢‚¯‚Ç‹C‚ð‚Â‚¯‚ë‚æ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"ŽålŒö:‚¢‚¢‚¯‚Ç‹C‚ð‚Â‚¯‚ë‚æ", 108, 490, 16, c);
+			}
+		}
+		else if (word == 22)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚»‚Á‚¿‚±‚»‹C‚ð‚Â‚¯‚È‚³‚¢‚æ", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚»‚Á‚¿‚±‚»‹C‚ð‚Â‚¯‚È‚³‚¢‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 23)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom =192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ƒƒ‚‚ª”–‡Œ©‚Â‚©‚Á‚½‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ƒƒ‚‚ª”–‡Œ©‚Â‚©‚Á‚½‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 24)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top =64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:”Žš‚ª‘‚¢‚Ä‚¢‚é‚í‚Ë", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:”Žš‚ª‘‚¢‚Ä‚¢‚é‚í‚Ë", 108, 490, 16, c);
-			}
-		}
-		else if (word == 25)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:ƒiƒ“ƒo[ƒƒbƒN‚Æ‚©‰½‚©‚©‚µ‚çH", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:ƒiƒ“ƒo[ƒƒbƒN‚Æ‚©‰½‚©‚©‚µ‚çH", 108, 490, 16, c);
-			}
-		}
-		else if (word == 26)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚È‚ç‚Ç‚±‚©Žg‚¤êŠ‚ª‚Ç‚±‚©‚É‚ ‚é‚È", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚È‚ç‚Ç‚±‚©Žg‚¤êŠ‚ª‚Ç‚±‚©‚É‚ ‚é‚È", 108, 490, 16, c);
-			}
-		}
-		else if (word == 27)
-		{
-			if (time < 100)
-			{
-				src.m_top = 64.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Ü‚¸‚Í‚±‚Ì•”‰®‚ð’T‚µ‚Ä‚Ý‚æ‚¤", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 64.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚È‚ç‚Ç‚±‚©Žg‚¤êŠ‚ª‚Ç‚±‚©‚É‚ ‚é‚È", 108, 490, 16, c);
-			}
-		}
-		else if (word == 28)
-		{
-			text_move = false;
-			Font::StrDraw(L"ƒƒbƒNƒhƒA‚ð’T‚»‚¤I", 50, 490, 32, c);
-		}
-	}
-	//‚«‚ç‚çƒ}ƒbƒvŒ®‰ðœŒã---------------------------------------------------------------------
-	else if (text_m == 4)
-	{
-		Font::StrDraw(L"1F", 700, 500, 32, c);
-		Font::StrDraw(L"‹ŠÔ", 685, 532, 32, c);
-	    if (word == 28)
-	    {
-			text_move = true;
-		    Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
-	    }
-		else if (word == 29)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚â‚Á‚½‚í‚ËI", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 0.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚â‚Á‚½‚í‚ËI", 108, 490, 16, c);
-			}
-		}
-		else if(word == 30)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‘å¯‚Ì‚¨‚©‚°‚¾", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‘å¯‚Ì‚¨‚©‚°‚¾", 108, 490, 16, c);
-			}
-		}
-		else if (word == 31)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚ ‚è‚ª‚Æ‚¤‚È", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚ ‚è‚ª‚Æ‚¤‚È", 108, 490, 16, c);
-			}
-		}
-		else if (word == 32)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:•Ê‚ÉŽ„‚Í‰½‚à‚µ‚Ä‚È‚¢‚í", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:•Ê‚ÉŽ„‚Í‰½‚à‚µ‚Ä‚È‚¢‚í", 108, 490, 16, c);
-			}
-		}
-		else if (word == 33)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:ƒƒ‚‚ðŒ©‚Â‚¯‚½‚Ì‚àƒƒbƒN‰ðœ‚µ‚½‚Ì‚à‚ ‚È‚½‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:ƒƒ‚‚ðŒ©‚Â‚¯‚½‚Ì‚àƒƒbƒN‰ðœ‚µ‚½‚Ì‚à‚ ‚È‚½‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 34)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Å‚à‰´ˆêl‚¶‚á–³—‚¾‚Á‚½‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Å‚à‰´ˆêl‚¶‚á–³—‚¾‚Á‚½‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 35)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚¾‚©‚ç‚ ‚è‚ª‚Æ‚¤", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚¾‚©‚ç‚ ‚è‚ª‚Æ‚¤", 108, 490, 16, c);
-			}
-		}
-		else if (word == 36)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:c‚È‚ç‚»‚Ì‚¨—ç‚ ‚è‚ª‚½‚­Žó‚¯Žæ‚Á‚Ä‚¨‚­‚í", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:c‚È‚ç‚»‚Ì‚¨—ç‚ ‚è‚ª‚½‚­Žó‚¯Žæ‚Á‚Ä‚¨‚­‚í", 108, 490, 16, c);
-			}
-		}
-		else if (word == 37)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰´‚Í‘¼‚ÌêŠ‚ð’²‚×‚És‚­‚¯‚Ç‚Ç‚¤‚·‚éH", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰´‚Í‘¼‚ÌêŠ‚ð’²‚×‚És‚­‚¯‚Ç‚Ç‚¤‚·‚éH", 108, 490, 16, c);
-			}
-		}
-		else if (word == 38)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚Í‚à‚¤­‚µ‚±‚±‚ð’Tõ‚µ‚Ä‚Ý‚é‚í", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚Í‚à‚¤­‚µ‚±‚±‚ð’Tõ‚µ‚Ä‚Ý‚é‚í", 108, 490, 16, c);
-			}
-		}
-		else if (word == 39)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:¡“x‚±‚»‰½‚©Œ©‚Â‚¯‚Ä‚ ‚°‚é‚í", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:¡“x‚±‚»‰½‚©Œ©‚Â‚¯‚Ä‚ ‚°‚é‚í", 108, 490, 16, c);
-			}
-		}
-		else if (word== 40)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚Á‚½", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚Á‚½", 108, 490, 16, c);
-			}
-		}
-		else if (word ==41)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰½‚ª‚ ‚é‚©‚í‚©‚ç‚È‚¢‚©‚ç‹C‚ð‚Â‚¯‚ë‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰½‚ª‚ ‚é‚©‚í‚©‚ç‚È‚¢‚©‚ç‹C‚ð‚Â‚¯‚ë‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 42)
-		{
-			if (time < 100)
-			{
-				//”wŒi•\Ž¦
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚»‚Á‚¿‚±‚»ƒhƒW‚â‚é‚ñ‚¶‚á‚È‚¢‚í‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚»‚Á‚¿‚±‚»ƒhƒW‚â‚é‚ñ‚¶‚á‚È‚¢‚í‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 43)
 		{
 			text_move = false;
 			Font::StrDraw(L"‘¼‚Ì•”‰®‚ð’T‚µ‚És‚±‚¤", 50, 490, 32, c);
@@ -2955,9 +1007,13 @@ void CObjText::Draw()
 	//‘t‘½ƒ}ƒbƒv
 	//i“üŽž@word=0`13
 	//Œ®Žæ“¾Žž@word=14`19
-	//‰ðœŒãŽž@word=20`25
+	else if (text_m == -4)
+	{
+		Font::StrDraw(L"1F", 700, 500, 32, c);
+		Font::StrDraw(L"}‘Žº", 670, 532, 32, c);
+	}
 	//‘t‘½ƒ}ƒbƒvi“üŽž-------------------------------------------------------------------------
-	if (text_m == 1)
+	else if (text_m == 1)
 	{
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"}‘Žº", 670, 532, 32, c);
@@ -2968,360 +1024,145 @@ void CObjText::Draw()
 		}
 		if (word == 1)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚â‚¯‚É•Ð•t‚¢‚½•”‰®‚¾‚È", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚â‚¯‚É•Ð•t‚¢‚½•”‰®‚¾‚È", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚â‚¯‚É•Ð•t‚¢‚½•”‰®‚¾‚È", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚â‚¯‚É•Ð•t‚¢‚½•”‰®‚¾‚È", 108, 490, 16, c);
 			}
 		}
 		else if (word == 2)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚ AŽålŒö‚³‚ñB‚Ç‚¤‚©‚¢‚½‚µ‚Ü‚µ‚½‚©H", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‘t‘½:‚ A–P‚³‚ñB‚Ç‚¤‚©‚¢‚½‚µ‚Ü‚µ‚½‚©H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 0.0f;
-				src.m_left = 64.0f;
-				src.m_right = 128.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚ AŽålŒö‚³‚ñB‚Ç‚¤‚©‚¢‚½‚µ‚Ü‚µ‚½‚©H", 108, 490, 16, c);
+				Font::StrDraw(L"‘t‘½:‚ A–P‚³‚ñB‚Ç‚¤‚©‚¢‚½‚µ‚Ü‚µ‚½‚©H", 108, 490, 16, c);
 			}
 		}
 		else if (word == 3)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ŠÝ–ì‚³‚ñ‚¢‚½‚ñ‚Å‚·‚©", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:ŠÝ–ì‚³‚ñ‚¢‚½‚ñ‚Å‚·‚©", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ŠÝ–ì‚³‚ñ‚¢‚½‚ñ‚Å‚·‚©", 108, 490, 16, c);
+				Font::StrDraw(L"–P:ŠÝ–ì‚³‚ñ‚¢‚½‚ñ‚Å‚·‚©", 108, 490, 16, c);
 			}
 		}
 		else if (word == 4)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 192.0f;
-				src.m_right = 255.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚»‚¤‚©‚µ‚±‚Ü‚ç‚È‚­‚Ä‚à‘åä•v‚Å‚·‚æB“¯‚¢”N‚Å‚·‚©‚ç", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 192.0f;
-				src.m_right = 255.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚»‚¤‚©‚µ‚±‚Ü‚ç‚È‚­‚Ä‚à‘åä•v‚Å‚·‚æB“¯‚¢”N‚Å‚·‚©‚ç", 108, 490, 16, c);
 			}
 		}
 		else if (word == 5)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚Á‚½B‚ÅAŠÝ–ì‚³‚ñ‚Í‚Ç‚¤‚µ‚Ä‚Í‚½‚«‚ðŽ‚Á‚Ä‚¢‚é‚ñ‚¾H", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚í‚©‚Á‚½B‚ÅAŠÝ–ì‚³‚ñ‚Í‚Ç‚¤‚µ‚Ä‚Í‚½‚«‚ðŽ‚Á‚Ä‚¢‚é‚ñ‚¾H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚Á‚½B‚ÅAŠÝ–ì‚³‚ñ‚Í‚Ç‚¤‚µ‚Ä‚Í‚½‚«‚ðŽ‚Á‚Ä‚¢‚é‚ñ‚¾H", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚í‚©‚Á‚½B‚ÅAŠÝ–ì‚³‚ñ‚Í‚Ç‚¤‚µ‚Ä‚Í‚½‚«‚ðŽ‚Á‚Ä‚¢‚é‚ñ‚¾H", 108, 490, 16, c);
 			}
 		}
 		else if (word == 6)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:E‹Æã‰˜‚¢•”‰®‚ðŒ©‚é‚Æ•Ð•t‚¯‚½‚­‚È‚é‚ñ‚Å‚·", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 448.0f;
-				src.m_right = 512.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:E‹Æã‰˜‚¢•”‰®‚ðŒ©‚é‚Æ•Ð•t‚¯‚½‚­‚È‚é‚ñ‚Å‚·", 108, 490, 16, c);
 			}
 		}
 		else if (word == 7)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚Á‚©‚¶‚á‚ Žè“`‚¤‚æ", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚»‚Á‚©‚¶‚á‚ Žè“`‚¤‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚Á‚©‚¶‚á‚ Žè“`‚¤‚æ", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚»‚Á‚©‚¶‚á‚ Žè“`‚¤‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 8)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 383.0f;
-				src.m_right = 447.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚¦H‚¢‚¢‚ñ‚Å‚·‚©H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 383.0f;
-				src.m_right = 447.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚¦H‚¢‚¢‚ñ‚Å‚·‚©H", 108, 490, 16, c);
 			}
 		}
 		else if (word == 9)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:•”‰®‚Ì•Ð‚Ã‚¯‚µ‚È‚ª‚ç’T‚¹‚Î‚¢‚¢‚æ", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:•”‰®‚Ì•Ð‚Ã‚¯‚µ‚È‚ª‚ç’T‚¹‚Î‚¢‚¢‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:•”‰®‚Ì•Ð‚Ã‚¯‚µ‚È‚ª‚ç’T‚¹‚Î‚¢‚¢‚æ", 108, 490, 16, c);
+				Font::StrDraw(L"–P:•”‰®‚Ì•Ð‚Ã‚¯‚µ‚È‚ª‚ç’T‚¹‚Î‚¢‚¢‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 10)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:\‚µ–ó‚ ‚è‚Ü‚¹‚ñBŽè‘‚­I‚í‚ç‚¹‚Ü‚·‚Ì‚Å", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:\‚µ–ó‚ ‚è‚Ü‚¹‚ñBŽè‘‚­I‚í‚ç‚¹‚Ü‚·‚Ì‚Å", 108, 490, 16, c);
 			}
 		}
-		else if (word== 11)
+		else if (word == 11)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚ê‚¶‚á‚ Žn‚ß‚æ‚¤‚©", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚»‚ê‚¶‚á‚ Žn‚ß‚æ‚¤‚©", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 128.0f;
-				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚»‚ê‚¶‚á‚ Žn‚ß‚æ‚¤‚©", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚»‚ê‚¶‚á‚ Žn‚ß‚æ‚¤‚©", 108, 490, 16, c);
 			}
 		}
 		else if (word == 12)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚Í‚¢I", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
 				Font::StrDraw(L"‘t‘½:‚Í‚¢I", 108, 490, 16, c);
 			}
 		}
@@ -3330,267 +1171,82 @@ void CObjText::Draw()
 			text_move = false;
 			Font::StrDraw(L"’Tõ‚µ‚æ‚¤I", 50, 490, 32, c);
 		}
-		else if (word == 14)
+	}
+    //Œ®“üŽèŒã
+	else if (text_m == 4)
+	{
+		Font::StrDraw(L"1F", 700, 500, 32, c);
+		Font::StrDraw(L"}‘Žº", 670, 532, 32, c);
+		if (word == 14)
 		{
 			text_move = true;
 			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
 		}
 		else if (word == 15)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚±‚±‚³‚Á‚«Œ©‚Â‚¯‚½Œ®‚ªŽg‚¦‚»‚¤‚¾‚È", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‰½‚©‚Ìƒƒ‚‚¾‚È", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚±‚±‚³‚Á‚«Œ©‚Â‚¯‚½Œ®‚ªŽg‚¦‚»‚¤‚¾‚È", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‰½‚©‚Ìƒƒ‚‚¾‚È", 108, 490, 16, c);
 			}
 		}
 		else if (word == 16)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‰½‚©Œ©‚Â‚¯‚½‚ñ‚Å‚·‚©H", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‘t‘½:‚È‚ñ‚Å‚µ‚å‚¤‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‰½‚©Œ©‚Â‚¯‚½‚ñ‚Å‚·‚©H", 108, 490, 16, c);
+				Font::StrDraw(L"‘t‘½:‚È‚ñ‚Å‚µ‚å‚¤‚Ë", 108, 490, 16, c);
 			}
 		}
 		else if (word == 17)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:Œ®ŒŠ‚ðŒ©‚Â‚¯‚½‚ñ‚¾", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚Æ‚è‚ ‚¦‚¸‘¼‚Ì•”‰®‚àŒ©‰ñ‚Á‚Ä—ˆ‚é‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:Œ®ŒŠ‚ðŒ©‚Â‚¯‚½‚ñ‚¾", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚Æ‚è‚ ‚¦‚¸‘¼‚Ì•”‰®‚àŒ©‰ñ‚Á‚Ä—ˆ‚é‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 18)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:ŠJ‚¯‚Ä‚Ý‚Ü‚µ‚å‚¤", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‘t‘½:‚í‚©‚è‚Ü‚µ‚½B‚¨ì—l‚ð‚æ‚ë‚µ‚­‚¨Šè‚¢‚µ‚Ü‚·", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:ŠJ‚¯‚Ä‚Ý‚Ü‚µ‚å‚¤", 108, 490, 16, c);
+				Font::StrDraw(L"‘t‘½:‚í‚©‚è‚Ü‚µ‚½B‚¨ì—l‚ð‚æ‚ë‚µ‚­‚¨Šè‚¢‚µ‚Ü‚·", 108, 490, 16, c);
 			}
 		}
 		else if (word == 19)
 		{
 			text_move = false;
-			Font::StrDraw(L"’Tõ‚µ‚æ‚¤I", 50, 490, 32, c);
-		}
-		else if (word == 20)
-		{
-			text_move = true;
-			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
-		}
-		else if (word== 21)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰½‚©‚Ìƒƒ‚‚¾‚È", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‰½‚©‚Ìƒƒ‚‚¾‚È", 108, 490, 16, c);
-			}
-		}
-		else if (word == 22)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚È‚ñ‚Å‚µ‚å‚¤‚Ë", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚È‚ñ‚Å‚µ‚å‚¤‚Ë", 108, 490, 16, c);
-			}
-		}
-		else if (word == 23)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Æ‚è‚ ‚¦‚¸‘¼‚Ì•”‰®‚àŒ©‚Ä‰ñ‚Á‚Ä—ˆ‚é‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Æ‚è‚ ‚¦‚¸‘¼‚Ì•”‰®‚àŒ©‚Ä‰ñ‚Á‚Ä—ˆ‚é‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word== 24)
-		{
-			if (time < 100)
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚í‚©‚è‚Ü‚µ‚½B‚¨ì—l‚ð‚æ‚ë‚µ‚­‚¨Šè‚¢‚µ‚Ü‚·", 108, 590 - time, 16, c);
-			}
-			else
-			{
-				src.m_top = 128.0f;
-				src.m_left = 256.0f;
-				src.m_right = 320.0f;
-				src.m_bottom = 192.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚í‚©‚è‚Ü‚µ‚½B‚¨ì—l‚ð‚æ‚ë‚µ‚­‚¨Šè‚¢‚µ‚Ü‚·", 108, 490, 16, c);
-			}
-		}
-		else if (word == 25)
-		{
-			text_move = false;
 			Font::StrDraw(L"‘¼‚Ì•”‰®‚ð’T‚µ‚És‚±‚¤", 50, 490, 32, c);
 			text_loop = false;
 		}
-
 	}
 	//‰i‰“ƒ}ƒbƒv
 	//i“üŽž@word=0`9
-	//Œ®Žæ“¾Žž@word=10`15
-	//‰ðœŒãŽž@word=16`27
+	//ƒƒ‚Žæ“¾Žž@word=10`20
+	else if (text_m == -5)
+	{
+		Font::StrDraw(L"1F", 700, 500, 32, c);
+		Font::StrDraw(L"˜aŽº", 685, 532, 32, c);
+	}
 	//‰i‰“ƒ}ƒbƒvi“üŽž-------------------------------------------------------------------------
-	if (text_m == 2)
+	else if (text_m == 2)
 	{
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"˜aŽº", 685, 532, 32, c);
@@ -3601,852 +1257,428 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:ŽålŒöŒNA‚Ç‚¤‚©‚µ‚½‚Ì‚©‚ÈH", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‰i‰“:–PŒNA‚Ç‚¤‚©‚µ‚½‚Ì‚©‚ÈH", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:ŽålŒöŒNA‚Ç‚¤‚©‚µ‚½‚Ì‚©‚ÈH", 108, 490, 16, c);
+				Font::StrDraw(L"‰i‰“:–PŒNA‚Ç‚¤‚©‚µ‚½‚Ì‚©‚ÈH", 108, 490, 16, c);
 			}
 		}
 		else if (word == 2)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:–kãæ”y‚Å‚·‚©B‚±‚Ì•”‰®‚É‰½‚©‚ ‚è‚Ü‚µ‚½H", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:–kãæ”y‚Å‚·‚©B‚±‚Ì•”‰®‚É‰½‚©‚ ‚è‚Ü‚µ‚½H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:–kãæ”y‚Å‚·‚©B‚±‚Ì•”‰®‚É‰½‚©‚ ‚è‚Ü‚µ‚½H", 108, 490, 16, c);
+				Font::StrDraw(L"–P:–kãæ”y‚Å‚·‚©B‚±‚Ì•”‰®‚É‰½‚©‚ ‚è‚Ü‚µ‚½H", 108, 490, 16, c);
 			}
 		}
 		else if (word == 3)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‰i‰“‚Å‚¢‚¢‚æB‹àŒÉ‚ª‚ ‚Á‚½‚ñ‚¾‚¯‚ÇA", 108, 590 - time, 16, c);
-				Font::StrDraw(L"Œ®‚ª‚©‚©‚Á‚Ä‚é‚Ý‚½‚¢‚È‚ñ‚¾", 108, 606 - time, 16, c);
+				Font::StrDraw(L"‰i‰“:‚Ü‚¾‰½‚É‚àŒ©‚Â‚©‚Á‚Ä‚È‚¢‚ñ‚¾", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‰i‰“‚Å‚¢‚¢‚æB‹àŒÉ‚ª‚ ‚Á‚½‚ñ‚¾‚¯‚ÇA", 108, 490, 16, c);
-				Font::StrDraw(L"Œ®‚ª‚©‚©‚Á‚Ä‚é‚Ý‚½‚¢‚È‚ñ‚¾", 108, 506, 16, c);
+				Font::StrDraw(L"‰i‰“:‚Ü‚¾‰½‚É‚àŒ©‚Â‚©‚Á‚Ä‚È‚¢‚ñ‚¾", 108, 490, 16, c);
 			}
 		}
 		else if (word == 4)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 384.0f;
-				src.m_right = 448.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‹àŒÉ‚ÌŒ®‚Å‚·‚©c‚±‚Ì•”‰®‚É‚ ‚è‚Ü‚·‚©‚ËH", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‰i‰“:‚»‚¤‚¾I", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 384.0f;
-				src.m_right = 448.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‹àŒÉ‚ÌŒ®‚Å‚·‚©c‚±‚Ì•”‰®‚É‚ ‚è‚Ü‚·‚©‚ËH", 108, 490, 16, c);
+				Font::StrDraw(L"‰i‰“:‚»‚¤‚¾I", 108, 490, 16, c);
 			}
 		}
 		else if (word == 5)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚Ü‚¾‚µ‚Á‚©‚è’T‚µ‚Ä‚È‚¢‚©‚ç‰½‚Æ‚àŒ¾‚¦‚È‚¢‚È`", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‰i‰“:’T‚·‚Ìˆê‚ÉŽè“`‚Á‚Ä‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚Ü‚¾‚µ‚Á‚©‚è’T‚µ‚Ä‚È‚¢‚©‚ç‰½‚Æ‚àŒ¾‚¦‚È‚¢‚È`", 108, 490, 16, c);
+				Font::StrDraw(L"‰i‰“:’T‚·‚Ìˆê‚ÉŽè“`‚Á‚Ä‚æ", 108, 490, 16, c);
 			}
 		}
 		else if (word == 6)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚è‚Ü‚µ‚½B‰´‚àˆê‚É’T‚µ‚Ü‚·‚æ", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:‚í‚©‚è‚Ü‚µ‚½B‰´‚Å‚æ‚¯‚ê‚ÎŽè“`‚¢‚Ü‚·‚æ", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚è‚Ü‚µ‚½B‰´‚àˆê‚É’T‚µ‚Ü‚·‚æ", 108, 490, 16, c);
+				Font::StrDraw(L"–P:‚í‚©‚è‚Ü‚µ‚½B‰´‚Å‚æ‚¯‚ê‚ÎŽè“`‚¢‚Ü‚·‚æ", 108, 490, 16, c);
 			}
 		}
-		else if (word== 7)
+		else if (word == 7)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤B‰½‚©‚»‚ê‚Á‚Û‚¢‚à‚ÌŒ©‚Â‚¯‚½‚ç‹³‚¦‚Ä‚Ë", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤B", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 64.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 128.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤B‰½‚©‚»‚ê‚Á‚Û‚¢‚à‚ÌŒ©‚Â‚¯‚½‚ç‹³‚¦‚Ä‚Ë", 108, 490, 16, c);
+				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤B", 108, 490, 16, c);
 			}
 		}
 		else if (word == 8)
 		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Í‚¢", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚æ‚ë‚µ‚­I", 108, 590 - time, 16, c);
 			}
 			else
 			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Í‚¢", 108, 490, 16, c);
+				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚æ‚ë‚µ‚­I", 108, 490, 16, c);
 			}
 		}
 		else if (word == 9)
 		{
-	
+
 			text_move = false;
 			Font::StrDraw(L"’Tõ‚µ‚æ‚¤I", 50, 490, 32, c);
-		}
-		else if (word == 10)
-		{
-			text_move = true;
-			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
-		}
-		else if (word == 11)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:Œ®Œ©‚Â‚©‚è‚Ü‚µ‚½‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:Œ®Œ©‚Â‚©‚è‚Ü‚µ‚½‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 12)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤BŠJ‚¯‚Ä‚Ý‚æ‚Á‚©", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤BŠJ‚¯‚Ä‚Ý‚æ‚Á‚©", 108, 490, 16, c);
-			}
-		}
-		else if (word== 13)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ŠJ‚©‚È‚¢‚Å‚·‚Ë", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:ŠJ‚©‚È‚¢‚Å‚·‚Ë", 108, 490, 16, c);
-			}
-		}
-		else if (word == 14)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‘¼‚É‚à‚È‚¢‚©’T‚µ‚Ä‚Ý‚æ‚¤", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‘¼‚É‚à‚È‚¢‚©’T‚µ‚Ä‚Ý‚æ‚¤", 108, 490, 16, c);
-			}
-		}
-		else if (word == 15)
-		{
-			text_move = false;
-			Font::StrDraw(L"’Tõ‚µ‚æ‚¤I", 50, 490, 32, c);
-		}
-		else if (word == 16)
-		{
-			text_move = true;
-			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
-		}
-		else if (word == 17)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:æ”y‚»‚ê‚Á‚Û‚¢Œ®Œ©‚Â‚¯‚Ü‚µ‚½‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:æ”y‚»‚ê‚Á‚Û‚¢Œ®Œ©‚Â‚¯‚Ü‚µ‚½‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word== 18)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤B‚»‚ê‚¶‚á‚ ŠJ‚¯‚Ä‚Ý‚æ‚¤‚©B", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤B‚»‚ê‚¶‚á‚ ŠJ‚¯‚Ä‚Ý‚æ‚¤‚©B", 108, 490, 16, c);
-			}
-		}
-		else if (word == 19)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚±‚ê‚ÍA‰½‚©‚Ìƒƒ‚‚©‚ÈH", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚±‚ê‚ÍA‰½‚©‚Ìƒƒ‚‚©‚ÈH", 108, 490, 16, c);
-			}
-		}
-		else if (word == 20)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Ý‚½‚¢‚Å‚·‚ËBƒƒ‚‚Ì“à—e“I‚É‚Í–{’I‚É‰½‚©‚ ‚é‚Ý‚½‚¢‚Å‚·‚ªc", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Ý‚½‚¢‚Å‚·‚ËBƒƒ‚‚Ì“à—e“I‚É‚Í–{’I‚É‰½‚©‚ ‚é‚Ý‚½‚¢‚Å‚·‚ªc", 108, 490, 16, c);
-			}
-		}
-		else if (word == 21)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚à‚µ‚©‚µ‚½‚ç‘¼‚É‚àƒƒ‚‚ª‚ ‚é‚©‚à‚µ‚ê‚È‚¢‚Ë", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:‚à‚µ‚©‚µ‚½‚ç‘¼‚É‚àƒƒ‚‚ª‚ ‚é‚©‚à‚µ‚ê‚È‚¢‚Ë", 108, 490, 16, c);
-			}
-		}
-		else if (word == 22)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Å‚·‚ËB‚à‚Á‚Æ‚±‚Ì•”‰®’²‚×‚Ä‚Ý‚Ü‚µ‚å‚¤‚©", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚Å‚·‚ËB‚à‚Á‚Æ‚±‚Ì•”‰®’²‚×‚Ä‚Ý‚Ü‚µ‚å‚¤‚©", 108, 490, 16, c);
-			}
-		}
-		else if (word == 23)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:ŽålŒöŒN‚Í‚Ù‚©‚Ì•”‰®‚ð’²‚×‚És‚Á‚Ä‚Ý‚Ä‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:ŽålŒöŒN‚Í‚Ù‚©‚Ì•”‰®‚ð’²‚×‚És‚Á‚Ä‚Ý‚Ä‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 24)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‘åä•v‚Å‚·‚©?", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‘åä•v‚Å‚·‚©?", 108, 490, 16, c);
-			}
-		}
-		else if (word == 25)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:–l‚Í¶“k‰ï’·‚È‚ñ‚¾‚æH‘åä•v‚¾‚æ", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‰i‰“:–l‚Í¶“k‰ï’·‚È‚ñ‚¾‚æH‘åä•v‚¾‚æ", 108, 490, 16, c);
-			}
-		}
-		else if (word == 26)
-		{
-			if (time < 100)
-			{
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚è‚Ü‚µ‚½Bæ”y‚à‹C‚ð•t‚¯‚Ä", 108, 590 - time, 16, c);
-			}
-			else
-			{
-
-				src.m_top = 0.0f;
-				src.m_left = 320.0f;
-				src.m_right = 384.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:‚í‚©‚è‚Ü‚µ‚½Bæ”y‚à‹C‚ð•t‚¯‚Ä", 108, 490, 16, c);
-			}
-		}
-		else if (word == 27)
-		{
-			text_move = false;
-			Font::StrDraw(L"‘¼‚Ì•”‰®‚ð’T‚µ‚És‚±‚¤", 50, 490, 32, c);
-			text_loop = false;
 		}
 	}
-	if (text_m == 3)
+	//‰i‰“ƒ}ƒbƒv‰ðœŽž-------------------------------------------------------------------------
+	else if (text_m == 5)
+		{
+			Font::StrDraw(L"1F", 700, 500, 32, c);
+			Font::StrDraw(L"˜aŽº", 685, 532, 32, c);
+			if (word == 10)
+			{
+				text_move = true;
+				Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
+			}
+			else if (word == 11)
+			{
+				Draw::Draw(8, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"‰i‰“:‚±‚ê‚Í‰½‚©‚Ìƒƒ‚‚©‚È?", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"‰i‰“:‚±‚ê‚Í‰½‚©‚Ìƒƒ‚‚©‚È?", 108, 490, 16, c);
+				}
+			}
+			else if (word == 12)
+			{
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"–P:‚Ý‚½‚¢‚Å‚·‚Ë", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"–P:‚Ý‚½‚¢‚Å‚·‚Ë", 108, 490, 16, c);
+				}
+			}
+			else if (word == 13)
+			{
+				Draw::Draw(8, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"‰i‰“:‚à‚µ‚©‚µ‚½‚ç‘¼‚É‚à‰½‚©‚ ‚é‚©‚à‚µ‚ê‚È‚¢‚Ë", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"‰i‰“:‚à‚µ‚©‚µ‚½‚ç‘¼‚É‚à‰½‚©‚ ‚é‚©‚à‚µ‚ê‚È‚¢‚Ë", 108, 490, 16, c);
+				}
+			}
+			else if (word == 14)
+			{
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"–P:‚Å‚·‚ËB‚à‚Á‚Æ‚±‚Ì•”‰®’²‚×‚Ä‚Ý‚Ü‚µ‚å‚¤‚©", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"–P:‚Å‚·‚ËB‚à‚Á‚Æ‚±‚Ì•”‰®’²‚×‚Ä‚Ý‚Ü‚µ‚å‚¤‚©", 108, 490, 16, c);
+				}
+			}
+			else if (word == 15)
+			{
+				Draw::Draw(8, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"‰i‰“:–PŒN‚Í‘¼‚Ì•”‰®‚ð’²‚×‚És‚Á‚Ä‚Ý‚Ä‚æ", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"‰i‰“:–PŒN‚Í‘¼‚Ì•”‰®‚ð’²‚×‚És‚Á‚Ä‚Ý‚Ä‚æ", 108, 490, 16, c);
+				}
+			}
+			else if (word == 16)
+			{
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"–P:‘åä•v‚Å‚·‚©H", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"–P:‘åä•v‚Å‚·‚©H", 108, 490, 16, c);
+				}
+			}
+			else if (word == 17)
+			{
+				Draw::Draw(8, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"‰i‰“:–l‚Í¶“k‰ï’·‚È‚ñ‚¾‚æ?‘åä•v‚¾‚æ", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"‰i‰“:–l‚Í¶“k‰ï’·‚È‚ñ‚¾‚æ?‘åä•v‚¾‚æ", 108, 490, 16, c);
+				}
+			}
+			else if (word == 18)
+			{
+				Draw::Draw(4, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"–P:‚í‚©‚è‚Ü‚µ‚½Bæ”y‚à‹C‚ð•t‚¯‚Ä", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"–P:‚í‚©‚è‚Ü‚µ‚½Bæ”y‚à‹C‚ð•t‚¯‚Ä", 108, 490, 16, c);
+				}
+			}
+			else if (word == 19)
+			{
+				Draw::Draw(8, &src, &dst, c, 0.0f);
+				if (time < 100)
+				{
+					Font::StrDraw(L"‰i‰“:”C‚¹‚Ä", 108, 590 - time, 16, c);
+				}
+				else
+				{
+					Font::StrDraw(L"‰i‰“:”C‚¹‚Ä", 108, 490, 16, c);
+				}
+			}
+			else if (word == 20)
+			{
+				text_move = false;
+				Font::StrDraw(L"‘¼‚Ì•”‰®‚ð’T‚µ‚És‚±‚¤", 50, 490, 32, c);
+				text_loop = false;
+			}
+		}
+	//–‹ŠÔ
+	//‚PŠK‘w1`6
+	//‚QŠK‘w6`15
+	else if (text_m == 6)
 	{
+		text_move = true;
 		Font::StrDraw(L"1F", 700, 500, 32, c);
 		Font::StrDraw(L"ŒºŠÖ", 685, 532, 32, c);
 		if (word == 0)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:3‚Â‚Ìƒƒ‚‚ª‚»‚ë‚Á‚½‚Ý‚½‚¢‚¾‚È", 108, 590 - time, 16, c);
+				
+				Font::StrDraw(L"–P:3‚Â‚Ìƒƒ‚‚ª‚»‚ë‚Á‚½‚Ý‚½‚¢‚¾‚È", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:3‚Â‚Ìƒƒ‚‚ª‚»‚ë‚Á‚½‚Ý‚½‚¢‚¾‚È", 108, 490, 16, c);
+				Font::StrDraw(L"–P:3‚Â‚Ìƒƒ‚‚ª‚»‚ë‚Á‚½‚Ý‚½‚¢‚¾‚È", 108, 490, 16, c);
 			}
 		}
 		else if (word == 1)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚¢‚¢‚í‚Ë", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:‚â‚Á‚½‚í‚Ë", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:‚¢‚¢‚í‚Ë", 108, 490, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:‚â‚Á‚½‚í‚Ë", 108, 490, 16, c);
 			}
 		}
 		else if (word == 2)
 		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:’EoƒQ[ƒ€‚Á‚Û‚­‚È‚Á‚Ä‚«‚½‚íI", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‘t‘½:‚»‚ê‚Åƒƒ‚‚É‚Í‚È‚ñ‚Ä‘‚¢‚Ä‚¢‚é‚ñ‚Å‚·‚©?", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‚«‚ç‚ç:’EoƒQ[ƒ€‚Á‚Û‚­‚È‚Á‚Ä‚«‚½‚íI", 108, 490, 16, c);
+				Font::StrDraw(L"‘t‘½:‚»‚ê‚Åƒƒ‚‚É‚Í‚È‚ñ‚Ä‘‚¢‚Ä‚¢‚é‚ñ‚Å‚·‚©?", 108, 490, 16, c);
 			}
 		}
 		else if (word== 3)
 		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚»‚ê‚Åƒƒ‚‚É‚È‚ñ‚Ä‘‚¢‚Ä‚¢‚é‚ñ‚Å‚·‚©H", 108, 590 - time, 16, c);
+				Font::StrDraw(L"–P:uƒ~ƒXƒ~ƒ\ƒEvuƒCƒtƒFƒCƒIƒ“vuƒTƒNƒ‰ƒ\ƒEv‚¾‚È", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"‘t‘½:‚»‚ê‚Åƒƒ‚‚É‚È‚ñ‚Ä‘‚¢‚Ä‚¢‚é‚ñ‚Å‚·‚©H", 108, 490, 16, c);
+				Font::StrDraw(L"–P:uƒ~ƒXƒ~ƒ\ƒEvuƒCƒtƒFƒCƒIƒ“vuƒTƒNƒ‰ƒ\ƒEv‚¾‚È", 108, 490, 16, c);
 			}
 		}
 		else if (word == 4)
 		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 590.0f - time;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 690.0f - time;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:uƒ~ƒXƒ~ƒ\ƒEvuƒCƒtƒFƒCƒIƒ“vuƒTƒNƒ‰ƒ\ƒEv‚¾", 108, 590 - time, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:ƒCƒtƒFƒCƒIƒ“H", 108, 590 - time, 16, c);
 			}
 			else
 			{
-				//”wŒi•\Ž¦
-				src.m_top = 0.0f;
-				src.m_left = 128.0f;
-				src.m_right = 192.0f;
-				src.m_bottom = 64.0f;
-				dst.m_top = 490.0f;
-				dst.m_left = 10.0f;
-				dst.m_right = 106.0f;
-				dst.m_bottom = 590.0f;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ŽålŒö:uƒ~ƒXƒ~ƒ\ƒEvuƒCƒtƒFƒCƒIƒ“vuƒTƒNƒ‰ƒ\ƒEv‚¾", 108, 490, 16, c);
+				Font::StrDraw(L"‚«‚ç‚ç:ƒCƒtƒFƒCƒIƒ“H", 108, 490, 16, c);
 			}
+		}
+		else if (word == 5)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚È‚É‚æ‚»‚ê", 108, 590 - time, 16, c);
+			}
+			else 
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚È‚É‚æ‚»‚ê", 108, 490, 16, c);
+			}
+		}
+		else if (word == 6)
+		{
+			text_move = false;
+			Font::StrDraw(L"’Tõ‚µ‚æ‚¤I", 50, 490, 32, c);
+		}
+	}
+	else if (text_m == 7)
+	{
+		Font::StrDraw(L"2F", 700, 500, 32, c);
+		if (word == 6)
+		{
+			text_move = true;
+			Font::StrDraw(L"ZƒL[‚Å‰ï˜bis", 50, 490, 32, c);
+		}
+		else if (word == 7)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:“ñŠK‚É—ˆ‚½‚Ì‚Í‚¢‚¢‚¯‚Ç‚±‚ê‚¶‚áo‚ç‚ê‚È‚¢‚í‚æH", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:“ñŠK‚É—ˆ‚½‚Ì‚Í‚¢‚¢‚¯‚Ç‚±‚ê‚¶‚áo‚ç‚ê‚È‚¢‚í‚æH", 108, 490, 16, c);
+			}
+		}
+		if (word == 8)
+		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"–P:‚±‚ÌŠK‚É‰½‚©ŽèŠ|‚©‚è‚ª‚ ‚é‚ñ‚¶‚á‚È‚¢‚©‚È", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"–P:‚±‚ÌŠK‚É‰½‚©ŽèŠ|‚©‚è‚ª‚ ‚é‚ñ‚¶‚á‚È‚¢‚©‚È", 108, 490, 16, c);
+			}
+		}
+		else if (word == 9)
+		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚±‚Ì•”‰®‚à•ª‚©‚ê‚Ä’T‚·Š´‚¶‚Å‚¢‚¢‚©‚ÈH", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚±‚Ì•”‰®‚à•ª‚©‚ê‚Ä’T‚·Š´‚¶‚Å‚¢‚¢‚©‚ÈH", 108, 490, 16, c);
+			}
+		}
+		else if (word == 10)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚È‚çŽ„‚Í‚±‚Á‚¿‚És‚­‚íI", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‚È‚çŽ„‚Í‚±‚Á‚¿‚És‚­‚íI", 108, 490, 16, c);
+			}
+		}
+		else if (word == 11)
+		{
+			Draw::Draw(6, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½‚Í‚ ‚Á‚¿‚ð’²‚×‚È‚³‚¢I", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½‚Í‚ ‚Á‚¿‚ð’²‚×‚È‚³‚¢I", 108, 490, 16, c);
+			}
+		}
+		else if (word == 12)
+		{
+			Draw::Draw(7, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½", 108, 490, 16, c);
+			}
+		}
+		else if (word == 13)
+		{
+			Draw::Draw(8, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚ –l‚ÍŽc‚è‚Ì•”‰®‚ð’²‚×‚æ‚¤‚©‚È", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚ –l‚ÍŽc‚è‚Ì•”‰®‚ð’²‚×‚æ‚¤‚©‚È", 108, 490, 16, c);
+			}
+		}
+		if (word == 14)
+		{
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			if (time < 100)
+			{
+				Font::StrDraw(L"–P:i‰´‚Í’N‚©‚ðŽè“`‚¢‚És‚±‚¤j", 108, 590 - time, 16, c);
+			}
+			else
+			{
+				Font::StrDraw(L"–P:i‰´‚Í’N‚©‚ðŽè“`‚¢‚És‚±‚¤j", 108, 490, 16, c);
+			}
+		}
+		if (word == 15)
+		{
+			text_move = false;
+			Font::StrDraw(L"•”‰®‚ð‚¦‚ç‚ñ‚Å’Tõ‚µ‚æ‚¤", 50, 490, 32, c);
+			text_loop = false;
 		}
 	}
 }
