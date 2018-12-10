@@ -8,6 +8,7 @@
 #include "GameHead.h"
 #include "ObjItem.h"
 #include "ObjBlock.h"
+#include "ObjBackGround.h"
 #include "ObjHero.h"
 
 //使用するネームスペース
@@ -23,9 +24,9 @@ int block_data_map[4][15][20] =
 	{
 		// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{  1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 1
-		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
-		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },// 1
+		{  1,30,31,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31,31,30, 1, },// 2
+		{  1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
@@ -34,8 +35,8 @@ int block_data_map[4][15][20] =
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
-		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
-		{  1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
+		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
+		{  1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
 		{  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 
@@ -63,13 +64,13 @@ int block_data_map[4][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, },// 1
-		{ 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, },// 2
-		{ 1, 0, 0, 0, 7, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, },// 3
-		{ 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, },// 4
-		{ 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, },// 5
-		{ 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{96, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 7
+		{ 1, 0, 0, 0, 0,33,33, 0, 0,31,31, 0, 0,33,33, 0, 0, 0, 0, 1, },// 1
+		{ 1, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 1, },// 2
+		{ 1, 0, 0, 0,45,33,33, 0, 0, 0, 0, 0, 0,33,33,46, 0, 0, 0, 1, },// 3
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
+		{96, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,32, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
@@ -83,19 +84,19 @@ int block_data_map[4][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 1
+		{ 1, 0,31,34, 0, 0, 0, 0, 0, 0,35,35, 0,36,36, 0,35,35, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{ 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50, 2,94, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50, 2,94, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
+		{ 1,30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,30, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 };
@@ -121,6 +122,7 @@ void CObjBlock::Init()
 	blockm_x = 0.0f;
 	blockm_y = 0.0f;
 	blockdeleteYN = false;
+	animationtime = 0;
 	((UserData*)Save::GetData())->number1 = 402;
 }
 
@@ -129,6 +131,8 @@ void CObjBlock::Action()
 {
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	//背景を設定
+	CObjBackGround* bgro = (CObjBackGround*)Objs::GetObj(OBJ_BGROUND);
 
 	if (m_map[mapnum][hero_y][hero_x] == 50)
 	{
@@ -245,6 +249,23 @@ void CObjBlock::Action()
 			m_map[mapnum][blocky][blockx] = 0;
 		}
 	}
+
+	//アニメーション動かす用
+	animationtime++;
+	if (animationtime >= 61)
+	{
+		animationtime = 0;
+	}
+
+	//状況に合わせて常に
+	//背景切り替え
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			bgro->SetMapChip(mapnum, i, j, m_map[mapnum][i][j]);
+		}
+	}
 }
 
 //ドロー
@@ -255,17 +276,6 @@ void CObjBlock::Draw()
 
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画表示位置
-
-	//背景表示
-	src.m_top = 256.0f;
-	src.m_left = 0.0f;
-	src.m_right = 400.0f;
-	src.m_bottom = 512.0f;
-	dst.m_top = 0.0f;
-	dst.m_left =0.0f;
-	dst.m_right =640.0f;
-	dst.m_bottom = 512.0f;
-	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 	//テキストウィンドウ1（横向き)
 	src.m_top = 0.0f;
@@ -314,23 +324,6 @@ void CObjBlock::Draw()
 	{
 		for(int j=0;j<20;j++)
 		{
-			//ブロック表示
-			if(m_map[mapnum][i][j] == 1)
-			{
-				//切り取り位置の設定
-				src.m_top = 0.0f;
-				src.m_left = 320.5f;
-				src.m_right = src.m_left + 64.0f;
-				src.m_bottom = 64.0f;
-				//表示位置の設定
-	            dst.m_top = i*32.0f;
-	            dst.m_left = j*32.0f;
-	            dst.m_right = dst.m_left+32.0f;
-	            dst.m_bottom = dst.m_top+32.0f;
-
-	            //描画
-	            Draw::Draw(0, &src, &dst, c, 0.0f);
-			}
 			//鍵付き扉表示
 			if (m_map[mapnum][i][j] == 3)
 			{
@@ -416,17 +409,194 @@ void CObjBlock::Draw()
 				//描画
 				Draw::Draw(0, &src, &dst, c, 0.0f);
 			}
+			//----------------------------------------
 
-			if (m_map[mapnum][i][j] == 99)
+			//家具等マップ内障害物--------------------
+			//植物表示
+			if (m_map[mapnum][i][j] == 30)
 			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 16.0f;
+				src.m_bottom = src.m_top + 32.0f;
 				//表示位置の設定
-				dst.m_top = i*0.0f;
-				dst.m_left = j*0.0f;
+				dst.m_top = i*32.0f-32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 64.0f;
+
+				//描画
+				Draw::Draw(7, &src, &dst, c, 0.0f);
+			}
+			//棚表示
+			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34)
+			{
+				int skipcount = 0;
+				int vase = 0;
+
+				//花瓶の表示をする
+				if (m_map[mapnum][i][j] == 34)
+				{
+					vase = 1;
+				}
+
+				if (m_map[mapnum][i][j + 1] == 31 || m_map[mapnum][i][j + 1] == 34)
+				{
+					skipcount++;
+					//花瓶の表示をする
+					if (m_map[mapnum][i][j + 1] == 34)
+					{
+						vase = 2;
+					}
+				}
+
+				//棚表示
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f * (skipcount + 1);
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(8, &src, &dst, c, 0.0f);
+
+				if (vase >= 1)
+				{
+					//切り取り位置の設定
+					src.m_top = 0.0f;
+					src.m_left = 0.0f;
+					src.m_right = src.m_left + 32.0f;
+					src.m_bottom = src.m_top + 32.0f;
+					//表示位置の設定
+					dst.m_top = i*32.0f - 16.0f;
+					dst.m_left = (j + vase - 1) * 32.0f + 8.0f;
+					dst.m_right = dst.m_left + 32.0f - 8.0f;
+					dst.m_bottom = dst.m_top + 32.0f - 8.0f;
+
+					//描画
+					Draw::Draw(15, &src, &dst, c, 0.0f);
+				}
+
+				j += skipcount;
+			}
+			//机(小)表示
+			if (m_map[mapnum][i][j] == 32)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 128.0f;
+				src.m_bottom = src.m_top + 128.0f;
+
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
 				dst.m_right = dst.m_left + 32.0f;
 				dst.m_bottom = dst.m_top + 32.0f;
 
 				//描画
-				Draw::Draw(0, &src, &dst, c, 0.0f);
+				Draw::Draw(13, &src, &dst, c, 0.0f);
+			}
+			//ベッド表示
+			if (m_map[mapnum][i][j] == 33)
+			{
+				int skipcountx = 0;
+				int county = 0;
+
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 32.0f;
+				src.m_bottom = src.m_top + 64.0f;
+
+				for (int s = 1; m_map[mapnum][i][j + s] == 33; s++)
+				{
+					skipcountx++;
+				}
+				while (m_map[mapnum][i - 1 - county][j] == 33)
+				{
+					county++;
+				}
+
+				//表示位置の設定
+				dst.m_top = (i - county)*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
+				dst.m_bottom = dst.m_top + 32.0f * (county + 1);
+
+				//描画
+				Draw::Draw(14, &src, &dst, c, 0.0f);
+
+				j += skipcountx;
+			}
+			//本棚表示
+			if ((m_map[mapnum][i][j] == 35  || m_map[mapnum][i][j] == 36) && hero_y < i)
+			{
+				int skipcountx = 0;
+				int overcount = 0;
+				int county = 0;
+
+				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36; s++)
+				{
+					skipcountx++;
+					if (skipcountx == 5)
+					{
+						skipcountx = 1;
+						overcount += 1;
+					}
+				}
+				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36)
+				{
+					county++;
+				}
+
+				for (int x = 0; x <= skipcountx;)
+				{
+					if (overcount > 0)
+					{
+						//切り取り位置の設定
+						src.m_top = 0.0f;
+						src.m_left = 0.0f;
+						src.m_right = src.m_left + 64.0f;
+						src.m_bottom = src.m_top + 64.0f;
+
+						//表示位置の設定
+						dst.m_top = (i - county)*32.0f - 16.0f;
+						dst.m_left = j*32.0f;
+						dst.m_right = dst.m_left + 128.0f;
+						dst.m_bottom = dst.m_top + 32.0f * (county + 2);
+
+						x += 4;
+						overcount -= 1;
+					}
+					else
+					{
+						//切り取り位置の設定
+						src.m_top = 0.0f;
+						src.m_left = 0.0f;
+						src.m_right = src.m_left + 16.0f * (skipcountx + 1);
+						src.m_bottom = src.m_top + 64.0f;
+
+						//表示位置の設定
+						dst.m_top = (i - county)*32.0f - 16.0f;
+						dst.m_left = j*32.0f;
+						dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
+						dst.m_bottom = dst.m_top + 32.0f * (county + 2);
+
+						x += skipcountx;
+					}
+				}
+
+				//描画
+				Draw::Draw(16, &src, &dst, c, 0.0f);
+
+				j += skipcountx;
 			}
 		}
 	}
@@ -440,7 +610,9 @@ bool CObjBlock::ThereIsBlock(int vec)
 		if (m_map[mapnum][hero_y][hero_x + 1] != 1 &&
 			m_map[mapnum][hero_y][hero_x + 1] != 3 &&
 			m_map[mapnum][hero_y][hero_x + 1] != 5 &&
-			m_map[mapnum][hero_y][hero_x + 1] != 7)
+			m_map[mapnum][hero_y][hero_x + 1] != 7 &&
+			(m_map[mapnum][hero_y][hero_x + 1] < 30 ||
+			m_map[mapnum][hero_y][hero_x + 1] > 44))
 		{
 			hero_x = hero_x + 1;
 			return true;
@@ -456,7 +628,9 @@ bool CObjBlock::ThereIsBlock(int vec)
 		if (m_map[mapnum][hero_y][hero_x - 1] != 1 &&
 			m_map[mapnum][hero_y][hero_x - 1] != 3 &&
 			m_map[mapnum][hero_y][hero_x - 1] != 5 &&
-			m_map[mapnum][hero_y][hero_x - 1] != 7)
+			m_map[mapnum][hero_y][hero_x - 1] != 7 &&
+			(m_map[mapnum][hero_y][hero_x - 1] < 30 ||
+			m_map[mapnum][hero_y][hero_x - 1] > 44))
 		{
 			hero_x = hero_x - 1;
 			return true;
@@ -472,7 +646,9 @@ bool CObjBlock::ThereIsBlock(int vec)
 		if (m_map[mapnum][hero_y - 1][hero_x] != 1 &&
 			m_map[mapnum][hero_y - 1][hero_x] != 3 &&
 			m_map[mapnum][hero_y - 1][hero_x] != 5 &&
-			m_map[mapnum][hero_y - 1][hero_x] != 7)
+			m_map[mapnum][hero_y - 1][hero_x] != 7 &&
+			(m_map[mapnum][hero_y - 1][hero_x] < 30 ||
+			m_map[mapnum][hero_y - 1][hero_x] > 44))
 		{
 			hero_y = hero_y - 1;
 			return true;
@@ -488,7 +664,9 @@ bool CObjBlock::ThereIsBlock(int vec)
 		if (m_map[mapnum][hero_y + 1][hero_x] != 1 &&
 			m_map[mapnum][hero_y + 1][hero_x] != 3 &&
 			m_map[mapnum][hero_y + 1][hero_x] != 5 &&
-			m_map[mapnum][hero_y + 1][hero_x] != 7)
+			m_map[mapnum][hero_y + 1][hero_x] != 7 &&
+			(m_map[mapnum][hero_y + 1][hero_x] < 30 ||
+			m_map[mapnum][hero_y + 1][hero_x] > 44))
 		{
 			hero_y = hero_y + 1;
 			return true;
@@ -544,6 +722,12 @@ void CObjBlock::HeroAction(int vec)
 			blockdeleteYN = false;
 			eventclockflag = true;
 		}
+		//鍵判定
+		if (m_map[mapnum][hero_y][hero_x + 1] == 46)
+		{
+			m_map[mapnum][hero_y][hero_x + 1] = 0;
+			itm->GetItem(1);
+		}
 	}
 	//左
 	if (vec == 2)
@@ -563,6 +747,12 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(2);
+		}
+		//鍵判定
+		if (m_map[mapnum][hero_y][hero_x - 1] == 46)
+		{
+			m_map[mapnum][hero_y][hero_x - 1] = 0;
+			itm->GetItem(1);
 		}
 	}
 	//上
@@ -607,6 +797,12 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(2);
 		}
+		//鍵判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 46)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 0;
+			itm->GetItem(1);
+		}
 	}
 	//下
 	if (vec == 4)
@@ -627,12 +823,19 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(2);
 		}
+		//鍵判定
+		if (m_map[mapnum][hero_y + 1][hero_x] == 46)
+		{
+			m_map[mapnum][hero_y + 1][hero_x] = 0;
+			itm->GetItem(1);
+		}
 	}
 }
 //マップ切り替え用関数
 void CObjBlock::Mapchange(int mapn)
 {
-	
+	//主人公の位置を設定
+	CObjBackGround* bgro = (CObjBackGround*)Objs::GetObj(OBJ_BGROUND);
 	//マップ保存-------------------------------------------
 	for (int i = 0; i < 15; i++)
 	{
@@ -650,7 +853,15 @@ void CObjBlock::Mapchange(int mapn)
 			m_map[mapn][i][j] = block_data_map[mapn][i][j];
 		}
 	}
-	
+
+	//背景切り替え
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			bgro->SetMapChip(mapnum, i, j, m_map[mapnum][i][j]);
+		}
+	}
 }
 
 //主人公の位置をセットする
@@ -681,5 +892,48 @@ void CObjBlock::UnlockDoor(int vec, int num)
 	if (((UserData*)Save::GetData())->number1 == num)
 	{
 		m_map[mapnum][hero_y - 1][hero_x] = 0;
+	}
+}
+int CObjBlock::CheckBlockNumber(int vec, int x, int y)
+{
+	//左上の値を返す
+	if (vec == 1)
+	{
+		return m_map[mapnum][y - 1][x - 1];
+	}
+	//上の値を返す
+	if (vec == 2)
+	{
+		return m_map[mapnum][y - 1][x];
+	}
+	//右上の値を返す
+	if (vec == 3)
+	{
+		return m_map[mapnum][y - 1][x + 1];
+	}
+	//右の値を返す
+	if (vec == 4)
+	{
+		return m_map[mapnum][y][x + 1];
+	}
+	//右下の値を返す
+	if (vec == 5)
+	{
+		return m_map[mapnum][y + 1][x + 1];
+	}
+	//下の値を返す
+	if (vec == 6)
+	{
+		return m_map[mapnum][y + 1][x];
+	}
+	//左下の値を返す
+	if (vec == 7)
+	{
+		return m_map[mapnum][y + 1][x - 1];
+	}
+	//左の値を返す
+	if (vec == 8)
+	{
+		return m_map[mapnum][y][x - 1];
 	}
 }

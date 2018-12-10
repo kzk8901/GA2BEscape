@@ -87,6 +87,9 @@
     <ClInclude Include="ObjKirara.h">
       <Filter>ソース ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="ObjBackGround.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameL\Audio.cpp">
@@ -147,6 +150,9 @@
       <Filter>ソース ファイル\アイテム</Filter>
     </ClCompile>
     <ClCompile Include="ObjKirara.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjBackGround.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

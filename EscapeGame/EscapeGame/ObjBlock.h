@@ -15,6 +15,7 @@ public:
 	void Draw();   //ドロー
 	int  GetX() { return hero_x; }
 	int  GetY() { return hero_y; }
+	int  CheckBlockNumber(int vec, int x, int y);
 
 	bool ThereIsBlock(int vec);
 	void HeroAction(int vec);
@@ -37,4 +38,5 @@ private:
 	float blockm_x;
 	float blockm_y;
 	int mapnum; //マップナンバー
+	int animationtime;   //アニメーションのための時間管理
 };
