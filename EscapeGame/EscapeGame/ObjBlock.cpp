@@ -170,7 +170,7 @@ void CObjBlock::Action()
 		if (room_c[0] == false)
 		{
 			text_m = 1;
-			room_c[0] == true;
+			room_c[0] = true;
 		}
 		else if(room_c[0] == true)
 		{
