@@ -23,7 +23,7 @@ class CObjHero : public CObj
 	   void SetNumlock(bool n) { numlock_flag = n; }
 	   void SetLockpiece(int p) { wpiece = p; }
 	   void SetEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
-	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  move_flag = true; }
+	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  hero_vec=v;  move_flag = true; }
 	   void SetShowItemNumber(int i);
   private:
 	  float m_px; //位置
@@ -43,6 +43,7 @@ class CObjHero : public CObj
 	  int selectnum;  //左から何番目の数を動かすのか
 	  int word;   //テキストウィンドウ制御
 	  int eventnumber; //どのイベントを動かすか
+	  int hero_vec;   //主人公の向いている方向
 
 	  bool eventflag; //イベントフラグ
 	  bool move_flag; //動くためのフラグ
