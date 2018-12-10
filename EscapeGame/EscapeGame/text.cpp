@@ -103,7 +103,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚Ë‚¦‘t‘½c‰J‚¢‚Â‚â‚Þ‚©‚ÈH", 108, 590 - time, 16, c);
@@ -115,7 +115,7 @@ void CObjText::Draw()
 		}
 		else if (word == 2)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚±‚ÌŠ´‚¶‚¾‚Æ‚·‚®‚â‚Þ‚ÆŽv‚¢‚Ü‚·‚ª", 108, 590 - time, 16, c);
@@ -139,7 +139,7 @@ void CObjText::Draw()
 		}
 		else if (word == 4)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:’N!?", 108, 590 - time, 16, c);
@@ -175,7 +175,7 @@ void CObjText::Draw()
 		}
 		else if (word == 7)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚çA“¯‚¶ŠwZ‚ÌƒZƒ“ƒpƒC", 108, 590 - time, 16, c);
@@ -187,7 +187,7 @@ void CObjText::Draw()
 		}
 		else if (word == 8)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚½‚µ‚Ì–¼‘O‚Í‘å¯‚«‚ç‚çôƒAƒCƒhƒ‹‚â‚Á‚Ä‚Ü‚·I", 108, 590 - time, 16, c);
@@ -199,7 +199,7 @@ void CObjText::Draw()
 		}
 		else if (word == 9)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‰^ˆ«‚­’Ê‚è‰J‚É~‚ç‚ê‹}ç¯‰Jh‚è‚µ‚Ä‚é‚Ì", 108, 590 - time, 16, c);
@@ -223,7 +223,7 @@ void CObjText::Draw()
 		}
 		else if (word == 11)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Á‚¿‚ÍŽ„‚Ìƒ}ƒl[ƒWƒƒ[‚Ì‘t‘½‚æ", 108, 590 - time, 16, c);
@@ -235,7 +235,7 @@ void CObjText::Draw()
 		}
 		else if (word== 12)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:ŠÝ–ì‘t‘½‚Å‚·B", 108, 590 - time, 16, c);
@@ -247,7 +247,7 @@ void CObjText::Draw()
 		}
 		else if (word == 13)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚«‚ç‚ç—l‚Ìƒ}ƒl[ƒWƒƒ[Œ“ƒƒCƒh‚Å‚·", 108, 590 - time, 16, c);
@@ -259,7 +259,7 @@ void CObjText::Draw()
 		}
 		else if (word== 14)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:æ‹q‚ª‘½‚¢‚Ë", 108, 590 - time, 16, c);
@@ -283,7 +283,7 @@ void CObjText::Draw()
 		}
 		else if (word == 16)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:¶“k‰ï’·‚Ì–kã‰i‰“‚³‚ñ‚Å‚·‚Ë", 108, 590 - time, 16, c);
@@ -295,7 +295,7 @@ void CObjText::Draw()
 		}
 		else if (word == 17)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚»‚¤‚¾‚æ", 108, 590 - time, 16, c);
@@ -307,7 +307,7 @@ void CObjText::Draw()
 		}
 		else if (word == 18)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:ŒN‚Í‘å‹´‚³‚ñ‰Æ‚ÌƒƒCƒh‚³‚ñ‚¾‚Ë", 108, 590 - time, 16, c);
@@ -319,7 +319,7 @@ void CObjText::Draw()
 		}
 		else if (word == 19)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:ŠÝ–ì‘t‘½‚Å‚·", 108, 590 - time, 16, c);
@@ -343,7 +343,7 @@ void CObjText::Draw()
 		}
 		else if (word == 21)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½!‚Æ‚Á‚Æ‚Æ‹A‚é‚í‚æI", 108, 590 - time, 16, c);
@@ -355,7 +355,7 @@ void CObjText::Draw()
 		}
 		else if (word == 22)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½B‚»‚ê‚Å‚ÍŽ¸—ç‚µ‚Ü‚·", 108, 590 - time, 16, c);
@@ -379,7 +379,7 @@ void CObjText::Draw()
 		}
 		else if (word == 24)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:–l‚à‹A‚ç‚È‚«‚á", 108, 590 - time, 16, c);
@@ -415,7 +415,7 @@ void CObjText::Draw()
 		}
 		else if (word == 27)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ñ‚È‚í‚¯‚È‚¢‚Å‚µ‚å", 108, 590 - time, 16, c);
@@ -427,7 +427,7 @@ void CObjText::Draw()
 		}
 		else if (word == 28)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:Ž¸—ç‚µ‚Ü‚·", 108, 590 - time, 16, c);
@@ -439,7 +439,7 @@ void CObjText::Draw()
 		}
 		else if (word == 29)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:ŠJ‚«‚Ü‚¹‚ñ‚Ë", 108, 590 - time, 16, c);
@@ -451,7 +451,7 @@ void CObjText::Draw()
 		}
 		else if (word == 30)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:–{“–‚©‚¢H", 108, 590 - time, 16, c);
@@ -475,7 +475,7 @@ void CObjText::Draw()
 		}
 		else if (word == 32)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Á‚¿‚ÌƒhƒA‚ÍŠJ‚­‚í‚æ", 108, 590 - time, 16, c);
@@ -499,7 +499,7 @@ void CObjText::Draw()
 		}
 		else if (word == 34)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚ ‚Ü‚è‚¨Š©‚ß‚Í‚µ‚Ü‚¹‚ñ‚Ë", 108, 590 - time, 16, c);
@@ -511,7 +511,7 @@ void CObjText::Draw()
 		}
 		else if (word== 35)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:ŽžŠÔ‚ª‚½‚Ä‚Î‰ä‚ª‰Æ‚Ì‹~•ƒ`[ƒ€‚ª‹ì‚¯•t‚¯‚Ü‚·‚Ì‚Å", 108, 590 - time, 16, c);
@@ -525,7 +525,7 @@ void CObjText::Draw()
 		}
 		else if (word == 36)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚Å‚àA‚±‚ñ‚È‹@‰ï–Å‘½‚É‚È‚¢‚µ–l‚Í’Tõ‚ÉŽ^¬‚©‚È", 108, 590 - time, 16, c);
@@ -537,7 +537,7 @@ void CObjText::Draw()
 		}
 		else if (word == 37)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚à’Tõ‚µ‚½‚¢‚í", 108, 590 - time, 16, c);
@@ -549,7 +549,7 @@ void CObjText::Draw()
 		}
 		else if (word == 38)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½A‹~•ƒ`[ƒ€‚ÌŽè”z‚Í‘Ò‚¿‚È‚³‚¢", 108, 590 - time, 16, c);
@@ -561,7 +561,7 @@ void CObjText::Draw()
 		}
 		else if (word ==39)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚µ‚©‚µc", 108, 590 - time, 16, c);
@@ -573,7 +573,7 @@ void CObjText::Draw()
 		}
 		else if (word == 40)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½I", 108, 590 - time, 16, c);
@@ -585,7 +585,7 @@ void CObjText::Draw()
 		}
 		else if (word == 41)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½", 108, 590 - time, 16, c);
@@ -597,7 +597,7 @@ void CObjText::Draw()
 		}
 		else if (word == 42)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚Å‚µ‚½‚çŽ„‚ª‚Ü‚¸‘S•”‰®‚ÌˆÀ‘S‚ðŠm‚©‚ß‚Ü‚·", 108, 590 - time, 16, c);
@@ -609,7 +609,7 @@ void CObjText::Draw()
 		}
 		else if (word == 43)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚»‚ÌŒãŠF‚³‚ñ‚É’Tõ‚µ‚Ä‚à‚ç‚¤‚Æ‚¢‚¤‚±‚Æ‚Åc", 108, 590 - time, 16, c);
@@ -621,7 +621,7 @@ void CObjText::Draw()
 		}
 		else if (word == 44)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ñ‚È‚±‚Æ‚µ‚½‚çâ‘Î‹–‚³‚È‚¢‚©‚ç‚ËH", 108, 590 - time, 16, c);
@@ -633,7 +633,7 @@ void CObjText::Draw()
 		}
 		else if (word== 45)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚Å‚µ‚½‚ç³–Ê‚Ì•”‰®‚Ì’Tõ‚È‚ç‚æ‚ë‚µ‚¢‚Å‚µ‚å‚¤H", 108, 590 - time, 16, c);
@@ -645,7 +645,7 @@ void CObjText::Draw()
 		}
 		else if (word == 46)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ê‚È‚ç‚¢‚¢‚í", 108, 590 - time, 16, c);
@@ -657,7 +657,7 @@ void CObjText::Draw()
 		}
 		else if (word == 47)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚ –l‚Í‚ ‚Á‚¿‚Ì•”‰®‚ð’Tõ‚·‚é‚æ", 108, 590 - time, 16, c);
@@ -669,7 +669,7 @@ void CObjText::Draw()
 		}
 		else if (word == 48)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚¨Šè‚¢‚µ‚Ü‚·‚Ëæ”y", 108, 590 - time, 16, c);
@@ -681,7 +681,7 @@ void CObjText::Draw()
 		}
 		else if (word == 49)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:“ä‚ÌŠÙ‚Ì’Tõ‚ÌŠJŽn‚¾[I", 108, 590 - time, 16, c);
@@ -693,7 +693,7 @@ void CObjText::Draw()
 		}
 		else if (word == 50)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚¨[I", 108, 590 - time, 16, c);
@@ -742,7 +742,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚ A–PŒNI", 108, 590 - time, 16, c);
@@ -766,7 +766,7 @@ void CObjText::Draw()
 		}
 		else if (word == 3)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚±‚Ì•”‰®‚¢‚ë‚¢‚ë’²‚×‚Ä‚ñ‚Ì‚æ", 108, 590 - time, 16, c);
@@ -790,7 +790,7 @@ void CObjText::Draw()
 		}
 		else if (word == 5)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‰½‚àŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚íc", 108, 590 - time, 16, c);
@@ -826,7 +826,7 @@ void CObjText::Draw()
 		}
 		else if (word == 8)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚ ‚è‚ª‚Æ‚¤", 108, 590 - time, 16, c);
@@ -838,7 +838,7 @@ void CObjText::Draw()
 		}
 		else if (word == 9)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚ê‚¶‚á‚ ‚Æ‚Á‚Æ‚ÆŽèŠ|‚©‚èŒ©‚Â‚¯‚é‚í‚æI", 108, 590 - time, 16, c);
@@ -878,7 +878,7 @@ void CObjText::Draw()
 		}
 		else if (word == 12)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚Ù‚ñ‚ÆH", 108, 590 - time, 16, c);
@@ -890,7 +890,7 @@ void CObjText::Draw()
 		}
 		else if (word == 13)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:Œ‹‹ÇŽ„‰½‚àŒ©‚Â‚¯‚ç‚ê‚È‚©‚Á‚½‚í", 108, 590 - time, 16, c);
@@ -914,7 +914,7 @@ void CObjText::Draw()
 		}
 		else if (word == 15)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:S”z‚È‚¢‚í", 108, 590 - time, 16, c);
@@ -926,7 +926,7 @@ void CObjText::Draw()
 		}
 		else if (word == 16)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:¡“x‚±‚»‰½‚©Œ©‚Â‚ß‚Ä‚ ‚°‚é", 108, 590 - time, 16, c);
@@ -962,7 +962,7 @@ void CObjText::Draw()
 		}
 		else if (word == 19)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:Ž„‚Í‚à‚¤­‚µ‚±‚±‚ð’Tõ‚µ‚Ä‚é‚í", 108, 590 - time, 16, c);
@@ -986,7 +986,7 @@ void CObjText::Draw()
 		}
 		else if (word == 21)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚»‚Á‚¿‚±‚»‹C‚ð‚Â‚¯‚È‚³‚¢‚æ", 108, 590 - time, 16, c);
@@ -1035,7 +1035,7 @@ void CObjText::Draw()
 		}
 		else if (word == 2)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚ A–P‚³‚ñB‚Ç‚¤‚©‚¢‚½‚µ‚Ü‚µ‚½‚©H", 108, 590 - time, 16, c);
@@ -1059,7 +1059,7 @@ void CObjText::Draw()
 		}
 		else if (word == 4)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚»‚¤‚©‚µ‚±‚Ü‚ç‚È‚­‚Ä‚à‘åä•v‚Å‚·‚æB“¯‚¢”N‚Å‚·‚©‚ç", 108, 590 - time, 16, c);
@@ -1083,7 +1083,7 @@ void CObjText::Draw()
 		}
 		else if (word == 6)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:E‹Æã‰˜‚¢•”‰®‚ðŒ©‚é‚Æ•Ð•t‚¯‚½‚­‚È‚é‚ñ‚Å‚·", 108, 590 - time, 16, c);
@@ -1107,7 +1107,7 @@ void CObjText::Draw()
 		}
 		else if (word == 8)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚¦H‚¢‚¢‚ñ‚Å‚·‚©H", 108, 590 - time, 16, c);
@@ -1131,7 +1131,7 @@ void CObjText::Draw()
 		}
 		else if (word == 10)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:\‚µ–ó‚ ‚è‚Ü‚¹‚ñBŽè‘‚­I‚í‚ç‚¹‚Ü‚·‚Ì‚Å", 108, 590 - time, 16, c);
@@ -1155,7 +1155,7 @@ void CObjText::Draw()
 		}
 		else if (word == 12)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚Í‚¢I", 108, 590 - time, 16, c);
@@ -1195,7 +1195,7 @@ void CObjText::Draw()
 		}
 		else if (word == 15)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚È‚ñ‚Å‚µ‚å‚¤‚Ë", 108, 590 - time, 16, c);
@@ -1219,7 +1219,7 @@ void CObjText::Draw()
 		}
 		else if (word == 17)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚í‚©‚è‚Ü‚µ‚½B‚¨ì—l‚ð‚æ‚ë‚µ‚­‚¨Šè‚¢‚µ‚Ü‚·", 108, 590 - time, 16, c);
@@ -1256,7 +1256,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:–PŒNA‚Ç‚¤‚©‚µ‚½‚Ì‚©‚ÈH", 108, 590 - time, 16, c);
@@ -1280,7 +1280,7 @@ void CObjText::Draw()
 		}
 		else if (word == 3)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚Ü‚¾‰½‚É‚àŒ©‚Â‚©‚Á‚Ä‚È‚¢‚ñ‚¾", 108, 590 - time, 16, c);
@@ -1292,7 +1292,7 @@ void CObjText::Draw()
 		}
 		else if (word == 4)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚»‚¤‚¾I", 108, 590 - time, 16, c);
@@ -1304,7 +1304,7 @@ void CObjText::Draw()
 		}
 		else if (word == 5)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:’T‚·‚Ìˆê‚ÉŽè“`‚Á‚Ä‚æ", 108, 590 - time, 16, c);
@@ -1328,7 +1328,7 @@ void CObjText::Draw()
 		}
 		else if (word == 7)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚ ‚è‚ª‚Æ‚¤B", 108, 590 - time, 16, c);
@@ -1340,7 +1340,7 @@ void CObjText::Draw()
 		}
 		else if (word == 8)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚æ‚ë‚µ‚­I", 108, 590 - time, 16, c);
@@ -1369,7 +1369,7 @@ void CObjText::Draw()
 			}
 			else if (word == 10)
 			{
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(52, &src, &dst, c, 0.0f);
 				if (time < 100)
 				{
 					Font::StrDraw(L"‰i‰“:‚±‚ê‚Í‰½‚©‚Ìƒƒ‚‚©‚È?", 108, 590 - time, 16, c);
@@ -1393,7 +1393,7 @@ void CObjText::Draw()
 			}
 			else if (word == 12)
 			{
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(52, &src, &dst, c, 0.0f);
 				if (time < 100)
 				{
 					Font::StrDraw(L"‰i‰“:‚à‚µ‚©‚µ‚½‚ç‘¼‚É‚à‰½‚©‚ ‚é‚©‚à‚µ‚ê‚È‚¢‚Ë", 108, 590 - time, 16, c);
@@ -1417,7 +1417,7 @@ void CObjText::Draw()
 			}
 			else if (word == 14)
 			{
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(52, &src, &dst, c, 0.0f);
 				if (time < 100)
 				{
 					Font::StrDraw(L"‰i‰“:–PŒN‚Í‘¼‚Ì•”‰®‚ð’²‚×‚És‚Á‚Ä‚Ý‚Ä‚æ", 108, 590 - time, 16, c);
@@ -1441,7 +1441,7 @@ void CObjText::Draw()
 			}
 			else if (word == 16)
 			{
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(52, &src, &dst, c, 0.0f);
 				if (time < 100)
 				{
 					Font::StrDraw(L"‰i‰“:–l‚Í¶“k‰ï’·‚È‚ñ‚¾‚æ?‘åä•v‚¾‚æ", 108, 590 - time, 16, c);
@@ -1465,7 +1465,7 @@ void CObjText::Draw()
 			}
 			else if (word == 18)
 			{
-				Draw::Draw(8, &src, &dst, c, 0.0f);
+				Draw::Draw(52, &src, &dst, c, 0.0f);
 				if (time < 100)
 				{
 					Font::StrDraw(L"‰i‰“:”C‚¹‚Ä", 108, 590 - time, 16, c);
@@ -1506,7 +1506,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚â‚Á‚½‚í‚Ë", 108, 590 - time, 16, c);
@@ -1518,7 +1518,7 @@ void CObjText::Draw()
 		}
 		else if (word == 2)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚»‚ê‚Åƒƒ‚‚É‚Í‚È‚ñ‚Ä‘‚¢‚Ä‚¢‚é‚ñ‚Å‚·‚©?", 108, 590 - time, 16, c);
@@ -1542,7 +1542,7 @@ void CObjText::Draw()
 		}
 		else if (word == 4)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:ƒCƒtƒFƒCƒIƒ“H", 108, 590 - time, 16, c);
@@ -1554,7 +1554,7 @@ void CObjText::Draw()
 		}
 		else if (word == 5)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚È‚É‚æ‚»‚ê", 108, 590 - time, 16, c);
@@ -1581,7 +1581,7 @@ void CObjText::Draw()
 		}
 		else if (word == 7)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:“ñŠK‚É—ˆ‚½‚Ì‚Í‚¢‚¢‚¯‚Ç‚±‚ê‚¶‚áo‚ç‚ê‚È‚¢‚í‚æH", 108, 590 - time, 16, c);
@@ -1605,7 +1605,7 @@ void CObjText::Draw()
 		}
 		else if (word == 9)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚±‚Ì•”‰®‚à•ª‚©‚ê‚Ä’T‚·Š´‚¶‚Å‚¢‚¢‚©‚ÈH", 108, 590 - time, 16, c);
@@ -1617,7 +1617,7 @@ void CObjText::Draw()
 		}
 		else if (word == 10)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‚È‚çŽ„‚Í‚±‚Á‚¿‚És‚­‚íI", 108, 590 - time, 16, c);
@@ -1629,7 +1629,7 @@ void CObjText::Draw()
 		}
 		else if (word == 11)
 		{
-			Draw::Draw(6, &src, &dst, c, 0.0f);
+			Draw::Draw(50, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‚«‚ç‚ç:‘t‘½‚Í‚ ‚Á‚¿‚ð’²‚×‚È‚³‚¢I", 108, 590 - time, 16, c);
@@ -1641,7 +1641,7 @@ void CObjText::Draw()
 		}
 		else if (word == 12)
 		{
-			Draw::Draw(7, &src, &dst, c, 0.0f);
+			Draw::Draw(51, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‘t‘½:‚©‚µ‚±‚Ü‚è‚Ü‚µ‚½", 108, 590 - time, 16, c);
@@ -1653,7 +1653,7 @@ void CObjText::Draw()
 		}
 		else if (word == 13)
 		{
-			Draw::Draw(8, &src, &dst, c, 0.0f);
+			Draw::Draw(52, &src, &dst, c, 0.0f);
 			if (time < 100)
 			{
 				Font::StrDraw(L"‰i‰“:‚»‚ê‚¶‚á‚ –l‚ÍŽc‚è‚Ì•”‰®‚ð’²‚×‚æ‚¤‚©‚È", 108, 590 - time, 16, c);

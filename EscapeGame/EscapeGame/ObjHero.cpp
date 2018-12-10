@@ -538,7 +538,7 @@ void CObjHero::Draw()
 	dst.m_right = m_px + 32.0f ;
 	dst.m_bottom = m_py + 32.0f ;
 	
-	Draw::Draw(10, &src, &dst, c, 0.0f);
+	Draw::Draw(53, &src, &dst, c, 0.0f);
 
 	//ナンバーロック表示
 	if (numlock_flag)
