@@ -24,7 +24,7 @@ int block_data_map[4][15][20] =
 	//スタートマップ1F mapnum==0
 	{
 		// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
-		{  1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{  1, 1, 1, 1, 1, 1, 1, 1, 1,99, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
 		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },// 1
 		{  1,30,31,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31,31,30, 1, },// 2
 		{  1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
@@ -85,7 +85,7 @@ int block_data_map[4][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0,31,34, 0, 0, 0, 0, 0, 0,35,35, 0,36,36, 0,35,35, 0, 1, },// 1
+		{ 1, 0,31,34, 0, 0, 0, 0, 0, 0,35,35, 0,37,37, 0,35,35, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
@@ -568,13 +568,13 @@ void CObjBlock::Draw()
 				j += skipcountx;
 			}
 			//本棚表示
-			if ((m_map[mapnum][i][j] == 35  || m_map[mapnum][i][j] == 36) && hero_y < i)
+			if ((m_map[mapnum][i][j] == 35  || m_map[mapnum][i][j] == 36 || m_map[mapnum][i][j] == 37) && hero_y < i)
 			{
 				int skipcountx = 0;
 				int overcount = 0;
 				int county = 0;
 
-				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36; s++)
+				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37; s++)
 				{
 					skipcountx++;
 					if (skipcountx == 5)
@@ -583,7 +583,7 @@ void CObjBlock::Draw()
 						overcount += 1;
 					}
 				}
-				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36)
+				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36 || m_map[mapnum][i - 1 - county][j] == 37)
 				{
 					county++;
 				}
@@ -828,6 +828,26 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(2);
+		}
+		//棚判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 37)
+		{
+			bool gby = false;
+			itm->GetItem(3);
+			for (int k = 0; gby == false; k++)
+			{
+				gby = true;
+				if (m_map[mapnum][hero_y - 1][hero_x - k] == 37)
+				{
+					m_map[mapnum][hero_y - 1][hero_x - k] = 36;
+					gby = false;
+				}
+				if (m_map[mapnum][hero_y - 1][hero_x + k] == 37)
+				{
+					m_map[mapnum][hero_y - 1][hero_x + k] = 36;
+					gby = false;
+				}
+			}
 		}
 		//鍵判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 46)

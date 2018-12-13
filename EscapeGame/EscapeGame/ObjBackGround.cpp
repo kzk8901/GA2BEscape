@@ -142,13 +142,13 @@ void CObjBackGround::Draw()
 				}
 			}
 			//–{’I•\Ž¦
-			if (m_map[mapnum][i][j] == 35 || m_map[mapnum][i][j] == 36)
+			if (m_map[mapnum][i][j] == 35 || m_map[mapnum][i][j] == 36 || m_map[mapnum][i][j] == 37)
 			{
 				int skipcountx = 0;
 				int overcount = 0;
 				int county = 0;
 
-				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36; s++)
+				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37; s++)
 				{
 					skipcountx++;
 					if (skipcountx == 5)
@@ -157,7 +157,7 @@ void CObjBackGround::Draw()
 						overcount += 1;
 					}
 				}
-				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36)
+				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36 || m_map[mapnum][i - 1 - county][j] == 37)
 				{
 					county++;
 				}
@@ -236,7 +236,7 @@ void CObjBackGround::Draw()
 				dst.m_bottom = dst.m_top + 32.0f;
 
 				//•`‰æ
-				Draw::Draw(6, &src, &dst, c, 0.0f);
+				Draw::Draw(17, &src, &dst, c, 0.0f);
 			}
 		}
 	}
