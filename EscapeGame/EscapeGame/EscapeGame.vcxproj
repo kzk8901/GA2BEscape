@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ObjBackGround.h" />
     <ClInclude Include="ObjBlock.h" />
     <ClInclude Include="GameHead.h" />
     <ClInclude Include="GameL\Audio.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="text.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ObjBackGround.cpp" />
     <ClCompile Include="ObjBlock.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />
     <ClCompile Include="GameL\DirectXDevice.cpp" />

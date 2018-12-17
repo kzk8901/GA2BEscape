@@ -15,6 +15,9 @@ public:
 	void Init();   //イニシャライズ
 	void Action(); //アクション
 	void Draw();   //ドロー
+	int  GetX() { return hero_x; }
+	int  GetY() { return hero_y; }
+	int  CheckBlockNumber(int vec, int x, int y);
 	int  HeroGetX() { return hero_x; }
 	int  HeroGetY() { return hero_y; }
 	int  KiraraGetX() { return kirara_x; }
@@ -44,4 +47,5 @@ private:
 	float blockm_x;
 	float blockm_y;
 	int mapnum; //マップナンバー
+	int animationtime;   //アニメーションのための時間管理
 };
