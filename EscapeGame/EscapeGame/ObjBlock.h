@@ -15,13 +15,16 @@ public:
 	void Init();   //イニシャライズ
 	void Action(); //アクション
 	void Draw();   //ドロー
-	int  GetX() { return hero_x; }
-	int  GetY() { return hero_y; }
+	int  HeroGetX() { return hero_x; }
+	int  HeroGetY() { return hero_y; }
+	int  KiraraGetX() { return kirara_x; }
+	int  KiraraGetY() { return kirara_y; }
 
-	bool ThereIsBlock(int vec);
+	bool ThereIsBlock(int vec ,int Characternum);//方向と動かすキャラ
 	void HeroAction(int vec);
 	void Mapchange(int mapn);
 	void SetHero();
+	void SetKirara();
 
 	void UnlockDoor(int vec, int num);
 	void Set_Map_Num(int n) { mapnum = n; }//マップナンバーをセットする
@@ -29,6 +32,8 @@ private:
 	int m_map[5][15][20];//マップ情報
 	int hero_x; //主人公位置（X）
 	int hero_y; //主人公位置（Y）
+	int kirara_x; //きらら位置（X）
+	int kirara_y; //きらら位置（Y）
 
 	bool eventclockflag; //イベント中のフラグ
 	int  eventclocktime; //イベント中の時間管理

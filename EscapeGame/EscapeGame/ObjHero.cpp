@@ -61,11 +61,11 @@ void CObjHero::Action()
 		if (eventnumber == 1 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
-			if (block->GetX() > 5 && block->ThereIsBlock(2) == true)
+			if (block->HeroGetX() > 5 && block->ThereIsBlock(2,1) == true)
 			{
 				SetMoveVec(2);
 			}
-			else if (block->GetY() < 13 && block->ThereIsBlock(4) == true)
+			else if (block->HeroGetY() < 13 && block->ThereIsBlock(4,1) == true)
 			{
 				SetMoveVec(4);
 			}
@@ -81,11 +81,11 @@ void CObjHero::Action()
 		//X = 8, Y = 2の位置まで移動
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (block->GetY() > 2 && block->ThereIsBlock(3) == true)
+			if (block->HeroGetY() > 2 && block->ThereIsBlock(3,1) == true)
 			{
 				SetMoveVec(3);
 			}
-			else if (block->GetX() < 8 && block->ThereIsBlock(1) == true)
+			else if (block->HeroGetX() < 8 && block->ThereIsBlock(1,1) == true)
 			{
 				SetMoveVec(1);
 			}
@@ -109,7 +109,7 @@ void CObjHero::Action()
 			if (Input::GetVKey(VK_RIGHT) == true)
 			{
 				//右にブロックなければそのまま動く
-				if (block->ThereIsBlock(1) == true)
+				if (block->ThereIsBlock(1,1) == true)
 				{
 					SetMoveVec(1);
 				}
@@ -124,7 +124,7 @@ void CObjHero::Action()
 			else if (Input::GetVKey(VK_LEFT) == true)
 			{
 				//左にブロックがなければそのまま動く
-				if (block->ThereIsBlock(2) == true)
+				if (block->ThereIsBlock(2,1) == true)
 				{
 					SetMoveVec(2);
 				}
@@ -139,7 +139,7 @@ void CObjHero::Action()
 			else if (Input::GetVKey(VK_UP))
 			{
 				//上にブロックがなければそのまま動く
-				if (block->ThereIsBlock(3) == true)
+				if (block->ThereIsBlock(3,1) == true)
 				{
 					SetMoveVec(3);
 				}
@@ -154,7 +154,7 @@ void CObjHero::Action()
 			else if (Input::GetVKey(VK_DOWN) == true)
 			{
 				//下にブロックがなければそのまま動く
-				if (block->ThereIsBlock(4) == true)
+				if (block->ThereIsBlock(4,1) == true)
 				{
 					SetMoveVec(4);
 				}
@@ -538,7 +538,7 @@ void CObjHero::Draw()
 	dst.m_right = m_px + 32.0f ;
 	dst.m_bottom = m_py + 32.0f ;
 	
-	Draw::Draw(10, &src, &dst, c, 0.0f);
+	Draw::Draw(53, &src, &dst, c, 0.0f);
 
 	//ナンバーロック表示
 	if (numlock_flag)

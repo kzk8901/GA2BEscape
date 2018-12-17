@@ -85,11 +85,11 @@ int block_data_map[4][15][20] =
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 1
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, },// 2
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,51, 0, 1, },// 6
 		{ 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50, 2,94, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
@@ -108,7 +108,8 @@ void CObjBlock::Init()
 	mapnum = 0;
 
 	//主人公の位置を設定
-	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	CObjHero*   hero   = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
 
 	//マップデータをコピー
 	memcpy(m_map, block_data_map, sizeof(int)*(4 * 15 * 20));
@@ -130,11 +131,19 @@ void CObjBlock::Action()
 {
 	//主人公の位置を設定
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	//きららの位置を設定
+	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
 
 	if (m_map[mapnum][hero_y][hero_x] == 50)
 	{
 		m_map[mapnum][hero_y][hero_x] = 0;
-		hero->SetEventFlag(true,1);
+		hero->SetHeroEventFlag(true,1);
+	}
+
+	if (m_map[mapnum][hero_y][hero_x] == 51)
+	{
+		m_map[mapnum][hero_y][hero_x] = 0;
+		kirara->SetKiraraEventFlag(true, 1);
 	}
 
 	//スタートF1へ移動---------------------------------
@@ -147,13 +156,20 @@ void CObjBlock::Action()
 		//主人公の位置保存
 		//奏多
 		if (m_map[mapnum][hero_y][hero_x] == 98)
+		{
 			m_map[mapnum][hero_y - 1][hero_x] = 2;
+		}
 		//永遠
-		else if(m_map[mapnum][hero_y][hero_x] == 96)
+		else if (m_map[mapnum][hero_y][hero_x] == 96)
+		{
 			m_map[mapnum][hero_y][hero_x + 1] = 2;
+		}
 		//きらら
 		else if (m_map[mapnum][hero_y][hero_x] == 94)
+		{
 			m_map[mapnum][hero_y][hero_x - 1] = 2;
+			kirara->SetKiraraIn(false);
+		}
 		//次に行くナンバーを渡す
 		Mapchange(0);
 		//次のmapnumを入れる
@@ -224,14 +240,16 @@ void CObjBlock::Action()
 		{
 			text_m = -3;
 		}
+		kirara->SetKiraraIn(true);
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x + 1] = 2;
 		//次に行くナンバーを渡す
 		Mapchange(3);
 		//次のmapnumを入れる
 		mapnum = 3;
-		//主人公の位置更新
+		//キャラの位置更新
 		SetHero();
+		SetKirara();
 	}
 
 	//----------------------------------------------
@@ -239,7 +257,7 @@ void CObjBlock::Action()
 	//壁開ける用イベントフラグ
 	if (eventclockflag == true)
 	{
-		hero->SetEventFlag(true, 0);
+		hero->SetHeroEventFlag(true, 0);
 		eventclocktime++;
 		//------------------------------
 		if (blockmovevec == 1)
@@ -253,7 +271,7 @@ void CObjBlock::Action()
 		//------------------------------
 		if (eventclocktime > 64)
 		{
-			hero->SetEventFlag(false, 0);
+			hero->SetHeroEventFlag(false, 0);
 			eventclocktime = 0;
 			eventclockflag = 0;
 			//ブロックを消さない際の動き
@@ -464,70 +482,151 @@ void CObjBlock::Draw()
 	}
 }
 //動く方向にブロックがあるかどうかの判定
-bool CObjBlock::ThereIsBlock(int vec)
+//Characternum 1=主人公 2=きらら 3=奏多 4=永遠
+bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 {
-	//右動く時の動作
-	if (vec == 1)
+	//主人公
+	if (Characternum == 1)
 	{
-		if (m_map[mapnum][hero_y][hero_x + 1] != 1 &&
-			m_map[mapnum][hero_y][hero_x + 1] != 3 &&
-			m_map[mapnum][hero_y][hero_x + 1] != 5 &&
-			m_map[mapnum][hero_y][hero_x + 1] != 7)
+		//右動く時の動作
+		if (vec == 1)
 		{
-			hero_x = hero_x + 1;
-			return true;
+			if (m_map[mapnum][hero_y][hero_x + 1] != 1 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 3 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 5 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 7 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 8)
+			{
+				hero_x = hero_x + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		//左動く時の動作
+		if (vec == 2)
 		{
-			return false;
+			if (m_map[mapnum][hero_y][hero_x - 1] != 1 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 3 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 5 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 7 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 8)
+			{
+				hero_x = hero_x - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//上動く時の動作
+		if (vec == 3)
+		{
+			if (m_map[mapnum][hero_y - 1][hero_x] != 1 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 3 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 5 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 7 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 8)
+			{
+				hero_y = hero_y - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//下動くときの動作
+		if (vec == 4)
+		{
+			if (m_map[mapnum][hero_y + 1][hero_x] != 1 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 3 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 5 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 7 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 8)
+			{
+				hero_y = hero_y + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
-	//左動く時の動作
-	if (vec == 2)
+	//きらら
+	else if (Characternum == 2)
 	{
-		if (m_map[mapnum][hero_y][hero_x - 1] != 1 &&
-			m_map[mapnum][hero_y][hero_x - 1] != 3 &&
-			m_map[mapnum][hero_y][hero_x - 1] != 5 &&
-			m_map[mapnum][hero_y][hero_x - 1] != 7)
+		//右動く時の動作
+		if (vec == 1)
 		{
-			hero_x = hero_x - 1;
-			return true;
+			if (m_map[mapnum][kirara_y][kirara_x + 1] != 1 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 3 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 5 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 7 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 8)
+			{
+				kirara_x = kirara_x + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		//左動く時の動作
+		if (vec == 2)
 		{
-			return false;
+			if (m_map[mapnum][kirara_y][kirara_x - 1] != 1 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 3 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 5 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 7 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 8)
+			{
+				kirara_x = kirara_x - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-	}
-	//上動く時の動作
-	if (vec == 3)
-	{
-		if (m_map[mapnum][hero_y - 1][hero_x] != 1 &&
-			m_map[mapnum][hero_y - 1][hero_x] != 3 &&
-			m_map[mapnum][hero_y - 1][hero_x] != 5 &&
-			m_map[mapnum][hero_y - 1][hero_x] != 7)
+		//上動く時の動作
+		if (vec == 3)
 		{
-			hero_y = hero_y - 1;
-			return true;
+			if (m_map[mapnum][kirara_y - 1][kirara_x] != 1 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 3 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 5 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 7 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 8)
+			{
+				kirara_y = kirara_y - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		//下動くときの動作
+		if (vec == 4)
 		{
-			return false;
-		}
-	}
-	//下動くときの動作
-	if (vec == 4)
-	{
-		if (m_map[mapnum][hero_y + 1][hero_x] != 1 &&
-			m_map[mapnum][hero_y + 1][hero_x] != 3 &&
-			m_map[mapnum][hero_y + 1][hero_x] != 5 &&
-			m_map[mapnum][hero_y + 1][hero_x] != 7)
-		{
-			hero_y = hero_y + 1;
-			return true;
-		}
-		else
-		{
-			return false;
+			if (m_map[mapnum][kirara_y + 1][kirara_x] != 1 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 3 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 5 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 7 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 8)
+			{
+				kirara_y = kirara_y + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 
@@ -706,6 +805,28 @@ void CObjBlock::SetHero()
 		}
 	}
 }
+
+//きららの位置をセットする
+void CObjBlock::SetKirara()
+{
+
+	//きららの位置を設定
+	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
+
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (m_map[mapnum][i][j] == 8)
+			{
+				kirara_x = j; kirara_y = i;
+				kirara->SetPX(32.0f*j);
+				kirara->SetPY(32.0f*i);
+			}
+		}
+	}
+}
+
 
 //ナンバーロックドア開けるための関数
 void CObjBlock::UnlockDoor(int vec, int num)

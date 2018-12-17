@@ -32,11 +32,10 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"zyo-zi.png", 4, TEX_SIZE_512);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
 	Draw::LoadImageW(L"whitewindow.png", 5, TEX_SIZE_1024);
-	Draw::LoadImageW(L"kirara.png", 6, TEX_SIZE_512);
-	Draw::LoadImageW(L"kanata.png", 7, TEX_SIZE_512);
-	Draw::LoadImageW(L"towa.png", 8, TEX_SIZE_512);
-
-	Draw::LoadImageW(L"hero.png", 10, TEX_SIZE_128);
+	Draw::LoadImageW(L"kiraraMT.png", 60, TEX_SIZE_128);
+	Draw::LoadImageW(L"kanata.png", 51, TEX_SIZE_128);
+	Draw::LoadImageW(L"towa.png", 52, TEX_SIZE_128);
+	Draw::LoadImageW(L"hero.png", 53, TEX_SIZE_128);
 
 
 	//アイテムオブジェクト作成
@@ -45,7 +44,11 @@ void CSceneMain::InitScene()
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
-	Objs::InsertObj(obj, OBJ_HERO, 10);
+	Objs::InsertObj(obj, OBJ_HERO, 53);
+
+	//きららオブジェクト作成
+	CObjKirara* objk = new CObjKirara();
+	Objs::InsertObj(objk, OBJ_KIRARA, 60);
 
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock();
