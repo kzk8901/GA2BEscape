@@ -27,7 +27,7 @@ void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
 	Draw::LoadImageW(L"image2.png", 0, TEX_SIZE_512);
-	Draw::LoadImageW(L"hakkou1.png", 1, TEX_SIZE_512);
+	Draw::LoadImageW(L"text1.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"zyo-zi.png", 4, TEX_SIZE_512);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
@@ -35,7 +35,6 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"kirara.png", 50, TEX_SIZE_512);
 	Draw::LoadImageW(L"kanata.png", 51, TEX_SIZE_512);
 	Draw::LoadImageW(L"towa.png", 52, TEX_SIZE_512);
-
 	Draw::LoadImageW(L"hero.png", 53, TEX_SIZE_128);
 
 	Draw::LoadImageW(L"TemporaryPlacement.png", 6, TEX_SIZE_256);
