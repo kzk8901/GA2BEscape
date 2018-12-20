@@ -10,7 +10,7 @@
 using namespace GameL;
 
 bool text_move=true;
-int word=0;
+int word=7;
 //イニシャライズ
 void CObjText::Init()
 {
@@ -956,19 +956,19 @@ void CObjText::Draw()
 	if (time < 200&&g==0)
 	{
 		src_B.m_top = 0.0f;
-		src_B.m_left = 100.0f + time*1.7f;
+		src_B.m_left = 110.0f + time*1.655f;
 		src_B.m_right = 512.0f;
-		src_B.m_bottom = 120.0f;
+		src_B.m_bottom = 60.0f;
 		dst_B.m_top = 480.0f;
 		dst_B.m_left = 110.0f + time*2.2f;
 		dst_B.m_right = 640.0f;
 		dst_B.m_bottom =540.0f;
 		Draw::Draw(1, &src_B, &dst_B, c, 0.0f);
 		//テキスト表示隠し(下部）描画表示位置
-		src_C.m_top = 120.0f;
-		src_C.m_left = 100.0f ;
+		src_C.m_top = 60.0f;
+		src_C.m_left = 110.0f ;
 		src_C.m_right = 512.0f;
-		src_C.m_bottom = 234.0f;
+		src_C.m_bottom = 120.0f;
 		dst_C.m_top = 540.0f;
 		dst_C.m_left = 110.0f;
 		dst_C.m_right = 640.0f;
@@ -981,10 +981,10 @@ void CObjText::Draw()
 	}
 	if (time_x <= 200&&time_x>=0 && g == 0)
 	{
-		src_C.m_top = 120.0f;
-		src_C.m_left = 100.0f + (200-time_x)*1.7f;
+		src_C.m_top = 60.0f;
+		src_C.m_left = 110.0f + (200-time_x)*1.655f;
 		src_C.m_right = 512.0f;
-		src_C.m_bottom = 234.0f;
+		src_C.m_bottom = 120.0f;
 		dst_C.m_top = 540.0f;
 		dst_C.m_left = 110.0f + (200 - time_x)*2.2f;
 		dst_C.m_right = 640.0f;
@@ -999,19 +999,19 @@ void CObjText::Draw()
 	if (time < 200 && g == 1)
 	{
 		src_B.m_top = 0.0f;
-		src_B.m_left = 100.0f + time*1.7f;
+		src_B.m_left = 110.0f + time*1.655f;
 		src_B.m_right = 512.0f;
-		src_B.m_bottom = 120.0f;
+		src_B.m_bottom = 35.0f;
 		dst_B.m_top = 480.0f;
 		dst_B.m_left = 110.0f + time*2.2f;
 		dst_B.m_right = 640.0f;
 		dst_B.m_bottom = 515.0f;
 		Draw::Draw(1, &src_B, &dst_B, c, 0.0f);
 		//テキスト表示隠し(下部）描画表示位置
-		src_C.m_top = 120.0f;
-		src_C.m_left = 100.0f;
+		src_C.m_top = 35.0f;
+		src_C.m_left = 110.0f;
 		src_C.m_right = 512.0f;
-		src_C.m_bottom = 234.0f;
+		src_C.m_bottom = 120.0f;
 		dst_C.m_top = 515.0f;
 		dst_C.m_left = 110.0f;
 		dst_C.m_right = 640.0f;
@@ -1024,10 +1024,10 @@ void CObjText::Draw()
 	}
 	if (time_x <= 200 && time_x >= 0 && g == 1)
 	{
-		src_C.m_top = 120.0f;
-		src_C.m_left = 100.0f + (200 - time_x)*1.7f;
+		src_C.m_top = 35.0f;
+		src_C.m_left = 110.0f + (200 - time_x)*1.655f;
 		src_C.m_right = 512.0f;
-		src_C.m_bottom = 234.0f;
+		src_C.m_bottom = 120.0f;
 		dst_C.m_top = 515.0f;
 		dst_C.m_left = 110.0f + (200 - time_x)*2.2f;
 		dst_C.m_right = 640.0f;
@@ -1042,9 +1042,9 @@ void CObjText::Draw()
 	if (time < 200 && g == 2)
 	{
 		src_B.m_top = 0.0f;
-		src_B.m_left = 0.0f + time*1.7f;
+		src_B.m_left = 110.0f + time*1.655f;
 		src_B.m_right = 512.0f;
-		src_B.m_bottom = 234.0f;
+		src_B.m_bottom = 120.0f;
 		dst_B.m_top = 480.0f;
 		dst_B.m_left = 110.0f + time*2.2f;
 		dst_B.m_right = 640.0f;
