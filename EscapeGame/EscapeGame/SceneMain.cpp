@@ -48,6 +48,8 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"ベットマップチップ.png", 14, TEX_SIZE_64);
 	Draw::LoadImageW(L"花瓶マップチップ.png", 15, TEX_SIZE_32);
 	Draw::LoadImageW(L"本棚マップチップ.png", 16, TEX_SIZE_64);
+	Draw::LoadImageW(L"絨毯マップチップ(仕掛け).png", 17, TEX_SIZE_32);
+	Draw::LoadImageW(L"fictionbookkey.png", 18, TEX_SIZE_64);
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
@@ -55,7 +57,11 @@ void CSceneMain::InitScene()
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
-	Objs::InsertObj(obj, OBJ_HERO, 10);
+	Objs::InsertObj(obj, OBJ_HERO, 53);
+
+	//きららオブジェクト作成
+	CObjKirara* objk = new CObjKirara();
+	Objs::InsertObj(objk, OBJ_KIRARA, 60);
 
 	//背景オブジェクト作成
 	CObjBackGround* objg = new CObjBackGround();
