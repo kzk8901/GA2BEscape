@@ -48,7 +48,7 @@ int block_data_map[4][15][20] =
 		{ 1,39,39,39,39,39,39,39,47, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
-		{ 1,35,38,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 4
+		{ 1,35,38,35,35,35,35,35, 0, 0,10, 0,35,35,35,35,35,35,35, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
 		{ 1,35,35,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 7
@@ -128,6 +128,19 @@ void CObjBlock::Init()
 	animationtime = 0;
 	((UserData*)Save::GetData())->number[0] = 402;
 	((UserData*)Save::GetData())->number[1] = 402;
+
+	//当たり判定のあるブロックはナンバーをここに入れる
+	int blocknumber[99] =
+	{
+		1, 3, 5, 7, 8, 9,10,30,31,32,
+		33,34,35,36,37,38,39,40,41,42,
+		43,44,
+	};
+
+	for (int i = 0; i < 99; i++)
+	{
+		notonblock[i] = blocknumber[i];
+	}
 }
 
 //アクション
@@ -330,12 +343,12 @@ void CObjBlock::Action()
 	if (moveshelf > 0.0f)
 	{
 		bool finishflag = false;
-		hero->SetEventFlag(true, 0);
+		hero->SetHeroEventFlag(true, 0);
 		eventclocktime++;
 		moveshelf += 0.5;
 		if (eventclocktime > 64)
 		{
-			hero->SetEventFlag(false, 0);
+			hero->SetHeroEventFlag(false, 0);
 			eventclocktime = 0;
 			for (int i = 0; finishflag == false; i++)
 			{
@@ -802,13 +815,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//右動く時の動作
 		if (vec == 1)
 		{
-			if (m_map[mapnum][hero_y][hero_x + 1] != 1 &&
-				m_map[mapnum][hero_y][hero_x + 1] != 3 &&
-				m_map[mapnum][hero_y][hero_x + 1] != 5 &&
-				m_map[mapnum][hero_y][hero_x + 1] != 7 &&
-				m_map[mapnum][hero_y][hero_x + 1] != 8 &&
-				m_map[mapnum][hero_y][hero_x + 1] != 9 &&
-				m_map[mapnum][hero_y][hero_x + 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][hero_y][hero_x + 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				hero_x = hero_x + 1;
 				return true;
@@ -821,13 +836,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//左動く時の動作
 		if (vec == 2)
 		{
-			if (m_map[mapnum][hero_y][hero_x - 1] != 1 &&
-				m_map[mapnum][hero_y][hero_x - 1] != 3 &&
-				m_map[mapnum][hero_y][hero_x - 1] != 5 &&
-				m_map[mapnum][hero_y][hero_x - 1] != 7 &&
-				m_map[mapnum][hero_y][hero_x - 1] != 8 &&
-				m_map[mapnum][hero_y][hero_x - 1] != 9 &&
-				m_map[mapnum][hero_y][hero_x - 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][hero_y][hero_x - 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				hero_x = hero_x - 1;
 				return true;
@@ -840,13 +857,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//上動く時の動作
 		if (vec == 3)
 		{
-			if (m_map[mapnum][hero_y - 1][hero_x] != 1 &&
-				m_map[mapnum][hero_y - 1][hero_x] != 3 &&
-				m_map[mapnum][hero_y - 1][hero_x] != 5 &&
-				m_map[mapnum][hero_y - 1][hero_x] != 7 &&
-				m_map[mapnum][hero_y - 1][hero_x] != 8 &&
-				m_map[mapnum][hero_y - 1][hero_x] != 9 &&
-				m_map[mapnum][hero_y - 1][hero_x] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][hero_y - 1][hero_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				hero_y = hero_y - 1;
 				return true;
@@ -859,13 +878,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//下動くときの動作
 		if (vec == 4)
 		{
-			if (m_map[mapnum][hero_y + 1][hero_x] != 1 &&
-				m_map[mapnum][hero_y + 1][hero_x] != 3 &&
-				m_map[mapnum][hero_y + 1][hero_x] != 5 &&
-				m_map[mapnum][hero_y + 1][hero_x] != 7 &&
-				m_map[mapnum][hero_y + 1][hero_x] != 8 &&
-				m_map[mapnum][hero_y + 1][hero_x] != 9 &&
-				m_map[mapnum][hero_y + 1][hero_x] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][hero_y + 1][hero_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				hero_y = hero_y + 1;
 				return true;
@@ -882,13 +903,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//右動く時の動作
 		if (vec == 1)
 		{
-			if (m_map[mapnum][kirara_y][kirara_x + 1] != 1 &&
-				m_map[mapnum][kirara_y][kirara_x + 1] != 3 &&
-				m_map[mapnum][kirara_y][kirara_x + 1] != 5 &&
-				m_map[mapnum][kirara_y][kirara_x + 1] != 7 &&
-				m_map[mapnum][kirara_y][kirara_x + 1] != 8 &&
-				m_map[mapnum][kirara_y][kirara_x + 1] != 9 &&
-				m_map[mapnum][kirara_y][kirara_x + 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kirara_y][kirara_x + 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kirara_y][kirara_x] = 0;
 				m_map[mapnum][kirara_y][kirara_x + 1] = 8;
@@ -903,13 +926,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//左動く時の動作
 		if (vec == 2)
 		{
-			if (m_map[mapnum][kirara_y][kirara_x - 1] != 1 &&
-				m_map[mapnum][kirara_y][kirara_x - 1] != 3 &&
-				m_map[mapnum][kirara_y][kirara_x - 1] != 5 &&
-				m_map[mapnum][kirara_y][kirara_x - 1] != 7 &&
-				m_map[mapnum][kirara_y][kirara_x - 1] != 8 &&
-				m_map[mapnum][kirara_y][kirara_x - 1] != 9 &&
-				m_map[mapnum][kirara_y][kirara_x - 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kirara_y][kirara_x - 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kirara_y][kirara_x] = 0;
 				m_map[mapnum][kirara_y][kirara_x - 1] = 8;
@@ -924,13 +949,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//上動く時の動作
 		if (vec == 3)
 		{
-			if (m_map[mapnum][kirara_y - 1][kirara_x] != 1 &&
-				m_map[mapnum][kirara_y - 1][kirara_x] != 3 &&
-				m_map[mapnum][kirara_y - 1][kirara_x] != 5 &&
-				m_map[mapnum][kirara_y - 1][kirara_x] != 7 &&
-				m_map[mapnum][kirara_y - 1][kirara_x] != 8 &&
-				m_map[mapnum][kirara_y - 1][kirara_x] != 9 &&
-				m_map[mapnum][kirara_y - 1][kirara_x] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kirara_y - 1][kirara_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kirara_y][kirara_x] = 0;
 				m_map[mapnum][kirara_y - 1][kirara_x] = 8;
@@ -945,13 +972,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//下動くときの動作
 		if (vec == 4)
 		{
-			if (m_map[mapnum][kirara_y + 1][kirara_x] != 1 &&
-				m_map[mapnum][kirara_y + 1][kirara_x] != 3 &&
-				m_map[mapnum][kirara_y + 1][kirara_x] != 5 &&
-				m_map[mapnum][kirara_y + 1][kirara_x] != 7 &&
-				m_map[mapnum][kirara_y + 1][kirara_x] != 8 &&
-				m_map[mapnum][kirara_y + 1][kirara_x] != 9 &&
-				m_map[mapnum][kirara_y + 1][kirara_x] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kirara_y - 1][kirara_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kirara_y][kirara_x] = 0;
 				m_map[mapnum][kirara_y + 1][kirara_x] = 8;
@@ -971,13 +1000,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//右動く時の動作
 		if (vec == 1)
 		{
-			if (m_map[mapnum][towa_y][towa_x + 1] != 1 &&
-				m_map[mapnum][towa_y][towa_x + 1] != 3 &&
-				m_map[mapnum][towa_y][towa_x + 1] != 5 &&
-				m_map[mapnum][towa_y][towa_x + 1] != 7 &&
-				m_map[mapnum][towa_y][towa_x + 1] != 8 &&
-				m_map[mapnum][towa_y][towa_x + 1] != 9 &&
-				m_map[mapnum][towa_y][towa_x + 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][towa_y][towa_x + 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][towa_y][towa_x] = 0;
 				m_map[mapnum][towa_y][towa_x + 1] = 9;
@@ -992,13 +1023,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//左動く時の動作
 		if (vec == 2)
 		{
-			if (m_map[mapnum][towa_y][towa_x - 1] != 1 &&
-				m_map[mapnum][towa_y][towa_x - 1] != 3 &&
-				m_map[mapnum][towa_y][towa_x - 1] != 5 &&
-				m_map[mapnum][towa_y][towa_x - 1] != 7 &&
-				m_map[mapnum][towa_y][towa_x - 1] != 8 &&
-				m_map[mapnum][towa_y][towa_x - 1] != 9 &&
-				m_map[mapnum][towa_y][towa_x - 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][towa_y][towa_x - 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][towa_y][towa_x] = 0;
 				m_map[mapnum][towa_y][towa_x - 1] = 9;
@@ -1013,13 +1046,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//上動く時の動作
 		if (vec == 3)
 		{
-			if (m_map[mapnum][towa_y - 1][towa_x] != 1 &&
-				m_map[mapnum][towa_y - 1][towa_x] != 3 &&
-				m_map[mapnum][towa_y - 1][towa_x] != 5 &&
-				m_map[mapnum][towa_y - 1][towa_x] != 7 &&
-				m_map[mapnum][towa_y - 1][towa_x] != 8 &&
-				m_map[mapnum][towa_y - 1][towa_x] != 9 &&
-				m_map[mapnum][towa_y - 1][towa_x] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][towa_y - 1][towa_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][towa_y][towa_x] = 0;
 				m_map[mapnum][towa_y - 1][towa_x] = 9;
@@ -1034,13 +1069,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//下動くときの動作
 		if (vec == 4)
 		{
-			if (m_map[mapnum][towa_y + 1][towa_x] != 1 &&
-				m_map[mapnum][towa_y + 1][towa_x] != 3 &&
-				m_map[mapnum][towa_y + 1][towa_x] != 5 &&
-				m_map[mapnum][towa_y + 1][towa_x] != 7 &&
-				m_map[mapnum][towa_y + 1][towa_x] != 8 &&
-				m_map[mapnum][towa_y + 1][towa_x] != 9 &&
-				m_map[mapnum][towa_y + 1][towa_x] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][towa_y + 1][towa_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][towa_y][towa_x] = 0;
 				m_map[mapnum][towa_y + 1][towa_x] = 9;
@@ -1060,13 +1097,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//右動く時の動作
 		if (vec == 1)
 		{
-			if (m_map[mapnum][kanata_y][kanata_x + 1] != 1 &&
-				m_map[mapnum][kanata_y][kanata_x + 1] != 3 &&
-				m_map[mapnum][kanata_y][kanata_x + 1] != 5 &&
-				m_map[mapnum][kanata_y][kanata_x + 1] != 7 &&
-				m_map[mapnum][kanata_y][kanata_x + 1] != 8 &&
-				m_map[mapnum][kanata_y][kanata_x + 1] != 9 &&
-				m_map[mapnum][kanata_y][kanata_x + 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kanata_y][kanata_x + 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kanata_y][kanata_x] = 0;
 				m_map[mapnum][kanata_y][kanata_x + 1] = 10;
@@ -1081,13 +1120,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//左動く時の動作
 		if (vec == 2)
 		{
-			if (m_map[mapnum][kanata_y][kanata_x - 1] != 1 &&
-				m_map[mapnum][kanata_y][kanata_x - 1] != 3 &&
-				m_map[mapnum][kanata_y][kanata_x - 1] != 5 &&
-				m_map[mapnum][kanata_y][kanata_x - 1] != 7 &&
-				m_map[mapnum][kanata_y][kanata_x - 1] != 8 &&
-				m_map[mapnum][kanata_y][kanata_x - 1] != 9 &&
-				m_map[mapnum][kanata_y][kanata_x - 1] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kanata_y][kanata_x - 1] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kanata_y][kanata_x] = 0;
 				m_map[mapnum][kanata_y][kanata_x - 1] = 10;
@@ -1102,13 +1143,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//上動く時の動作
 		if (vec == 3)
 		{
-			if (m_map[mapnum][kanata_y - 1][kanata_x] != 1 &&
-				m_map[mapnum][kanata_y - 1][kanata_x] != 3 &&
-				m_map[mapnum][kanata_y - 1][kanata_x] != 5 &&
-				m_map[mapnum][kanata_y - 1][kanata_x] != 7 &&
-				m_map[mapnum][kanata_y - 1][kanata_x] != 8 &&
-				m_map[mapnum][kanata_y - 1][kanata_x] != 9 &&
-				m_map[mapnum][kanata_y - 1][kanata_x] != 10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kanata_y - 1][kanata_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kanata_y][kanata_x] = 0;
 				m_map[mapnum][kanata_y - 1][kanata_x] = 10;
@@ -1123,13 +1166,15 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 		//下動くときの動作
 		if (vec == 4)
 		{
-			if (m_map[mapnum][kanata_y + 1][kanata_x] != 1 &&
-				m_map[mapnum][kanata_y + 1][kanata_x] != 3 &&
-				m_map[mapnum][kanata_y + 1][kanata_x] != 5 &&
-				m_map[mapnum][kanata_y + 1][kanata_x] != 7 &&
-				m_map[mapnum][kanata_y + 1][kanata_x] != 8 &&
-				m_map[mapnum][kanata_y + 1][kanata_x] != 9 &&
-				m_map[mapnum][kanata_y + 1][kanata_x] !=10)
+			bool tib = true;
+			for (int i = 0; i < 99; i++)
+			{
+				if (m_map[mapnum][kanata_y + 1][kanata_x] == notonblock[i] && notonblock[i] != 0)
+				{
+					tib = false;
+				}
+			}
+			if (tib == true)
 			{
 				m_map[mapnum][kanata_y][kanata_x] = 0;
 				m_map[mapnum][kanata_y + 1][kanata_x] = 10;

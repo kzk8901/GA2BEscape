@@ -22,7 +22,7 @@ class CObjHero : public CObj
 	   void SetActionflag(bool a) { action_flag = a; }
 	   void SetNumlock(bool n) { numlock_flag = n; }
 	   void SetLockpiece(int num, int p) { locknum = num;  wpiece = p; }
-	   void SetEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
+	   void SetHeroEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
 	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  hero_vec=v;  move_flag = true; }
 	   void SetShowItemNumber(int i);
   private:

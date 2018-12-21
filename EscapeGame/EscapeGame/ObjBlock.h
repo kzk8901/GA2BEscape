@@ -40,6 +40,7 @@ public:
 	float GetMoveshelf() { return moveshelf; }
 private:
 	int m_map[5][15][20];//マップ情報
+	int notonblock[99];  //当たり判定あるブロックのナンバーはここに入れる
 	int hero_x;   //主人公位置（X）
 	int hero_y;   //主人公位置（Y）
 	int kirara_x; //きらら位置（X）
