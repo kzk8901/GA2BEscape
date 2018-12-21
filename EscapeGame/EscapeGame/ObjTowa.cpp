@@ -6,7 +6,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\UserData.h"
 
-#include"ObjKirara.h"
+#include "ObjTowa.h"
 #include "GameHead.h"
 #include "ObjBlock.h"
 #include "ObjItem.h"
@@ -16,7 +16,7 @@
 using namespace GameL;
 
 //イニシャライズ
-void CObjKirara::Init()
+void CObjTowa::Init()
 {
 	m_px = 0.0f; //位置ベクトル
 	m_py = 0.0f;
@@ -34,7 +34,7 @@ void CObjKirara::Init()
 		unlocknum[i] = 0;
 	selectnum = 0;
 	eventnumber = 0;
-	kirara_vec = 4;
+	towa_vec = 4;
 
 	eventflag = false;
 	move_flag = false;
@@ -42,12 +42,12 @@ void CObjKirara::Init()
 	numlock_flag = false;
 	Key_flag = false;
 	Itemcheck = false;
-	kirara_in = false;
+	towa_in = false;
 
 }
 
 //アクション
-void CObjKirara::Action()
+void CObjTowa::Action()
 {
 
 	//ブロックの位置取得
@@ -67,11 +67,11 @@ void CObjKirara::Action()
 		if (eventnumber == 1 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
-			if (block->KiraraGetX() > 5 && block->ThereIsBlock(2,2) == true)
+			if (block->TowaGetX() > 5 && block->ThereIsBlock(2, 3) == true)
 			{
 				SetMoveVec(2);
 			}
-			else if (block->KiraraGetY() < 13 && block->ThereIsBlock(4,2) == true)
+			else if (block->TowaGetY() < 13 && block->ThereIsBlock(4, 3) == true)
 			{
 				SetMoveVec(4);
 			}
@@ -87,11 +87,11 @@ void CObjKirara::Action()
 		//X = 8, Y = 2の位置まで移動
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (block->KiraraGetY() > 2 && block->ThereIsBlock(3,2) == true)
+			if (block->KiraraGetY() > 2 && block->ThereIsBlock(3, 3) == true)
 			{
 				SetMoveVec(3);
 			}
-			else if (block->KiraraGetX() < 8 && block->ThereIsBlock(1,2) == true)
+			else if (block->KiraraGetX() < 8 && block->ThereIsBlock(1, 3) == true)
 			{
 				SetMoveVec(1);
 			}
@@ -175,7 +175,7 @@ void CObjKirara::Action()
 }
 
 //ドロー
-void CObjKirara::Draw()
+void CObjTowa::Draw()
 {
 	int AniData[4] =
 	{
@@ -188,7 +188,7 @@ void CObjKirara::Draw()
 	RECT_F dst; //描画先表示位置
 
 
-	if (kirara_vec == 1)
+	if (towa_vec == 1)
 	{
 		//切り取り位置の設定
 		src.m_top = 64.0f;
@@ -197,7 +197,7 @@ void CObjKirara::Draw()
 		src.m_bottom = 96.0f;
 	}
 
-	else if (kirara_vec == 2)
+	else if (towa_vec == 2)
 	{
 		//切り取り位置の設定
 		src.m_top = 32.0f;
@@ -206,7 +206,7 @@ void CObjKirara::Draw()
 		src.m_bottom = 64.0f;
 	}
 
-	else if (kirara_vec == 3)
+	else if (towa_vec == 3)
 	{
 		//切り取り位置の設定
 		src.m_top = 96.0f;
@@ -215,7 +215,7 @@ void CObjKirara::Draw()
 		src.m_bottom = 128.0f;
 	}
 
-	else if (kirara_vec == 4)
+	else if (towa_vec == 4)
 	{
 		//切り取り位置の設定
 		src.m_top = 0.0f;
@@ -224,7 +224,7 @@ void CObjKirara::Draw()
 		src.m_bottom = 32.0f;
 	}
 
-	if (kirara_in == true)
+	if (towa_in == true)
 	{
 		//表示位置の設定
 		dst.m_top = m_py;
@@ -233,6 +233,6 @@ void CObjKirara::Draw()
 		dst.m_bottom = m_py + 32.0f;
 	}
 
-	Draw::Draw(60, &src, &dst, c, 0.0f);
+	Draw::Draw(61, &src, &dst, c, 0.0f);
 
 }

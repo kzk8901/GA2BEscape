@@ -12,6 +12,8 @@ enum OBJ_NAME
 	OBJ_ITEM,
 	OBJ_BGROUND,
 	OBJ_KIRARA,
+	OBJ_KANATA,
+	OBJ_TOWA,
 
 	OBJ_TITLE,
 };
@@ -66,6 +68,8 @@ struct UserData
 #include "ObjItem.h"
 #include "ObjBackGround.h"
 #include"ObjKirara.h"
+#include"ObjKanata.h"
+#include"ObjTowa.h"
 
 #include"ObjTitle.h"
 //------------------------------------------------

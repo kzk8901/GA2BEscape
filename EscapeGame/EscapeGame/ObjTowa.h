@@ -5,11 +5,11 @@
 using namespace GameL;
 
 //オブジェクト：主人公
-class CObjKirara : public CObj
+class CObjTowa : public CObj
 {
 public:
-	CObjKirara() {};
-	~CObjKirara() {};
+	CObjTowa() {};
+	~CObjTowa() {};
 	void Init();    //イニシャライズ
 	void Action();  //アクション
 	void Draw();    //ドロー
@@ -20,9 +20,9 @@ public:
 	void SetActionflag(bool a) { action_flag = a; }
 	void SetNumlock(bool n) { numlock_flag = n; }
 	void SetLockpiece(int p) { wpiece = p; }
-	void SetKiraraEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
-	void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  kirara_vec = v;  move_flag = true; }
-	void SetKiraraIn(bool in) { kirara_in = in; }
+	void SetTowaEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
+	void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  towa_vec = v;  move_flag = true; }
+	void SetTowaIn(bool in) { towa_in = in; }
 private:
 	float m_px; //位置
 	float m_py;
@@ -41,7 +41,7 @@ private:
 	int selectnum;  //左から何番目の数を動かすのか
 	int word;   //テキストウィンドウ制御
 	int eventnumber; //どのイベントを動かすか
-	int kirara_vec;   //向いている方向
+	int towa_vec;   //向いている方向
 
 	bool eventflag; //イベントフラグ
 	bool move_flag; //動くためのフラグ
@@ -50,5 +50,5 @@ private:
 	bool numlock_flag; //ナンバーロックを解いているか
 	bool Key_flag;     //キー制御フラグ
 	bool Itemcheck;    //アイテム詳細確認中フラグ
-	bool kirara_in;    //きららを表示するかどうか
+	bool towa_in;    //きららを表示するかどうか
 };

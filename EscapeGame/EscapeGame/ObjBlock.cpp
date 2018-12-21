@@ -56,7 +56,7 @@ int block_data_map[4][15][20] =
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0,53, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,98, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
@@ -68,10 +68,10 @@ int block_data_map[4][15][20] =
 		{ 1, 0, 0, 0, 0,33,41, 0, 0,43,31, 0, 0,42,33, 0, 0, 0, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0,45,33,33, 0, 0, 0, 0, 0, 0,33,33,46, 0, 0, 0, 1, },// 3
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{96, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,40, 1, },// 7
+		{96, 2, 0,52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,32, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
@@ -87,11 +87,11 @@ int block_data_map[4][15][20] =
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
 		{ 1, 0,31,34, 0, 0, 0, 0, 0, 0,35,35, 0,37,37, 0,35,35, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
-		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,94, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,51, 0, 1, },// 6
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50, 2,94, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
@@ -109,7 +109,8 @@ void CObjBlock::Init()
 	mapnum = 0;
 
 	//主人公の位置を設定
-	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	CObjHero*   hero   = (CObjHero*)Objs::GetObj(OBJ_HERO);
+	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
 
 	//マップデータをコピー
 	memcpy(m_map, block_data_map, sizeof(int)*(4 * 15 * 20));
@@ -136,11 +137,32 @@ void CObjBlock::Action()
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	//背景を設定
 	CObjBackGround* bgro = (CObjBackGround*)Objs::GetObj(OBJ_BGROUND);
+	//きららの位置を設定
+	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
+	//永遠の位置を設定
+	CObjTowa* towa = (CObjTowa*)Objs::GetObj(OBJ_TOWA);
+	//奏多の位置を設定
+	CObjKanata* kanata = (CObjKanata*)Objs::GetObj(OBJ_KANATA);
 
 	if (m_map[mapnum][hero_y][hero_x] == 50)
 	{
 		m_map[mapnum][hero_y][hero_x] = 0;
-		hero->SetEventFlag(true,1);
+		hero->SetHeroEventFlag(true,1);
+	}
+	if (m_map[mapnum][hero_y][hero_x] == 51)
+	{
+		m_map[mapnum][hero_y][hero_x] = 0;
+		kirara->SetKiraraEventFlag(true, 1);
+	}
+	if (m_map[mapnum][hero_y][hero_x] == 52)
+	{
+		m_map[mapnum][hero_y][hero_x] = 0;
+		towa->SetTowaEventFlag(true, 1);
+	}
+	if (m_map[mapnum][hero_y][hero_x] == 53)
+	{
+		m_map[mapnum][hero_y][hero_x] = 0;
+		kanata->SetKanataEventFlag(true, 1);
 	}
 
 	//スタートF1へ移動---------------------------------
@@ -153,13 +175,22 @@ void CObjBlock::Action()
 		//主人公の位置保存
 		//奏多
 		if (m_map[mapnum][hero_y][hero_x] == 98)
+		{
 			m_map[mapnum][hero_y - 1][hero_x] = 2;
+			kanata->SetKanataIn(false);
+		}
 		//永遠
-		else if(m_map[mapnum][hero_y][hero_x] == 96)
+		else if (m_map[mapnum][hero_y][hero_x] == 96)
+		{
 			m_map[mapnum][hero_y][hero_x + 1] = 2;
+			towa->SetTowaIn(false);
+		}
 		//きらら
 		else if (m_map[mapnum][hero_y][hero_x] == 94)
+		{
 			m_map[mapnum][hero_y][hero_x - 1] = 2;
+			kirara->SetKiraraIn(false);
+		}
 		//次に行くナンバーを渡す
 		Mapchange(0);
 		//次のmapnumを入れる
@@ -188,8 +219,11 @@ void CObjBlock::Action()
 		Mapchange(1);
 		//次のmapnumを入れる
 		mapnum = 1;
+		//奏多表示
+		kanata->SetKanataIn(true);
 		//主人公の位置更新
 		SetHero();
+		SetKanata();
 	}
 
 	//永遠マップ1Fへ移動-------------------------------
@@ -206,14 +240,18 @@ void CObjBlock::Action()
 		{
 			text_m = -5;
 		}
+		
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x - 1] = 2;
 		//次に行くナンバーを渡す
 		Mapchange(2);
 		//次のmapnumを入れる
 		mapnum = 2;
-		//主人公の位置更新
+		//永遠表示
+		towa->SetTowaIn(true);
+		//キャラの位置更新
 		SetHero();
+		SetTowa();
 	}
 
 	//きららマップ1Fへ移動-------------------------------
@@ -230,14 +268,18 @@ void CObjBlock::Action()
 		{
 			text_m = -3;
 		}
+		
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x + 1] = 2;
 		//次に行くナンバーを渡す
 		Mapchange(3);
 		//次のmapnumを入れる
 		mapnum = 3;
-		//主人公の位置更新
+		//きらら表示
+		kirara->SetKiraraIn(true);
+		//キャラの位置更新
 		SetHero();
+		SetKirara();
 	}
 
 	//----------------------------------------------
@@ -245,7 +287,7 @@ void CObjBlock::Action()
 	//壁開ける用イベントフラグ
 	if (eventclockflag == true)
 	{
-		hero->SetEventFlag(true, 0);
+		hero->SetHeroEventFlag(true, 0);
 		eventclocktime++;
 		//------------------------------
 		if (blockmovevec == 1)
@@ -259,7 +301,7 @@ void CObjBlock::Action()
 		//------------------------------
 		if (eventclocktime > 64)
 		{
-			hero->SetEventFlag(false, 0);
+			hero->SetHeroEventFlag(false, 0);
 			eventclocktime = 0;
 			eventclockflag = 0;
 			//ブロックを消さない際の動き
@@ -352,10 +394,10 @@ void CObjBlock::Draw()
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
 	src.m_right = 512.0f;
-	src.m_bottom = 234.0f;
+	src.m_bottom = 120.0f;
 	dst.m_top = 480.0f;
 	dst.m_left =0.0f;
-	dst.m_right =640.0f;
+	dst.m_right =800.0f;
 	dst.m_bottom = 600.0f;
 	Draw::Draw(1, &src, &dst, c, 0.0f);
 
@@ -370,16 +412,6 @@ void CObjBlock::Draw()
 	dst.m_bottom = 480.0f;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
-	//テキストウィンドウ3（右下）
-	src.m_top = 136.0f;
-	src.m_left = 0.0f;
-	src.m_right = 160.0f;
-	src.m_bottom = 256.0f;
-	dst.m_top = 480.0f;
-	dst.m_left = 640.0f;
-	dst.m_right = 800.0f;
-	dst.m_bottom =600.0f;
-	Draw::Draw(0, &src, &dst, c, 0.0f);
 
 
 	//マップチップによるblock設置
@@ -761,78 +793,353 @@ void CObjBlock::Draw()
 	}
 }
 //動く方向にブロックがあるかどうかの判定
-bool CObjBlock::ThereIsBlock(int vec)
+//Characternum 1=主人公 2=きらら 3=奏多 4=永遠
+bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 {
-	//右動く時の動作
-	if (vec == 1)
+	//主人公
+	if (Characternum == 1)
 	{
-		if (m_map[mapnum][hero_y][hero_x + 1] != 1 &&
-			m_map[mapnum][hero_y][hero_x + 1] != 3 &&
-			m_map[mapnum][hero_y][hero_x + 1] != 5 &&
-			m_map[mapnum][hero_y][hero_x + 1] != 7 &&
-			(m_map[mapnum][hero_y][hero_x + 1] < 30 ||
-			m_map[mapnum][hero_y][hero_x + 1] > 44))
+		//右動く時の動作
+		if (vec == 1)
 		{
-			hero_x = hero_x + 1;
-			return true;
+			if (m_map[mapnum][hero_y][hero_x + 1] != 1 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 3 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 5 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 7 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 8 &&
+				m_map[mapnum][hero_y][hero_x + 1] != 9 &&
+				m_map[mapnum][hero_y][hero_x + 1] !=10)
+			{
+				hero_x = hero_x + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		//左動く時の動作
+		if (vec == 2)
 		{
-			return false;
+			if (m_map[mapnum][hero_y][hero_x - 1] != 1 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 3 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 5 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 7 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 8 &&
+				m_map[mapnum][hero_y][hero_x - 1] != 9 &&
+				m_map[mapnum][hero_y][hero_x - 1] !=10)
+			{
+				hero_x = hero_x - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//上動く時の動作
+		if (vec == 3)
+		{
+			if (m_map[mapnum][hero_y - 1][hero_x] != 1 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 3 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 5 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 7 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 8 &&
+				m_map[mapnum][hero_y - 1][hero_x] != 9 &&
+				m_map[mapnum][hero_y - 1][hero_x] !=10)
+			{
+				hero_y = hero_y - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//下動くときの動作
+		if (vec == 4)
+		{
+			if (m_map[mapnum][hero_y + 1][hero_x] != 1 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 3 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 5 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 7 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 8 &&
+				m_map[mapnum][hero_y + 1][hero_x] != 9 &&
+				m_map[mapnum][hero_y + 1][hero_x] !=10)
+			{
+				hero_y = hero_y + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
-	//左動く時の動作
-	if (vec == 2)
+	//きらら
+	else if (Characternum == 2)
 	{
-		if (m_map[mapnum][hero_y][hero_x - 1] != 1 &&
-			m_map[mapnum][hero_y][hero_x - 1] != 3 &&
-			m_map[mapnum][hero_y][hero_x - 1] != 5 &&
-			m_map[mapnum][hero_y][hero_x - 1] != 7 &&
-			(m_map[mapnum][hero_y][hero_x - 1] < 30 ||
-			m_map[mapnum][hero_y][hero_x - 1] > 44))
+		//右動く時の動作
+		if (vec == 1)
 		{
-			hero_x = hero_x - 1;
-			return true;
+			if (m_map[mapnum][kirara_y][kirara_x + 1] != 1 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 3 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 5 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 7 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 8 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] != 9 &&
+				m_map[mapnum][kirara_y][kirara_x + 1] !=10)
+			{
+				m_map[mapnum][kirara_y][kirara_x] = 0;
+				m_map[mapnum][kirara_y][kirara_x + 1] = 8;
+				kirara_x = kirara_x + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		//左動く時の動作
+		if (vec == 2)
 		{
-			return false;
+			if (m_map[mapnum][kirara_y][kirara_x - 1] != 1 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 3 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 5 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 7 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 8 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] != 9 &&
+				m_map[mapnum][kirara_y][kirara_x - 1] !=10)
+			{
+				m_map[mapnum][kirara_y][kirara_x] = 0;
+				m_map[mapnum][kirara_y][kirara_x - 1] = 8;
+				kirara_x = kirara_x - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//上動く時の動作
+		if (vec == 3)
+		{
+			if (m_map[mapnum][kirara_y - 1][kirara_x] != 1 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 3 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 5 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 7 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 8 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] != 9 &&
+				m_map[mapnum][kirara_y - 1][kirara_x] !=10)
+			{
+				m_map[mapnum][kirara_y][kirara_x] = 0;
+				m_map[mapnum][kirara_y - 1][kirara_x] = 8;
+				kirara_y = kirara_y - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//下動くときの動作
+		if (vec == 4)
+		{
+			if (m_map[mapnum][kirara_y + 1][kirara_x] != 1 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 3 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 5 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 7 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 8 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] != 9 &&
+				m_map[mapnum][kirara_y + 1][kirara_x] !=10)
+			{
+				m_map[mapnum][kirara_y][kirara_x] = 0;
+				m_map[mapnum][kirara_y + 1][kirara_x] = 8;
+				kirara_y = kirara_y + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
-	//上動く時の動作
-	if (vec == 3)
+
+	//永遠
+	else if (Characternum == 3)
 	{
-		if (m_map[mapnum][hero_y - 1][hero_x] != 1 &&
-			m_map[mapnum][hero_y - 1][hero_x] != 3 &&
-			m_map[mapnum][hero_y - 1][hero_x] != 5 &&
-			m_map[mapnum][hero_y - 1][hero_x] != 7 &&
-			(m_map[mapnum][hero_y - 1][hero_x] < 30 ||
-			m_map[mapnum][hero_y - 1][hero_x] > 44))
+		//右動く時の動作
+		if (vec == 1)
 		{
-			hero_y = hero_y - 1;
-			return true;
+			if (m_map[mapnum][towa_y][towa_x + 1] != 1 &&
+				m_map[mapnum][towa_y][towa_x + 1] != 3 &&
+				m_map[mapnum][towa_y][towa_x + 1] != 5 &&
+				m_map[mapnum][towa_y][towa_x + 1] != 7 &&
+				m_map[mapnum][towa_y][towa_x + 1] != 8 &&
+				m_map[mapnum][towa_y][towa_x + 1] != 9 &&
+				m_map[mapnum][towa_y][towa_x + 1] !=10)
+			{
+				m_map[mapnum][towa_y][towa_x] = 0;
+				m_map[mapnum][towa_y][towa_x + 1] = 9;
+				towa_x = towa_x + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		//左動く時の動作
+		if (vec == 2)
 		{
-			return false;
+			if (m_map[mapnum][towa_y][towa_x - 1] != 1 &&
+				m_map[mapnum][towa_y][towa_x - 1] != 3 &&
+				m_map[mapnum][towa_y][towa_x - 1] != 5 &&
+				m_map[mapnum][towa_y][towa_x - 1] != 7 &&
+				m_map[mapnum][towa_y][towa_x - 1] != 8 &&
+				m_map[mapnum][towa_y][towa_x - 1] != 9 &&
+				m_map[mapnum][towa_y][towa_x - 1] !=10)
+			{
+				m_map[mapnum][towa_y][towa_x] = 0;
+				m_map[mapnum][towa_y][towa_x - 1] = 9;
+				towa_x = towa_x - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//上動く時の動作
+		if (vec == 3)
+		{
+			if (m_map[mapnum][towa_y - 1][towa_x] != 1 &&
+				m_map[mapnum][towa_y - 1][towa_x] != 3 &&
+				m_map[mapnum][towa_y - 1][towa_x] != 5 &&
+				m_map[mapnum][towa_y - 1][towa_x] != 7 &&
+				m_map[mapnum][towa_y - 1][towa_x] != 8 &&
+				m_map[mapnum][towa_y - 1][towa_x] != 9 &&
+				m_map[mapnum][towa_y - 1][towa_x] !=10)
+			{
+				m_map[mapnum][towa_y][towa_x] = 0;
+				m_map[mapnum][towa_y - 1][towa_x] = 9;
+				towa_y = towa_y - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//下動くときの動作
+		if (vec == 4)
+		{
+			if (m_map[mapnum][towa_y + 1][towa_x] != 1 &&
+				m_map[mapnum][towa_y + 1][towa_x] != 3 &&
+				m_map[mapnum][towa_y + 1][towa_x] != 5 &&
+				m_map[mapnum][towa_y + 1][towa_x] != 7 &&
+				m_map[mapnum][towa_y + 1][towa_x] != 8 &&
+				m_map[mapnum][towa_y + 1][towa_x] != 9 &&
+				m_map[mapnum][towa_y + 1][towa_x] !=10)
+			{
+				m_map[mapnum][towa_y][towa_x] = 0;
+				m_map[mapnum][towa_y + 1][towa_x] = 9;
+				towa_y = towa_y + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
-	//下動くときの動作
-	if (vec == 4)
+
+	//奏多
+	else if (Characternum == 4)
 	{
-		if (m_map[mapnum][hero_y + 1][hero_x] != 1 &&
-			m_map[mapnum][hero_y + 1][hero_x] != 3 &&
-			m_map[mapnum][hero_y + 1][hero_x] != 5 &&
-			m_map[mapnum][hero_y + 1][hero_x] != 7 &&
-			(m_map[mapnum][hero_y + 1][hero_x] < 30 ||
-			m_map[mapnum][hero_y + 1][hero_x] > 44))
+		//右動く時の動作
+		if (vec == 1)
 		{
-			hero_y = hero_y + 1;
-			return true;
+			if (m_map[mapnum][kanata_y][kanata_x + 1] != 1 &&
+				m_map[mapnum][kanata_y][kanata_x + 1] != 3 &&
+				m_map[mapnum][kanata_y][kanata_x + 1] != 5 &&
+				m_map[mapnum][kanata_y][kanata_x + 1] != 7 &&
+				m_map[mapnum][kanata_y][kanata_x + 1] != 8 &&
+				m_map[mapnum][kanata_y][kanata_x + 1] != 9 &&
+				m_map[mapnum][kanata_y][kanata_x + 1] !=10)
+			{
+				m_map[mapnum][kanata_y][kanata_x] = 0;
+				m_map[mapnum][kanata_y][kanata_x + 1] = 10;
+				kanata_x = kanata_x + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
-		else
+		//左動く時の動作
+		if (vec == 2)
 		{
-			return false;
+			if (m_map[mapnum][kanata_y][kanata_x - 1] != 1 &&
+				m_map[mapnum][kanata_y][kanata_x - 1] != 3 &&
+				m_map[mapnum][kanata_y][kanata_x - 1] != 5 &&
+				m_map[mapnum][kanata_y][kanata_x - 1] != 7 &&
+				m_map[mapnum][kanata_y][kanata_x - 1] != 8 &&
+				m_map[mapnum][kanata_y][kanata_x - 1] != 9 &&
+				m_map[mapnum][kanata_y][kanata_x - 1] !=10)
+			{
+				m_map[mapnum][kanata_y][kanata_x] = 0;
+				m_map[mapnum][kanata_y][kanata_x - 1] = 10;
+				kanata_x = kanata_x - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//上動く時の動作
+		if (vec == 3)
+		{
+			if (m_map[mapnum][kanata_y - 1][kanata_x] != 1 &&
+				m_map[mapnum][kanata_y - 1][kanata_x] != 3 &&
+				m_map[mapnum][kanata_y - 1][kanata_x] != 5 &&
+				m_map[mapnum][kanata_y - 1][kanata_x] != 7 &&
+				m_map[mapnum][kanata_y - 1][kanata_x] != 8 &&
+				m_map[mapnum][kanata_y - 1][kanata_x] != 9 &&
+				m_map[mapnum][kanata_y - 1][kanata_x] != 10)
+			{
+				m_map[mapnum][kanata_y][kanata_x] = 0;
+				m_map[mapnum][kanata_y - 1][kanata_x] = 10;
+				kanata_y = kanata_y - 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		//下動くときの動作
+		if (vec == 4)
+		{
+			if (m_map[mapnum][kanata_y + 1][kanata_x] != 1 &&
+				m_map[mapnum][kanata_y + 1][kanata_x] != 3 &&
+				m_map[mapnum][kanata_y + 1][kanata_x] != 5 &&
+				m_map[mapnum][kanata_y + 1][kanata_x] != 7 &&
+				m_map[mapnum][kanata_y + 1][kanata_x] != 8 &&
+				m_map[mapnum][kanata_y + 1][kanata_x] != 9 &&
+				m_map[mapnum][kanata_y + 1][kanata_x] !=10)
+			{
+				m_map[mapnum][kanata_y][kanata_x] = 0;
+				m_map[mapnum][kanata_y + 1][kanata_x] = 10;
+				kanata_y = kanata_y + 1;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 
@@ -1159,6 +1466,71 @@ void CObjBlock::SetHero()
 		}
 	}
 }
+
+//永遠の位置をセットする
+void CObjBlock::SetTowa()
+{
+
+	//永遠の位置を設定
+	CObjTowa* towa = (CObjTowa*)Objs::GetObj(OBJ_TOWA);
+
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (m_map[mapnum][i][j] == 9)
+			{
+				towa_x = j; towa_y = i;
+				towa->SetPX(32.0f*j);
+				towa->SetPY(32.0f*i);
+			}
+		}
+	}
+}
+
+//奏多の位置をセットする
+void CObjBlock::SetKanata()
+{
+
+	//奏多の位置を設定
+	CObjTowa* kanata = (CObjTowa*)Objs::GetObj(OBJ_KANATA);
+
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (m_map[mapnum][i][j] ==10)
+			{
+				kanata_x = j; kanata_y = i;
+				kanata->SetPX(32.0f*j);
+				kanata->SetPY(32.0f*i);
+			}
+		}
+	}
+}
+
+
+//きららの位置をセットする
+void CObjBlock::SetKirara()
+{
+
+	//きららの位置を設定
+	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
+
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (m_map[mapnum][i][j] == 8)
+			{
+				kirara_x = j; kirara_y = i;
+				kirara->SetPX(32.0f*j);
+				kirara->SetPY(32.0f*i);
+			}
+		}
+	}
+}
+
 
 //ナンバーロックドア開けるための関数
 void CObjBlock::UnlockDoor(int vec, int num, int locknum)

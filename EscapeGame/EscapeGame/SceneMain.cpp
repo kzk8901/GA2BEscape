@@ -27,7 +27,7 @@ void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
 	Draw::LoadImageW(L"image2.png", 0, TEX_SIZE_512);
-	Draw::LoadImageW(L"hakkou1.png", 1, TEX_SIZE_512);
+	Draw::LoadImageW(L"text1.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"zyo-zi.png", 4, TEX_SIZE_512);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
@@ -36,6 +36,9 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"kanata.png", 51, TEX_SIZE_512);
 	Draw::LoadImageW(L"towa.png", 52, TEX_SIZE_512);
 
+	Draw::LoadImageW(L"kiraraMT.png", 60, TEX_SIZE_128);
+	Draw::LoadImageW(L"kanataMT.png", 61, TEX_SIZE_128);
+	Draw::LoadImageW(L"towaMT.png", 62, TEX_SIZE_128);
 	Draw::LoadImageW(L"hero.png", 53, TEX_SIZE_128);
 
 	Draw::LoadImageW(L"TemporaryPlacement.png", 6, TEX_SIZE_256);
@@ -66,7 +69,19 @@ void CSceneMain::InitScene()
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
-	Objs::InsertObj(obj, OBJ_HERO, 10);
+	Objs::InsertObj(obj, OBJ_HERO, 53);
+
+	//永遠オブジェクト作成
+	CObjTowa* objw = new CObjTowa();
+	Objs::InsertObj(objw, OBJ_TOWA, 61);
+
+	//奏多オブジェクト作成
+	CObjKanata* objn = new CObjKanata();
+	Objs::InsertObj(objn, OBJ_KANATA, 62);
+
+	//きららオブジェクト作成
+	CObjKirara* objk = new CObjKirara();
+	Objs::InsertObj(objk, OBJ_KIRARA, 60);
 
 	//背景オブジェクト作成
 	CObjBackGround* objg = new CObjBackGround();

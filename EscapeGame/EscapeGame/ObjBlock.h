@@ -18,19 +18,36 @@ public:
 	int  GetX() { return hero_x; }
 	int  GetY() { return hero_y; }
 	int  CheckBlockNumber(int vec, int x, int y);
+	int  HeroGetX() { return hero_x; }
+	int  HeroGetY() { return hero_y; }
+	int  KiraraGetX() { return kirara_x; }
+	int  KiraraGetY() { return kirara_y; }
+	int  TowaGetX() { return towa_x; }
+	int  TowaGetY() { return towa_y; }
+	int  KanataGetX() { return kanata_x; }
+	int  KanataGetY() { return kanata_y; }
 
-	bool ThereIsBlock(int vec);
+	bool ThereIsBlock(int vec ,int Characternum);//方向と動かすキャラ
 	void HeroAction(int vec);
 	void Mapchange(int mapn);
 	void SetHero();
+	void SetKirara();
+	void SetTowa();
+	void SetKanata();
 
 	void UnlockDoor(int vec, int num, int locknum);
 	void Set_Map_Num(int n) { mapnum = n; }//マップナンバーをセットする
 	float GetMoveshelf() { return moveshelf; }
 private:
 	int m_map[5][15][20];//マップ情報
-	int hero_x; //主人公位置（X）
-	int hero_y; //主人公位置（Y）
+	int hero_x;   //主人公位置（X）
+	int hero_y;   //主人公位置（Y）
+	int kirara_x; //きらら位置（X）
+	int kirara_y; //きらら位置（Y）
+	int towa_x;   //永遠位置（X）
+	int towa_y;   //永遠位置（Y）
+	int kanata_x; //奏多位置（X）
+	int kanata_y; //奏多位置（Y）
 
 	bool eventclockflag; //イベント中のフラグ
 	int  eventclocktime; //イベント中の時間管理
