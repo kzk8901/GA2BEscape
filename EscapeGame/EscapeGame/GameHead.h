@@ -41,7 +41,7 @@ enum HIT_ELEMENTS
 struct UserData
 {
 	int mSeveData;	//サンプルセーブデータ
-	int  number1; //数あってるか
+	int number[10]; //数あってるか
 
 	//所持アイテム管理
 	int item[8];

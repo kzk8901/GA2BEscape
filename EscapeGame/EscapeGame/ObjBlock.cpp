@@ -45,13 +45,13 @@ int block_data_map[4][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 1
+		{ 1,39,39,39,39,39,39,39,47, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
+		{ 1,35,38,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
-		{ 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
+		{ 1,35,35,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
@@ -65,13 +65,13 @@ int block_data_map[4][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 0,33,33, 0, 0,31,31, 0, 0,33,33, 0, 0, 0, 0, 1, },// 1
+		{ 1, 0, 0, 0, 0,33,41, 0, 0,43,31, 0, 0,42,33, 0, 0, 0, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0,45,33,33, 0, 0, 0, 0, 0, 0,33,33,46, 0, 0, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{96, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,32, 1, },// 7
+		{96, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,40, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
@@ -91,7 +91,7 @@ int block_data_map[4][15][20] =
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50, 2,94, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,94, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
@@ -122,9 +122,11 @@ void CObjBlock::Init()
 	blocky = 0;
 	blockm_x = 0.0f;
 	blockm_y = 0.0f;
+	moveshelf = 0.0f;
 	blockdeleteYN = false;
 	animationtime = 0;
-	((UserData*)Save::GetData())->number1 = 402;
+	((UserData*)Save::GetData())->number[0] = 402;
+	((UserData*)Save::GetData())->number[1] = 402;
 }
 
 //アクション
@@ -279,6 +281,43 @@ void CObjBlock::Action()
 				blockm_y = 0.0;
 			//------------------------------
 			m_map[mapnum][blocky][blockx] = 0;
+		}
+	}
+
+	//棚動かす用イベントフラグ---------------------------
+	if (moveshelf > 0.0f)
+	{
+		bool finishflag = false;
+		hero->SetEventFlag(true, 0);
+		eventclocktime++;
+		moveshelf += 0.5;
+		if (eventclocktime > 64)
+		{
+			hero->SetEventFlag(false, 0);
+			eventclocktime = 0;
+			for (int i = 0; finishflag == false; i++)
+			{
+				if (m_map[mapnum][blocky][blockx + i] != 39)
+				{
+					m_map[mapnum][blocky][blockx + i] = 36;
+					for (int j = 1; finishflag == false; j++)
+					{
+						if (m_map[mapnum][blocky][blockx + i - j] == 39)
+						{
+							m_map[mapnum][blocky][blockx + i - j] = 36;
+						}
+						else if (m_map[mapnum][blocky][blockx  + i - j] != 39)
+						{
+							m_map[mapnum][blocky][blockx + i - j + 1] = 0;
+							finishflag = true;
+						}
+					}
+				}
+			}
+			//後処理
+			moveshelf = 0.0f;
+			blockx = 0;
+			blocky = 0;
 		}
 	}
 
@@ -462,7 +501,7 @@ void CObjBlock::Draw()
 				Draw::Draw(7, &src, &dst, c, 0.0f);
 			}
 			//棚表示
-			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34)
+			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34 || m_map[mapnum][i][j] == 43)
 			{
 				int skipcount = 0;
 				int vase = 0;
@@ -473,7 +512,7 @@ void CObjBlock::Draw()
 					vase = 1;
 				}
 
-				if (m_map[mapnum][i][j + 1] == 31 || m_map[mapnum][i][j + 1] == 34)
+				if (m_map[mapnum][i][j + 1] == 31 || m_map[mapnum][i][j + 1] == 34 || m_map[mapnum][i][j + 1] == 43)
 				{
 					skipcount++;
 					//花瓶の表示をする
@@ -536,10 +575,13 @@ void CObjBlock::Draw()
 				Draw::Draw(13, &src, &dst, c, 0.0f);
 			}
 			//ベッド表示
-			if (m_map[mapnum][i][j] == 33)
+			if (m_map[mapnum][i][j] == 33 ||
+				m_map[mapnum][i][j] == 41 ||
+				m_map[mapnum][i][j] == 42)
 			{
 				int skipcountx = 0;
 				int county = 0;
+				bool skip = false;
 
 				//切り取り位置の設定
 				src.m_top = 0.0f;
@@ -547,34 +589,45 @@ void CObjBlock::Draw()
 				src.m_right = src.m_left + 32.0f;
 				src.m_bottom = src.m_top + 64.0f;
 
-				for (int s = 1; m_map[mapnum][i][j + s] == 33; s++)
+				if (m_map[mapnum][i + 1][j] == 33 || m_map[mapnum][i + 1][j] == 41 || m_map[mapnum][i + 1][j] == 42)
+				{
+					skip = true;
+				}
+				for (int s = 1; m_map[mapnum][i][j + s] == 33 || m_map[mapnum][i][j + s] == 41 || m_map[mapnum][i][j + s] == 42; s++)
 				{
 					skipcountx++;
 				}
-				while (m_map[mapnum][i - 1 - county][j] == 33)
+				while (m_map[mapnum][i - 1 - county][j] == 33 || m_map[mapnum][i - 1 - county][j] == 41 || m_map[mapnum][i - 1 - county][j] == 42)
 				{
 					county++;
 				}
 
-				//表示位置の設定
-				dst.m_top = (i - county)*32.0f;
-				dst.m_left = j*32.0f;
-				dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
-				dst.m_bottom = dst.m_top + 32.0f * (county + 1);
+				if (skip == false)
+				{
+					//表示位置の設定
+					dst.m_top = (i - county)*32.0f;
+					dst.m_left = j*32.0f;
+					dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
+					dst.m_bottom = dst.m_top + 32.0f * (county + 1);
 
-				//描画
-				Draw::Draw(14, &src, &dst, c, 0.0f);
+					//描画
+					Draw::Draw(14, &src, &dst, c, 0.0f);
+				}
 
 				j += skipcountx;
 			}
 			//本棚表示
-			if ((m_map[mapnum][i][j] == 35  || m_map[mapnum][i][j] == 36 || m_map[mapnum][i][j] == 37) && hero_y < i)
+			if ((m_map[mapnum][i][j] == 35  
+				|| m_map[mapnum][i][j] == 36 
+				|| m_map[mapnum][i][j] == 37
+				|| m_map[mapnum][i][j] == 38) 
+				&& hero_y < i)
 			{
 				int skipcountx = 0;
 				int overcount = 0;
 				int county = 0;
 
-				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37; s++)
+				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37 || m_map[mapnum][i][j + s] == 38; s++)
 				{
 					skipcountx++;
 					if (skipcountx == 5)
@@ -583,7 +636,7 @@ void CObjBlock::Draw()
 						overcount += 1;
 					}
 				}
-				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36 || m_map[mapnum][i - 1 - county][j] == 37)
+				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36 || m_map[mapnum][i - 1 - county][j] == 37 || m_map[mapnum][i - 1 - county][j] == 38)
 				{
 					county++;
 				}
@@ -623,12 +676,86 @@ void CObjBlock::Draw()
 
 						x += skipcountx;
 					}
+				}				
+
+				//描画
+				Draw::Draw(16, &src, &dst, c, 0.0f);
+
+				j += skipcountx;
+			}
+			//動く本棚表示
+			if (m_map[mapnum][i][j] == 39 && hero_y < i)
+			{
+				int skipcountx = 0;
+				int overcount = 0;
+				for (int s = 1; m_map[mapnum][i][j + s] == 39; s++)
+				{
+					skipcountx++;
+					if (skipcountx == 5)
+					{
+						skipcountx = 1;
+						overcount += 1;
+					}
+				}
+				for (int x = 0; x <= skipcountx;)
+				{
+					if (overcount > 0)
+					{
+						//切り取り位置の設定
+						src.m_top = 0.0f;
+						src.m_left = 0.0f;
+						src.m_right = src.m_left + 64.0f;
+						src.m_bottom = src.m_top + 64.0f;
+
+						//表示位置の設定
+						dst.m_top = i*32.0f - 16.0f;
+						dst.m_left = j*32.0f + moveshelf;
+						dst.m_right = dst.m_left + 128.0f;
+						dst.m_bottom = dst.m_top + 32.0f * 2;
+
+						x += 4;
+						overcount -= 1;
+					}
+					else
+					{
+						//切り取り位置の設定
+						src.m_top = 0.0f;
+						src.m_left = 0.0f;
+						src.m_right = src.m_left + 16.0f * (skipcountx + 1);
+						src.m_bottom = src.m_top + 64.0f;
+
+						//表示位置の設定
+						dst.m_top = i *32.0f - 16.0f;
+						dst.m_left = j*32.0f + moveshelf;
+						dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
+						dst.m_bottom = dst.m_top + 32.0f * 2;
+
+						x += skipcountx;
+					}
 				}
 
 				//描画
 				Draw::Draw(16, &src, &dst, c, 0.0f);
 
 				j += skipcountx;
+			}
+			//メモあり机表示
+			if (m_map[mapnum][i][j] == 40)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 128.0f;
+				src.m_bottom = src.m_top + 128.0f;
+
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(20, &src, &dst, c, 0.0f);
 			}
 		}
 	}
@@ -754,11 +881,29 @@ void CObjBlock::HeroAction(int vec)
 			blockdeleteYN = false;
 			eventclockflag = true;
 		}
-		//鍵判定
+		//机の上のメモを取る判定
+		if (m_map[mapnum][hero_y][hero_x + 1] == 40)
+		{
+			m_map[mapnum][hero_y][hero_x + 1] = 32;
+			itm->GetItem(5);
+		}
+		//ベッドの上のメモ2を取る判定
+		if (m_map[mapnum][hero_y][hero_x + 1] == 41)
+		{
+			m_map[mapnum][hero_y][hero_x + 1] = 33;
+			itm->GetItem(6);
+		}
+		//ベッドの上のメモ3を取る判定
+		if (m_map[mapnum][hero_y][hero_x + 1] == 42)
+		{
+			m_map[mapnum][hero_y][hero_x + 1] = 33;
+			itm->GetItem(7);
+		}
+		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y][hero_x + 1] == 46)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
-			itm->GetItem(1);
+			itm->GetItem(8);
 		}
 	}
 	//左
@@ -780,11 +925,29 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(2);
 		}
-		//鍵判定
+		//机の上のメモ1を取る判定
+		if (m_map[mapnum][hero_y][hero_x - 1] == 40)
+		{
+			m_map[mapnum][hero_y][hero_x - 1] = 32;
+			itm->GetItem(5);
+		}
+		//ベッドの上のメモ2を取る判定
+		if (m_map[mapnum][hero_y][hero_x - 1] == 41)
+		{
+			m_map[mapnum][hero_y][hero_x - 1] = 33;
+			itm->GetItem(6);
+		}
+		//ベッドの上のメモ3を取る判定
+		if (m_map[mapnum][hero_y][hero_x - 1] == 42)
+		{
+			m_map[mapnum][hero_y][hero_x - 1] = 33;
+			itm->GetItem(7);
+		}
+		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y][hero_x - 1] == 46)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
-			itm->GetItem(1);
+			itm->GetItem(8);
 		}
 	}
 	//上
@@ -818,8 +981,8 @@ void CObjBlock::HeroAction(int vec)
 		{
 			//解いてる間動かないようにする
 			hero->SetActionflag(true);
-			//ナンバーロックの桁数
-			hero->SetLockpiece(4);
+			//ナンバーロックの桁数とロックナンバー
+			hero->SetLockpiece(1,4);
 			//ナンバーロック解いてるフラグを立てる
 			hero->SetNumlock(true);
 		}
@@ -849,11 +1012,52 @@ void CObjBlock::HeroAction(int vec)
 				}
 			}
 		}
-		//鍵判定
+		//棚判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 38)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 36;
+			itm->GetItem(4);
+		}
+		//動く棚判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 39 && itm->CheckItem(3))
+		{
+			blockx = hero_x; blocky = hero_y - 1;
+			itm->DeleteItem(3, false);
+			moveshelf = 1.0f;
+		}
+		//机の上のメモ1を取る判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 40)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 32;
+			itm->GetItem(5);
+		}
+		//ベッドの上のメモ2を取る判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 41)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 33;
+			itm->GetItem(6);
+		}
+		//ベッドの上のメモ3を取る判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 42)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 33;
+			itm->GetItem(7);
+		}
+		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 46)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
-			itm->GetItem(1);
+			itm->GetItem(8);
+		}
+		//棚のナンバーロック解除
+		if (m_map[mapnum][hero_y - 1][hero_x] == 43)
+		{
+			//解いてる間動かないようにする
+			hero->SetActionflag(true);
+			//ナンバーロックの桁数
+			hero->SetLockpiece(2,4);
+			//ナンバーロック解いてるフラグを立てる
+			hero->SetNumlock(true);
 		}
 	}
 	//下
@@ -875,11 +1079,29 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(2);
 		}
-		//鍵判定
+		//机の上のメモを取る判定
+		if (m_map[mapnum][hero_y + 1][hero_x] == 40)
+		{
+			m_map[mapnum][hero_y + 1][hero_x] = 32;
+			itm->GetItem(5);
+		}
+		//ベッドの上のメモ2を取る判定
+		if (m_map[mapnum][hero_y + 1][hero_x] == 41)
+		{
+			m_map[mapnum][hero_y + 1][hero_x] = 33;
+			itm->GetItem(6);
+		}
+		//ベッドの上のメモ3を取る判定
+		if (m_map[mapnum][hero_y + 1][hero_x] == 42)
+		{
+			m_map[mapnum][hero_y + 1][hero_x] = 33;
+			itm->GetItem(7);
+		}
+		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y + 1][hero_x] == 46)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
-			itm->GetItem(1);
+			itm->GetItem(8);
 		}
 	}
 }
@@ -939,11 +1161,19 @@ void CObjBlock::SetHero()
 }
 
 //ナンバーロックドア開けるための関数
-void CObjBlock::UnlockDoor(int vec, int num)
+void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 {
-	if (((UserData*)Save::GetData())->number1 == num)
+	//アイテム参照
+	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
+
+	if (((UserData*)Save::GetData())->number[0] == num && locknum == 1)
 	{
 		m_map[mapnum][hero_y - 1][hero_x] = 0;
+	}
+	if (((UserData*)Save::GetData())->number[1] == num && locknum == 2)
+	{
+		itm->GetItem(3);
+		m_map[mapnum][hero_y - 1][hero_x] = 31;
 	}
 }
 int CObjBlock::CheckBlockNumber(int vec, int x, int y)

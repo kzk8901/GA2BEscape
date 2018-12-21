@@ -46,7 +46,7 @@ void CObjBackGround::Draw()
 	//ブロックの位置取得
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 
-	for (int i = 0; i < 15; i++)
+	for (int i = -1; i < 15; i++)
 	{
 		for (int j = 0; j < 20; j++)
 		{
@@ -57,13 +57,31 @@ void CObjBackGround::Draw()
 			src.m_right = src.m_left + 64.0f;
 			src.m_bottom = src.m_top + 64.0f;
 			//表示位置の設定
-			dst.m_top = i*32.0f;
+			dst.m_top = i*32.0f + 16.0f;
 			dst.m_left = j*32.0f;
 			dst.m_right = dst.m_left + 32.0f;
 			dst.m_bottom = dst.m_top + 32.0f;
 
 			//描画
 			Draw::Draw(10, &src, &dst, c, 0.0f);
+
+			//色付き床
+			if (m_map[mapnum][i][j] == 47)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0 + 16.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(19, &src, &dst, c, 0.0f);
+			}
 		}
 	}
 
@@ -142,13 +160,13 @@ void CObjBackGround::Draw()
 				}
 			}
 			//本棚表示
-			if (m_map[mapnum][i][j] == 35 || m_map[mapnum][i][j] == 36 || m_map[mapnum][i][j] == 37)
+			if (m_map[mapnum][i][j] == 35 || m_map[mapnum][i][j] == 36 || m_map[mapnum][i][j] == 37 || m_map[mapnum][i][j] == 38)
 			{
 				int skipcountx = 0;
 				int overcount = 0;
 				int county = 0;
 
-				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37; s++)
+				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37 || m_map[mapnum][i][j + s] == 38; s++)
 				{
 					skipcountx++;
 					if (skipcountx == 5)
@@ -157,7 +175,7 @@ void CObjBackGround::Draw()
 						overcount += 1;
 					}
 				}
-				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36 || m_map[mapnum][i - 1 - county][j] == 37)
+				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36 || m_map[mapnum][i - 1 - county][j] == 37 || m_map[mapnum][i - 1 - county][j] == 38)
 				{
 					county++;
 				}
@@ -194,6 +212,62 @@ void CObjBackGround::Draw()
 						dst.m_left = j*32.0f;
 						dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
 						dst.m_bottom = dst.m_top + 32.0f * (county + 2);
+
+						x += skipcountx;
+					}
+				}
+
+				//描画
+				Draw::Draw(16, &src, &dst, c, 0.0f);
+
+				j += skipcountx;
+			}
+			//動く本棚表示
+			if (m_map[mapnum][i][j] == 39)
+			{
+				int skipcountx = 0;
+				int overcount = 0;
+				for (int s = 1; m_map[mapnum][i][j + s] == 39; s++)
+				{
+					skipcountx++;
+					if (skipcountx == 5)
+					{
+						skipcountx = 1;
+						overcount += 1;
+					}
+				}
+				for (int x = 0; x <= skipcountx;)
+				{
+					if (overcount > 0)
+					{
+						//切り取り位置の設定
+						src.m_top = 0.0f;
+						src.m_left = 0.0f;
+						src.m_right = src.m_left + 64.0f;
+						src.m_bottom = src.m_top + 64.0f;
+
+						//表示位置の設定
+						dst.m_top = i*32.0f - 16.0f;
+						dst.m_left = j*32.0f + block->GetMoveshelf();
+						dst.m_right = dst.m_left + 128.0f;
+						dst.m_bottom = dst.m_top + 32.0f * 2;
+
+						x += 4;
+						overcount -= 1;
+					}
+					else
+					{
+						//切り取り位置の設定
+						src.m_top = 0.0f;
+						src.m_left = 0.0f;
+						src.m_right = src.m_left + 16.0f * (skipcountx + 1);
+						src.m_bottom = src.m_top + 64.0f;
+
+						//表示位置の設定
+						dst.m_top = i *32.0f - 16.0f;
+						dst.m_left = j*32.0f + block->GetMoveshelf();
+						dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
+						dst.m_bottom = dst.m_top + 32.0f * 2;
 
 						x += skipcountx;
 					}

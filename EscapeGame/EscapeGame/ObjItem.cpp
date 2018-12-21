@@ -38,17 +38,20 @@ void CObjItem::Draw()
 	{
 		if (((UserData*)Save::GetData())->item[i] != 0)
 		{
+			//表示位置だけ先に設定する
+			dst.m_top = 32.0f + 64.0f * (i % 4);
+			dst.m_left = 650.0f + 64.0f * ( i / 4);
+			dst.m_right = dst.m_left + 64.0f;
+			dst.m_bottom = dst.m_top + 64.0f;
+
 			if (((UserData*)Save::GetData())->item[i] == 1 ||
-				((UserData*)Save::GetData())->item[i] == 2)
+				((UserData*)Save::GetData())->item[i] == 2 ||
+				((UserData*)Save::GetData())->item[i] == 4)
 			{
 				src.m_top = 0.0f;
 				src.m_left = 384.0f;
 				src.m_right = 448.0f;
 				src.m_bottom = 64.0f;
-				dst.m_top = 32.0f + 64.0f * i;
-				dst.m_left = 650.0f;
-				dst.m_right = dst.m_left + 64.0f;
-				dst.m_bottom = dst.m_top + 64.0f;
 				Draw::Draw(0, &src, &dst, c, 0.0f);
 			}
 			if (((UserData*)Save::GetData())->item[i] == 3)
@@ -57,11 +60,39 @@ void CObjItem::Draw()
 				src.m_left = 0.0f;
 				src.m_right = 64.0f;
 				src.m_bottom = 64.0f;
-				dst.m_top = 32.0f + 64.0f * i;
-				dst.m_left = 650.0f;
-				dst.m_right = dst.m_left + 64.0f;
-				dst.m_bottom = dst.m_top + 64.0f;
 				Draw::Draw(18, &src, &dst, c, 0.0f);
+			}
+			if (((UserData*)Save::GetData())->item[i] == 5)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 64.0f;
+				src.m_bottom = 64.0f;
+				Draw::Draw(30, &src, &dst, c, 0.0f);
+			}
+			if (((UserData*)Save::GetData())->item[i] == 6)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 64.0f;
+				src.m_bottom = 64.0f;
+				Draw::Draw(31, &src, &dst, c, 0.0f);
+			}
+			if (((UserData*)Save::GetData())->item[i] == 7)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 64.0f;
+				src.m_bottom = 64.0f;
+				Draw::Draw(32, &src, &dst, c, 0.0f);
+			}
+			if (((UserData*)Save::GetData())->item[i] == 8)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 64.0f;
+				src.m_bottom = 64.0f;
+				Draw::Draw(33, &src, &dst, c, 0.0f);
 			}
 		}
 	}
@@ -112,6 +143,50 @@ void CObjItem::Draw()
 			src.m_right = 64.0f;
 			src.m_bottom = 64.0f;
 			Draw::Draw(18, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 4)
+		{
+			src.m_top = 0.0f;
+			src.m_left = 384.0f;
+			src.m_right = 448.0f;
+			src.m_bottom = 64.0f;
+			Draw::Draw(0, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 5)
+		{
+			//犬
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
+			src.m_bottom = 64.0f;
+			Draw::Draw(30, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 6)
+		{
+			//ネズミ
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
+			src.m_bottom = 64.0f;
+			Draw::Draw(31, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 7)
+		{
+			//ウサギ
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
+			src.m_bottom = 64.0f;
+			Draw::Draw(32, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 8)
+		{
+			//鳥
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
+			src.m_bottom = 64.0f;
+			Draw::Draw(33, &src, &dst, c, 0.0f);
 		}
 	}
 }

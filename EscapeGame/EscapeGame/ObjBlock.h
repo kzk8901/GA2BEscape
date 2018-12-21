@@ -24,8 +24,9 @@ public:
 	void Mapchange(int mapn);
 	void SetHero();
 
-	void UnlockDoor(int vec, int num);
+	void UnlockDoor(int vec, int num, int locknum);
 	void Set_Map_Num(int n) { mapnum = n; }//マップナンバーをセットする
+	float GetMoveshelf() { return moveshelf; }
 private:
 	int m_map[5][15][20];//マップ情報
 	int hero_x; //主人公位置（X）
@@ -39,6 +40,7 @@ private:
 	bool  blockdeleteYN;
 	float blockm_x;
 	float blockm_y;
+	float moveshelf;
 	int mapnum; //マップナンバー
 	int animationtime;   //アニメーションのための時間管理
 };

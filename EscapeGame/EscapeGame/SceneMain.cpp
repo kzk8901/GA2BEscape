@@ -51,6 +51,14 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"本棚マップチップ.png", 16, TEX_SIZE_64);
 	Draw::LoadImageW(L"絨毯マップチップ(仕掛け).png", 17, TEX_SIZE_32);
 	Draw::LoadImageW(L"fictionbookkey.png", 18, TEX_SIZE_64);
+	Draw::LoadImageW(L"暗床マップチップ.png", 19, TEX_SIZE_64);
+	Draw::LoadImageW(L"メモ付き机マップチップ.png", 20, TEX_SIZE_128);
+
+	//アイテム関連
+	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_64);
+	Draw::LoadImageW(L"nezumi.png", 31, TEX_SIZE_64);
+	Draw::LoadImageW(L"usagi.png", 32, TEX_SIZE_64);
+	Draw::LoadImageW(L"tori.png", 33, TEX_SIZE_64);
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();

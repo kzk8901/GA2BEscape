@@ -22,6 +22,7 @@ void CObjHero::Init()
 	m_posture = 1.0f; //‰EŒü‚«0.0f ¶Œü‚«1.0f
 	m_speed = 2.0f;
 
+	locknum = 0;
 	m_ani_time = 0;
 	m_ani_frame = 0;
 	m_vec = 0;
@@ -403,11 +404,12 @@ void CObjHero::Action()
 						u += unlocknum[i] * j;
 						j *= 10;
 					}
-					block->UnlockDoor(1, u);
+					block->UnlockDoor(1, u , locknum);
 					for (int i = 0; i < wpiece; i++)
 						unlocknum[i] = 0;
 					selectnum = 0;
 					wpiece = 0;
+					locknum = 0;
 					numlock_flag = false;
 					action_flag = false;
 					Key_flag = true;
