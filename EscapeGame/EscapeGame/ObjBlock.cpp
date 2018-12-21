@@ -334,7 +334,7 @@ void CObjBlock::Draw()
 	src.m_bottom = 120.0f;
 	dst.m_top = 480.0f;
 	dst.m_left =0.0f;
-	dst.m_right =640.0f;
+	dst.m_right =800.0f;
 	dst.m_bottom = 600.0f;
 	Draw::Draw(1, &src, &dst, c, 0.0f);
 
@@ -349,16 +349,6 @@ void CObjBlock::Draw()
 	dst.m_bottom = 480.0f;
 	Draw::Draw(2, &src, &dst, c, 0.0f);
 
-	//テキストウィンドウ3（右下）
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 512.0f;
-	src.m_bottom = 120.0f;
-	dst.m_top = 480.0f;
-	dst.m_left = 640.0f;
-	dst.m_right = 800.0f;
-	dst.m_bottom =600.0f;
-	Draw::Draw(1, &src, &dst, c, 0.0f);
 
 
 	//マップチップによるblock設置
