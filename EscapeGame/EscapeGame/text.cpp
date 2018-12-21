@@ -394,7 +394,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"部屋をえらんで探索しよう", 50, 520, 32, c);
+			Font::StrDraw(L"部屋をえらんで探索しよう", 108, 520, 32, c);
 			text_loop = false;
 		}
 	}
@@ -407,7 +407,7 @@ void CObjText::Draw()
 		if (word == 0)
 		{
 			text_move = true;
-			Font::StrDraw(L"Zキーで会話進行", 50, 520, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
 		else if (word == 1)
 		{
@@ -458,7 +458,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"探索しよう！", 50, 520, 32, c);
+			Font::StrDraw(L"探索しよう！", 108, 520, 32, c);
 		}
 	}
 	//きらら答え入力後-----------------------------------------------------------------------
@@ -467,7 +467,7 @@ void CObjText::Draw()
 		if (word == 10)
 		{
 			text_move = true;
-			Font::StrDraw(L"Zキーで会話進行", 50, 520, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
 		if (word== 11)
 		{
@@ -532,7 +532,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"他の部屋を探しに行こう", 50, 520, 32, c);
+			Font::StrDraw(L"他の部屋を探しに行こう", 108, 520, 32, c);
 			text_loop = false;
 		}
 	}
@@ -545,7 +545,7 @@ void CObjText::Draw()
 		if (word == 0)
 		{
 			text_move = true;
-			Font::StrDraw(L"Zキーで会話進行", 50, 520, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
 		if (word == 1)
 		{
@@ -629,7 +629,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"探索しよう！", 50, 520, 32, c);
+			Font::StrDraw(L"探索しよう！", 108, 520, 32, c);
 		}
 	}
     //鍵入手後-----------------------------------------------------------------------
@@ -638,7 +638,7 @@ void CObjText::Draw()
 		if (word == 13)
 		{
 			text_move = true;
-			Font::StrDraw(L"Zキーで会話進行", 50, 520, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
 		else if (word == 14)
 		{
@@ -670,7 +670,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"他の部屋を探しに行こう", 50, 520, 32, c);
+			Font::StrDraw(L"他の部屋を探しに行こう", 108, 520, 32, c);
 			text_loop = false;
 		}
 	}
@@ -683,7 +683,7 @@ void CObjText::Draw()
 		if (word == 0)
 		{
 			text_move = true;
-			Font::StrDraw(L"Zキーで会話進行", 50, 520, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
 		else if (word == 1)
 		{
@@ -737,7 +737,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"探索しよう！", 50, 520, 32, c);
+			Font::StrDraw(L"探索しよう！", 108, 520, 32, c);
 		}
 	}
 	//永遠マップ解除時-------------------------------------------------------------------------
@@ -746,7 +746,7 @@ void CObjText::Draw()
 			if (word == 9)
 			{
 				text_move = true;
-				Font::StrDraw(L"Zキーで会話進行", 50, 520, 32, c);
+				Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 			}
 			else if (word == 10)
 			{
@@ -808,7 +808,7 @@ void CObjText::Draw()
 				d = 0;
 				g = 3;
 				text_move = false;
-				Font::StrDraw(L"他の部屋を探しに行こう", 50, 520, 32, c);
+				Font::StrDraw(L"他の部屋を探しに行こう", 108, 520, 32, c);
 				text_loop = false;
 			}
 		}
@@ -864,7 +864,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"探索しよう！", 50, 520, 32, c);
+			Font::StrDraw(L"探索しよう！", 108, 520, 32, c);
 		}
 	}
 	//２階層-----------------------------------------------------------------------
@@ -873,7 +873,7 @@ void CObjText::Draw()
 		if (word == 6)
 		{
 			text_move = true;
-			Font::StrDraw(L"Zキーで会話進行", 50, 520, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
 		else if (word == 7)
 		{
@@ -931,7 +931,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"部屋をえらんで探索しよう", 50, 520, 32, c);
+			Font::StrDraw(L"部屋をえらんで探索しよう", 108, 520, 32, c);
 			text_loop = false;
 		}
 	}
