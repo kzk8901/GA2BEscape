@@ -955,7 +955,7 @@ void CObjText::Draw()
 		Font::StrDraw(L"永遠", 20, 485, 25, c);
 		Draw::Draw(52, &src, &dst, c, 0.0f);
 	}
-	//テキスト移動
+	//テキスト移動あらすじ
 	if (time < 210&&g==0)
 	{
 		src_B.m_top = 30.0f;
@@ -998,7 +998,7 @@ void CObjText::Draw()
 	{
 
 	}
-	//テキスト移動
+	//テキスト移動2行用
 	if (time < 180 && g == 1)
 	{
 		src_B.m_top = 30.0f;
@@ -1041,7 +1041,7 @@ void CObjText::Draw()
 	{
 
 	}
-	//テキスト移動
+	//テキスト移動1行用
 	if (time < 200 && g == 2)
 	{
 		src_B.m_top = 30.0f;
