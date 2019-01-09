@@ -6,6 +6,7 @@
 
 #include"GameHead.h"
 #include"ObjBlock.h"
+#include"text.h"
 //使用するネームスペース
 using namespace GameL;
 

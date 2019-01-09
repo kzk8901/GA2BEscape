@@ -28,7 +28,7 @@ int block_data_map[4][15][20] =
 		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },// 1
 		{  1,30,31,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31,31,30, 1, },// 2
 		{  1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
-		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
+		{  1, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0,10, 0, 0, 0, 0, 0, 1, },// 4
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
 		{ 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,97, },// 7
@@ -37,7 +37,7 @@ int block_data_map[4][15][20] =
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
 		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
-		{  1, 1, 1, 1, 1, 1, 0, 0, 2, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
+		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 2, 9, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
 		{  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 
@@ -109,13 +109,15 @@ void CObjBlock::Init()
 	mapnum = 0;
 
 	//主人公の位置を設定
-	CObjHero*   hero   = (CObjHero*)Objs::GetObj(OBJ_HERO);
-	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 
 	//マップデータをコピー
 	memcpy(m_map, block_data_map, sizeof(int)*(4 * 15 * 20));
 
 	SetHero();
+	SetKirara();
+	SetKanata();
+	SetTowa();
 
 	eventclockflag = false;
 	eventclocktime = 0;
@@ -126,6 +128,7 @@ void CObjBlock::Init()
 	moveshelf = 0.0f;
 	blockdeleteYN = false;
 	animationtime = 0;
+	event_num = 0;
 	((UserData*)Save::GetData())->number[0] = 402;
 	((UserData*)Save::GetData())->number[1] = 402;
 
@@ -157,26 +160,58 @@ void CObjBlock::Action()
 	//奏多の位置を設定
 	CObjKanata* kanata = (CObjKanata*)Objs::GetObj(OBJ_KANATA);
 
-	if (m_map[mapnum][hero_y][hero_x] == 50)
+	if (Input::GetVKey('O') == true)
 	{
-		m_map[mapnum][hero_y][hero_x] = 0;
+		event_num = 1;
+	}
+
+	//オープニングの動き
+	//主人公を出して初期位置へ
+	if (event_num==1)
+	{
 		hero->SetHeroEventFlag(true,1);
 	}
-	if (m_map[mapnum][hero_y][hero_x] == 51)
+	
+	if (event_num==2)
 	{
-		m_map[mapnum][hero_y][hero_x] = 0;
-		kirara->SetKiraraEventFlag(true, 1);
-	}
-	if (m_map[mapnum][hero_y][hero_x] == 52)
-	{
-		m_map[mapnum][hero_y][hero_x] = 0;
 		towa->SetTowaEventFlag(true, 1);
 	}
-	if (m_map[mapnum][hero_y][hero_x] == 53)
+	if (event_num==3)
 	{
-		m_map[mapnum][hero_y][hero_x] = 0;
+		hero->SetHeroEventFlag(true, 2);
+	}
+	if (event_num == 4)
+	{
 		kanata->SetKanataEventFlag(true, 1);
 	}
+	if (event_num == 5)
+	{
+		kirara->SetKiraraEventFlag(true, 1);
+	}
+	if (event_num == 6)
+	{
+		hero->SetHeroEventFlag(true, 3);
+	}
+	if (event_num == 7)
+	{
+		kanata->SetKanataEventFlag(true, 2);
+	}
+	if (event_num == 8)
+	{
+		towa->SetTowaEventFlag(true, 2);
+	}
+	if (event_num == 9)
+	{
+		towa->SetTowaEventFlag(true, 3);
+		kanata->SetKanataEventFlag(true, 3);
+		kirara->SetKiraraEventFlag(true, 2);
+		m_map[mapnum][kirara_y][kirara_x] = 95;
+		m_map[mapnum][towa_y][towa_x] = 97;
+		m_map[mapnum][kanata_y][kanata_x] = 99;
+		//イベントが終了、主人公を動けるようにする
+		hero->SetActionflag(false);
+	}
+	//オープニング終了---------------------------------
 
 	//スタートF1へ移動---------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 98 && hero->GetMoveFlag() == false||
@@ -975,7 +1010,7 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 			bool tib = true;
 			for (int i = 0; i < 99; i++)
 			{
-				if (m_map[mapnum][kirara_y - 1][kirara_x] == notonblock[i] && notonblock[i] != 0)
+				if (m_map[mapnum][kirara_y + 1][kirara_x] == notonblock[i] && notonblock[i] != 0)
 				{
 					tib = false;
 				}

@@ -35,6 +35,8 @@ public:
 	void SetTowa();
 	void SetKanata();
 
+	void SetEventNum(int e) { event_num = e; }//起こしたい最初のイベントを入れる
+
 	void UnlockDoor(int vec, int num, int locknum);
 	void Set_Map_Num(int n) { mapnum = n; }//マップナンバーをセットする
 	float GetMoveshelf() { return moveshelf; }
@@ -61,4 +63,7 @@ private:
 	float moveshelf;
 	int mapnum; //マップナンバー
 	int animationtime;   //アニメーションのための時間管理
+
+	int event_num;//イベントナンバー 0イベントなし
+
 };

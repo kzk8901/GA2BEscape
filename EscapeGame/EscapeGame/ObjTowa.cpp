@@ -52,8 +52,8 @@ void CObjTowa::Action()
 
 	//ブロックの位置取得
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	//アイテム参照
-	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
+	//主人公参照
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
@@ -62,36 +62,57 @@ void CObjTowa::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		//イベントナンバー１　左の部屋入ってからスタート
-		//X = 5, Y = 13の位置まで移動(テスト用)
+		
+		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
+			towa_in = true;
 			//1,右 2,左 3,上 4,下
-			if (block->TowaGetX() > 5 && block->ThereIsBlock(2, 3) == true)
+			if (block->TowaGetY() > 8  && block->ThereIsBlock(3, 3) == true)
 			{
-				SetMoveVec(2);
+				SetMoveVec(3);
 			}
-			else if (block->TowaGetY() < 13 && block->ThereIsBlock(4, 3) == true)
+			else if (block->TowaGetX() < 13 && block->ThereIsBlock(1, 3) == true)
 			{
-				SetMoveVec(4);
+				SetMoveVec(1);
 			}
 			else
 			{
+				towa_vec = 2;
 				eventflag = false;
 				eventnumber = 0;
+				block->SetEventNum(3);
 			}
 		}
 		//イベント1終了
 
-		//イベントナンバー２　右の部屋入ってからスタート
-		//X = 8, Y = 2の位置まで移動
+		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (block->KiraraGetY() > 2 && block->ThereIsBlock(3, 3) == true)
+			//1,右 2,左 3,上 4,下
+			if (block->TowaGetY() > 7 && block->ThereIsBlock(3, 3) == true)
 			{
 				SetMoveVec(3);
 			}
-			else if (block->KiraraGetX() < 8 && block->ThereIsBlock(1, 3) == true)
+			else if (block->TowaGetX() < 18 && block->ThereIsBlock(1, 3) == true)
+			{
+				SetMoveVec(1);
+			}
+			else
+			{
+				towa_vec = 2;
+				eventflag = false;
+				eventnumber = 0;
+				block->SetEventNum(9);
+			}
+		}
+		//イベント2終了
+
+		//イベントナンバー3
+		if (eventnumber == 3 && move_flag == false)
+		{
+			towa_vec = 1;
+			if (block->TowaGetX() < 19 && block->ThereIsBlock(1, 3) == true)
 			{
 				SetMoveVec(1);
 			}
@@ -99,9 +120,10 @@ void CObjTowa::Action()
 			{
 				eventflag = false;
 				eventnumber = 0;
+				towa_in = false;
 			}
 		}
-		//イベント2終了
+		//イベント3終了
 	}
 
 	if (m_vec == 1)
@@ -233,6 +255,6 @@ void CObjTowa::Draw()
 		dst.m_bottom = m_py + 32.0f;
 	}
 
-	Draw::Draw(61, &src, &dst, c, 0.0f);
+	Draw::Draw(62, &src, &dst, c, 0.0f);
 
 }
