@@ -62,7 +62,7 @@ void CObjKanata::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		
+		//オープニング開始-----------------------------------------------------
 		//イベントナンバー１　
 		if (eventnumber == 1 && move_flag == false)
 		{
@@ -102,7 +102,6 @@ void CObjKanata::Action()
 			{
 				SetMoveVec(3);
 			}
-
 			else
 			{
 				kanata_vec = 4;
@@ -111,12 +110,11 @@ void CObjKanata::Action()
 				eventnumber = 0;
 			}
 		}
-		//イベント3終了
+		//イベント2終了
 
-		//イベントナンバー4
+		//イベントナンバー3
 		if (eventnumber == 3 && move_flag == false)
 		{
-			kanata_vec = 3;
 			//1,右 2,左 3,上 4,下
 			 if (block->KanataGetY() > 0 && block->ThereIsBlock(3, 4) == true)
 			{
@@ -127,10 +125,11 @@ void CObjKanata::Action()
 				eventflag = false;
 				eventnumber = 0;
 				kanata_in = false;
+				kanata_vec = 4;
 			}
 		}
-		//イベント4終了
-
+		//イベント3終了
+		//オープニング終了-----------------------------------------------------
 		
 	}
 

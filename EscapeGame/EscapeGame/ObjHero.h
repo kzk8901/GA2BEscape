@@ -26,6 +26,7 @@ class CObjHero : public CObj
 	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  hero_vec=v;  move_flag = true; }
 	   void SetShowItemNumber(int i);
 	   void SetHeroIn(bool in) { hero_in = in; }
+	   void SetVec(int vec) { hero_vec = vec; }
   private:
 	  float m_px; //ˆÊ’u
 	  float m_py;

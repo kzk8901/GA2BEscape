@@ -62,7 +62,7 @@ void CObjTowa::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		
+		//オープニング開始-----------------------------------------------------
 		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
@@ -111,7 +111,7 @@ void CObjTowa::Action()
 		//イベントナンバー3
 		if (eventnumber == 3 && move_flag == false)
 		{
-			towa_vec = 1;
+			//1,右 2,左 3,上 4,下
 			if (block->TowaGetX() < 19 && block->ThereIsBlock(1, 3) == true)
 			{
 				SetMoveVec(1);
@@ -121,9 +121,11 @@ void CObjTowa::Action()
 				eventflag = false;
 				eventnumber = 0;
 				towa_in = false;
+				towa_vec = 4;
 			}
 		}
 		//イベント3終了
+		//オープニング終了-----------------------------------------------------
 	}
 
 	if (m_vec == 1)

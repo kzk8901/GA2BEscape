@@ -90,19 +90,16 @@ void CObjKirara::Action()
 		if (eventnumber == 2 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
-
-			kirara_vec = 2;
-
 			if (block->KiraraGetX() > 0 && block->ThereIsBlock(2, 2) == true)
 			{
 				SetMoveVec(2);
 			}
 			else
 			{
-				block->SetEventNum(0);
 				eventnumber = 0;
 				eventflag = false;
 				kirara_in = false;
+				kirara_vec = 4;
 			}
 		}
 		//イベント2終了
