@@ -56,6 +56,11 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"fictionbookkey.png", 18, TEX_SIZE_64);
 	Draw::LoadImageW(L"暗床マップチップ.png", 19, TEX_SIZE_64);
 	Draw::LoadImageW(L"メモ付き机マップチップ.png", 20, TEX_SIZE_128);
+	Draw::LoadImageW(L"本棚横マップチップ.png", 21, TEX_SIZE_64);
+	Draw::LoadImageW(L"机マップチップ.png", 22, TEX_SIZE_256);
+	Draw::LoadImageW(L"金庫マップチップ.png", 23, TEX_SIZE_128);
+	Draw::LoadImageW(L"pasu.png", 24, TEX_SIZE_256);
+	Draw::LoadImageW(L"pasu2.png", 25, TEX_SIZE_256);
 
 	//アイテム関連
 	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_64);
@@ -65,7 +70,7 @@ void CSceneMain::InitScene()
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
-	Objs::InsertObj(obji, OBJ_ITEM, 15);
+	Objs::InsertObj(obji, OBJ_ITEM, 99);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
@@ -89,7 +94,7 @@ void CSceneMain::InitScene()
 
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock();
-	Objs::InsertObj(objb, OBJ_BLOCK, 99);
+	Objs::InsertObj(objb, OBJ_BLOCK, 98);
 
 	//textオブジェクト作成
 	CObjText* objt = new CObjText();

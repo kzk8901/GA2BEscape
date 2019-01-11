@@ -53,10 +53,10 @@ int block_data_map[4][15][20] =
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
 		{ 1,35,35,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
-		{ 1, 0, 0, 0,10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },// 9
+		{ 1, 0, 0, 0,10, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },//10
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },//11
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50,51,50,50,50, 0, 1, },//12
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,98, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
@@ -71,7 +71,7 @@ int block_data_map[4][15][20] =
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{96, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,32, 1, },// 7
+		{96, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,40, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
@@ -85,7 +85,7 @@ int block_data_map[4][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0,31,34, 0, 0, 0, 0, 0, 0,35,35, 0,37,37, 0,35,35, 0, 1, },// 1
+		{ 1, 0,44,34, 0, 0, 0, 0, 0, 0,35,35, 0,37,37, 0,35,35, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
@@ -129,18 +129,20 @@ void CObjBlock::Init()
 	blockdeleteYN = false;
 	animationtime = 0;
 	event_num = 0;
+	lockpasu = 0;
 	for (int i=0; i < 3; i++)
 		event_clock[i] = false;
 
 	((UserData*)Save::GetData())->number[0] = 402;
 	((UserData*)Save::GetData())->number[1] = 402;
+	((UserData*)Save::GetData())->number[2] = 112;
 
 	//当たり判定のあるブロックはナンバーをここに入れる
 	int blocknumber[99] =
 	{
 		1, 3, 5, 7, 8, 9,10,30,31,32,
 		33,34,35,36,37,38,39,40,41,42,
-		43,44,
+		43,44,50,51,52,
 	};
 
 	for (int i = 0; i < 99; i++)
@@ -711,7 +713,7 @@ void CObjBlock::Draw()
 				Draw::Draw(7, &src, &dst, c, 0.0f);
 			}
 			//棚表示
-			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34 || m_map[mapnum][i][j] == 43)
+			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34 || m_map[mapnum][i][j] == 43 || m_map[mapnum][i][j] == 44)
 			{
 				int skipcount = 0;
 				int vase = 0;
@@ -722,7 +724,7 @@ void CObjBlock::Draw()
 					vase = 1;
 				}
 
-				if (m_map[mapnum][i][j + 1] == 31 || m_map[mapnum][i][j + 1] == 34 || m_map[mapnum][i][j + 1] == 43)
+				if (m_map[mapnum][i][j + 1] == 31 || m_map[mapnum][i][j + 1] == 34 || m_map[mapnum][i][j + 1] == 43 || m_map[mapnum][i][j + 1] == 44)
 				{
 					skipcount++;
 					//花瓶の表示をする
@@ -833,65 +835,99 @@ void CObjBlock::Draw()
 				|| m_map[mapnum][i][j] == 38) 
 				&& hero_y < i)
 			{
-				int skipcountx = 0;
-				int overcount = 0;
-				int county = 0;
-
-				for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37 || m_map[mapnum][i][j + s] == 38; s++)
+				if (m_map[mapnum][i + 1][j] == 35 || m_map[mapnum][i + 1][j] == 36 || m_map[mapnum][i + 1][j] == 37 || m_map[mapnum][i + 1][j] == 38)
 				{
-					skipcountx++;
-					if (skipcountx == 5)
-					{
-						skipcountx = 1;
-						overcount += 1;
-					}
+					//切り取り位置の設定
+					src.m_top = 0.0f;
+					src.m_left = 32.0f;
+					src.m_right = src.m_left + 32.0f;
+					src.m_bottom = src.m_top + 32.0f;
+
+					//表示位置の設定
+					dst.m_top = i*32.0f - 16.0f;
+					dst.m_left = j*32.0f;
+					dst.m_right = dst.m_left + 32.0f;
+					dst.m_bottom = dst.m_top + 32.0f;
+
+					//描画
+					Draw::Draw(21, &src, &dst, c, 0.0f);
 				}
-				while (m_map[mapnum][i - 1 - county][j] == 35 || m_map[mapnum][i - 1 - county][j] == 36 || m_map[mapnum][i - 1 - county][j] == 37 || m_map[mapnum][i - 1 - county][j] == 38)
+				else if (m_map[mapnum][i - 1][j] == 35 || m_map[mapnum][i - 1][j] == 36 || m_map[mapnum][i - 1][j] == 37 || m_map[mapnum][i - 1][j] == 38)
 				{
-					county++;
+					//切り取り位置の設定
+					src.m_top = 0.0f;
+					src.m_left = 0.0f;
+					src.m_right = src.m_left + 32.0f;
+					src.m_bottom = src.m_top + 64.0f;
+
+					//表示位置の設定
+					dst.m_top = i*32.0f - 16.0f;
+					dst.m_left = j*32.0f;
+					dst.m_right = dst.m_left + 32.0f;
+					dst.m_bottom = dst.m_top + 32.0f;
+
+					//描画
+					Draw::Draw(21, &src, &dst, c, 0.0f);
 				}
-
-				for (int x = 0; x <= skipcountx;)
+				else
 				{
-					if (overcount > 0)
+					int skipcountx = 0;
+					int overcount = 0;
+
+					for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37 || m_map[mapnum][i][j + s] == 38; s++)
 					{
-						//切り取り位置の設定
-						src.m_top = 0.0f;
-						src.m_left = 0.0f;
-						src.m_right = src.m_left + 64.0f;
-						src.m_bottom = src.m_top + 64.0f;
-
-						//表示位置の設定
-						dst.m_top = (i - county)*32.0f - 16.0f;
-						dst.m_left = j*32.0f;
-						dst.m_right = dst.m_left + 128.0f;
-						dst.m_bottom = dst.m_top + 32.0f * (county + 2);
-
-						x += 4;
-						overcount -= 1;
+						skipcountx++;
+						if (skipcountx == 5)
+						{
+							skipcountx = 1;
+							overcount += 1;
+						}
 					}
-					else
+
+					for (int x = 0; x <= skipcountx;)
 					{
-						//切り取り位置の設定
-						src.m_top = 0.0f;
-						src.m_left = 0.0f;
-						src.m_right = src.m_left + 16.0f * (skipcountx + 1);
-						src.m_bottom = src.m_top + 64.0f;
+						if (overcount > 0)
+						{
+							//切り取り位置の設定
+							src.m_top = 0.0f;
+							src.m_left = 0.0f;
+							src.m_right = src.m_left + 64.0f;
+							src.m_bottom = src.m_top + 64.0f;
 
-						//表示位置の設定
-						dst.m_top = (i - county)*32.0f - 16.0f;
-						dst.m_left = j*32.0f;
-						dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
-						dst.m_bottom = dst.m_top + 32.0f * (county + 2);
+							//表示位置の設定
+							dst.m_top = i*32.0f - 16.0f;
+							dst.m_left = j*32.0f;
+							dst.m_right = dst.m_left + 128.0f;
+							dst.m_bottom = dst.m_top + 64.0f;
 
-						x += skipcountx;
+							x += 4;
+							overcount -= 1;
+						}
+						else
+						{
+							//切り取り位置の設定
+							src.m_top = 0.0f;
+							src.m_left = 0.0f;
+							src.m_right = src.m_left + 16.0f * (skipcountx + 1);
+							src.m_bottom = src.m_top + 64.0f;
+
+							//表示位置の設定
+							dst.m_top = i*32.0f - 16.0f;
+							dst.m_left = j*32.0f;
+							dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
+							dst.m_bottom = dst.m_top + 64.0f;
+
+							x += skipcountx;
+							if (skipcountx == 0)
+								x++;
+						}
 					}
-				}				
 
-				//描画
-				Draw::Draw(16, &src, &dst, c, 0.0f);
+					//描画
+					Draw::Draw(16, &src, &dst, c, 0.0f);
 
-				j += skipcountx;
+					j += skipcountx;
+				}
 			}
 			//動く本棚表示
 			if (m_map[mapnum][i][j] == 39 && hero_y < i)
@@ -967,6 +1003,126 @@ void CObjBlock::Draw()
 				//描画
 				Draw::Draw(20, &src, &dst, c, 0.0f);
 			}
+			//大机(51の位置に金庫を置く)
+			if (m_map[mapnum][i][j] == 50 || m_map[mapnum][i][j] == 51 || m_map[mapnum][i][j] == 52)
+			{
+				int skipcountx = 0;
+				int county = 0;
+				bool skip = false;
+
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 256.0f;
+				src.m_bottom = src.m_top + 256.0f;
+
+				if (m_map[mapnum][i + 1][j] == 50 || m_map[mapnum][i + 1][j] == 51 || m_map[mapnum][i + 1][j] == 52)
+				{
+					skip = true;
+				}
+				for (int s = 1; m_map[mapnum][i][j + s] == 50 || m_map[mapnum][i][j + s] == 51 || m_map[mapnum][i][j + s] == 52; s++)
+				{
+					skipcountx++;
+				}
+				while (m_map[mapnum][i - 1 - county][j] == 50 || m_map[mapnum][i - 1 - county][j] == 51 || m_map[mapnum][i - 1 - county][j] == 52)
+				{
+					county++;
+				}
+
+				if (skip == false)
+				{
+					//表示位置の設定
+					dst.m_top = (i - county)*32.0f;
+					dst.m_left = j*32.0f;
+					dst.m_right = dst.m_left + 32.0f * (skipcountx + 1);
+					dst.m_bottom = dst.m_top + 32.0f * (county + 1);
+
+					//描画
+					Draw::Draw(22, &src, &dst, c, 0.0f);
+				}
+
+				j += skipcountx;
+
+				for (int w = j - skipcountx; w <= j; w++)
+				{
+					for (int z = i - county; z <= i; z++)
+					{
+						if (m_map[mapnum][z][w] == 51)
+						{
+							//切り取り位置の設定
+							src.m_top = 0.0f;
+							src.m_left = 0.0f;
+							src.m_right = src.m_left + 64.0f;
+							src.m_bottom = src.m_top + 92.0f;
+
+							//表示位置の設定
+							dst.m_top = z * 32.0f - 16.0f;
+							dst.m_left = w * 32.0f;
+							dst.m_right = dst.m_left + 32.0f;
+							dst.m_bottom = dst.m_top + 32.0f;
+
+							//描画
+							Draw::Draw(23, &src, &dst, c, 0.0f);
+						}
+						if (m_map[mapnum][z][w] == 52)
+						{
+							//切り取り位置の設定
+							src.m_top = 0.0f;
+							src.m_left = 64.0f;
+							src.m_right = src.m_left + 64.0f;
+							src.m_bottom = src.m_top + 92.0f;
+
+							//表示位置の設定
+							dst.m_top = z*32.0f - 16.0f;
+							dst.m_left = w*32.0f;
+							dst.m_right = dst.m_left + 32.0f;
+							dst.m_bottom = dst.m_top + 32.0f;
+
+							//描画
+							Draw::Draw(23, &src, &dst, c, 0.0f);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//ナンバーロック中の画像表示
+	if (lockpasu > 0)
+	{
+		if (lockpasu == 1)
+		{
+			//切り取り位置の設定
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = src.m_left + 256.0f;
+			src.m_bottom = src.m_top + 256.0f;
+
+			//表示位置の設定
+			dst.m_top = 80.0f;
+			dst.m_left = 150.0f;
+			dst.m_right = dst.m_left + 320.0f;
+			dst.m_bottom = dst.m_top + 320.0f;
+
+			//描画
+			Draw::Draw(24, &src, &dst, c, 0.0f);
+		}
+		if (lockpasu == 2)
+		{
+			//切り取り位置の設定
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = src.m_left + 256.0f;
+			src.m_bottom = src.m_top + 256.0f;
+
+			//表示位置の設定
+			dst.m_top = 80.0f;
+			dst.m_left = 150.0f;
+			dst.m_right = dst.m_left + 320.0f;
+			dst.m_bottom = dst.m_top + 320.0f;
+
+			//描画
+			Draw::Draw(25, &src, &dst, c, 0.0f);
 		}
 	}
 }
@@ -1529,6 +1685,13 @@ void CObjBlock::HeroAction(int vec)
 				}
 			}
 		}
+		//金庫判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 51 && itm->CheckItem(4))
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 52;
+			itm->DeleteItem(4, false);
+			//itm->GetItem(8);
+		}
 		//棚判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 38)
 		{
@@ -1575,6 +1738,20 @@ void CObjBlock::HeroAction(int vec)
 			hero->SetLockpiece(2,4);
 			//ナンバーロック解いてるフラグを立てる
 			hero->SetNumlock(true);
+			//ヒント用の画像を表示する
+			lockpasu = 2;
+		}
+		//棚のナンバーロック解除
+		if (m_map[mapnum][hero_y - 1][hero_x] == 44)
+		{
+			//解いてる間動かないようにする
+			hero->SetActionflag(true);
+			//ナンバーロックの桁数
+			hero->SetLockpiece(3, 3);
+			//ナンバーロック解いてるフラグを立てる
+			hero->SetNumlock(true);
+			//ヒント用の画像を表示する
+			lockpasu = 1;
 		}
 	}
 	//下
@@ -1757,6 +1934,14 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 		itm->GetItem(3);
 		m_map[mapnum][hero_y - 1][hero_x] = 31;
 	}
+	if (((UserData*)Save::GetData())->number[2] == num && locknum == 3)
+	{
+		//itm->GetItem(3);
+		m_map[mapnum][hero_y - 1][hero_x] = 31;
+	}
+
+	//画像を消す
+	lockpasu = 0;
 }
 int CObjBlock::CheckBlockNumber(int vec, int x, int y)
 {

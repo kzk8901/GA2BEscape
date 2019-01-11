@@ -66,5 +66,6 @@ private:
 
 	int event_num;//イベントナンバー 0イベントなし
 	bool event_clock[3];//1回しか起こさないイベントチェック
+	int lockpasu;  //ナンバーロックのヒント表示用
 
 };
