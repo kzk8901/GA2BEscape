@@ -23,6 +23,7 @@ public:
 	void SetKanataEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
 	void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  kanata_vec = v;  move_flag = true; }
 	void SetKanataIn(bool in) { kanata_in = in; }
+	void SetVec(int vec) { kanata_vec = vec; }
 private:
 	float m_px; //ˆÊ’u
 	float m_py;

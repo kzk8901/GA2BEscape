@@ -23,6 +23,7 @@ public:
 	void SetTowaEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
 	void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  towa_vec = v;  move_flag = true; }
 	void SetTowaIn(bool in) { towa_in = in; }
+	void SetVec(int vec) { towa_vec = vec; }
 private:
 	float m_px; //ˆÊ’u
 	float m_py;

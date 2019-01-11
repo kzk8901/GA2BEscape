@@ -34,7 +34,7 @@ void CObjKanata::Init()
 		unlocknum[i] = 0;
 	selectnum = 0;
 	eventnumber = 0;
-	kanata_vec = 4;
+	kanata_vec = 2;
 
 	eventflag = false;
 	move_flag = false;
@@ -42,7 +42,7 @@ void CObjKanata::Init()
 	numlock_flag = false;
 	Key_flag = false;
 	Itemcheck = false;
-	kanata_in = false;
+	kanata_in = true;
 
 }
 
@@ -52,8 +52,8 @@ void CObjKanata::Action()
 
 	//ブロックの位置取得
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
-	//アイテム参照
-	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
+	//主人公参照
+	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
@@ -62,12 +62,12 @@ void CObjKanata::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		//イベントナンバー１　左の部屋入ってからスタート
-		//X = 5, Y = 13の位置まで移動(テスト用)
+		//オープニング開始-----------------------------------------------------
+		//イベントナンバー１　
 		if (eventnumber == 1 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
-			if (block->KanataGetX() > 5 && block->ThereIsBlock(2, 4) == true)
+			if (block->KanataGetX() > 10 && block->ThereIsBlock(2, 4) == true)
 			{
 				SetMoveVec(2);
 			}
@@ -77,31 +77,60 @@ void CObjKanata::Action()
 			}
 			else
 			{
+				kanata_vec = 4;
+				block->SetEventNum(5);
 				eventflag = false;
 				eventnumber = 0;
 			}
 		}
 		//イベント1終了
 
-		//イベントナンバー２　右の部屋入ってからスタート
-		//X = 8, Y = 2の位置まで移動
+		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (block->KanataGetY() > 2 && block->ThereIsBlock(3, 4) == true)
+			//1,右 2,左 3,上 4,下
+
+			if (block->KanataGetY() > 5 && block->ThereIsBlock(3, 4) == true)
 			{
 				SetMoveVec(3);
 			}
-			else if (block->KanataGetX() < 8 && block->ThereIsBlock(1, 4) == true)
+			else if (block->KanataGetX() > 9 && block->ThereIsBlock(2, 4) == true)
 			{
-				SetMoveVec(1);
+				SetMoveVec(2);
+			}
+			else if (block->KanataGetY() > 1 && block->ThereIsBlock(3, 4) == true)
+			{
+				SetMoveVec(3);
 			}
 			else
 			{
+				kanata_vec = 4;
+				block->SetEventNum(8);
 				eventflag = false;
 				eventnumber = 0;
 			}
 		}
 		//イベント2終了
+
+		//イベントナンバー3
+		if (eventnumber == 3 && move_flag == false)
+		{
+			//1,右 2,左 3,上 4,下
+			 if (block->KanataGetY() > 0 && block->ThereIsBlock(3, 4) == true)
+			{
+				SetMoveVec(3);
+			}
+			else
+			{
+				eventflag = false;
+				eventnumber = 0;
+				kanata_in = false;
+				kanata_vec = 4;
+			}
+		}
+		//イベント3終了
+		//オープニング終了-----------------------------------------------------
+		
 	}
 
 	if (m_vec == 1)
@@ -233,6 +262,6 @@ void CObjKanata::Draw()
 		dst.m_bottom = m_py + 32.0f;
 	}
 
-	Draw::Draw(62, &src, &dst, c, 0.0f);
+	Draw::Draw(61, &src, &dst, c, 0.0f);
 
 }

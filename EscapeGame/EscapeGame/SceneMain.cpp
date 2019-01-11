@@ -93,7 +93,7 @@ void CSceneMain::InitScene()
 
 	//textオブジェクト作成
 	CObjText* objt = new CObjText();
-	Objs::InsertObj(objt, OBJ_TEXT, 12);
+	Objs::InsertObj(objt, OBJ_TEXT, 100);
 
 }
 

@@ -25,6 +25,8 @@ class CObjHero : public CObj
 	   void SetHeroEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
 	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  hero_vec=v;  move_flag = true; }
 	   void SetShowItemNumber(int i);
+	   void SetHeroIn(bool in) { hero_in = in; }
+	   void SetVec(int vec) { hero_vec = vec; }
   private:
 	  float m_px; //位置
 	  float m_py;
@@ -53,4 +55,5 @@ class CObjHero : public CObj
 	  bool numlock_flag; //ナンバーロックを解いているか
 	  bool Key_flag;     //キー制御フラグ
 	  bool Itemcheck;    //アイテム詳細確認中フラグ
+	  bool hero_in;    //主人公を表示するかどうか
 };

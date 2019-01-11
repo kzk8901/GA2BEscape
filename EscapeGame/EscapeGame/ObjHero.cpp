@@ -40,12 +40,13 @@ void CObjHero::Init()
 	numlock_flag = false;
 	Key_flag = false;
 	Itemcheck = false;
+	hero_in = true;
 }
 
 //アクション
 void CObjHero::Action()
 {
-	//ブロックの位置取得
+	//ブロック参照
 	CObjBlock* block = (CObjBlock*)Objs::GetObj(OBJ_BLOCK);
 	//アイテム参照
 	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
@@ -57,47 +58,162 @@ void CObjHero::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		//イベントナンバー１　左の部屋入ってからスタート
-		//X = 5, Y = 13の位置まで移動(テスト用)
+		//主人公イベント中動けるようにする
+		SetActionflag(false);
+
+		//オープニング開始-----------------------------------------------------
+		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
+			hero_in = true;
 			//1,右 2,左 3,上 4,下
-			if (block->HeroGetX() > 5 && block->ThereIsBlock(2,1) == true)
+			if (block->HeroGetY() > 8 && block->ThereIsBlock(3,1) == true)
+			{
+				SetMoveVec(3);
+			}
+			else if (block->HeroGetX() > 6 && block->ThereIsBlock(2,1) == true)
 			{
 				SetMoveVec(2);
 			}
-			else if (block->HeroGetY() < 13 && block->ThereIsBlock(4,1) == true)
+			else
+			{
+				hero_vec = 1;
+				eventnumber = 0;
+				eventflag = false;
+				block->SetEventNum(2);
+				//一連のイベント終了まで動けなくする
+				SetActionflag(true);
+			}
+		}
+		//イベント1終了
+
+		//イベントナンバー２
+		if (eventnumber == 2 && move_flag == false)
+		{
+			//1,右 2,左 3,上 4,下
+			if (block->HeroGetX() < 9 && block->ThereIsBlock(1, 1) == true)
+			{
+				SetMoveVec(1);
+			}
+			else if (block->HeroGetY() < 13 && block->ThereIsBlock(4, 1) == true)
 			{
 				SetMoveVec(4);
 			}
 			else
 			{
-				eventflag = false;
+				hero_vec = 4;
 				eventnumber = 0;
-			}
-		}
-		//イベント1終了
-
-		//イベントナンバー２　右の部屋入ってからスタート
-		//X = 8, Y = 2の位置まで移動
-		if (eventnumber == 2 && move_flag == false)
-		{
-			if (block->HeroGetY() > 2 && block->ThereIsBlock(3,1) == true)
-			{
-				SetMoveVec(3);
-			}
-			else if (block->HeroGetX() < 8 && block->ThereIsBlock(1,1) == true)
-			{
-				SetMoveVec(1);
-			}
-			else
-			{
 				eventflag = false;
-				eventnumber = 0;
+				block->SetEventNum(4);
+				//一連のイベント終了まで動けなくする
+				SetActionflag(true);
 			}
 		}
 		//イベント2終了
+
+		//オープニング終了-----------------------------------------------------
+
+		//奏多F1イベント開始-----------------------------------------------------
+		// イベントナンバー3
+		if (eventnumber == 3 && move_flag == false)
+		{
+				//1,右 2,左 3,上 4,下
+			if (block->HeroGetY() > 10 && block->ThereIsBlock(3, 1) == true)
+			{
+				SetMoveVec(3);
+			}
+			else if (block->HeroGetX() > 7 && block->ThereIsBlock(2, 1) == true)
+			{
+				SetMoveVec(2);
+			}
+			else
+			{
+				hero_vec = 2;
+				eventnumber = 0;
+				eventflag = false;
+				block->SetEventNum(11);
+				//一連のイベント終了まで動けなくする
+				SetActionflag(true);
+			}
+		}
+		//イベント3終了
+
+		// イベントナンバー4
+		if (eventnumber == 4 && move_flag == false)
+		{
+			//1,右 2,左 3,上 4,下
+			if (block->HeroGetX() > 7 && block->ThereIsBlock(2, 1) == true)
+			{
+				SetMoveVec(2);
+			}
+			else if (block->HeroGetY() > 10 && block->ThereIsBlock(3, 1) == true)
+			{
+				SetMoveVec(3);
+			}
+			else
+			{
+				hero_vec = 2;
+				eventnumber = 0;
+				eventflag = false;
+				block->SetEventNum(14);
+				//一連のイベント終了まで動けなくする
+				SetActionflag(true);
+			}
+		}
+		//イベント4終了
+
+		//奏多F1イベント終了-----------------------------------------------------
+
+		//永遠F1イベント開始-----------------------------------------------------
+		// イベントナンバー5
+		if (eventnumber == 5 && move_flag == false)
+		{
+			//1,右 2,左 3,上 4,下
+			if (block->HeroGetX() < 8 && block->ThereIsBlock(1, 1) == true)
+			{
+				SetMoveVec(1);
+			}
+			else if (block->HeroGetY() > 4 && block->ThereIsBlock(3, 1) == true)
+			{
+				SetMoveVec(3);
+			}
+			else
+			{
+				hero_vec = 1;
+				eventnumber = 0;
+				eventflag = false;
+				block->SetEventNum(17);
+				//一連のイベント終了まで動けなくする
+				SetActionflag(true);
+			}
+		}
+		//イベント6終了
+		// イベントナンバー6
+		if (eventnumber == 6 && move_flag == false)
+		{
+			//1,右 2,左 3,上 4,下
+			if (block->HeroGetY() < 4 && block->ThereIsBlock(4, 1) == true)
+			{
+				SetMoveVec(4);
+			}
+			else if (block->HeroGetX() > 8 && block->ThereIsBlock(2, 1) == true)
+			{
+				SetMoveVec(2);
+			}
+			else
+			{
+				hero_vec = 1;
+				eventnumber = 0;
+				eventflag = false;
+				block->SetEventNum(20);
+				//一連のイベント終了まで動けなくする
+				SetActionflag(true);
+			}
+		}
+		//イベント6終了
+		//永遠F1イベント終了-----------------------------------------------------
 	}
+	
 
 	//キーの入力
 	//動く行動できない状況なら入らない（ナンバーロック解いてる、アイテム確認中など）
@@ -432,47 +548,6 @@ void CObjHero::Action()
 		}
 	}
 
-	////マップ切り替え用
-	//if (move_flag == false)
-	//{
-	//	block->Mapchange();
-	//}
-	/*
-	if (Input::GetVKey(VK_RIGHT) == true)
-	{
-		m_vx = +m_speed;
-		m_posture = 1.0f;
-		m_ani_time += 1;
-	}
-    else if (Input::GetVKey(VK_LEFT) == true)
-	{
-		m_vx = -m_speed;
-		m_posture = 0.0f;
-		m_ani_time += 1;
-	}
-	else if (Input::GetVKey(VK_UP) == true)
-	{
-		m_vy = -m_speed;
-		m_ani_time += 1;
-	}
-    else if (Input::GetVKey(VK_DOWN) == true)
-	{
-		m_vy = +m_speed;
-		m_ani_time += 1;
-	}
-	else
-	{
-		m_ani_frame = 1;
-		m_ani_time = 0;
-	}
-
-	if (m_ani_time > 4)
-	{
-		m_ani_frame += 1;
-		m_ani_time = 0;
-	}
-	*/
-
 	if (m_ani_frame == 4)
 	{
 		m_ani_frame = 0;
@@ -534,13 +609,17 @@ void CObjHero::Draw()
 		src.m_bottom = 32.0f;
 	}
 
-	//表示位置の設定
-	dst.m_top = m_py;
-	dst.m_left = m_px;
-	dst.m_right = m_px + 32.0f ;
-	dst.m_bottom = m_py + 32.0f ;
+	if (hero_in == true)
+	{
+		//表示位置の設定
+		dst.m_top = m_py;
+		dst.m_left = m_px;
+		dst.m_right = m_px + 32.0f;
+		dst.m_bottom = m_py + 32.0f;
+	}
 	
 	Draw::Draw(53, &src, &dst, c, 0.0f);
+	
 
 	//ナンバーロック表示
 	if (numlock_flag)
