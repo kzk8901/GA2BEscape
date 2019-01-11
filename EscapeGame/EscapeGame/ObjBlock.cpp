@@ -403,17 +403,6 @@ void CObjBlock::Draw()
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画表示位置
 
-	//テキストウィンドウ1（横向き)
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
-	src.m_right = 512.0f;
-	src.m_bottom = 120.0f;
-	dst.m_top = 480.0f;
-	dst.m_left =0.0f;
-	dst.m_right =800.0f;
-	dst.m_bottom = 600.0f;
-	Draw::Draw(1, &src, &dst, c, 0.0f);
-
 	//テキストウィンドウ2（縦向き）
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;

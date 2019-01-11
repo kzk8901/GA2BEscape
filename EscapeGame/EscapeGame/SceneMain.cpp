@@ -89,7 +89,7 @@ void CSceneMain::InitScene()
 
 	//blockオブジェクト作成
 	CObjBlock* objb = new CObjBlock();
-	Objs::InsertObj(objb, OBJ_BLOCK, 11);
+	Objs::InsertObj(objb, OBJ_BLOCK, 99);
 
 	//textオブジェクト作成
 	CObjText* objt = new CObjText();

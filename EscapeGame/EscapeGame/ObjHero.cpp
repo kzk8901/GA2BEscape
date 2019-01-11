@@ -560,7 +560,7 @@ void CObjHero::Draw()
 				c[2] = 1.0f;
 			}
 
-			Font::StrDraw(str, 30 + i * 30, 500, 30, c);
+			Font::StrDraw(str, 100 + i * 30, 520, 30, c);
 		}
 	}
 }
