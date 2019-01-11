@@ -105,6 +105,7 @@ void CObjKirara::Action()
 					eventflag = false;
 					kirara_in = false;
 					kirara_vec = 4;
+					block->SetEventNum(98);
 				}
 			}
 		}

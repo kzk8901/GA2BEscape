@@ -227,6 +227,7 @@ void CObjBlock::Action()
 		towa->SetTowaEventFlag(true, 3);
 		kanata->SetKanataEventFlag(true, 3);
 		kirara->SetKiraraEventFlag(true, 2);
+
 		hero_move = true;
 	}
 

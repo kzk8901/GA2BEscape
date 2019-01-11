@@ -84,8 +84,6 @@ void CObjHero::Action()
 					eventnumber = 0;
 					eventflag = false;
 					block->SetEventNum(2);
-					//一連のイベント終了まで動けなくする
-					SetActionflag(true);
 				}
 			}
 		}
@@ -111,8 +109,6 @@ void CObjHero::Action()
 					eventnumber = 0;
 					eventflag = false;
 					block->SetEventNum(4);
-					//一連のイベント終了まで動けなくする
-					SetActionflag(true);
 				}
 			}
 		}
@@ -139,8 +135,6 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(11);
-				//一連のイベント終了まで動けなくする
-				SetActionflag(true);
 			}
 		}
 		//イベント3終了
@@ -163,8 +157,6 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(14);
-				//一連のイベント終了まで動けなくする
-				SetActionflag(true);
 			}
 		}
 		//イベント4終了
@@ -190,8 +182,6 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(17);
-				//一連のイベント終了まで動けなくする
-				SetActionflag(true);
 			}
 		}
 		//イベント6終了
@@ -213,8 +203,6 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(20);
-				//一連のイベント終了まで動けなくする
-				SetActionflag(true);
 			}
 		}
 		//イベント6終了
