@@ -62,6 +62,7 @@ void CObjKirara::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
+		//オープニング開始-----------------------------------------------------
 		if (anime_move == 5)
 		{
 		//イベントナンバー１
@@ -105,10 +106,43 @@ void CObjKirara::Action()
 					eventflag = false;
 					kirara_in = false;
 					kirara_vec = 4;
+					block->SetEventNum(98);
 				}
 			}
 		}
 		//イベント2終了
+		//オープニング終了-----------------------------------------------------
+
+		//F1部屋イベ開始-----------------------------------------------------
+		//イベントナンバー3
+		if (eventnumber == 3 && move_flag == false)
+		{
+			if (anime_move == 8)
+			{
+				//1,右 2,左 3,上 4,下
+				if (block->KiraraGetX() > 9 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else if (block->KiraraGetY() > 2 && block->ThereIsBlock(3, 2) == true)
+				{
+					SetMoveVec(3);
+				}
+				else if (block->KiraraGetX() > 5 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else
+				{
+					eventnumber = 0;
+					eventflag = false;
+					kirara_vec = 2;
+					block->SetEventNum(25);
+				}
+			}
+		}
+		//イベント3終了
+		//F1部屋イベ終了-----------------------------------------------------
 	}
 
 	if (m_vec == 1)

@@ -194,7 +194,8 @@ void CObjHero::Action()
 				SetActionflag(true);
 			}
 		}
-		//イベント6終了
+		//イベント5終了
+
 		// イベントナンバー6
 		if (eventnumber == 6 && move_flag == false)
 		{
@@ -219,6 +220,32 @@ void CObjHero::Action()
 		}
 		//イベント6終了
 		//永遠F1イベント終了-----------------------------------------------------
+
+		//きららF1イベント開始-----------------------------------------------------
+		// イベントナンバー7
+		if (eventnumber == 7 && move_flag == false)
+		{
+			//1,右 2,左 3,上 4,下
+			if (block->HeroGetX() > 17 && block->ThereIsBlock(2, 1) == true)
+			{
+				SetMoveVec(2);
+			}
+			else if (block->HeroGetY() > 6 && block->ThereIsBlock(3, 1) == true)
+			{
+				SetMoveVec(3);
+			}
+			else
+			{
+				hero_vec = 3;
+				eventnumber = 0;
+				eventflag = false;
+				block->SetEventNum(23);
+				//一連のイベント終了まで動けなくする
+				SetActionflag(true);
+			}
+		}
+		//イベント7終了
+		//きららF1イベント終了-----------------------------------------------------
 	}
 	
 

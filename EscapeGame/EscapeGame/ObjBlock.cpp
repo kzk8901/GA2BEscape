@@ -181,20 +181,24 @@ void CObjBlock::Action()
 	{
 		event_num = 13;
 	}
+	if (Input::GetVKey('J') == true)
+	{
+		event_num = 24;
+	}
 	//----------------------------------------------------------
 
 
 	//オープニング開始---------------------------------
 	//イベントナンバー(1～9)
-	if (event_num==1)
+	if (event_num == 1)
 	{
-		hero->SetHeroEventFlag(true,1);
+		hero->SetHeroEventFlag(true, 1);
 	}
-	if (event_num==2)
+	if (event_num == 2)
 	{
 		towa->SetTowaEventFlag(true, 1);
 	}
-	if (event_num==3)
+	if (event_num == 3)
 	{
 		hero->SetHeroEventFlag(true, 2);
 	}
@@ -210,7 +214,7 @@ void CObjBlock::Action()
 	{
 		hero->SetVec(3);
 		kanata->SetVec(3);
-		event_num=7;
+		event_num = 7;
 	}
 	if (event_num == 7)
 	{
@@ -246,7 +250,7 @@ void CObjBlock::Action()
 			kanata->SetVec(4);
 			event_num = 99;
 			event_clock[0] = true;
-		}	
+		}
 	}
 	//メモを入手した後
 	if (event_num == 13)
@@ -299,35 +303,27 @@ void CObjBlock::Action()
 	//永遠マップ1Fイベ終了-----------------------------
 
 	//きららマップ1Fイベ開始-----------------------------
-	//イベントナンバー(22～2)
+	//イベントナンバー(22～24)
 	//部屋に入ったとき
-	if (event_clock[1] == false)
+	if (event_clock[2] == false)
 	{
-		if (event_num == 16)
-			hero->SetHeroEventFlag(true, 5);
-		if (event_num == 17)
+		if (event_num == 22)
+			hero->SetHeroEventFlag(true, 7);
+		if (event_num == 23)
 		{
-			towa->SetVec(2);
-			event_num = 18;
-		}
-		if (event_num == 18)
-		{
-			towa->SetVec(4);
 			event_num = 99;
-			event_clock[1] = true;
+			event_clock[2] = true;
 		}
 	}
 	//メモを入手した後
-	if (event_num == 19)
-		hero->SetHeroEventFlag(true, 6);
-	if (event_num == 20)
+	if (event_num == 24)
 	{
-		kanata->SetVec(3);
-		event_num = 21;
+		hero->SetVec(1);
+		kirara->SetKiraraEventFlag(true, 3);
 	}
-	if (event_num == 21)
+	if (event_num == 25)
 	{
-		kanata->SetVec(4);
+		kirara->SetVec(4);
 		event_num = 99;
 	}
 
