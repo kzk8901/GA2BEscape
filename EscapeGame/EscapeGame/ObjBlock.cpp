@@ -225,11 +225,8 @@ void CObjBlock::Action()
 		towa->SetTowaEventFlag(true, 3);
 		kanata->SetKanataEventFlag(true, 3);
 		kirara->SetKiraraEventFlag(true, 2);
-		m_map[mapnum][kirara_y][kirara_x] = 95;
-		m_map[mapnum][towa_y][towa_x] = 97;
-		m_map[mapnum][kanata_y][kanata_x] = 99;
-		event_num = 99;
 	}
+
 	//オープニング終了---------------------------------
 
 	//奏多マップ1Fイベ開始-----------------------------
@@ -336,7 +333,16 @@ void CObjBlock::Action()
 
 	//きららマップ1Fイベ終了-----------------------------
 
-	//主人公が探索を開始する---------------------------
+	//マップ移動を設置-----------------------------------
+	if (event_num == 98)
+	{
+		m_map[mapnum][kirara_y][kirara_x] = 95;
+		m_map[mapnum][towa_y][towa_x] = 97;
+		m_map[mapnum][kanata_y][kanata_x] = 99;
+		event_num = 99;
+	}
+
+	//主人公が探索を開始する-----------------------------
 	//イベントナンバー(99)
 	if (event_num == 99)
 	{
