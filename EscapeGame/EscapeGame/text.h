@@ -5,6 +5,8 @@
 using namespace GameL;
 extern bool text_move;
 extern int word;
+extern int anime_move;
+extern bool hero_move;
 //オブジェクト:タイトル
 class CObjText :public CObj
 {

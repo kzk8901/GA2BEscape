@@ -10,7 +10,7 @@
 #include "GameHead.h"
 #include "ObjBlock.h"
 #include "ObjItem.h"
-
+#include "text.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -63,24 +63,27 @@ void CObjKirara::Action()
 	if (eventflag == true)
 	{
 		//イベントナンバー１
-		if (eventnumber == 1 && move_flag == false)
-		{
-			//1,右 2,左 3,上 4,下
-			
-			if (block->KiraraGetY() < 7 && block->ThereIsBlock(4,2) == true)
+			if (eventnumber == 1 && move_flag == false)
 			{
-				SetMoveVec(4);
-			}
-			else if (block->KiraraGetX() > 1 && block->ThereIsBlock(2, 2) == true)
-			{
-				SetMoveVec(2);
-			}
-			else
-			{
-				kirara_vec = 1;
-				block->SetEventNum(6);
-				eventnumber = 0;
-				eventflag = false;
+				if (anime_move == 5 || event_skip == true)
+				{
+				//1,右 2,左 3,上 4,下
+
+				if (block->KiraraGetY() < 7 && block->ThereIsBlock(4, 2) == true)
+				{
+					SetMoveVec(4);
+				}
+				else if (block->KiraraGetX() > 1 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else
+				{
+					kirara_vec = 1;
+					block->SetEventNum(6);
+					eventnumber = 0;
+					eventflag = false;
+				}
 			}
 		}
 		//イベント1終了
@@ -89,20 +92,56 @@ void CObjKirara::Action()
 		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
-			if (block->KiraraGetX() > 0 && block->ThereIsBlock(2, 2) == true)
+			if (anime_move == 8 || event_skip == true)
 			{
-				SetMoveVec(2);
-			}
-			else
-			{
-				eventnumber = 0;
-				eventflag = false;
-				kirara_in = false;
-				kirara_vec = 4;
+				//1,右 2,左 3,上 4,下
+				if (block->KiraraGetX() > 0 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else
+				{
+					eventnumber = 0;
+					eventflag = false;
+					kirara_in = false;
+					kirara_vec = 4;
+					block->SetEventNum(98);
+				}
 			}
 		}
 		//イベント2終了
+		//オープニング終了-----------------------------------------------------
+
+		//F1部屋イベ開始-----------------------------------------------------
+		//イベントナンバー3
+		if (eventnumber == 3 && move_flag == false)
+		{
+			if (anime_move == 8)
+			{
+				//1,右 2,左 3,上 4,下
+				if (block->KiraraGetX() > 9 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else if (block->KiraraGetY() > 2 && block->ThereIsBlock(3, 2) == true)
+				{
+					SetMoveVec(3);
+				}
+				else if (block->KiraraGetX() > 5 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else
+				{
+					eventnumber = 0;
+					eventflag = false;
+					kirara_vec = 2;
+					block->SetEventNum(25);
+				}
+			}
+		}
+		//イベント3終了
+		//F1部屋イベ終了-----------------------------------------------------
 	}
 
 	if (m_vec == 1)

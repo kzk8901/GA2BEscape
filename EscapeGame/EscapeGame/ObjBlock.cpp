@@ -16,6 +16,7 @@ using namespace GameL;
 bool room_c[3] = { false,false,false };
 bool text_loop = true;
 int text_m = -1;
+bool event_skip=false;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
 //4 = 鍵おいてます, 5 = ナンバーロックドア , 6 = 偽アイテム
@@ -169,6 +170,7 @@ void CObjBlock::Action()
 	if (Input::GetVKey('O') == true)
 	{
 		event_num = 1;
+		event_skip=true;
 	}
 	//デバック用------------------------------------------------
 	if (Input::GetVKey('P') == true)
@@ -183,20 +185,24 @@ void CObjBlock::Action()
 	{
 		event_num = 13;
 	}
+	if (Input::GetVKey('J') == true)
+	{
+		event_num = 24;
+	}
 	//----------------------------------------------------------
 
 
 	//オープニング開始---------------------------------
 	//イベントナンバー(1～9)
-	if (event_num==1)
+	if (event_num == 1)
 	{
-		hero->SetHeroEventFlag(true,1);
+		hero->SetHeroEventFlag(true, 1);
 	}
-	if (event_num==2)
+	if (event_num == 2)
 	{
 		towa->SetTowaEventFlag(true, 1);
 	}
-	if (event_num==3)
+	if (event_num == 3)
 	{
 		hero->SetHeroEventFlag(true, 2);
 	}
@@ -212,7 +218,7 @@ void CObjBlock::Action()
 	{
 		hero->SetVec(3);
 		kanata->SetVec(3);
-		event_num=7;
+		event_num = 7;
 	}
 	if (event_num == 7)
 	{
@@ -227,11 +233,10 @@ void CObjBlock::Action()
 		towa->SetTowaEventFlag(true, 3);
 		kanata->SetKanataEventFlag(true, 3);
 		kirara->SetKiraraEventFlag(true, 2);
-		m_map[mapnum][kirara_y][kirara_x] = 95;
-		m_map[mapnum][towa_y][towa_x] = 97;
-		m_map[mapnum][kanata_y][kanata_x] = 99;
-		event_num = 99;
+
+		hero_move = true;
 	}
+
 	//オープニング終了---------------------------------
 
 	//奏多マップ1Fイベ開始-----------------------------
@@ -251,7 +256,7 @@ void CObjBlock::Action()
 			kanata->SetVec(4);
 			event_num = 99;
 			event_clock[0] = true;
-		}	
+		}
 	}
 	//メモを入手した後
 	if (event_num == 13)
@@ -304,41 +309,42 @@ void CObjBlock::Action()
 	//永遠マップ1Fイベ終了-----------------------------
 
 	//きららマップ1Fイベ開始-----------------------------
-	//イベントナンバー(22～2)
+	//イベントナンバー(22～24)
 	//部屋に入ったとき
-	if (event_clock[1] == false)
+	if (event_clock[2] == false)
 	{
-		if (event_num == 16)
-			hero->SetHeroEventFlag(true, 5);
-		if (event_num == 17)
+		if (event_num == 22)
+			hero->SetHeroEventFlag(true, 7);
+		if (event_num == 23)
 		{
-			towa->SetVec(2);
-			event_num = 18;
-		}
-		if (event_num == 18)
-		{
-			towa->SetVec(4);
 			event_num = 99;
-			event_clock[1] = true;
+			event_clock[2] = true;
 		}
 	}
 	//メモを入手した後
-	if (event_num == 19)
-		hero->SetHeroEventFlag(true, 6);
-	if (event_num == 20)
+	if (event_num == 24)
 	{
-		kanata->SetVec(3);
-		event_num = 21;
+		hero->SetVec(1);
+		kirara->SetKiraraEventFlag(true, 3);
 	}
-	if (event_num == 21)
+	if (event_num == 25)
 	{
-		kanata->SetVec(4);
+		kirara->SetVec(4);
 		event_num = 99;
 	}
 
 	//きららマップ1Fイベ終了-----------------------------
 
-	//主人公が探索を開始する---------------------------
+	//マップ移動を設置-----------------------------------
+	if (event_num == 98)
+	{
+		m_map[mapnum][kirara_y][kirara_x] = 95;
+		m_map[mapnum][towa_y][towa_x] = 97;
+		m_map[mapnum][kanata_y][kanata_x] = 99;
+		event_num = 99;
+	}
+
+	//主人公が探索を開始する-----------------------------
 	//イベントナンバー(99)
 	if (event_num == 99)
 	{
