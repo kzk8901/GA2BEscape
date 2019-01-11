@@ -10,7 +10,7 @@
 #include "GameHead.h"
 #include "ObjBlock.h"
 #include "ObjItem.h"
-
+#include "text.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -66,21 +66,24 @@ void CObjKanata::Action()
 		//イベントナンバー１　
 		if (eventnumber == 1 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
-			if (block->KanataGetX() > 10 && block->ThereIsBlock(2, 4) == true)
+			if (anime_move == 4)
 			{
-				SetMoveVec(2);
-			}
-			else if (block->KanataGetY() < 13 && block->ThereIsBlock(4, 4) == true)
-			{
-				SetMoveVec(4);
-			}
-			else
-			{
-				kanata_vec = 4;
-				block->SetEventNum(5);
-				eventflag = false;
-				eventnumber = 0;
+				//1,右 2,左 3,上 4,下
+				if (block->KanataGetX() > 10 && block->ThereIsBlock(2, 4) == true)
+				{
+					SetMoveVec(2);
+				}
+				else if (block->KanataGetY() < 13 && block->ThereIsBlock(4, 4) == true)
+				{
+					SetMoveVec(4);
+				}
+				else
+				{
+					kanata_vec = 4;
+					block->SetEventNum(5);
+					eventflag = false;
+					eventnumber = 0;
+				}
 			}
 		}
 		//イベント1終了
@@ -88,26 +91,29 @@ void CObjKanata::Action()
 		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
+			if (anime_move == 6)
+			{
+				//1,右 2,左 3,上 4,下
 
-			if (block->KanataGetY() > 5 && block->ThereIsBlock(3, 4) == true)
-			{
-				SetMoveVec(3);
-			}
-			else if (block->KanataGetX() > 9 && block->ThereIsBlock(2, 4) == true)
-			{
-				SetMoveVec(2);
-			}
-			else if (block->KanataGetY() > 1 && block->ThereIsBlock(3, 4) == true)
-			{
-				SetMoveVec(3);
-			}
-			else
-			{
-				kanata_vec = 4;
-				block->SetEventNum(8);
-				eventflag = false;
-				eventnumber = 0;
+				if (block->KanataGetY() > 5 && block->ThereIsBlock(3, 4) == true)
+				{
+					SetMoveVec(3);
+				}
+				else if (block->KanataGetX() > 9 && block->ThereIsBlock(2, 4) == true)
+				{
+					SetMoveVec(2);
+				}
+				else if (block->KanataGetY() > 1 && block->ThereIsBlock(3, 4) == true)
+				{
+					SetMoveVec(3);
+				}
+				else
+				{
+					kanata_vec = 4;
+					block->SetEventNum(8);
+					eventflag = false;
+					eventnumber = 0;
+				}
 			}
 		}
 		//イベント2終了
@@ -115,17 +121,20 @@ void CObjKanata::Action()
 		//イベントナンバー3
 		if (eventnumber == 3 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
-			 if (block->KanataGetY() > 0 && block->ThereIsBlock(3, 4) == true)
+			if (anime_move == 8)
 			{
-				SetMoveVec(3);
-			}
-			else
-			{
-				eventflag = false;
-				eventnumber = 0;
-				kanata_in = false;
-				kanata_vec = 4;
+				//1,右 2,左 3,上 4,下
+				if (block->KanataGetY() > 0 && block->ThereIsBlock(3, 4) == true)
+				{
+					SetMoveVec(3);
+				}
+				else
+				{
+					eventflag = false;
+					eventnumber = 0;
+					kanata_in = false;
+					kanata_vec = 4;
+				}
 			}
 		}
 		//イベント3終了

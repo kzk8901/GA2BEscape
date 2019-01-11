@@ -66,22 +66,25 @@ void CObjTowa::Action()
 		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
-			towa_in = true;
-			//1,右 2,左 3,上 4,下
-			if (block->TowaGetY() > 8  && block->ThereIsBlock(3, 3) == true)
+			if (anime_move == 2)
 			{
-				SetMoveVec(3);
-			}
-			else if (block->TowaGetX() < 13 && block->ThereIsBlock(1, 3) == true)
-			{
-				SetMoveVec(1);
-			}
-			else
-			{
-				towa_vec = 2;
-				eventflag = false;
-				eventnumber = 0;
-				block->SetEventNum(3);
+				towa_in = true;
+				//1,右 2,左 3,上 4,下
+				if (block->TowaGetY() > 8 && block->ThereIsBlock(3, 3) == true)
+				{
+					SetMoveVec(3);
+				}
+				else if (block->TowaGetX() < 13 && block->ThereIsBlock(1, 3) == true)
+				{
+					SetMoveVec(1);
+				}
+				else
+				{
+					towa_vec = 2;
+					eventflag = false;
+					eventnumber = 0;
+					block->SetEventNum(3);
+				}
 			}
 		}
 		//イベント1終了
@@ -89,21 +92,24 @@ void CObjTowa::Action()
 		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
-			if (block->TowaGetY() > 7 && block->ThereIsBlock(3, 3) == true)
+			if (anime_move == 7)
 			{
-				SetMoveVec(3);
-			}
-			else if (block->TowaGetX() < 18 && block->ThereIsBlock(1, 3) == true)
-			{
-				SetMoveVec(1);
-			}
-			else
-			{
-				towa_vec = 2;
-				eventflag = false;
-				eventnumber = 0;
-				block->SetEventNum(9);
+				//1,右 2,左 3,上 4,下
+				if (block->TowaGetY() > 7 && block->ThereIsBlock(3, 3) == true)
+				{
+					SetMoveVec(3);
+				}
+				else if (block->TowaGetX() < 18 && block->ThereIsBlock(1, 3) == true)
+				{
+					SetMoveVec(1);
+				}
+				else
+				{
+					towa_vec = 2;
+					eventflag = false;
+					eventnumber = 0;
+					block->SetEventNum(9);
+				}
 			}
 		}
 		//イベント2終了
@@ -111,17 +117,20 @@ void CObjTowa::Action()
 		//イベントナンバー3
 		if (eventnumber == 3 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
-			if (block->TowaGetX() < 19 && block->ThereIsBlock(1, 3) == true)
+			if (anime_move == 8)
 			{
-				SetMoveVec(1);
-			}
-			else
-			{
-				eventflag = false;
-				eventnumber = 0;
-				towa_in = false;
-				towa_vec = 4;
+				//1,右 2,左 3,上 4,下
+				if (block->TowaGetX() < 19 && block->ThereIsBlock(1, 3) == true)
+				{
+					SetMoveVec(1);
+				}
+				else
+				{
+					eventflag = false;
+					eventnumber = 0;
+					towa_in = false;
+					towa_vec = 4;
+				}
 			}
 		}
 		//イベント3終了
