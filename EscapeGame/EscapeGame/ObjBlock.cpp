@@ -16,6 +16,7 @@ using namespace GameL;
 bool room_c[3] = { false,false,false };
 bool text_loop = true;
 int text_m = -1;
+bool event_skip=false;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
 //4 = 鍵おいてます, 5 = ナンバーロックドア , 6 = 偽アイテム
@@ -167,6 +168,7 @@ void CObjBlock::Action()
 	if (Input::GetVKey('O') == true)
 	{
 		event_num = 1;
+		event_skip=true;
 	}
 	//デバック用------------------------------------------------
 	if (Input::GetVKey('P') == true)
@@ -229,6 +231,7 @@ void CObjBlock::Action()
 		m_map[mapnum][towa_y][towa_x] = 97;
 		m_map[mapnum][kanata_y][kanata_x] = 99;
 		event_num = 99;
+		hero_move = true;
 	}
 	//オープニング終了---------------------------------
 

@@ -418,6 +418,7 @@ void CObjText::Draw()
 	{
 		if (word == 0)
 		{
+			hero_move = false;
 			text_move = true;
 			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
@@ -467,6 +468,7 @@ void CObjText::Draw()
 		}
 		else if (word == 10)
 		{
+			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
@@ -478,6 +480,7 @@ void CObjText::Draw()
 	{
 		if (word == 10)
 		{
+			hero_move = false;
 			text_move = true;
 			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
@@ -541,6 +544,7 @@ void CObjText::Draw()
 		}
 		else if (word == 22)
 		{
+			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
@@ -651,6 +655,7 @@ void CObjText::Draw()
 	{
 		if (word == 13)
 		{
+			hero_move = false;
 			text_move = true;
 			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
@@ -681,6 +686,7 @@ void CObjText::Draw()
 		}
 		else if (word == 18)
 		{
+			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
@@ -696,6 +702,7 @@ void CObjText::Draw()
 	{
 		if (word == 0)
 		{
+			hero_move = false;
 			text_move = true;
 			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
@@ -748,6 +755,7 @@ void CObjText::Draw()
 		}
 		else if (word == 9)
 		{
+			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
@@ -759,6 +767,7 @@ void CObjText::Draw()
 		{
 			if (word == 9)
 			{
+				hero_move = false;
 				text_move = true;
 				Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 			}
@@ -822,6 +831,7 @@ void CObjText::Draw()
 				d = 0;
 				g = 3;
 				text_move = false;
+				hero_move = true;
 				Font::StrDraw(L"他の部屋を探しに行こう", 108, 520, 32, c);
 				text_loop = false;
 			}
@@ -835,6 +845,7 @@ void CObjText::Draw()
 		text_move = true;
 		if (word == 0)
 		{
+			hero_move = false;
 			d = 1;
 			g = 2;
 			Draw::Draw(4, &src, &dst, c, 0.0f);
@@ -875,6 +886,7 @@ void CObjText::Draw()
 		}
 		else if (word == 6)
 		{
+			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
@@ -886,6 +898,7 @@ void CObjText::Draw()
 	{
 		if (word == 6)
 		{
+			hero_move = false;
 			text_move = true;
 			Font::StrDraw(L"Zキーで会話進行", 108, 520, 32, c);
 		}
@@ -942,6 +955,7 @@ void CObjText::Draw()
 		}
 		if (word == 15)
 		{
+			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;

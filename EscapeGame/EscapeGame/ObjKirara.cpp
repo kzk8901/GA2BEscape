@@ -62,11 +62,11 @@ void CObjKirara::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		if (anime_move == 5)
-		{
 		//イベントナンバー１
 			if (eventnumber == 1 && move_flag == false)
 			{
+				if (anime_move == 5 || event_skip == true)
+				{
 				//1,右 2,左 3,上 4,下
 
 				if (block->KiraraGetY() < 7 && block->ThereIsBlock(4, 2) == true)
@@ -92,7 +92,7 @@ void CObjKirara::Action()
 		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (anime_move == 8)
+			if (anime_move == 8 || event_skip == true)
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->KiraraGetX() > 0 && block->ThereIsBlock(2, 2) == true)

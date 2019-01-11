@@ -66,7 +66,7 @@ void CObjHero::Action()
 		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
-			if (anime_move == 1)
+			if (anime_move == 1||event_skip==true)
 			{
 				hero_in = true;
 				//1,右 2,左 3,上 4,下
@@ -94,7 +94,7 @@ void CObjHero::Action()
 		//イベントナンバー２
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (anime_move == 3)
+			if (anime_move == 3 || event_skip == true)
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->HeroGetX() < 9 && block->ThereIsBlock(1, 1) == true)
