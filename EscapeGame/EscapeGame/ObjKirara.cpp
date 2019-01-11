@@ -10,7 +10,7 @@
 #include "GameHead.h"
 #include "ObjBlock.h"
 #include "ObjItem.h"
-
+#include "text.h"
 
 //使用するネームスペース
 using namespace GameL;
@@ -62,25 +62,28 @@ void CObjKirara::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		//イベントナンバー１
-		if (eventnumber == 1 && move_flag == false)
+		if (anime_move == 5)
 		{
-			//1,右 2,左 3,上 4,下
-			
-			if (block->KiraraGetY() < 7 && block->ThereIsBlock(4,2) == true)
+		//イベントナンバー１
+			if (eventnumber == 1 && move_flag == false)
 			{
-				SetMoveVec(4);
-			}
-			else if (block->KiraraGetX() > 1 && block->ThereIsBlock(2, 2) == true)
-			{
-				SetMoveVec(2);
-			}
-			else
-			{
-				kirara_vec = 1;
-				block->SetEventNum(6);
-				eventnumber = 0;
-				eventflag = false;
+				//1,右 2,左 3,上 4,下
+
+				if (block->KiraraGetY() < 7 && block->ThereIsBlock(4, 2) == true)
+				{
+					SetMoveVec(4);
+				}
+				else if (block->KiraraGetX() > 1 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else
+				{
+					kirara_vec = 1;
+					block->SetEventNum(6);
+					eventnumber = 0;
+					eventflag = false;
+				}
 			}
 		}
 		//イベント1終了
@@ -89,18 +92,20 @@ void CObjKirara::Action()
 		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
-			if (block->KiraraGetX() > 0 && block->ThereIsBlock(2, 2) == true)
+			if (anime_move == 8)
 			{
-				SetMoveVec(2);
-			}
-			else
-			{
-				eventnumber = 0;
-				eventflag = false;
-				kirara_in = false;
-				kirara_vec = 4;
-				block->SetEventNum(98);
+				//1,右 2,左 3,上 4,下
+				if (block->KiraraGetX() > 0 && block->ThereIsBlock(2, 2) == true)
+				{
+					SetMoveVec(2);
+				}
+				else
+				{
+					eventnumber = 0;
+					eventflag = false;
+					kirara_in = false;
+					kirara_vec = 4;
+				}
 			}
 		}
 		//イベント2終了

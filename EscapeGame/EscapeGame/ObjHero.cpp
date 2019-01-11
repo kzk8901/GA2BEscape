@@ -10,6 +10,7 @@
 #include "ObjHero.h"
 #include "ObjBlock.h"
 #include "ObjItem.h"
+#include "text.h"
 //使用するネームスペース
 using namespace GameL;
 //イニシャライズ
@@ -65,24 +66,27 @@ void CObjHero::Action()
 		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
-			hero_in = true;
-			//1,右 2,左 3,上 4,下
-			if (block->HeroGetY() > 8 && block->ThereIsBlock(3,1) == true)
+			if (anime_move == 1)
 			{
-				SetMoveVec(3);
-			}
-			else if (block->HeroGetX() > 6 && block->ThereIsBlock(2,1) == true)
-			{
-				SetMoveVec(2);
-			}
-			else
-			{
-				hero_vec = 1;
-				eventnumber = 0;
-				eventflag = false;
-				block->SetEventNum(2);
-				//一連のイベント終了まで動けなくする
-				SetActionflag(true);
+				hero_in = true;
+				//1,右 2,左 3,上 4,下
+				if (block->HeroGetY() > 8 && block->ThereIsBlock(3, 1) == true)
+				{
+					SetMoveVec(3);
+				}
+				else if (block->HeroGetX() > 6 && block->ThereIsBlock(2, 1) == true)
+				{
+					SetMoveVec(2);
+				}
+				else
+				{
+					hero_vec = 1;
+					eventnumber = 0;
+					eventflag = false;
+					block->SetEventNum(2);
+					//一連のイベント終了まで動けなくする
+					SetActionflag(true);
+				}
 			}
 		}
 		//イベント1終了
@@ -90,23 +94,26 @@ void CObjHero::Action()
 		//イベントナンバー２
 		if (eventnumber == 2 && move_flag == false)
 		{
-			//1,右 2,左 3,上 4,下
-			if (block->HeroGetX() < 9 && block->ThereIsBlock(1, 1) == true)
+			if (anime_move == 3)
 			{
-				SetMoveVec(1);
-			}
-			else if (block->HeroGetY() < 13 && block->ThereIsBlock(4, 1) == true)
-			{
-				SetMoveVec(4);
-			}
-			else
-			{
-				hero_vec = 4;
-				eventnumber = 0;
-				eventflag = false;
-				block->SetEventNum(4);
-				//一連のイベント終了まで動けなくする
-				SetActionflag(true);
+				//1,右 2,左 3,上 4,下
+				if (block->HeroGetX() < 9 && block->ThereIsBlock(1, 1) == true)
+				{
+					SetMoveVec(1);
+				}
+				else if (block->HeroGetY() < 13 && block->ThereIsBlock(4, 1) == true)
+				{
+					SetMoveVec(4);
+				}
+				else
+				{
+					hero_vec = 4;
+					eventnumber = 0;
+					eventflag = false;
+					block->SetEventNum(4);
+					//一連のイベント終了まで動けなくする
+					SetActionflag(true);
+				}
 			}
 		}
 		//イベント2終了
@@ -222,162 +229,165 @@ void CObjHero::Action()
 		//動いている途中じゃないか
 		if (move_flag == false)
 		{
-			//右押したとき
-			if (Input::GetVKey(VK_RIGHT) == true)
+			if (hero_move == true)
 			{
-				//右にブロックなければそのまま動く
-				if (block->ThereIsBlock(1,1) == true)
+				//右押したとき
+				if (Input::GetVKey(VK_RIGHT) == true)
 				{
-					SetMoveVec(1);
+					//右にブロックなければそのまま動く
+					if (block->ThereIsBlock(1, 1) == true)
+					{
+						SetMoveVec(1);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 1;
+						hero_vec = 1;
+					}
 				}
-				//ブロックがあればその方向だけ向く
+				//左押したとき
+				else if (Input::GetVKey(VK_LEFT) == true)
+				{
+					//左にブロックがなければそのまま動く
+					if (block->ThereIsBlock(2, 1) == true)
+					{
+						SetMoveVec(2);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 2;
+						hero_vec = 2;
+					}
+				}
+				//上押したとき
+				else if (Input::GetVKey(VK_UP))
+				{
+					//上にブロックがなければそのまま動く
+					if (block->ThereIsBlock(3, 1) == true)
+					{
+						SetMoveVec(3);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 3;
+						hero_vec = 3;
+					}
+				}
+				//下押したとき
+				else if (Input::GetVKey(VK_DOWN) == true)
+				{
+					//下にブロックがなければそのまま動く
+					if (block->ThereIsBlock(4, 1) == true)
+					{
+						SetMoveVec(4);
+					}
+					//ブロックがあればその方向だけ向く
+					else
+					{
+						m_savevec = 4;
+						hero_vec = 4;
+					}
+				}
+				//アクションボタン押したとき
+				//各動作はブロックに書いている
+				else if ((Input::GetVKey('Z') == true))
+				{
+					if (Key_flag == false)
+					{
+						block->HeroAction(m_savevec);
+						Key_flag = true;
+					}
+				}
+				//↓こっから先はそれぞれの番号に登録しているアイテムの参照プログラム
+				//SetshowItemNumber(num)←numの所に参照したいアイテムの番号を入れる
+				else if (Input::GetVKey('1') || Input::GetVKey(VK_NUMPAD1))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[0] != 0)
+						{
+							SetShowItemNumber(1);
+						}
+					}
+				}
+				else if (Input::GetVKey('2') || Input::GetVKey(VK_NUMPAD2))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[1] != 0)
+						{
+							SetShowItemNumber(2);
+						}
+					}
+				}
+				else if (Input::GetVKey('3') || Input::GetVKey(VK_NUMPAD3))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[2] != 0)
+						{
+							SetShowItemNumber(3);
+						}
+					}
+				}
+				else if (Input::GetVKey('4') || Input::GetVKey(VK_NUMPAD4))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[3] != 0)
+						{
+							SetShowItemNumber(4);
+						}
+					}
+				}
+				else if (Input::GetVKey('5') || Input::GetVKey(VK_NUMPAD5))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[4] != 0)
+						{
+							SetShowItemNumber(5);
+						}
+					}
+				}
+				else if (Input::GetVKey('6') || Input::GetVKey(VK_NUMPAD6))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[5] != 0)
+						{
+							SetShowItemNumber(6);
+						}
+					}
+				}
+				else if (Input::GetVKey('7') || Input::GetVKey(VK_NUMPAD7))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[6] != 0)
+						{
+							SetShowItemNumber(7);
+						}
+					}
+				}
+				else if (Input::GetVKey('8') || Input::GetVKey(VK_NUMPAD8))
+				{
+					if (Key_flag == false)
+					{
+						if (((UserData*)Save::GetData())->item[7] != 0)
+						{
+							SetShowItemNumber(8);
+						}
+					}
+				}
 				else
 				{
-					m_savevec = 1;
-					hero_vec = 1;
+					//キー制御
+					Key_flag = false;
 				}
-			}
-			//左押したとき
-			else if (Input::GetVKey(VK_LEFT) == true)
-			{
-				//左にブロックがなければそのまま動く
-				if (block->ThereIsBlock(2,1) == true)
-				{
-					SetMoveVec(2);
-				}
-				//ブロックがあればその方向だけ向く
-				else
-				{
-					m_savevec = 2;
-					hero_vec = 2;
-				}
-			}
-			//上押したとき
-			else if (Input::GetVKey(VK_UP))
-			{
-				//上にブロックがなければそのまま動く
-				if (block->ThereIsBlock(3,1) == true)
-				{
-					SetMoveVec(3);
-				}
-				//ブロックがあればその方向だけ向く
-				else
-				{
-					m_savevec = 3;
-					hero_vec = 3;
-				}
-			}
-			//下押したとき
-			else if (Input::GetVKey(VK_DOWN) == true)
-			{
-				//下にブロックがなければそのまま動く
-				if (block->ThereIsBlock(4,1) == true)
-				{
-					SetMoveVec(4);
-				}
-				//ブロックがあればその方向だけ向く
-				else
-				{
-					m_savevec = 4;
-					hero_vec = 4;
-				}
-			}
-			//アクションボタン押したとき
-			//各動作はブロックに書いている
-			else if ((Input::GetVKey('Z') == true))
-			{
-				if (Key_flag == false)
-				{
-					block->HeroAction(m_savevec);
-					Key_flag = true;
-				}
-			}
-			//↓こっから先はそれぞれの番号に登録しているアイテムの参照プログラム
-			//SetshowItemNumber(num)←numの所に参照したいアイテムの番号を入れる
-			else if (Input::GetVKey('1')|| Input::GetVKey(VK_NUMPAD1))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[0] != 0)
-					{
-						SetShowItemNumber(1);
-					}
-				}
-			}
-			else if (Input::GetVKey('2') || Input::GetVKey(VK_NUMPAD2))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[1] != 0)
-					{
-						SetShowItemNumber(2);
-					}
-				}
-			}
-			else if (Input::GetVKey('3') || Input::GetVKey(VK_NUMPAD3))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[2] != 0)
-					{
-						SetShowItemNumber(3);
-					}
-				}
-			}
-			else if (Input::GetVKey('4') || Input::GetVKey(VK_NUMPAD4))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[3] != 0)
-					{
-						SetShowItemNumber(4);
-					}
-				}
-			}
-			else if (Input::GetVKey('5') || Input::GetVKey(VK_NUMPAD5))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[4] != 0)
-					{
-						SetShowItemNumber(5);
-					}
-				}
-			}
-			else if (Input::GetVKey('6') || Input::GetVKey(VK_NUMPAD6))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[5] != 0)
-					{
-						SetShowItemNumber(6);
-					}
-				}
-			}
-			else if (Input::GetVKey('7') || Input::GetVKey(VK_NUMPAD7))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[6] != 0)
-					{
-						SetShowItemNumber(7);
-					}
-				}
-			}
-			else if (Input::GetVKey('8') || Input::GetVKey(VK_NUMPAD8))
-			{
-				if (Key_flag == false)
-				{
-					if (((UserData*)Save::GetData())->item[7] != 0)
-					{
-						SetShowItemNumber(8);
-					}
-				}
-			}
-			else
-			{
-				//キー制御
-				Key_flag = false;
 			}
 		}
 		else
@@ -639,7 +649,7 @@ void CObjHero::Draw()
 				c[2] = 1.0f;
 			}
 
-			Font::StrDraw(str, 30 + i * 30, 500, 30, c);
+			Font::StrDraw(str, 100 + i * 30, 520, 30, c);
 		}
 	}
 }
