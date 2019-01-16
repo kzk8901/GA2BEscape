@@ -1692,6 +1692,7 @@ void CObjBlock::HeroAction(int vec)
 		if (m_map[mapnum][hero_y - 1][hero_x] == 51 && itm->CheckItem(4))
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 52;
+			text_m = 4;
 			itm->DeleteItem(4, false);
 			//itm->GetItem(8);
 		}
