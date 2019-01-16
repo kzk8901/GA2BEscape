@@ -185,6 +185,10 @@ void CObjBlock::Action()
 	{
 		event_num = 13;
 	}
+	if (Input::GetVKey('J') == true)
+	{
+		event_num = 24;
+	}
 	//----------------------------------------------------------
 
 
@@ -229,10 +233,7 @@ void CObjBlock::Action()
 		towa->SetTowaEventFlag(true, 3);
 		kanata->SetKanataEventFlag(true, 3);
 		kirara->SetKiraraEventFlag(true, 2);
-		m_map[mapnum][kirara_y][kirara_x] = 95;
-		m_map[mapnum][towa_y][towa_x] = 97;
-		m_map[mapnum][kanata_y][kanata_x] = 99;
-		event_num = 99;
+		event_num = 98;
 		hero_move = true;
 	}
 	//オープニング終了---------------------------------
@@ -311,35 +312,40 @@ void CObjBlock::Action()
 	//部屋に入ったとき
 	if (event_clock[1] == false)
 	{
-		if (event_num == 16)
-			hero->SetHeroEventFlag(true, 5);
-		if (event_num == 17)
+		if (event_num == 22)
+			hero->SetHeroEventFlag(true, 7);
+		if (event_num == 23)
 		{
-			towa->SetVec(2);
-			event_num = 18;
-		}
-		if (event_num == 18)
-		{
-			towa->SetVec(4);
 			event_num = 99;
 			event_clock[1] = true;
 		}
 	}
 	//メモを入手した後
-	if (event_num == 19)
-		hero->SetHeroEventFlag(true, 6);
-	if (event_num == 20)
+	if (event_num == 24)
 	{
-		kanata->SetVec(3);
-		event_num = 21;
+		hero->SetVec(1);
+		event_num = 25;
 	}
-	if (event_num == 21)
+	if (event_num == 25)
 	{
-		kanata->SetVec(4);
+		kirara->SetKiraraEventFlag(true,3);
+	}
+	if (event_num == 26)
+	{
+		kirara->SetVec(4);
 		event_num = 99;
 	}
 
 	//きららマップ1Fイベ終了-----------------------------
+
+	//移動マスを配置する---------------------------------
+	if (event_num == 98)
+	{
+		m_map[mapnum][kirara_y][kirara_x] = 95;
+		m_map[mapnum][towa_y][towa_x] = 97;
+		m_map[mapnum][kanata_y][kanata_x] = 99;
+		event_num = 99;
+	}
 
 	//主人公が探索を開始する---------------------------
 	//イベントナンバー(99)
