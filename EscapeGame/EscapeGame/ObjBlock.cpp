@@ -1742,6 +1742,7 @@ void CObjBlock::HeroAction(int vec)
 		//棚のナンバーロック解除
 		if (m_map[mapnum][hero_y - 1][hero_x] == 43)
 		{
+			text_hide = true;
 			//解いてる間動かないようにする
 			hero->SetActionflag(true);
 			//ナンバーロックの桁数

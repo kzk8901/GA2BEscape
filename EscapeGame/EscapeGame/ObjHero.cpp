@@ -137,8 +137,6 @@ void CObjHero::Action()
 				block->SetEventNum(11);
 			}
 		}
-		//イベント3終了
-
 		// イベントナンバー4
 		if (eventnumber == 4 && move_flag == false)
 		{
@@ -554,6 +552,7 @@ void CObjHero::Action()
 					numlock_flag = false;
 					action_flag = false;
 					Key_flag = true;
+					text_hide = false;
 				}
 			}
 			//キーフラグ制御

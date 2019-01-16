@@ -7,6 +7,7 @@ extern bool text_move;
 extern int word;
 extern int anime_move;
 extern bool hero_move;
+extern bool text_hide;
 //オブジェクト:タイトル
 class CObjText :public CObj
 {

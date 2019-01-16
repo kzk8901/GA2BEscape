@@ -10,6 +10,7 @@
 //使用するネームスペース
 using namespace GameL;
 
+bool text_hide = false;
 bool hero_move=false;
 bool text_move=true;
 int anime_move = 0;
@@ -752,7 +753,7 @@ void CObjText::Draw()
 			Draw::Draw(52, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"それじゃよろしく！", 108, 520, 25, c);
 		}
-		else if (word == 9)
+		else if (word == 9&&text_hide==false)
 		{
 			hero_move = true;
 			d = 0;
