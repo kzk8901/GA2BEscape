@@ -170,6 +170,7 @@ void CObjBlock::Action()
 	if (Input::GetVKey('O') == true)
 	{
 		event_num = 1;
+		event_skip = true;
 	}
 	//デバック用------------------------------------------------
 	if (Input::GetVKey('P') == true)
@@ -232,6 +233,7 @@ void CObjBlock::Action()
 		m_map[mapnum][towa_y][towa_x] = 97;
 		m_map[mapnum][kanata_y][kanata_x] = 99;
 		event_num = 99;
+		hero_move = true;
 	}
 	//オープニング終了---------------------------------
 
