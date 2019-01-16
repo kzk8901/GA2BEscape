@@ -5,7 +5,8 @@
 using namespace GameL;
 
 
-
+extern int eventnumber_h;
+extern bool eventflag_h; //イベントフラグ
 //オブジェクト：主人公
 class CObjHero : public CObj
 {
@@ -22,7 +23,7 @@ class CObjHero : public CObj
 	   void SetActionflag(bool a) { action_flag = a; }
 	   void SetNumlock(bool n) { numlock_flag = n; }
 	   void SetLockpiece(int num, int p) { locknum = num;  wpiece = p; }
-	   void SetHeroEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
+	   void SetHeroEventFlag(bool e, int number) { eventflag_h = e; eventnumber_h = number; }
 	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  hero_vec=v;  move_flag = true; }
 	   void SetShowItemNumber(int i);
 	   void SetHeroIn(bool in) { hero_in = in; }
@@ -45,10 +46,8 @@ class CObjHero : public CObj
 	  int unlocknum[20];  //解読中のナンバー
 	  int selectnum;  //左から何番目の数を動かすのか
 	  int word;   //テキストウィンドウ制御
-	  int eventnumber; //どのイベントを動かすか
 	  int hero_vec;   //主人公の向いている方向
 
-	  bool eventflag; //イベントフラグ
 	  bool move_flag; //動くためのフラグ
 	  bool key_flag;//長押し防止
 	  bool action_flag; //動いてもいいか

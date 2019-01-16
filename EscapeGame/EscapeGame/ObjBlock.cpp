@@ -1694,6 +1694,8 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 52;
 			text_m = 4;
+			eventnumber_h = 4;
+			eventflag_h = true;
 			itm->DeleteItem(4, false);
 			//itm->GetItem(8);
 		}
