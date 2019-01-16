@@ -252,7 +252,6 @@ void CObjBlock::Action()
 		}
 		if (event_num == 12)
 		{
-			kanata->SetVec(4);
 			event_num = 99;
 			event_clock[0] = true;
 		}	
@@ -267,7 +266,6 @@ void CObjBlock::Action()
 	}
 	if (event_num == 15)
 	{
-		kanata->SetVec(4);
 		event_num = 99;
 	}
 	//奏多マップ1Fイベ終了-----------------------------
@@ -286,7 +284,6 @@ void CObjBlock::Action()
 		}
 		if (event_num == 18)
 		{
-			towa->SetVec(4);
 			event_num = 99;
 			event_clock[1] = true;
 		}
@@ -301,7 +298,6 @@ void CObjBlock::Action()
 	}
 	if (event_num == 21)
 	{
-		kanata->SetVec(4);
 		event_num = 99;
 	}
 
@@ -332,7 +328,6 @@ void CObjBlock::Action()
 	}
 	if (event_num == 26)
 	{
-		kirara->SetVec(4);
 		event_num = 99;
 	}
 

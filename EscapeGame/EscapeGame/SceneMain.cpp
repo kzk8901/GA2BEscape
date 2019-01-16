@@ -63,10 +63,10 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"pasu2.png", 25, TEX_SIZE_256);
 
 	//アイテム関連
-	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_64);
-	Draw::LoadImageW(L"nezumi.png", 31, TEX_SIZE_64);
-	Draw::LoadImageW(L"usagi.png", 32, TEX_SIZE_64);
-	Draw::LoadImageW(L"tori.png", 33, TEX_SIZE_64);
+	Draw::LoadImageW(L"inu2.png", 30, TEX_SIZE_512);
+	Draw::LoadImageW(L"nezumi2.png", 31, TEX_SIZE_512);
+	Draw::LoadImageW(L"usagi2.png", 32, TEX_SIZE_512);
+	Draw::LoadImageW(L"tori2.png", 33, TEX_SIZE_512);
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
