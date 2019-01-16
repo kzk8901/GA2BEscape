@@ -136,7 +136,7 @@ void CObjKirara::Action()
 					eventnumber = 0;
 					eventflag = false;
 					kirara_vec = 2;
-					block->SetEventNum(25);
+					block->SetEventNum(26);
 				}
 			}
 		}
