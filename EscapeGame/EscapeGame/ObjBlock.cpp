@@ -45,7 +45,7 @@ int block_data_map[4][15][20] =
 	//奏多マップ1Fmapnum==1
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{ 1,49, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
 		{ 1,39,39,39,39,39,39,39,47, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
@@ -54,9 +54,9 @@ int block_data_map[4][15][20] =
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
 		{ 1,35,35,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },// 9
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,48,50,50,50,50,50,48, 1, },// 9
 		{ 1, 0, 0, 0,10, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },//10
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },//11
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,48,50,50,50,50,50,48, 1, },//11
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50,51,50,50,50, 0, 1, },//12
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,98, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
@@ -1670,7 +1670,7 @@ void CObjBlock::HeroAction(int vec)
 			itm->GetItem(2);
 		}
 		//棚判定
-		if (m_map[mapnum][hero_y - 1][hero_x] == 37)
+		if (m_map[mapnum][hero_y - 1][hero_x] == 37 && itm->CheckItem(9) && itm->CheckItem(10) && itm->CheckItem(11))
 		{
 			bool gby = false;
 			itm->GetItem(3);
@@ -1688,6 +1688,9 @@ void CObjBlock::HeroAction(int vec)
 					gby = false;
 				}
 			}
+			itm->DeleteItem(9, false);
+			itm->DeleteItem(10, false);
+			itm->DeleteItem(11, false);
 		}
 		//金庫判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 51 && itm->CheckItem(4))
@@ -1697,7 +1700,7 @@ void CObjBlock::HeroAction(int vec)
 			eventnumber_h = 4;
 			eventflag_h = true;
 			itm->DeleteItem(4, false);
-			//itm->GetItem(8);
+			itm->GetItem(11);
 		}
 		//棚判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 38)
@@ -1940,12 +1943,23 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 	}
 	if (((UserData*)Save::GetData())->number[1] == num && locknum == 2)
 	{
-		itm->GetItem(3);
+		itm->GetItem(10);
+		//手元のメモを捨てる
+		itm->DeleteItem(5,false);
+		itm->DeleteItem(6,false);
+		itm->DeleteItem(7,false);
+		itm->DeleteItem(8,false);
+		//戸棚に調べ終わったフラグを置く
 		m_map[mapnum][hero_y - 1][hero_x] = 31;
+		//マップ上のメモに関するものを消す
+		m_map[2][1][6] = 33;
+		m_map[2][1][13] = 33;
+		m_map[2][3][15] = 0;
+		m_map[2][7][18] = 32;
 	}
 	if (((UserData*)Save::GetData())->number[2] == num && locknum == 3)
 	{
-		//itm->GetItem(3);
+		itm->GetItem(9);
 		m_map[mapnum][hero_y - 1][hero_x] = 31;
 	}
 
