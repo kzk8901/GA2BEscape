@@ -15,6 +15,7 @@ bool hero_move=false;
 bool text_move=true;
 int anime_move = 0;
 int word=0;
+
 //イニシャライズ
 void CObjText::Init()
 {
@@ -466,7 +467,7 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"それじゃあとっとと手掛かり見つけるわよ！", 108, 520, 25, c);
 		}
-		else if (word == 10)
+		else if (word == 10 && text_hide == false)
 		{
 			hero_move = true;
 			d = 0;
