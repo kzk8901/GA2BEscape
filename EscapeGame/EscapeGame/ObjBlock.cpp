@@ -131,7 +131,7 @@ void CObjBlock::Init()
 	animationtime = 0;
 	event_num = 1;
 	lockpasu = 0;
-	for (int i=0; i < 3; i++)
+	for (int i=0; i < 4; i++)
 		event_clock[i] = false;
 
 	((UserData*)Save::GetData())->number[0] = 402;
@@ -159,6 +159,8 @@ void CObjBlock::Action()
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	//背景を設定
 	CObjBackGround* bgro = (CObjBackGround*)Objs::GetObj(OBJ_BGROUND);
+	//アイテム参照
+	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
 	//きららの位置を設定
 	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
 	//永遠の位置を設定
@@ -188,6 +190,10 @@ void CObjBlock::Action()
 	if (Input::GetVKey('J') == true)
 	{
 		event_num = 24;
+	}
+	if (Input::GetVKey('Y') == true)
+	{
+		
 	}
 	//----------------------------------------------------------
 
@@ -304,16 +310,16 @@ void CObjBlock::Action()
 	//永遠マップ1Fイベ終了-----------------------------
 
 	//きららマップ1Fイベ開始-----------------------------
-	//イベントナンバー(22～2)
+	//イベントナンバー(22～26)
 	//部屋に入ったとき
-	if (event_clock[1] == false)
+	if (event_clock[2] == false)
 	{
 		if (event_num == 22)
 			hero->SetHeroEventFlag(true, 7);
 		if (event_num == 23)
 		{
 			event_num = 99;
-			event_clock[1] = true;
+			event_clock[2] = true;
 		}
 	}
 	//メモを入手した後
@@ -332,6 +338,23 @@ void CObjBlock::Action()
 	}
 
 	//きららマップ1Fイベ終了-----------------------------
+
+	//1F集合イベント開始---------------------------------
+	//イベントナンバー(27、28)---------------------------
+	if (event_num == 27)
+	{
+		hero->SetActionflag(true);
+		hero->SetVec(1);
+		kirara->SetVec(1);
+		kanata->SetVec(2);
+		towa->SetVec(2);
+		event_num = 28;
+	}
+	if (event_num == 28)
+	{
+		event_num = 99;
+	}
+	//1F集合イベント終了---------------------------------
 
 	//移動マスを配置する---------------------------------
 	if (event_num == 98)
@@ -364,24 +387,56 @@ void CObjBlock::Action()
 		if (m_map[mapnum][hero_y][hero_x] == 98)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 2;
-			kanata->SetKanataIn(false);
 		}
 		//永遠
 		else if (m_map[mapnum][hero_y][hero_x] == 96)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 2;
-			towa->SetTowaIn(false);
 		}
 		//きらら
 		else if (m_map[mapnum][hero_y][hero_x] == 94)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 2;
-			kirara->SetKiraraIn(false);
 		}
 		//次に行くナンバーを渡す
 		Mapchange(0);
 		//次のmapnumを入れる
 		mapnum = 0;
+		//アイテムがそろった状態で戻ってきた時(デバック中のため本をチェックしてます)
+		if (itm->CheckItem(3) == true && event_clock[3] == false)
+		{
+			//キャラの位置を一度リセット
+			block_data_map[0][hero_y][hero_x] = 0;
+			block_data_map[1][kanata_y][kanata_x] = 0;
+			block_data_map[2][towa_y][towa_x] = 0;
+			block_data_map[3][kirara_y][kirara_x] = 0;
+
+			//キャラを配置
+			m_map[0][8][6] = 2;
+			m_map[0][8][13] = 9;
+			m_map[0][4][13] = 10;
+			m_map[0][4][6] = 8;
+			SetTowa();
+			SetKanata();
+			SetKirara();
+
+			event_clock[3] = true;
+
+			event_num = 27;
+		}
+		//ヒロイン表示
+		if (event_clock[3] == false)
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
+		else
+		{
+			kanata->SetKanataIn(true);
+			towa->SetTowaIn(true);
+			kirara->SetKiraraIn(true);
+		}
 		//主人公の位置更新
 		SetHero();
 	}
@@ -407,7 +462,14 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 1;
 		//奏多表示
-		kanata->SetKanataIn(true);
+		if (event_clock[3] == false)
+			kanata->SetKanataIn(true);
+		else
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
 		//主人公の位置更新
 		SetHero();
 		//奏多の位置更新
@@ -430,7 +492,6 @@ void CObjBlock::Action()
 		{
 			text_m = -5;
 		}
-		
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x - 1] = 2;
 		//次に行くナンバーを渡す
@@ -438,7 +499,14 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 2;
 		//永遠表示
-		towa->SetTowaIn(true);
+		if (event_clock[3] == false)
+			towa->SetTowaIn(true);
+		else
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
 		//主人公の位置更新
 		SetHero();
 		//永遠の位置更新
@@ -468,7 +536,14 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 3;
 		//きらら表示
-		kirara->SetKiraraIn(true);
+		if (event_clock[3] == false)
+			kirara->SetKiraraIn(true);
+		else
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);	
+		}
 		//主人公の位置更新
 		SetHero();
 		//きららの位置更新
