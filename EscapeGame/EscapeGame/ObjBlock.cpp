@@ -129,7 +129,7 @@ void CObjBlock::Init()
 	moveshelf = 0.0f;
 	blockdeleteYN = false;
 	animationtime = 0;
-	event_num = 1;
+	event_num = 0;
 	lockpasu = 0;
 	for (int i=0; i < 4; i++)
 		event_clock[i] = false;
