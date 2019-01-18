@@ -59,6 +59,22 @@ void CObjKanata::Action()
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 
+	if (text_m == -1 && word == 30)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
+	else if (text_m == -1 && word == 47)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
+	else if (text_m == -1 && word == 54)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
+
 	//イベント用フラグ
 	if (eventflag == true)
 	{
@@ -83,6 +99,7 @@ void CObjKanata::Action()
 					block->SetEventNum(5);
 					eventflag = false;
 					eventnumber = 0;
+					skip_anime = false;
 				}
 			}
 		}
@@ -113,6 +130,7 @@ void CObjKanata::Action()
 					block->SetEventNum(8);
 					eventflag = false;
 					eventnumber = 0;
+					skip_anime = false;
 				}
 			}
 		}
@@ -134,6 +152,7 @@ void CObjKanata::Action()
 					eventnumber = 0;
 					kanata_in = false;
 					kanata_vec = 4;
+					skip_anime = false;
 				}
 			}
 		}

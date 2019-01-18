@@ -129,8 +129,8 @@ void CObjBlock::Init()
 	moveshelf = 0.0f;
 	blockdeleteYN = false;
 	animationtime = 0;
-	event_num = 1;
 	lockpasu = 0;
+	event_num = 0;
 	for (int i=0; i < 3; i++)
 		event_clock[i] = false;
 
@@ -1693,9 +1693,8 @@ void CObjBlock::HeroAction(int vec)
 		if (m_map[mapnum][hero_y - 1][hero_x] == 51 && itm->CheckItem(4))
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 52;
+			event_num = 13;
 			text_m = 4;
-			eventnumber_h = 4;
-			eventflag_h = true;
 			itm->DeleteItem(4, false);
 			//itm->GetItem(8);
 		}
@@ -1934,19 +1933,26 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 	//アイテム参照
 	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
 
+	
 	if (((UserData*)Save::GetData())->number[0] == num && locknum == 1)
 	{
 		m_map[mapnum][hero_y - 1][hero_x] = 0;
 	}
+	//永遠部屋
 	if (((UserData*)Save::GetData())->number[1] == num && locknum == 2)
 	{
 		itm->GetItem(3);
 		m_map[mapnum][hero_y - 1][hero_x] = 31;
+		text_m = 5;
+		event_num = 19;
 	}
+	//きらら部屋
 	if (((UserData*)Save::GetData())->number[2] == num && locknum == 3)
 	{
 		//itm->GetItem(3);
 		m_map[mapnum][hero_y - 1][hero_x] = 31;
+		text_m = 3;
+		event_num = 24;
 	}
 
 	//画像を消す

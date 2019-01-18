@@ -13,8 +13,6 @@
 #include "text.h"
 //使用するネームスペース
 using namespace GameL;
-int eventnumber_h=0;
-bool eventflag_h = false;
 //イニシャライズ
 void CObjHero::Init()
 {
@@ -35,13 +33,16 @@ void CObjHero::Init()
 		unlocknum[i] = 0;
 	selectnum = 0;
 	hero_vec = 4;
+	eventnumber = 0;
 
+	eventflag = false;
 	move_flag = false;
 	action_flag = false;
 	numlock_flag = false;
 	Key_flag = false;
 	Itemcheck = false;
 	hero_in = true;
+
 }
 
 //アクション
@@ -56,15 +57,26 @@ void CObjHero::Action()
 	m_vx = 0.0f;
 	m_vy = 0.0f;
 
+	if (text_m == -1 && word == 5)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
+	else if (text_m == -1 && word == 25)
+	{
+		eventflag = true;
+		eventnumber = 2;
+	}
+
 	//イベント用フラグ
-	if (eventflag_h == true)
+	if (eventflag == true)
 	{
 		//主人公イベント中動けるようにする
 		SetActionflag(false);
 
 		//オープニング開始-----------------------------------------------------
 		//イベントナンバー１
-		if (eventnumber_h == 1 && move_flag == false)
+		if (eventnumber == 1 && move_flag == false)
 		{
 			if (anime_move == 1||event_skip==true)
 			{
@@ -81,16 +93,17 @@ void CObjHero::Action()
 				else
 				{
 					hero_vec = 1;
-					eventnumber_h = 0;
-					eventflag_h = false;
+					eventnumber = 0;
+					eventflag = false;
 					block->SetEventNum(2);
+					skip_anime = false;
 				}
 			}
 		}
 		//イベント1終了
 
 		//イベントナンバー２
-		if (eventnumber_h == 2 && move_flag == false)
+		if (eventnumber == 2 && move_flag == false)
 		{
 			if (anime_move == 3 || event_skip == true)
 			{
@@ -106,9 +119,10 @@ void CObjHero::Action()
 				else
 				{
 					hero_vec = 4;
-					eventnumber_h = 0;
-					eventflag_h = false;
+					eventnumber = 0;
+					eventflag = false;
 					block->SetEventNum(4);
+					skip_anime = false;
 				}
 			}
 		}
@@ -118,7 +132,7 @@ void CObjHero::Action()
 
 		//奏多F1イベント開始-----------------------------------------------------
 		// イベントナンバー3
-		if (eventnumber_h == 3 && move_flag == false)
+		if (eventnumber == 3 && move_flag == false)
 		{
 				//1,右 2,左 3,上 4,下
 			if (block->HeroGetY() > 10 && block->ThereIsBlock(3, 1) == true)
@@ -132,13 +146,14 @@ void CObjHero::Action()
 			else
 			{
 				hero_vec = 2;
-				eventnumber_h = 0;
-				eventflag_h = false;
+				eventnumber = 0;
+				eventflag = false;
 				block->SetEventNum(11);
+				skip_anime = false;
 			}
 		}
 		// イベントナンバー4
-		if (eventnumber_h == 4 && move_flag == false)
+		if (eventnumber == 4 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
 			if (block->HeroGetX() > 7 && block->ThereIsBlock(2, 1) == true)
@@ -152,9 +167,10 @@ void CObjHero::Action()
 			else
 			{
 				hero_vec = 2;
-				eventnumber_h = 0;
-				eventflag_h = false;
+				eventnumber = 0;
+				eventflag = false;
 				block->SetEventNum(14);
+				skip_anime = false;
 			}
 		}
 		//イベント4終了
@@ -163,7 +179,7 @@ void CObjHero::Action()
 
 		//永遠F1イベント開始-----------------------------------------------------
 		// イベントナンバー5
-		if (eventnumber_h == 5 && move_flag == false)
+		if (eventnumber == 5 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
 			if (block->HeroGetX() < 8 && block->ThereIsBlock(1, 1) == true)
@@ -177,15 +193,16 @@ void CObjHero::Action()
 			else
 			{
 				hero_vec = 1;
-				eventnumber_h = 0;
-				eventflag_h = false;
+				eventnumber = 0;
+				eventflag = false;
 				block->SetEventNum(17);
+				skip_anime = false;
 			}
 		}
 		//イベント5終了
 
 		// イベントナンバー6
-		if (eventnumber_h == 6 && move_flag == false)
+		if (eventnumber == 6 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
 			if (block->HeroGetY() < 4 && block->ThereIsBlock(4, 1) == true)
@@ -199,9 +216,10 @@ void CObjHero::Action()
 			else
 			{
 				hero_vec = 1;
-				eventnumber_h = 0;
-				eventflag_h = false;
+				eventnumber = 0;
+				eventflag = false;
 				block->SetEventNum(20);
+				skip_anime = false;
 			}
 		}
 		//イベント6終了
@@ -209,7 +227,7 @@ void CObjHero::Action()
 
 		//きららF1イベント開始-----------------------------------------------------
 		// イベントナンバー7
-		if (eventnumber_h == 7 && move_flag == false)
+		if (eventnumber== 7 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
 			if (block->HeroGetX() > 17 && block->ThereIsBlock(2, 1) == true)
@@ -223,11 +241,12 @@ void CObjHero::Action()
 			else
 			{
 				hero_vec = 3;
-				eventnumber_h = 0;
-				eventflag_h = false;
+				eventnumber= 0;
+				eventflag = false;
 				block->SetEventNum(23);
 				//一連のイベント終了まで動けなくする
 				SetActionflag(true);
+				skip_anime = false;
 			}
 		}
 		//イベント7終了

@@ -15,7 +15,7 @@ bool hero_move=false;
 bool text_move=true;
 int anime_move = 0;
 int word=0;
-
+bool skip_anime = false;//アニメーション中テキストを進めなくするフラグ
 //イニシャライズ
 void CObjText::Init()
 {
@@ -25,6 +25,7 @@ void CObjText::Init()
 	time_x = -1;
 	g = 0;
 	d = 0;
+	f = false;
 }
 //アクション
 void CObjText::Action()
@@ -44,17 +45,20 @@ void CObjText::Action()
 				{
 					if (text_loop == true)
 					{
-						if (time > 210)
+						if (skip_anime == false)
 						{
-							if (text_m == 0 && word < 10 || text_m == 3 && word < 23 || 
-								text_m == 1 && word < 13 || text_m == 2 && word < 9  || text_m == -1 && word < 54||
-								text_m == 5 && word < 20 || text_m == 4 && word < 19 || text_m ==  7 && word < 16||
-								text_m == 6 && word < 6)
+							if (time > 210)
 							{
-								word += 1;
-								m_key_flag = false;
-								time = 0;
-								skip_flag = true;
+								if (text_m == 0 && word < 10 || text_m == 3 && word < 23 ||
+									text_m == 1 && word < 13 || text_m == 2 && word < 9 || text_m == -1 && word < 54 ||
+									text_m == 5 && word < 20 || text_m == 4 && word < 19 || text_m == 7 && word < 16 ||
+									text_m == 6 && word < 6)
+								{
+									word += 1;
+									m_key_flag = false;
+									time = 0;
+									skip_flag = true;
+								}
 							}
 						}
 					}
@@ -86,6 +90,7 @@ void CObjText::Draw()
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
 	float c_A[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float c_D[4] = { 1.0f,1.0f,1.0f,1.0f };
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画表示位置
 	RECT_F src_A; //暗転元切り取り位置
@@ -94,6 +99,8 @@ void CObjText::Draw()
 	RECT_F dst_B;//テキスト表示隠し(上部）描画表示位置
 	RECT_F src_C;//テキスト表示隠し(下部）描画元切り取り位置
 	RECT_F dst_C;//テキスト表示隠し(下部）描画表示位置
+	RECT_F src_D;//下暗転描画元切り取り位置
+	RECT_F dst_D;//下暗転描画表示位置
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
 	src.m_right = 465.0f;
@@ -110,6 +117,14 @@ void CObjText::Draw()
 	dst_A.m_left = 0.0f;
 	dst_A.m_right = 640.0f;
 	dst_A.m_bottom = 480.0f;
+	src_D.m_top = 0.0f;
+	src_D.m_left = 0.0f;
+	src_D.m_right = 32.0f;
+	src_D.m_bottom = 32.0f;
+	dst_D.m_top = 384.0f;
+	dst_D.m_left = 192.0f;
+	dst_D.m_right = 448.0f;
+	dst_D.m_bottom = 480.0f;
 	//d 誰が話しているか確認
 	//1 鳳　2 きらら 3 奏多 4 永遠
 	//オープニング
@@ -144,6 +159,9 @@ void CObjText::Draw()
 		}
 		else if (word == 5)
 		{
+			c_D[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_D, &dst_D, c_D, 0.0f);
+			skip_anime = true;
 			anime_move = 1;
 			d = 0;
 			Draw::Draw(4, &src, &dst, c, 0.0f);
@@ -202,6 +220,11 @@ void CObjText::Draw()
 		}
 		else if (word== 16)
 		{
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			anime_move = 2;
 			d = 0;
 			Draw::Draw(52, &src, &dst, c, 0.0f);
@@ -210,6 +233,7 @@ void CObjText::Draw()
 		}
 		else if (word == 17)
 		{
+			f=false;
 			d = 1;
 			Font::StrDraw(L"確かあなたは…", 108, 520, 25, c);
 		}
@@ -251,6 +275,7 @@ void CObjText::Draw()
 		}
 		else if (word == 25)
 		{
+			skip_anime = true;
 			anime_move = 3;
 			d = 1;
 			g = 2;
@@ -277,12 +302,18 @@ void CObjText::Draw()
 		}
 		else if (word == 30)
 		{
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			anime_move = 4;
 			d = 3;
 			Font::StrDraw(L"失礼します", 108, 520, 25, c);
 		}
 		else if (word == 31)
 		{
+			f = false;
 			Font::StrDraw(L"開きませんね", 108, 520, 25, c);
 		}
 		else if (word == 32)
@@ -292,12 +323,18 @@ void CObjText::Draw()
 		}
 		else if (word == 33)
 		{
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			anime_move = 5;
 			d = 1;
 			Font::StrDraw(L"さて、どうしたものか", 108, 520, 25, c);
 		}
 		else if (word == 34)
 		{
+			f = false;
 			d = 2;
 			Font::StrDraw(L"こっちのドアは開くわよ", 108, 520, 25, c);
 		}
@@ -364,23 +401,35 @@ void CObjText::Draw()
 		}
 		else if (word== 47)
 		{
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			anime_move = 6;
 			d = 3;
 			Font::StrDraw(L"でしたら正面の部屋の探索ならよろしいでしょう？", 108, 520, 25, c);
 		}
 		else if (word == 48)
 		{
+			f = false;
 			d = 2;
 			Font::StrDraw(L"それならいいわ", 108, 520, 25, c);
 		}
 		else if (word == 49)
 		{
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			anime_move = 7;
 			d = 4;
 			Font::StrDraw(L"それじゃあ僕はあっちの部屋を探索するよ", 108, 520, 25, c);
 		}
 		else if (word == 50)
 		{
+			f = false;
 			d = 2;
 			g = 2;
 			Font::StrDraw(L"お願いしますね先輩", 108, 520, 25, c);
@@ -493,11 +542,18 @@ void CObjText::Draw()
 		}
 		else if (word == 13)
 		{
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
+			anime_move = 9;
 			d = 2;
 			Font::StrDraw(L"ほんと？", 108, 520, 25, c);
 		}
 		else if (word == 14)
 		{
+			f - false;
 			Font::StrDraw(L"結局私何も見つけられなかったわ", 108, 520, 25, c);
 		}
 		else if (word == 15)
@@ -1112,5 +1168,10 @@ void CObjText::Draw()
 	if (text_m == -1 && word == 0 || text_m == -1 && word == 1 || text_m == -1 && word == 2)
 	{
 		Draw::Draw(12, &src_A, &dst_A, c, 0.0f);
+		Draw::Draw(12, &src_D, &dst_D, c, 0.0f);
+	}
+	else if (text_m == -1 && word == 3 || text_m == -1 && word == 4)
+	{
+		Draw::Draw(12, &src_D, &dst_D, c, 0.0f);
 	}
 }
