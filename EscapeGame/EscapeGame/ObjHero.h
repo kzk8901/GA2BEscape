@@ -44,11 +44,9 @@ class CObjHero : public CObj
 	  int wpiece;     //何桁かの変数
 	  int unlocknum[20];  //解読中のナンバー
 	  int selectnum;  //左から何番目の数を動かすのか
-	  int word;   //テキストウィンドウ制御
-	  int eventnumber; //どのイベントを動かすか
 	  int hero_vec;   //主人公の向いている方向
+	  int eventnumber;//イベント番号
 
-	  bool eventflag; //イベントフラグ
 	  bool move_flag; //動くためのフラグ
 	  bool key_flag;//長押し防止
 	  bool action_flag; //動いてもいいか
@@ -56,4 +54,5 @@ class CObjHero : public CObj
 	  bool Key_flag;     //キー制御フラグ
 	  bool Itemcheck;    //アイテム詳細確認中フラグ
 	  bool hero_in;    //主人公を表示するかどうか
+	  bool eventflag;//イベントフラグ
 };

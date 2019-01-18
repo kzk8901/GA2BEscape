@@ -58,6 +58,21 @@ void CObjTowa::Action()
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
 	m_vy = 0.0f;
+	if (text_m == -1 && word == 16)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
+	else if (text_m == -1 && word == 49)
+	{
+		eventflag = true;
+		eventnumber = 2;
+	}
+	else if (text_m == -1 && word == 54)
+	{
+		eventflag = true;
+		eventnumber = 3;
+	}
 
 	//イベント用フラグ
 	if (eventflag == true)
@@ -84,6 +99,7 @@ void CObjTowa::Action()
 					eventflag = false;
 					eventnumber = 0;
 					block->SetEventNum(3);
+					skip_anime = false;
 				}
 			}
 		}
@@ -109,6 +125,7 @@ void CObjTowa::Action()
 					eventflag = false;
 					eventnumber = 0;
 					block->SetEventNum(9);
+					skip_anime = false;
 				}
 			}
 		}
@@ -130,6 +147,7 @@ void CObjTowa::Action()
 					eventnumber = 0;
 					towa_in = false;
 					towa_vec = 4;
+					skip_anime = false;
 				}
 			}
 		}

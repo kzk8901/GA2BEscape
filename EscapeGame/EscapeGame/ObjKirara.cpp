@@ -58,6 +58,16 @@ void CObjKirara::Action()
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
 	m_vy = 0.0f;
+	if (text_m == -1 && word == 33)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
+	else if (text_m == -1 && word == 54)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
 
 	//イベント用フラグ
 	if (eventflag == true)
@@ -65,8 +75,8 @@ void CObjKirara::Action()
 		//イベントナンバー１
 			if (eventnumber == 1 && move_flag == false)
 			{
-				if (anime_move == 5 || event_skip == true)
-				{
+			  if (anime_move == 5 || event_skip == true)
+			  {
 				//1,右 2,左 3,上 4,下
 
 				if (block->KiraraGetY() < 7 && block->ThereIsBlock(4, 2) == true)
@@ -83,9 +93,10 @@ void CObjKirara::Action()
 					block->SetEventNum(6);
 					eventnumber = 0;
 					eventflag = false;
+					skip_anime = false;
 				}
-			}
-		}
+			  }
+		   }
 		//イベント1終了
 
 
@@ -106,6 +117,7 @@ void CObjKirara::Action()
 					kirara_in = false;
 					kirara_vec = 4;
 					block->SetEventNum(98);
+					skip_anime = false;
 				}
 			}
 		}
@@ -137,6 +149,7 @@ void CObjKirara::Action()
 					eventflag = false;
 					kirara_vec = 2;
 					block->SetEventNum(26);
+					skip_anime = false;
 				}
 			}
 		}

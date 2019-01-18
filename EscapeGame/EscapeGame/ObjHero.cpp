@@ -32,8 +32,8 @@ void CObjHero::Init()
 	for (int i = 0; i < 20; i++)
 		unlocknum[i] = 0;
 	selectnum = 0;
-	eventnumber = 0;
 	hero_vec = 4;
+	eventnumber = 0;
 
 	eventflag = false;
 	move_flag = false;
@@ -42,6 +42,7 @@ void CObjHero::Init()
 	Key_flag = false;
 	Itemcheck = false;
 	hero_in = true;
+
 }
 
 //アクション
@@ -55,6 +56,17 @@ void CObjHero::Action()
 	//移動ベクトルの破棄
 	m_vx = 0.0f;
 	m_vy = 0.0f;
+
+	if (text_m == -1 && word == 5)
+	{
+		eventflag = true;
+		eventnumber = 1;
+	}
+	else if (text_m == -1 && word == 25)
+	{
+		eventflag = true;
+		eventnumber = 2;
+	}
 
 	//イベント用フラグ
 	if (eventflag == true)
@@ -84,6 +96,7 @@ void CObjHero::Action()
 					eventnumber = 0;
 					eventflag = false;
 					block->SetEventNum(2);
+					skip_anime = false;
 				}
 			}
 		}
@@ -109,6 +122,7 @@ void CObjHero::Action()
 					eventnumber = 0;
 					eventflag = false;
 					block->SetEventNum(4);
+					skip_anime = false;
 				}
 			}
 		}
@@ -135,6 +149,7 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(11);
+				skip_anime = false;
 			}
 		}
 		// イベントナンバー4
@@ -155,6 +170,7 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(14);
+				skip_anime = false;
 			}
 		}
 		//イベント4終了
@@ -180,6 +196,7 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(17);
+				skip_anime = false;
 			}
 		}
 		//イベント5終了
@@ -202,6 +219,7 @@ void CObjHero::Action()
 				eventnumber = 0;
 				eventflag = false;
 				block->SetEventNum(20);
+				skip_anime = false;
 			}
 		}
 		//イベント6終了
@@ -209,7 +227,7 @@ void CObjHero::Action()
 
 		//きららF1イベント開始-----------------------------------------------------
 		// イベントナンバー7
-		if (eventnumber == 7 && move_flag == false)
+		if (eventnumber== 7 && move_flag == false)
 		{
 			//1,右 2,左 3,上 4,下
 			if (block->HeroGetX() > 17 && block->ThereIsBlock(2, 1) == true)
@@ -223,11 +241,12 @@ void CObjHero::Action()
 			else
 			{
 				hero_vec = 3;
-				eventnumber = 0;
+				eventnumber= 0;
 				eventflag = false;
 				block->SetEventNum(23);
 				//一連のイベント終了まで動けなくする
 				SetActionflag(true);
+				skip_anime = false;
 			}
 		}
 		//イベント7終了
