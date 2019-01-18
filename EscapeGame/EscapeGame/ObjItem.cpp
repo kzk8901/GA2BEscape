@@ -58,9 +58,9 @@ void CObjItem::Draw()
 			{
 				src.m_top = 0.0f;
 				src.m_left = 0.0f;
-				src.m_right = 64.0f;
-				src.m_bottom = 64.0f;
-				Draw::Draw(18, &src, &dst, c, 0.0f);
+				src.m_right = 512.0f;
+				src.m_bottom = 512.0f;
+				Draw::Draw(26, &src, &dst, c, 0.0f);
 			}
 			if (((UserData*)Save::GetData())->item[i] == 5)
 			{
@@ -93,6 +93,33 @@ void CObjItem::Draw()
 				src.m_right = 512.0f;
 				src.m_bottom = 512.0f;
 				Draw::Draw(33, &src, &dst, c, 0.0f);
+			}
+			if (((UserData*)Save::GetData())->item[i] == 9)
+			{
+				//memo1(ミスミソウ)
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 512.0f;
+				src.m_bottom = 512.0f;
+				Draw::Draw(27, &src, &dst, c, 0.0f);
+			}
+			if (((UserData*)Save::GetData())->item[i] == 10)
+			{
+				//memo2(イフェイオン)
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 512.0f;
+				src.m_bottom = 512.0f;
+				Draw::Draw(28, &src, &dst, c, 0.0f);
+			}
+			if (((UserData*)Save::GetData())->item[i] == 11)
+			{
+				//memo3(サクラソウ)
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 512.0f;
+				src.m_bottom = 512.0f;
+				Draw::Draw(29, &src, &dst, c, 0.0f);
 			}
 		}
 	}
@@ -140,9 +167,9 @@ void CObjItem::Draw()
 		{
 			src.m_top = 0.0f;
 			src.m_left = 0.0f;
-			src.m_right = 64.0f;
-			src.m_bottom = 64.0f;
-			Draw::Draw(18, &src, &dst, c, 0.0f);
+			src.m_right = 512.0f;
+			src.m_bottom = 512.0f;
+			Draw::Draw(26, &src, &dst, c, 0.0f);
 		}
 		if (ShowItem == 4)
 		{
@@ -157,8 +184,8 @@ void CObjItem::Draw()
 			//犬
 			src.m_top = 0.0f;
 			src.m_left = 0.0f;
-			src.m_right = 64.0f;
-			src.m_bottom = 64.0f;
+			src.m_right = 512.0f;
+			src.m_bottom = 512.0f;
 			Draw::Draw(30, &src, &dst, c, 0.0f);
 		}
 		if (ShowItem == 6)
@@ -187,6 +214,33 @@ void CObjItem::Draw()
 			src.m_right = 512.0f;
 			src.m_bottom = 512.0f;
 			Draw::Draw(33, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 9)
+		{
+			//memo1(ミスミソウ)
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 512.0f;
+			src.m_bottom = 512.0f;
+			Draw::Draw(27, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 10)
+		{
+			//memo2(イフェイオン)
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 512.0f;
+			src.m_bottom = 512.0f;
+			Draw::Draw(28, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 11)
+		{
+			//memo3(サクラソウ)
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 512.0f;
+			src.m_bottom = 512.0f;
+			Draw::Draw(29, &src, &dst, c, 0.0f);
 		}
 	}
 }
