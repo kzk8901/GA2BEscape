@@ -75,25 +75,25 @@ void CObjBackGround::Draw()
 
 			//描画
 			Draw::Draw(10, &src, &dst, c, 0.0f);
-
-			//色付き床
-			if (m_map[mapnum][i][j] == 47)
-			{
-				//切り取り位置の設定
-				src.m_top = 0.0f;
-				src.m_left = 0.0f;
-				src.m_right = src.m_left + 64.0f;
-				src.m_bottom = src.m_top + 64.0f;
-				//表示位置の設定
-				dst.m_top = i*32.0 + 16.0f;
-				dst.m_left = j*32.0f;
-				dst.m_right = dst.m_left + 32.0f;
-				dst.m_bottom = dst.m_top + 32.0f;
-
-				//描画
-				Draw::Draw(19, &src, &dst, c, 0.0f);
-			}
 		}
+	}
+
+	//色付き床
+	if (mapnum == 1)
+	{
+		//切り取り位置の設定
+		src.m_top = 0.0f;
+		src.m_left = 0.0f;
+		src.m_right = src.m_left + 64.0f;
+		src.m_bottom = src.m_top + 64.0f;
+		//表示位置の設定
+		dst.m_top = 48.0f;
+		dst.m_left = 256.0f;
+		dst.m_right = dst.m_left + 32.0f;
+		dst.m_bottom = dst.m_top + 32.0f;
+
+		//描画
+		Draw::Draw(19, &src, &dst, c, 0.0f);
 	}
 
 	for(int i = 0; i < 15; i++)
@@ -404,6 +404,23 @@ void CObjBackGround::Draw()
 
 				//描画
 				Draw::Draw(12, &src, &dst, c, 0.0f);
+			}
+			//扉
+			if (m_map[mapnum][i][j] == 99 && (block->HeroGetX() != j || block->HeroGetY() != i))
+			{
+				//切り取り位置の設定
+				src.m_top = 5.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 30.0f;
+				src.m_bottom = src.m_top + 58.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 48.0f;
+
+				//描画
+				Draw::Draw(36, &src, &dst, c, 0.0f);
 			}
 		}
 	}
