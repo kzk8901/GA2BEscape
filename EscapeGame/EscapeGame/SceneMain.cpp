@@ -27,7 +27,7 @@ void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
 	Draw::LoadImageW(L"image2.png", 0, TEX_SIZE_512);
-	Draw::LoadImageW(L"text1.png", 1, TEX_SIZE_512);
+	Draw::LoadImageW(L"mes11_01_bk.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"zyo-zi.png", 4, TEX_SIZE_512);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
