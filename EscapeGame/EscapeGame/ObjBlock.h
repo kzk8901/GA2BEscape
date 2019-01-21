@@ -66,7 +66,7 @@ private:
 	int animationtime;   //アニメーションのための時間管理
 
 	int event_num;//イベントナンバー 0イベントなし
-	bool event_clock[3];//1回しか起こさないイベントチェック
+	bool event_clock[8];//1回しか起こさないイベントチェック
 	int lockpasu;  //ナンバーロックのヒント表示用
 
 };

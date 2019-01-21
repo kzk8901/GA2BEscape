@@ -20,7 +20,7 @@ bool event_skip = false;
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
 //4 = 鍵おいてます, 5 = ナンバーロックドア , 6 = 偽アイテム
-int block_data_map[4][15][20] =
+int block_data_map[8][15][20] =
 {
 	//スタートマップ1F mapnum==0
 	{
@@ -45,7 +45,7 @@ int block_data_map[4][15][20] =
 	//奏多マップ1Fmapnum==1
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
-		{ 1,49, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{ 1,93, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
 		{ 1,39,39,39,39,39,39,39,47, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
@@ -101,6 +101,86 @@ int block_data_map[4][15][20] =
 		{ 1,30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,30, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
+
+	//スタートマップ2F mapnum==4
+	{
+		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,91, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 1
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
+		{87, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,89, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
+		{ 1,92, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
+	},
+
+	//奏多2F mapnum==5
+	{
+		// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,99, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },// 1
+		{ 1,30,31,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31,31,30, 1, },// 2
+		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{ 1, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0,10, 0, 0, 0, 0, 0, 1, },// 4
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
+		{ 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,97, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 2, 9, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
+	},
+
+	//永遠2F mapnum==6
+	{
+		// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,99, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },// 1
+		{ 1,30,31,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31,31,30, 1, },// 2
+		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{ 1, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0,10, 0, 0, 0, 0, 0, 1, },// 4
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
+		{ 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,97, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 2, 9, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
+	},
+
+	//きらら2F mapnum==7
+	{
+		// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,99, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },// 1
+		{ 1,30,31,31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,31,31,30, 1, },// 2
+		{ 1, 0, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{ 1, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0,10, 0, 0, 0, 0, 0, 1, },// 4
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
+		{95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,97, },// 7
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
+		{ 1, 1, 1, 1, 1, 1, 0, 0, 0, 2, 9, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
+	},
 };
 //マップ情報-------------------------------------------------
 //イニシャライズ
@@ -129,9 +209,9 @@ void CObjBlock::Init()
 	moveshelf = 0.0f;
 	blockdeleteYN = false;
 	animationtime = 0;
-	lockpasu = 0;
 	event_num = 0;
-	for (int i=0; i < 3; i++)
+	lockpasu = 0;
+	for (int i=0; i < 8; i++)
 		event_clock[i] = false;
 
 	((UserData*)Save::GetData())->number[0] = 402;
@@ -159,6 +239,8 @@ void CObjBlock::Action()
 	CObjHero* hero = (CObjHero*)Objs::GetObj(OBJ_HERO);
 	//背景を設定
 	CObjBackGround* bgro = (CObjBackGround*)Objs::GetObj(OBJ_BGROUND);
+	//アイテム参照
+	CObjItem* itm = (CObjItem*)Objs::GetObj(OBJ_ITEM);
 	//きららの位置を設定
 	CObjKirara* kirara = (CObjKirara*)Objs::GetObj(OBJ_KIRARA);
 	//永遠の位置を設定
@@ -188,6 +270,10 @@ void CObjBlock::Action()
 	if (Input::GetVKey('J') == true)
 	{
 		event_num = 24;
+	}
+	if (Input::GetVKey('Y') == true)
+	{
+		
 	}
 	//----------------------------------------------------------
 
@@ -233,7 +319,6 @@ void CObjBlock::Action()
 		towa->SetTowaEventFlag(true, 3);
 		kanata->SetKanataEventFlag(true, 3);
 		kirara->SetKiraraEventFlag(true, 2);
-		event_num = 98;
 		hero_move = true;
 	}
 	//オープニング終了---------------------------------
@@ -304,16 +389,16 @@ void CObjBlock::Action()
 	//永遠マップ1Fイベ終了-----------------------------
 
 	//きららマップ1Fイベ開始-----------------------------
-	//イベントナンバー(22～2)
+	//イベントナンバー(22～26)
 	//部屋に入ったとき
-	if (event_clock[1] == false)
+	if (event_clock[2] == false)
 	{
 		if (event_num == 22)
 			hero->SetHeroEventFlag(true, 7);
 		if (event_num == 23)
 		{
 			event_num = 99;
-			event_clock[1] = true;
+			event_clock[2] = true;
 		}
 	}
 	//メモを入手した後
@@ -332,6 +417,23 @@ void CObjBlock::Action()
 	}
 
 	//きららマップ1Fイベ終了-----------------------------
+
+	//1F集合イベント開始---------------------------------
+	//イベントナンバー(27、28)---------------------------
+	if (event_num == 27)
+	{
+		hero->SetActionflag(true);
+		hero->SetVec(1);
+		kirara->SetVec(1);
+		kanata->SetVec(2);
+		towa->SetVec(2);
+		event_num = 28;
+	}
+	if (event_num == 28)
+	{
+		event_num = 99;
+	}
+	//1F集合イベント終了---------------------------------
 
 	//移動マスを配置する---------------------------------
 	if (event_num == 98)
@@ -364,30 +466,66 @@ void CObjBlock::Action()
 		if (m_map[mapnum][hero_y][hero_x] == 98)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 2;
-			kanata->SetKanataIn(false);
 		}
 		//永遠
 		else if (m_map[mapnum][hero_y][hero_x] == 96)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 2;
-			towa->SetTowaIn(false);
 		}
 		//きらら
 		else if (m_map[mapnum][hero_y][hero_x] == 94)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 2;
-			kirara->SetKiraraIn(false);
 		}
 		//次に行くナンバーを渡す
 		Mapchange(0);
 		//次のmapnumを入れる
 		mapnum = 0;
+		//アイテムがそろった状態で戻ってきた時
+		if (itm->CheckItem( 9) == true &&
+			itm->CheckItem(10) == true && 
+			itm->CheckItem(11) == true && 
+			event_clock[3] == false)
+		{
+			//キャラの位置を一度リセット
+			block_data_map[0][hero_y][hero_x] = 0;
+			block_data_map[1][kanata_y][kanata_x] = 0;
+			block_data_map[2][towa_y][towa_x] = 0;
+			block_data_map[3][kirara_y][kirara_x] = 0;
+
+			//キャラを配置
+			m_map[0][8][6] = 2;
+			m_map[0][8][13] = 9;
+			m_map[0][4][13] = 10;
+			m_map[0][4][6] = 8;
+			SetTowa();
+			SetKanata();
+			SetKirara();
+
+			event_clock[3] = true;
+
+			event_num = 27;
+		}
+		//ヒロイン表示
+		if (event_clock[3] == false)
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
+		else
+		{
+			kanata->SetKanataIn(true);
+			towa->SetTowaIn(true);
+			kirara->SetKiraraIn(true);
+		}
 		//主人公の位置更新
 		SetHero();
 	}
 
 	//奏多マップ1Fへ移動-------------------------------
-	if (m_map[mapnum][hero_y][hero_x] == 99 && hero->GetMoveFlag() == false)
+	if (m_map[mapnum][hero_y][hero_x] == 99 && hero->GetMoveFlag() == false||
+		m_map[mapnum][hero_y][hero_x] == 92 && hero->GetMoveFlag() == false)
 	{
 		word=0;
 		text_loop = true;
@@ -401,13 +539,29 @@ void CObjBlock::Action()
 			text_m = -4;
 		}
 		//主人公の位置保存
-		m_map[mapnum][hero_y + 1][hero_x] = 2;
+		//1Fロビーから
+		if (m_map[mapnum][hero_y][hero_x] == 99)
+		{
+			m_map[mapnum][hero_y + 1][hero_x] = 2;
+		}
+		//2Fロビーから
+		else if (m_map[mapnum][hero_y][hero_x] == 92)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 2;
+		}
 		//次に行くナンバーを渡す
 		Mapchange(1);
 		//次のmapnumを入れる
 		mapnum = 1;
 		//奏多表示
-		kanata->SetKanataIn(true);
+		if (event_clock[3] == false)
+			kanata->SetKanataIn(true);
+		else
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
 		//主人公の位置更新
 		SetHero();
 		//奏多の位置更新
@@ -430,7 +584,6 @@ void CObjBlock::Action()
 		{
 			text_m = -5;
 		}
-		
 		//主人公の位置保存
 		m_map[mapnum][hero_y][hero_x - 1] = 2;
 		//次に行くナンバーを渡す
@@ -438,7 +591,14 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 2;
 		//永遠表示
-		towa->SetTowaIn(true);
+		if (event_clock[3] == false)
+			towa->SetTowaIn(true);
+		else
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
 		//主人公の位置更新
 		SetHero();
 		//永遠の位置更新
@@ -468,13 +628,90 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 3;
 		//きらら表示
-		kirara->SetKiraraIn(true);
+		if (event_clock[3] == false)
+			kirara->SetKiraraIn(true);
+		else
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);	
+		}
 		//主人公の位置更新
 		SetHero();
 		//きららの位置更新
 		SetKirara();
 		//初めて部屋に入ったらイベントを起こす
 		event_num = 22;
+	}
+
+	//ロビーF2へ移動---------------------------------------
+	if (m_map[mapnum][hero_y][hero_x] == 93 && hero->GetMoveFlag() == false ||
+		m_map[mapnum][hero_y][hero_x] == 91 && hero->GetMoveFlag() == false ||
+		m_map[mapnum][hero_y][hero_x] == 89 && hero->GetMoveFlag() == false ||
+		m_map[mapnum][hero_y][hero_x] == 87 && hero->GetMoveFlag() == false)
+	{
+		text_loop = true;
+		text_m = -2;
+		//主人公の位置保存
+		//奏多1F
+		if (m_map[mapnum][hero_y][hero_x] == 93)
+		{
+			m_map[mapnum][hero_y + 1][hero_x] = 2;
+		}
+		//奏多2F
+		else if (m_map[mapnum][hero_y][hero_x] == 90)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 2;
+		}
+		//永遠2F
+		else if (m_map[mapnum][hero_y][hero_x] == 88)
+		{
+			m_map[mapnum][hero_y][hero_x + 1] = 2;
+		}
+		//きらら2F
+		else if (m_map[mapnum][hero_y][hero_x] == 86)
+		{
+			m_map[mapnum][hero_y][hero_x - 1] = 2;
+		}
+		//次に行くナンバーを渡す
+		Mapchange(4);
+		//次のmapnumを入れる
+		mapnum = 4;
+		//初めて入ったらイベントを起こす
+		if (event_clock[4] == false)
+		{
+			//キャラの位置を一度リセット
+			block_data_map[4][hero_y][hero_x] = 0;
+			block_data_map[0][kanata_y][kanata_x] = 0;
+			block_data_map[0][towa_y][towa_x] = 0;
+			block_data_map[0][kirara_y][kirara_x] = 0;
+
+			//キャラを配置
+			m_map[4][4][ 6] = 2; //主人公
+			m_map[4][4][13] = 9; //永遠
+			m_map[4][8][13] = 10;//奏多
+			m_map[4][8][ 6] = 8; //きらら
+			SetTowa();
+			SetKanata();
+			SetKirara();
+
+			//event_num = 27;
+		}
+		//ヒロイン表示
+		if (event_clock[4] == true)
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
+		else
+		{
+			kanata->SetKanataIn(true);
+			towa->SetTowaIn(true);
+			kirara->SetKiraraIn(true);
+		}
+		//主人公の位置更新
+		SetHero();
 	}
 
 	//----------------------------------------------

@@ -375,7 +375,7 @@ void CObjBackGround::Draw()
 				Draw::Draw(34, &src, &dst, c, 0.0f);
 			}
 			//ŠK’i
-			if (m_map[mapnum][i][j] == 49)
+			if (m_map[mapnum][i][j] == 93)
 			{
 				//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 				src.m_top = 0.0f;
