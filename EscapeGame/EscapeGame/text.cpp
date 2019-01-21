@@ -51,8 +51,8 @@ void CObjText::Action()
 							{
 								if (text_m == 0 && word < 10 || text_m == 3 && word < 23 ||
 									text_m == 1 && word < 13 || text_m == 2 && word < 9 || text_m == -1 && word < 54 ||
-									text_m == 5 && word < 20 || text_m == 4 && word < 19 || text_m == 7 && word < 16 ||
-									text_m == 6 && word < 6)
+									text_m == 5 && word < 20 || text_m == 4 && word < 19 || text_m == 7 && word < 9 ||
+									text_m == 6 && word < 7)
 								{
 									word += 1;
 									m_key_flag = false;
@@ -131,7 +131,7 @@ void CObjText::Draw()
 	dst_D.m_right = 448.0f;
 	dst_D.m_bottom = 480.0f;
 	Font::StrDraw(L"十字キー：移動", 650, 370, 15, c_C);
-	Font::StrDraw(L"Zキー：", 650,390, 15, c_C);
+	Font::StrDraw(L"Zキー：", 650, 390, 15, c_C);
 	Font::StrDraw(L"決定・会話進行", 650, 410, 15, c_C);
 	Font::StrDraw(L"テンキー：", 650, 430, 15, c_C);
 	Font::StrDraw(L"入手アイテム詳細", 650, 450, 15, c_C);
@@ -148,7 +148,7 @@ void CObjText::Draw()
 		else if (word == 1)
 		{
 			m_z = 30;
-			Font::StrDraw(L"大星きららはメイドの岸野奏多と",x, y_a, m_z, c);
+			Font::StrDraw(L"大星きららはメイドの岸野奏多と", x, y_a, m_z, c);
 			Font::StrDraw(L"下校していると突然雨が降ってきた", x, y_b, m_z, c);
 		}
 		else if (word == 2)
@@ -159,7 +159,7 @@ void CObjText::Draw()
 		else if (word == 3)
 		{
 			m_z = 25;
-			c_A[3]=1.0-time*0.005;
+			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 2;
 			g = 2;
@@ -167,6 +167,7 @@ void CObjText::Draw()
 		}
 		else if (word == 4)
 		{
+			c_A[3] = 1.0f;
 			d = 3;
 			Font::StrDraw(L"この感じだとすぐやむと思いますが", x, y_a, m_z, c);
 		}
@@ -216,7 +217,7 @@ void CObjText::Draw()
 			d = 2;
 			Font::StrDraw(L"こっちは私のメイドの岸野奏多よ", x, y_a, m_z, c);
 		}
-		else if (word== 14)
+		else if (word == 14)
 		{
 			d = 3;
 			Font::StrDraw(L"岸野奏多です。", x, y_a, m_z, c);
@@ -225,7 +226,7 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"きらら様のメイドです", x, y_a, m_z, c);
 		}
-		else if (word== 16)
+		else if (word == 16)
 		{
 			if (f == false)
 			{
@@ -238,7 +239,7 @@ void CObjText::Draw()
 		}
 		else if (word == 17)
 		{
-			f=false;
+			f = false;
 			d = 1;
 			Font::StrDraw(L"確かあなたは…", x, y_a, m_z, c);
 		}
@@ -265,7 +266,7 @@ void CObjText::Draw()
 		else if (word == 22)
 		{
 			d = 1;
-	        Font::StrDraw(L"あ、雨やみ始めてますね", x, y_a, m_z, c);
+			Font::StrDraw(L"あ、雨やみ始めてますね", x, y_a, m_z, c);
 		}
 		else if (word == 23)
 		{
@@ -353,7 +354,7 @@ void CObjText::Draw()
 			d = 3;
 			Font::StrDraw(L"あまりお勧めはしませんね", x, y_a, m_z, c);
 		}
-		else if (word== 37)
+		else if (word == 37)
 		{
 			d = 3;
 			g = 1;
@@ -375,7 +376,7 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"奏多、救助チームの手配は待ちなさい", x, y_a, m_z, c);
 		}
-		else if (word ==41)
+		else if (word == 41)
 		{
 			d = 3;
 			Font::StrDraw(L"しかし…", x, y_a, m_z, c);
@@ -392,7 +393,7 @@ void CObjText::Draw()
 		}
 		else if (word == 44)
 		{
-			
+
 			Font::StrDraw(L"でしたら私がまず全部屋の安全を確かめます", x, y_a, m_z, c);
 		}
 		else if (word == 45)
@@ -404,7 +405,7 @@ void CObjText::Draw()
 			d = 2;
 			Font::StrDraw(L"そんなことしたら絶対許さないからね？", x, y_a, m_z, c);
 		}
-		else if (word== 47)
+		else if (word == 47)
 		{
 			if (f == false)
 			{
@@ -442,7 +443,7 @@ void CObjText::Draw()
 		else if (word == 51)
 		{
 			d = 4;
-		    Font::StrDraw(L"謎の館の探索の開始だー！", x, y_a, m_z, c);
+			Font::StrDraw(L"謎の館の探索の開始だー！", x, y_a, m_z, c);
 		}
 		else if (word == 52)
 		{
@@ -475,7 +476,7 @@ void CObjText::Draw()
 		{
 			hero_move = false;
 			text_move = true;
-			Font::StrDraw(L"Zキーで会話進行", x,y_a, 32, c);
+			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 1)
 		{
@@ -531,7 +532,7 @@ void CObjText::Draw()
 		}
 	}
 	//きらら答え入力後-----------------------------------------------------------------------
-	else if(text_m==3)
+	else if (text_m == 3)
 	{
 		if (word == 11)
 		{
@@ -539,7 +540,7 @@ void CObjText::Draw()
 			text_move = true;
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
-		if (word== 12)
+		if (word == 12)
 		{
 			d = 1;
 			g = 2;
@@ -712,7 +713,7 @@ void CObjText::Draw()
 			Font::StrDraw(L"探索しよう！", x, y_a, 32, c);
 		}
 	}
-    //鍵入手後-----------------------------------------------------------------------
+	//鍵入手後-----------------------------------------------------------------------
 	else if (text_m == 4)
 	{
 		if (word == 14)
@@ -815,7 +816,7 @@ void CObjText::Draw()
 			Draw::Draw(52, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"それじゃよろしく！", x, y_a, m_z, c);
 		}
-		else if (word == 9&&text_hide==false)
+		else if (word == 9 && text_hide == false)
 		{
 			hero_move = true;
 			d = 0;
@@ -826,196 +827,191 @@ void CObjText::Draw()
 	}
 	//永遠マップ解除時-------------------------------------------------------------------------
 	else if (text_m == 5)
+	{
+		if (word == 10)
 		{
-			if (word == 10)
-			{
-				hero_move = false;
-				text_move = true;
-				Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
-			}
-			else if (word == 11)
-			{
-				d = 4;
-				g = 2;
-				Draw::Draw(52, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"これは何かのメモかな?", x, y_a, m_z, c);
-			}
-			else if (word == 12)
-			{
-				d = 1;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"みたいですね", x, y_a, m_z, c);
-			}
-			else if (word == 13)
-			{
-				d = 4;
-				Draw::Draw(52, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"もしかしたら他にも何かあるかもしれないね", x, y_a, m_z, c);
-			}
-			else if (word == 14)
-			{
-				d = 1;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"ですね。もっとこの部屋調べてみましょうか", x, y_a, m_z, c);
-			}
-			else if (word == 15)
-			{
-				d = 4;
-				Draw::Draw(52, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"鳳君は他の部屋を調べに行ってみてよ", x, y_a, m_z, c);
-			}
-			else if (word == 16)
-			{
-				d = 1;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"大丈夫ですか？", x, y_a, m_z, c);
-			}
-			else if (word == 17)
-			{
-				d = 4;
-				Draw::Draw(52, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"僕は生徒会長なんだよ?大丈夫だよ", x, y_a, m_z, c);
-			}
-			else if (word == 18)
-			{
-				d = 1;
-				Draw::Draw(4, &src, &dst, c, 0.0f);
-				Font::StrDraw(L"わかりました。先輩も気を付けて", x, y_a, m_z, c);
-			}
-			else if (word == 19)
-			{
-				d = 4;
-				Draw::Draw(52, &src, &dst, c, 0.0f);
-			    Font::StrDraw(L"任せて", x, y_a, m_z, c);
-			}
-			else if (word == 20)
-			{
-				d = 0;
-				g = 3;
-				text_move = false;
-				hero_move = true;
-				Font::StrDraw(L"他の部屋を探しに行こう", x, y_a, 32, c);
-				text_loop = false;
-			}
+			hero_move = false;
+			text_move = true;
+			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
+		else if (word == 11)
+		{
+			d = 4;
+			g = 2;
+			Draw::Draw(52, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"これは何かのメモかな?", x, y_a, m_z, c);
+		}
+		else if (word == 12)
+		{
+			d = 1;
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"みたいですね", x, y_a, m_z, c);
+		}
+		else if (word == 13)
+		{
+			d = 4;
+			Draw::Draw(52, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"もしかしたら他にも何かあるかもしれないね", x, y_a, m_z, c);
+		}
+		else if (word == 14)
+		{
+			d = 1;
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"ですね。もっとこの部屋調べてみましょうか", x, y_a, m_z, c);
+		}
+		else if (word == 15)
+		{
+			d = 4;
+			Draw::Draw(52, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"鳳君は他の部屋を調べに行ってみてよ", x, y_a, m_z, c);
+		}
+		else if (word == 16)
+		{
+			d = 1;
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"大丈夫ですか？", x, y_a, m_z, c);
+		}
+		else if (word == 17)
+		{
+			d = 4;
+			Draw::Draw(52, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"僕は生徒会長なんだよ?大丈夫だよ", x, y_a, m_z, c);
+		}
+		else if (word == 18)
+		{
+			d = 1;
+			Draw::Draw(4, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"わかりました。先輩も気を付けて", x, y_a, m_z, c);
+		}
+		else if (word == 19)
+		{
+			d = 4;
+			Draw::Draw(52, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"任せて", x, y_a, m_z, c);
+		}
+		else if (word == 20)
+		{
+			d = 0;
+			g = 3;
+			text_move = false;
+			hero_move = true;
+			Font::StrDraw(L"他の部屋を探しに行こう", x, y_a, 32, c);
+			text_loop = false;
+		}
+	}
 	//幕間
 	//１階層1～6
 	//２階層6～15
 	//１階層-----------------------------------------------------------------------
 	else if (text_m == 6)
 	{
-		text_move = true;
 		if (word == 0)
-		{
-			hero_move = false;
-			d = 1;
-			g = 2;
-			Draw::Draw(4, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"3つのメモがそろったみたいだな", x, y_a, m_z, c);
-		}
-		else if (word == 1)
-		{
-			d = 2;
-			Draw::Draw(50, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"やったわね", x, y_a, m_z, c);
-		}
-		else if (word == 2)
-		{
-			d = 3;
-			Draw::Draw(51, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"それでメモにはなんて書いているんですか?", x, y_a, m_z, c);
-		}
-		else if (word== 3)
-		{
-			g = 1;
-			d = 1;
-			Draw::Draw(4, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"「ミスミソウ」「イフェイオン」", x, y_a, m_z, c);
-			Font::StrDraw(L"「サクラソウ」だな", x, y_b, m_z, c);
-		}
-		else if (word == 4)
-		{
-			d = 2;
-			g = 2;
-			Draw::Draw(50, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"イフェイオン？", x, y_a, m_z, c);
-		}
-		else if (word == 5)
-		{
-			d = 2;
-			Draw::Draw(50, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"なによそれ", x, y_a, m_z, c);
-		}
-		else if (word == 6)
-		{
-			hero_move = true;
-			d = 0;
-			g = 3;
-			text_move = false;
-			Font::StrDraw(L"探索しよう！", x, y_a, 32, c);
-		}
-	}
-	//２階層-----------------------------------------------------------------------
-	else if (text_m == 7)
-	{
-		if (word == 7)
 		{
 			hero_move = false;
 			text_move = true;
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
-		else if (word == 8)
+		else if (word == 1)
 		{
-			d = 2;
-			Draw::Draw(50, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"二階に来たのはいいけどこれじゃ出られないわよ？", x, y_a, m_z, c);
+			d = 1;
+			g = 2;
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
+			Font::StrDraw(L"3つのメモがそろったみたいだな", x, y_a, m_z, c);
 		}
-		if (word == 9)
+		else if (word == 2)
+		{
+			c_A[3] = 1.0;
+			d = 2;
+			Font::StrDraw(L"やったわね", x, y_a, m_z, c);
+		}
+		else if (word == 3)
+		{
+			d = 3;
+			Font::StrDraw(L"それでメモにはなんて書いているんですか?", x, y_a, m_z, c);
+		}
+		else if (word == 4)
 		{
 			g = 1;
 			d = 1;
-			Draw::Draw(4, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"この階に何か手掛かりがあるんじゃないかな", x, y_a, m_z, c);
-			Font::StrDraw(L"あるんじゃないかな", x, y_b, m_z, c);
+			Font::StrDraw(L"「ミスミソウ」「イフェイオン」", x, y_a, m_z, c);
+			Font::StrDraw(L"「サクラソウ」だな", x, y_b, m_z, c);
 		}
-		else if (word == 10)
-		{
-			d = 4;
-			Draw::Draw(52, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"それじゃこの部屋も", x, y_a, m_z, c);
-			Font::StrDraw(L"分かれて探す感じでいいかな？", x, y_b, m_z, c);
-		}
-		else if (word == 11)
+		else if (word == 5)
 		{
 			d = 2;
 			g = 2;
-			Draw::Draw(50, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"なら私はこっちに行くわ！", x, y_a, m_z, c);
+			Font::StrDraw(L"イフェイオン？", x, y_a, m_z, c);
 		}
-		else if (word == 12)
+		else if (word == 6)
 		{
-			Draw::Draw(50, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"奏多はあっちを調べなさい！", x, y_a, m_z, c);
+			d = 2;
+			Font::StrDraw(L"なによそれ", x, y_a, m_z, c);
 		}
-		else if (word == 13)
+		else if (word == 7)
 		{
-			d = 3;
-			Draw::Draw(51, &src, &dst, c, 0.0f);
-			Font::StrDraw(L"かしこまりました", x, y_a, m_z, c);
+			hero_move = true;
+			d = 0;
+			g = 3;
+			text_move = false;
+			Font::StrDraw(L"探そう！", x, y_a, 32, c);
 		}
-		else if (word == 14)
+	}
+	//２階層-----------------------------------------------------------------------
+	else if (text_m == 7)
+	{
+		if (word == 0)
+		{
+			hero_move = false;
+			text_move = true;
+			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
+		}
+		else if (word == 1)
+		{
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
+			d = 2;
+			Font::StrDraw(L"二階に来たのはいいけどこれじゃ出られないわよ？", x, y_a, m_z, c);
+		}
+		if (word == 2)
+		{
+			g = 1;
+			d = 1;
+			Font::StrDraw(L"この階に何か手掛かりが", x, y_a, m_z, c);
+			Font::StrDraw(L"あるんじゃないかな", x, y_b, m_z, c);
+		}
+		else if (word == 3)
 		{
 			d = 4;
-			Draw::Draw(52, &src, &dst, c, 0.0f);
+			Font::StrDraw(L"それじゃこの部屋も", x, y_a, m_z, c);
+			Font::StrDraw(L"分かれて探す感じでいいかな？", x, y_b, m_z, c);
+		}
+		else if (word == 4)
+		{
+			d = 2;
+			g = 2;
+			Font::StrDraw(L"なら私はこっちに行くわ！", x, y_a, m_z, c);
+		}
+		else if (word == 5)
+		{
+			Font::StrDraw(L"奏多はあっちを調べなさい！", x, y_a, m_z, c);
+		}
+		else if (word == 6)
+		{
+			d = 3;
+			Font::StrDraw(L"かしこまりました", x, y_a, m_z, c);
+		}
+		else if (word == 7)
+		{
+			d = 4;
 			Font::StrDraw(L"それじゃあ僕は残りの部屋を調べようかな", x, y_a, m_z, c);
 		}
-		if (word == 15)
+		else if (word == 8)
 		{
 			d = 1;
-			Draw::Draw(4, &src, &dst, c, 0.0f);
 			Font::StrDraw(L"(俺は誰かを手伝いに行こう）", x, y_a, m_z, c);
 		}
-		if (word == 16)
+		else if (word ==9)
 		{
 			hero_move = true;
 			d = 0;
@@ -1060,7 +1056,7 @@ void CObjText::Draw()
 		Draw::Draw(52, &src, &dst, c_C, 0.0f);
 	}
 	//テキスト移動2行用
-	if (time < 210&&g==1)
+	if (time < 210 && g == 1)
 	{
 		src_B.m_top = 30.0f;
 		src_B.m_left = 200.0f + time*1.0f;
@@ -1069,7 +1065,7 @@ void CObjText::Draw()
 		dst_B.m_top = 490.0f;
 		dst_B.m_left = 170.0f + time*3.0f;
 		dst_B.m_right = 750.0f;
-		dst_B.m_bottom =540.0f;
+		dst_B.m_bottom = 540.0f;
 		Draw::Draw(1, &src_B, &dst_B, c_C, 0.0f);
 		//テキスト表示隠し(下部）描画表示位置
 		src_C.m_top = 80.0f;
@@ -1082,14 +1078,14 @@ void CObjText::Draw()
 		dst_C.m_bottom = 590.0f;
 		Draw::Draw(1, &src_C, &dst_C, c_C, 0.0f);
 	}
-	else if(time==210 && g == 1)
+	else if (time == 210 && g == 1)
 	{
 		time_x = 210;
 	}
-	if (time_x <= 210&&time_x>=0 && g == 1)
+	if (time_x <= 210 && time_x >= 0 && g == 1)
 	{
 		src_C.m_top = 80.0f;
-		src_C.m_left = 110.0f + (210-time_x)*1.0f;
+		src_C.m_left = 110.0f + (210 - time_x)*1.0f;
 		src_C.m_right = 480.0f;
 		src_C.m_bottom = 130.0f;
 		dst_C.m_top = 540.0f;
@@ -1098,7 +1094,7 @@ void CObjText::Draw()
 		dst_C.m_bottom = 590.0f;
 		Draw::Draw(1, &src_C, &dst_C, c_C, 0.0f);
 	}
-	else if(g == 1)
+	else if (g == 1)
 	{
 
 	}
@@ -1120,12 +1116,12 @@ void CObjText::Draw()
 
 	}
 	//現在位置表示
-	if (text_m == -2 || text_m == -1||text_m==6)
+	if (text_m == -2 || text_m == -1 || text_m == 6)
 	{
 		Font::StrDraw(L"1F", 700, 503, 30, c);
 		Font::StrDraw(L"玄関", 700, 553, 30, c);
 	}
-	else if (text_m ==-3|| text_m == 0 || text_m == 3  )
+	else if (text_m == -3 || text_m == 0 || text_m == 3)
 	{
 		Font::StrDraw(L"1F", 700, 503, 30, c);
 		Font::StrDraw(L"居間", 700, 553, 30, c);
@@ -1145,7 +1141,7 @@ void CObjText::Draw()
 		Font::StrDraw(L"2F", 700, 503, 30, c);
 	}
 	//暗転
-	if (text_m == -1 && word == 0 || text_m == -1 && word == 1 || text_m == -1 && word == 2)
+	if (text_m == -1 && word == 0 || text_m == -1 && word == 1 || text_m == -1 && word == 2||text_m == 6 && word == 0 || text_m == 7 && word == 0)
 	{
 		Draw::Draw(12, &src_A, &dst_A, c, 0.0f);
 		Draw::Draw(12, &src_D, &dst_D, c, 0.0f);

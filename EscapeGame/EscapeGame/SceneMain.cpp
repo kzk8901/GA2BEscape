@@ -67,6 +67,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"memo3.png", 29, TEX_SIZE_512);
 	Draw::LoadImageW(L"chair.png", 34, TEX_SIZE_16);
 	Draw::LoadImageW(L"stairs.png", 35, TEX_SIZE_128);
+	Draw::LoadImageW(L"door.png", 36, TEX_SIZE_64);
 
 	//アイテム関連
 	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_512);

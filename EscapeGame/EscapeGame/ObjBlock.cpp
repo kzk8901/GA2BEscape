@@ -422,6 +422,8 @@ void CObjBlock::Action()
 	//イベントナンバー(27、28)---------------------------
 	if (event_num == 27)
 	{
+		word = 0;
+		text_m = 6;
 		hero->SetActionflag(true);
 		hero->SetVec(1);
 		kirara->SetVec(1);
@@ -435,6 +437,25 @@ void CObjBlock::Action()
 		event_num = 99;
 	}
 	//1F集合イベント終了---------------------------------
+
+	//2F集合イベント開始---------------------------------
+	//イベントナンバー(29、30)---------------------------
+	if (event_num == 29)
+	{
+		word = 0;
+		text_m = 7;
+		hero->SetActionflag(true);
+		hero->SetVec(1);
+		kirara->SetVec(1);
+		kanata->SetVec(2);
+		towa->SetVec(2);
+		event_num = 30;
+	}
+	if (event_num == 30)
+	{
+		event_num = 99;
+	}
+	//2F集合イベント終了---------------------------------
 
 	//移動マスを配置する---------------------------------
 	if (event_num == 98)
@@ -696,7 +717,7 @@ void CObjBlock::Action()
 			SetKanata();
 			SetKirara();
 
-			event_num = 27;
+			event_num = 29;
 		}
 		//ヒロイン表示
 		if (event_clock[4] == true)
