@@ -586,10 +586,10 @@ void CObjBlock::Draw()
 	RECT_F dst; //描画表示位置
 
 	//テキストウィンドウ2（縦向き）
-	src.m_top = 0.0f;
-	src.m_left = 0.0f;
+	src.m_top = 10.0f;
+	src.m_left = 10.0f;
 	src.m_right = 230.0f;
-	src.m_bottom = 512.0f;
+	src.m_bottom = 495.0f;
 	dst.m_top = 0.0f;
 	dst.m_left =640.0f;
 	dst.m_right =800.0f;

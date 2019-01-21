@@ -679,7 +679,7 @@ void CObjHero::Draw()
 			else
 			{
 				//‚»‚êˆÈŠO‚Í”’Žš‚É‚·‚é
-				c[2] = 1.0f;
+				c[1] = 1.0f;
 			}
 
 			Font::StrDraw(str, 100 + i * 30, 520, 30, c);
