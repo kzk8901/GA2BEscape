@@ -611,6 +611,7 @@ void CObjHero::Draw()
 	};
 	//描画カラー情報
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
+	float f[4] = { 0.0f,0.0f,0.0f,1.0f };
 
 	RECT_F src; //描画元切り取り位置
 	RECT_F dst; //描画先表示位置
@@ -673,16 +674,16 @@ void CObjHero::Draw()
 			swprintf_s(str, L"%d", unlocknum[i]);
 			if (selectnum == i)
 			{
-				//選択している数は色を黄色くする
-				c[2] = 0.5f;
+				//選択している数は色を緑にする
+				f[1] = 1.0f;
 			}
 			else
 			{
-				//それ以外は白字にする
-				c[1] = 1.0f;
+				//それ以外は黒字にする
+				f[1] = 0.0f;
 			}
 
-			Font::StrDraw(str, 100 + i * 30, 520, 30, c);
+			Font::StrDraw(str, 200 + i * 30, 500, 30, f);
 		}
 	}
 }
