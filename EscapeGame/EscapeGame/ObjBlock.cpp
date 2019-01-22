@@ -445,8 +445,7 @@ void CObjBlock::Action()
 		kirara->SetVec(1);
 		kanata->SetVec(2);
 		towa->SetVec(2);
-		event_num = 0;
-		//event_num = 30;
+		event_num = 30;
 	}
 	if (event_num == 30)
 	{
