@@ -431,6 +431,7 @@ void CObjBlock::Action()
 	{
 		event_clock[3] = true;
 		event_num = 99;
+		event_skip = false;
 	}
 	//1F集合イベント終了---------------------------------
 
@@ -460,11 +461,11 @@ void CObjBlock::Action()
 		towa->SetTowaEventFlag(true, 4);
 	}
 	if (event_num == 33)
-	{
-		kirara->SetKiraraEventFlag(true, 5);
+	{   kirara->SetKiraraEventFlag(true, 5);
 		kanata->SetKanataEventFlag(true, 5);
 		towa->SetTowaEventFlag(true, 5);
 		event_clock[4] = true;
+		event_skip = false;
 	}
 	//2F集合イベント終了---------------------------------
 
