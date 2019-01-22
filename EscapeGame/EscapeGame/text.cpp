@@ -153,6 +153,7 @@ void CObjText::Draw()
 		}
 		else if (word == 2)
 		{
+			m_z = 30;
 			Font::StrDraw(L"二人はたまたま近くにあった館で", x, y_a, m_z, c);
 			Font::StrDraw(L"雨宿りすることにしたのであった", x, y_b, m_z, c);
 		}
@@ -969,6 +970,7 @@ void CObjText::Draw()
 		}
 		else if (word == 5)
 		{
+			f = false;
 			Font::StrDraw(L"奏多はあっちを調べなさい！", x, y_a, m_z, c);
 		}
 		else if (word == 6)
@@ -984,6 +986,7 @@ void CObjText::Draw()
 		}
 		else if (word == 7)
 		{
+			f = false;
 			anime_move = 3;
 			if (f == false)
 			{
@@ -995,6 +998,7 @@ void CObjText::Draw()
 		}
 		else if (word == 8)
 		{
+			f = false;
 			anime_move = 4;
 			d = 1;
 			Font::StrDraw(L"(俺は誰かを手伝いに行こう）", x, y_a, m_z, c);
@@ -1115,6 +1119,23 @@ void CObjText::Draw()
 			d = 1;
 			g = 2;
 			Font::StrDraw(L"ところで奥のほうで鍵を見つけたぞ", x, y_a, m_z, c);
+		}
+		else if (word == 4)
+		{
+			d = 3;
+			Font::StrDraw(L"本当ですか？", x, y_a, m_z, c);
+		}
+		else if (word == 5)
+		{
+			g = 1;
+			Font::StrDraw(L"それならお嬢様たちを", x, y_a, m_z, c);
+			Font::StrDraw(L"集めて早く帰りましょう", x, y_b, m_z, c);
+		}
+		else if (word == 6)
+		{
+			d = 1;
+			g = 2;
+			Font::StrDraw(L"", x, y_a, m_z, c);
 		}
 	}
 	//2階層永遠部屋-------------------------------------------------
