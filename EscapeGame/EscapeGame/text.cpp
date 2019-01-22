@@ -960,6 +960,11 @@ void CObjText::Draw()
 			anime_move = 1;
 			d = 2;
 			g = 2;
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			Font::StrDraw(L"なら私はこっちに行くわ！", x, y_a, m_z, c);
 		}
 		else if (word == 5)
@@ -969,12 +974,22 @@ void CObjText::Draw()
 		else if (word == 6)
 		{
 			anime_move = 2;
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			d = 3;
 			Font::StrDraw(L"かしこまりました", x, y_a, m_z, c);
 		}
 		else if (word == 7)
 		{
 			anime_move = 3;
+			if (f == false)
+			{
+				skip_anime = true;
+				f = true;
+			}
 			d = 4;
 			Font::StrDraw(L"それじゃあ僕は残りの部屋を調べようかな", x, y_a, m_z, c);
 		}
