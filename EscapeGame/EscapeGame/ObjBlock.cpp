@@ -269,11 +269,7 @@ void CObjBlock::Action()
 	}
 	if (Input::GetVKey('J') == true)
 	{
-		event_num = 24;
-	}
-	if (Input::GetVKey('Y') == true)
-	{
-		
+		event_num = 30;
 	}
 	//----------------------------------------------------------
 
@@ -433,13 +429,13 @@ void CObjBlock::Action()
 	}
 	if (event_num == 28)
 	{
-		event_clock[4] = true;
+		event_clock[3] = true;
 		event_num = 99;
 	}
 	//1F集合イベント終了---------------------------------
 
 	//2F集合イベント開始---------------------------------
-	//イベントナンバー(29、30)---------------------------
+	//イベントナンバー(29～33)---------------------------
 	if (event_num == 29)
 	{
 		word = 0;
@@ -449,20 +445,45 @@ void CObjBlock::Action()
 		kirara->SetVec(1);
 		kanata->SetVec(2);
 		towa->SetVec(2);
-		event_num = 30;
+		event_num = 0;
+		//event_num = 30;
 	}
 	if (event_num == 30)
 	{
-		event_num = 99;
+		kirara->SetKiraraEventFlag(true, 4);
+	}
+	if (event_num == 31)
+	{
+		kanata->SetKanataEventFlag(true, 4);
+	}
+	if (event_num == 32)
+	{
+		towa->SetTowaEventFlag(true, 4);
+	}
+	if (event_num == 33)
+	{
+		kirara->SetKiraraEventFlag(true, 5);
+		kanata->SetKanataEventFlag(true, 5);
+		towa->SetTowaEventFlag(true, 5);
+		event_clock[4] = true;
 	}
 	//2F集合イベント終了---------------------------------
 
 	//移動マスを配置する---------------------------------
 	if (event_num == 98)
 	{
-		m_map[mapnum][kirara_y][kirara_x] = 95;
-		m_map[mapnum][towa_y][towa_x] = 97;
-		m_map[mapnum][kanata_y][kanata_x] = 99;
+		if (mapnum == 0)
+		{
+			m_map[mapnum][kirara_y][kirara_x] = 95;
+			m_map[mapnum][towa_y][towa_x] = 97;
+			m_map[mapnum][kanata_y][kanata_x] = 99;
+		}
+		else if (mapnum == 4)
+		{
+			m_map[mapnum][kirara_y][kirara_x] = 87;
+			m_map[mapnum][towa_y][towa_x] = 91;
+			m_map[mapnum][kanata_y][kanata_x] = 89;
+		}
 		event_num = 99;
 	}
 
