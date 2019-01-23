@@ -163,7 +163,7 @@ void CObjKanata::Action()
 		//イベントナンバー4
 		if (eventnumber == 4 && move_flag == false)
 		{
-			if (anime_move == 4 || event_skip == true)
+			if (anime_move == 2 )
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->KanataGetY() > 7 && block->ThereIsBlock(3, 4) == true)
@@ -189,7 +189,7 @@ void CObjKanata::Action()
 		//イベントナンバー5
 		if (eventnumber == 5 && move_flag == false)
 		{
-			if (anime_move == 8 || event_skip == true)
+			if (anime_move == 4)
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->KanataGetX() < 19 && block->ThereIsBlock(1, 4) == true)
