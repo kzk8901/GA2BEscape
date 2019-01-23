@@ -24,6 +24,7 @@ void CObjText::Init()
 	skip_flag = false;
 	time = 230;
 	time_x = -1;
+	anime_flag = false;
 	g = 1;
 	d = 0;
 	f = false;
@@ -987,6 +988,11 @@ void CObjText::Draw()
 		}
 		else if (word == 7)
 		{
+			if (anime_flag == false)
+			{
+				f = false;
+				anime_flag = true;
+			}
 			anime_move = 3;
 			if (f == false)
 			{
