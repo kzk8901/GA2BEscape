@@ -66,7 +66,7 @@ int block_data_map[8][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 0,33,41, 0, 0,43,31, 0, 0,42,33, 0, 0, 0, 0, 1, },// 1
+		{ 1, 0, 0, 0, 0,33,41, 0, 0,43,34, 0, 0,42,33, 0, 0, 0, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0,45,33,33, 0, 0, 0, 0, 0, 0,33,33,46, 0, 0, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
@@ -2085,6 +2085,26 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 6;
 		}
+		//ベッド
+		if (m_map[mapnum][hero_y][hero_x + 1] == 33)
+		{
+			item_word = 7;
+		}
+		//机
+		if (m_map[mapnum][hero_y][hero_x + 1] == 32)
+		{
+			item_word = 9;
+		}
+		//本棚
+		if (m_map[mapnum][hero_y][hero_x + 1] == 35)
+		{
+			item_word = 10;
+		}
+		//大きい机
+		if (m_map[mapnum][hero_y][hero_x + 1] == 50)
+		{
+			item_word = 13;
+		}
 	}
 	//左
 	if (vec == 2)
@@ -2138,6 +2158,31 @@ void CObjBlock::HeroAction(int vec)
 		if (m_map[mapnum][hero_y][hero_x - 1] == 31)
 		{
 			item_word = 6;
+		}
+		//壺
+		if (m_map[mapnum][hero_y][hero_x - 1] == 34)
+		{
+			item_word = 3;
+		}
+		//ベッド
+		if (m_map[mapnum][hero_y][hero_x - 1] == 33)
+		{
+			item_word = 7;
+		}
+		//棚
+		if (m_map[mapnum][hero_y][hero_x - 1] == 35)
+		{
+			item_word = 10;
+		}
+		//動く本棚
+		if (m_map[mapnum][hero_y][hero_x - 1] == 39)
+		{
+			item_word = 11;
+		}
+		//動く本棚
+		if (m_map[mapnum][hero_y][hero_x - 1] == 50)
+		{
+			item_word = 13;
 		}
 	}
 	//上
@@ -2236,6 +2281,10 @@ void CObjBlock::HeroAction(int vec)
 			itm->DeleteItem(3, false);
 			moveshelf = 1.0f;
 		}
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 39)
+		{
+			item_word = 12;
+		}
 		//机の上のメモ1を取る判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 40)
 		{
@@ -2301,6 +2350,21 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 5;
 		}
+		//ベッド
+		if (m_map[mapnum][hero_y - 1][hero_x] == 33)
+		{
+			item_word = 8;
+		}
+		//机
+		if (m_map[mapnum][hero_y - 1][hero_x] == 32)
+		{
+			item_word = 9;
+		}
+		//机
+		if (m_map[mapnum][hero_y - 1][hero_x] == 50)
+		{
+			item_word = 13;
+		}
 	}
 	//下
 	if (vec == 4)
@@ -2349,6 +2413,21 @@ void CObjBlock::HeroAction(int vec)
 		if (m_map[mapnum][hero_y + 1][hero_x] == 30)
 		{
 			item_word = 4;
+		}
+		//机
+		if (m_map[mapnum][hero_y - 1][hero_x] == 32)
+		{
+			item_word = 9;
+		}
+		//大きい机
+		if (m_map[mapnum][hero_y - 1][hero_x] == 50)
+		{
+			item_word = 13;
+		}
+		//空の棚
+		if (m_map[mapnum][hero_y - 1][hero_x] == 35)
+		{
+			item_word = 14;
 		}
 	}
 }

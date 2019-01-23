@@ -520,6 +520,7 @@ void CObjHero::Action()
 		//ナンバーロック解いているなら入る
 		if (numlock_flag == true)
 		{
+			item_word = 0;
 			//右に移動
 			if (Input::GetVKey(VK_RIGHT) == true)
 			{

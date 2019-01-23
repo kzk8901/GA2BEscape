@@ -1344,7 +1344,47 @@ void CObjText::Draw()
 	{
 		Font::StrDraw(L"2段のタンスのようだ", x, y_a, m_z, c);
 	}
-
+	//ベッド
+	else if (item_word == 7)
+	{
+		Font::StrDraw(L"2人用のベッドのようだ", x, y_a, m_z, c);
+	}
+	else if (item_word == 8)
+	{
+		Font::StrDraw(L"何かありそうなベッドだ", x, y_a, m_z, c);
+	}
+	//机
+	else if (item_word == 9)
+	{
+		Font::StrDraw(L"小さい机のようだ", x, y_a, m_z, c);
+	}
+	//本棚
+	else if (item_word == 10)
+	{
+		Font::StrDraw(L"横から見ているから", x, y_a, m_z, c);
+		Font::StrDraw(L"何が入っているかわからない", x, y_b, m_z, c);
+	}
+	//動く本棚
+	else if (item_word == 11)
+	{
+		Font::StrDraw(L"何か動いた跡がある", x, y_a, m_z, c);
+	}
+	else if (item_word == 12)
+	{
+		Font::StrDraw(L"たくさんの本が詰まっているが", x, y_a, m_z, c);
+		Font::StrDraw(L"一冊分開いているようだ", x, y_b, m_z, c);
+	}
+	//大きい机
+	else if (item_word == 13)
+	{
+		Font::StrDraw(L"大きい机のようだ", x, y_a, m_z, c);
+		Font::StrDraw(L"一体何人住んでいるんだ", x, y_b, m_z, c);
+	}
+	//空の棚
+	else if (item_word == 14)
+	{
+		Font::StrDraw(L"とても背の高い本棚のようだ", x, y_a, m_z, c);
+	}
 	//テキスト移動2行用
 	if (time < 210 && g == 1)
 	{
