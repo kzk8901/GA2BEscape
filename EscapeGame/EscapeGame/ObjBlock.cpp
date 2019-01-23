@@ -502,6 +502,7 @@ void CObjBlock::Action()
 		m_map[mapnum][hero_y][hero_x] == 96 && hero->GetMoveFlag() == false||
 		m_map[mapnum][hero_y][hero_x] == 94 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		text_loop = true;
 		text_m = -2;
 		//主人公の位置保存
@@ -570,6 +571,7 @@ void CObjBlock::Action()
 	if (m_map[mapnum][hero_y][hero_x] == 99 && hero->GetMoveFlag() == false||
 		m_map[mapnum][hero_y][hero_x] == 92 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		word=0;
 		text_loop = true;
 		if (room_c[0] == false)
@@ -616,6 +618,7 @@ void CObjBlock::Action()
 	//永遠マップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 97 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		word = 0;
 		text_loop = true;
 		if (room_c[1] == false)
@@ -653,6 +656,7 @@ void CObjBlock::Action()
 	//きららマップ1Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 95 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		word = 0;
 		text_loop = true;
 		if (room_c[2] == false)
@@ -693,6 +697,7 @@ void CObjBlock::Action()
 		m_map[mapnum][hero_y][hero_x] == 88 && hero->GetMoveFlag() == false ||
 		m_map[mapnum][hero_y][hero_x] == 86 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		text_loop = true;
 		text_m = -2;
 		//主人公の位置保存
@@ -760,6 +765,7 @@ void CObjBlock::Action()
 	//永遠マップ2Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 91 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		/*word = 0;
 		text_loop = true;
 		if (room_c[1] == false)
@@ -797,6 +803,7 @@ void CObjBlock::Action()
 	//奏多マップ2Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 89 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		/*word = 0;
 		text_loop = true;
 		if (room_c[0] == false)
@@ -834,6 +841,7 @@ void CObjBlock::Action()
 	//きららマップ2Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 87 && hero->GetMoveFlag() == false)
 	{
+		item_word = 0;
 		/*word = 0;
 		text_loop = true;
 		if (room_c[2] == false)
@@ -1973,6 +1981,21 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
 			itm->GetItem(8);
 		}
+		//壺
+		if (m_map[mapnum][hero_y][hero_x + 1] == 34)
+		{
+			item_word = 3;
+		}
+		//観葉植物
+		if (m_map[mapnum][hero_y][hero_x + 1] == 30)
+		{
+			item_word = 4;
+		}
+		//空のタンス
+		if (m_map[mapnum][hero_y][hero_x + 1] == 31)
+		{
+			item_word = 6;
+		}
 	}
 	//左
 	if (vec == 2)
@@ -2016,6 +2039,16 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(8);
+		}
+		//観葉植物
+		if (m_map[mapnum][hero_y][hero_x - 1] == 30)
+		{
+			item_word = 4;
+		}
+		//空のタンス
+		if (m_map[mapnum][hero_y][hero_x - 1] == 31)
+		{
+			item_word = 6;
 		}
 	}
 	//上
@@ -2083,6 +2116,10 @@ void CObjBlock::HeroAction(int vec)
 			itm->DeleteItem(10, false);
 			itm->DeleteItem(11, false);
 		}
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 37)
+		{
+			item_word = 2;
+		}
 		//金庫判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 51 && itm->CheckItem(4))
 		{
@@ -2097,6 +2134,11 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 36;
 			itm->GetItem(4);
+		}
+		//空の棚判定
+		if (m_map[mapnum][hero_y - 1][hero_x] == 35)
+		{
+			item_word = 1;
 		}
 		//動く棚判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 39 && itm->CheckItem(3))
@@ -2155,6 +2197,21 @@ void CObjBlock::HeroAction(int vec)
 			//ヒント用の画像を表示する
 			lockpasu = 1;
 		}
+		//壺
+		if (m_map[mapnum][hero_y - 1][hero_x] == 34)
+		{
+			item_word = 3;
+		}
+		//観葉植物
+		if (m_map[mapnum][hero_y - 1][hero_x] == 30)
+		{
+			item_word = 4;
+		}
+		//空のタンス
+		if (m_map[mapnum][hero_y - 1][hero_x] == 31)
+		{
+			item_word = 5;
+		}
 	}
 	//下
 	if (vec == 4)
@@ -2198,6 +2255,11 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(8);
+		}
+		//観葉植物
+		if (m_map[mapnum][hero_y + 1][hero_x] == 30)
+		{
+			item_word = 4;
 		}
 	}
 }

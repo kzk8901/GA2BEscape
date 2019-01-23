@@ -16,6 +16,7 @@ bool text_move=true;//テキストの動作確認用
 int anime_move = 0;//アニメ―ション番号
 int word=0;//テキスト番号
 bool skip_anime = false;//アニメーション中テキストを進めなくするフラグ
+int item_word = 0;
 //イニシャライズ
 void CObjText::Init()
 {
@@ -463,7 +464,7 @@ void CObjText::Draw()
 			d = 1;
 			Font::StrDraw(L"お、おー…", x, y_a, m_z, c);
 		}
-		else if (word == 54)
+		else if (word == 54 && item_word == 0)
 		{
 			hero_move = true;
 			anime_move = 8;
@@ -530,7 +531,7 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"それじゃあとっとと手掛かり見つけるわよ！", x, y_a, m_z, c);
 		}
-		else if (word == 10 && text_hide == false)
+		else if (word == 10 && text_hide == false && item_word == 0)
 		{
 			hero_move = true;
 			d = 0;
@@ -608,7 +609,7 @@ void CObjText::Draw()
 			d = 2;
 			Font::StrDraw(L"そっちこそ気をつけなさいよ", x, y_a, m_z, c);
 		}
-		else if (word == 23)
+		else if (word == 23 && item_word == 0)
 		{
 			hero_move = true;
 			d = 0;
@@ -695,7 +696,7 @@ void CObjText::Draw()
 			d = 3;
 			Font::StrDraw(L"はい！", x, y_a, m_z, c);
 		}
-		else if (word == 13)
+		else if (word == 13&&item_word==0)
 		{
 			d = 0;
 			g = 3;
@@ -734,7 +735,7 @@ void CObjText::Draw()
 			d = 3;
 			Font::StrDraw(L"わかりました。お嬢様をよろしくお願いします", x, y_a, m_z, c);
 		}
-		else if (word == 19)
+		else if (word == 19 && item_word == 0)
 		{
 			hero_move = true;
 			d = 0;
@@ -795,7 +796,7 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"それじゃよろしく！", x, y_a, m_z, c);
 		}
-		else if (word == 9 && text_hide == false)
+		else if (word == 9 && text_hide == false && item_word == 0)
 		{
 			hero_move = true;
 			d = 0;
@@ -859,7 +860,7 @@ void CObjText::Draw()
 			d = 4;
 			Font::StrDraw(L"任せて", x, y_a, m_z, c);
 		}
-		else if (word == 20)
+		else if (word == 20 && item_word == 0)
 		{
 			d = 0;
 			g = 3;
@@ -916,7 +917,7 @@ void CObjText::Draw()
 			d = 2;
 			Font::StrDraw(L"なによそれ", x, y_a, m_z, c);
 		}
-		else if (word == 7)
+		else if (word == 7 && item_word == 0)
 		{
 			hero_move = true;
 			d = 0;
@@ -986,7 +987,6 @@ void CObjText::Draw()
 		}
 		else if (word == 7)
 		{
-			f = false;
 			anime_move = 3;
 			if (f == false)
 			{
@@ -1003,7 +1003,7 @@ void CObjText::Draw()
 			d = 1;
 			Font::StrDraw(L"(俺は誰かを手伝いに行こう）", x, y_a, m_z, c);
 		}
-		else if (word ==9)
+		else if (word ==9 && item_word == 0)
 		{
 			hero_move = true;
 			d = 0;
@@ -1083,7 +1083,7 @@ void CObjText::Draw()
 			g = 2;
 			Font::StrDraw(L"わかった", x, y_a, m_z, c);
 		}
-		else if (word == 11)
+		else if (word == 11 && item_word == 0)
 		{
 
 			hero_move = true;
@@ -1150,7 +1150,7 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"入口の方はお願いしますね", x, y_a, m_z, c);
 		}
-		else if (word == 9)
+		else if (word == 9 && item_word == 0)
 		{
 			hero_move = true;
 			d = 0;
@@ -1308,6 +1308,37 @@ void CObjText::Draw()
 		}
 		Draw::Draw(52, &src, &dst, c_C, 0.0f);
 	}
+	//物調べた時集
+	//空の棚
+	if (item_word == 1)
+	{
+		Font::StrDraw(L"たくさんの本が収納されている", x, y_a, m_z, c);
+	}
+	//花の本が入っている本棚
+	else if (item_word == 2)
+	{
+		Font::StrDraw(L"花の本が収納されている", x, y_a, m_z, c);
+	}
+	//壺
+	else if (item_word == 3)
+	{
+		Font::StrDraw(L"高そうな壺がある", x, y_a, m_z, c);
+	}
+	//観葉植物
+	else if (item_word == 4)
+	{
+		Font::StrDraw(L"観葉植物が置いてある", x, y_a, m_z, c);
+	}
+	//空のタンス
+	else if (item_word == 5)
+	{
+		Font::StrDraw(L"中に何も入ってないようだ", x, y_a, m_z, c);
+	}
+	else if (item_word == 6)
+	{
+		Font::StrDraw(L"2段のタンスのようだ", x, y_a, m_z, c);
+	}
+
 	//テキスト移動2行用
 	if (time < 210 && g == 1)
 	{

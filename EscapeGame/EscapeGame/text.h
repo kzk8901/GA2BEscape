@@ -9,6 +9,7 @@ extern int anime_move;
 extern bool hero_move;
 extern bool text_hide;
 extern bool skip_anime;//アニメーション中テキストを進めなくするフラグ
+extern int item_word;//物を調べた時の文章
 //オブジェクト:タイトル
 class CObjText :public CObj
 {
