@@ -171,7 +171,7 @@ void CObjMouse::Draw()
 		dst.m_bottom = m_py + 32.0f;
 	}
 
-	Draw::Draw(37, &src, &dst, c, 0.0f);
+	Draw::Draw(39, &src, &dst, c, 0.0f);
 }
 
 void CObjMouse::SetMovevec(int vec)
