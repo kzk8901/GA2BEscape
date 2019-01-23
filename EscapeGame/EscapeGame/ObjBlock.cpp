@@ -37,8 +37,8 @@ int block_data_map[8][15][20] =
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
-		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
-		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 2, 9, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
+		{  1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
+		{  1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 9, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
 		{  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 
@@ -146,19 +146,19 @@ int block_data_map[8][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 1
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{88, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 7
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 1
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 2
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 3
+		{ 1,35,35,35,35,35,35,35, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 4
+		{ 1,60, 0,60, 0,60, 0,48, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 5
+		{ 1, 0,60, 0,60, 0,60,48, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 6
+		{88, 2, 0,60, 0,60, 0,48, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 7
+		{ 1,10, 0,60,60, 0,60,48, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 8
+		{ 1,60,60, 0, 0, 0, 0,48, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 9
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//10
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//11
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//12
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 
@@ -223,7 +223,7 @@ void CObjBlock::Init()
 	{
 		1, 3, 5, 7, 8, 9,10,30,31,32,
 		33,34,35,36,37,38,39,40,41,42,
-		43,44,50,51,52,
+		43,44,50,51,52,60,62,
 	};
 
 	for (int i = 0; i < 99; i++)
@@ -496,6 +496,12 @@ void CObjBlock::Action()
 	}
 
 	//会話イベント動き↑-------------------------------------------------
+
+	//氷床を歩く
+	if (m_map[mapnum][hero_y][hero_x] == 61)
+	{
+		hero->SetHeroEventFlag(true, 100);
+	}
 
 	//スタートF1へ移動---------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 98 && hero->GetMoveFlag() == false||
@@ -784,14 +790,7 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 5;
 		//永遠表示
-		if (event_clock[4] == false)
-			towa->SetTowaIn(true);
-		else
-		{
-			kanata->SetKanataIn(false);
-			towa->SetTowaIn(false);
-			kirara->SetKiraraIn(false);
-		}
+		towa->SetTowaIn(true);
 		//主人公の位置更新
 		SetHero();
 		//永遠の位置更新
@@ -822,14 +821,7 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 6;
 		//奏多表示
-		if (event_clock[4] == false)
-			kanata->SetKanataIn(true);
-		else
-		{
-			kanata->SetKanataIn(false);
-			towa->SetTowaIn(false);
-			kirara->SetKiraraIn(false);
-		}
+		kanata->SetKanataIn(true);
 		//主人公の位置更新
 		SetHero();
 		//奏多の位置更新
@@ -837,6 +829,20 @@ void CObjBlock::Action()
 		//初めて部屋に入ったらイベントを起こす
 		//event_num = ;
 	}
+	//奏多F2部屋つみ防止リセットボタン-----------------------
+	if (Input::GetVKey('R') == true&&mapnum==6)
+	{
+		for (int i = 0; i < 15; i++)
+		{
+			for (int j = 0; j < 20; j++)
+			{
+				m_map[mapnum][i][j] = block_data_map[mapnum][i][j];
+			}
+		}
+		hero->SetVec(1);
+		SetHero();
+	}
+
 
 	//きららマップ2Fへ移動-------------------------------
 	if (m_map[mapnum][hero_y][hero_x] == 87 && hero->GetMoveFlag() == false)
@@ -860,14 +866,7 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 7;
 		//きらら表示
-		if (event_clock[4] == false)
 			kirara->SetKiraraIn(true);
-		else
-		{
-			kanata->SetKanataIn(false);
-			towa->SetTowaIn(false);
-			kirara->SetKiraraIn(false);
-		}
 		//主人公の位置更新
 		SetHero();
 		//きららの位置更新
@@ -1188,6 +1187,44 @@ void CObjBlock::Draw()
 
 				//描画
 				Draw::Draw(13, &src, &dst, c, 0.0f);
+			}
+			//倉庫番用箱表示
+			if (m_map[mapnum][i][j] == 60)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(37, &src, &dst, c, 0.0f);
+			}
+			//滑る床障害物（仮）
+			if (m_map[mapnum][i][j] == 62)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(38, &src, &dst, c, 0.0f);
+				//描画
+				Draw::Draw(18, &src, &dst, c, 0.0f);
 			}
 			//ベッド表示
 			if (m_map[mapnum][i][j] == 33 ||
@@ -1545,6 +1582,19 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 				if (m_map[mapnum][hero_y][hero_x + 1] == notonblock[i] && notonblock[i] != 0)
 				{
 					tib = false;
+					//動かせる箱の判定
+					if (notonblock[i] == 60)
+					{
+						for (int j = 0; j < 99; j++)
+						{
+							if (m_map[mapnum][hero_y][hero_x + 2] ==  0)
+							{
+								m_map[mapnum][hero_y][hero_x + 1] = 0;
+								m_map[mapnum][hero_y][hero_x + 2] = 60;
+								tib = true;
+							}
+						}
+					}
 				}
 			}
 			if (tib == true)
@@ -1566,6 +1616,19 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 				if (m_map[mapnum][hero_y][hero_x - 1] == notonblock[i] && notonblock[i] != 0)
 				{
 					tib = false;
+					//動かせる箱の判定
+					if (notonblock[i] == 60)
+					{
+						for (int j = 0; j < 99; j++)
+						{
+							if (m_map[mapnum][hero_y][hero_x - 2] == 0)
+							{
+								m_map[mapnum][hero_y][hero_x - 1] = 0;
+								m_map[mapnum][hero_y][hero_x - 2] = 60;
+								tib = true;
+							}
+						}
+					}
 				}
 			}
 			if (tib == true)
@@ -1587,6 +1650,19 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 				if (m_map[mapnum][hero_y - 1][hero_x] == notonblock[i] && notonblock[i] != 0)
 				{
 					tib = false;
+					//動かせる箱の判定
+					if (notonblock[i] == 60)
+					{
+						for (int j = 0; j < 99; j++)
+						{
+							if (m_map[mapnum][hero_y - 2][hero_x] == 0)
+							{
+								m_map[mapnum][hero_y - 1][hero_x] = 0;
+								m_map[mapnum][hero_y - 2][hero_x] = 60;
+								tib = true;
+							}
+						}
+					}
 				}
 			}
 			if (tib == true)
@@ -1608,6 +1684,19 @@ bool CObjBlock::ThereIsBlock(int vec ,int Characternum)
 				if (m_map[mapnum][hero_y + 1][hero_x] == notonblock[i] && notonblock[i] != 0)
 				{
 					tib = false;
+					//動かせる箱の判定
+					if (notonblock[i] == 60)
+					{
+						for (int j = 0; j < 99; j++)
+						{
+							if (m_map[mapnum][hero_y + 2][hero_x] == 0)
+							{
+								m_map[mapnum][hero_y + 1][hero_x] = 0;
+								m_map[mapnum][hero_y + 2][hero_x] = 60;
+								tib = true;
+							}
+						}
+					}
 				}
 			}
 			if (tib == true)
@@ -2316,6 +2405,15 @@ void CObjBlock::SetHero()
 			}
 		}
 	}
+}
+
+//主人公が氷ブロックに乗っているか調べる
+bool CObjBlock::CheckIceBlock()
+{
+	if(m_map[mapnum][hero_y][hero_x] == 61)
+		return true;
+	else
+		return false;
 }
 
 //永遠の位置をセットする

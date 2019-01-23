@@ -35,6 +35,7 @@ public:
 	void SetKirara();
 	void SetTowa();
 	void SetKanata();
+	bool CheckIceBlock();//主人公の乗っているブロックを調べる
 
 	void SetEventNum(int e) { event_num = e; }//起こしたい最初のイベントを入れる
 
@@ -46,6 +47,7 @@ private:
 	int notonblock[99];  //当たり判定あるブロックのナンバーはここに入れる
 	int hero_x;   //主人公位置（X）
 	int hero_y;   //主人公位置（Y）
+	int hero_on_block;//主人公の今乗っているブロック
 	int kirara_x; //きらら位置（X）
 	int kirara_y; //きらら位置（Y）
 	int towa_x;   //永遠位置（X）
