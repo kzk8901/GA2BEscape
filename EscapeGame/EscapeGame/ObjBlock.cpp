@@ -186,7 +186,6 @@ int block_data_map[8][15][20] =
 //イニシャライズ
 void CObjBlock::Init()
 {
-
 	mapnum = 0;
 
 	//主人公の位置を設定
@@ -200,6 +199,10 @@ void CObjBlock::Init()
 	SetKanata();
 	SetTowa();
 
+	//仮置き
+	mouse_x = 6;
+	mouse_y = 7;
+
 	eventclockflag = false;
 	eventclocktime = 0;
 	blockx = 0;
@@ -211,6 +214,7 @@ void CObjBlock::Init()
 	animationtime = 0;
 	event_num = 0;
 	lockpasu = 0;
+	mousemtime = 0;
 	for (int i=0; i < 8; i++)
 		event_clock[i] = false;
 
@@ -247,6 +251,8 @@ void CObjBlock::Action()
 	CObjTowa* towa = (CObjTowa*)Objs::GetObj(OBJ_TOWA);
 	//奏多の位置を設定
 	CObjKanata* kanata = (CObjKanata*)Objs::GetObj(OBJ_KANATA);
+	//鼠情報を設定
+	CObjMouse* mouse = (CObjMouse*)Objs::GetObj(OBJ_MOUSE);
 
 	//会話イベント動き↓-------------------------------------------------
 	if (Input::GetVKey('O') == true)
@@ -715,6 +721,201 @@ void CObjBlock::Action()
 	}
 
 	//----------------------------------------------
+	bool mouseplo = mouse->GetMoveflag();
+	while (mouseplo == false && mapnum == 3)
+	{
+		//鼠行動プログラム
+		int mousemove = 0;
+		int mousesvec = mouse->GetSavevec();
+		int loop = 0;
+
+		while (mousemove == 0 && loop < 4)
+		{
+			//右チェック(左に行く処理)
+			if (((mouse_x + 1 <= hero_x && mouse_x + 3 >= hero_x &&
+				mouse_y - 1 <= hero_y && mouse_y + 1 >= hero_y )|| acvec == 1) && mousemove == 0)
+			{
+				if (acvec == 0)
+					tiherovec = 1;
+				bool tib = true;
+				acvec = 1;
+				for (int i = 0; i < 99; i++)
+				{
+					if (m_map[mapnum][mouse_y][mouse_x - 1] == notonblock[i] && notonblock[i] != 0)
+					{
+						tib = false;
+					}
+				}
+				if ((tib == true && tiherovec != 2 && mousesvec != 1 && loop < 2 ) ||
+					(tib == true && tiherovec != 2 && loop == 2) || 
+					(tib == true && loop == 3))
+				{
+					mousemove = acvec;
+					if (mousemtime == 0)
+					{
+						mousemtime = 3;
+					}
+				}
+				else
+				{
+					acvec = 2;
+				}
+			}
+			//左チェック(右に行く処理)
+			if (((mouse_x - 3 <= hero_x && mouse_x - 1 >= hero_x &&
+				mouse_y - 1 <= hero_y && mouse_y + 1 >= hero_y) || acvec == 2) && mousemove == 0)
+			{
+				if (acvec == 0)
+					tiherovec = 2;
+				bool tib = true;
+				acvec = 2;
+				for (int i = 0; i < 99; i++)
+				{
+					if (m_map[mapnum][mouse_y][mouse_x + 1] == notonblock[i] && notonblock[i] != 0)
+					{
+						tib = false;
+					}
+				}
+				if ((tib == true && tiherovec != 1 && mousesvec != 2 && loop < 2) ||
+					(tib == true && tiherovec != 1 && loop == 2) ||
+					(tib == true && loop == 3))
+				{
+					mousemove = acvec;
+					if (mousemtime == 0)
+					{
+						mousemtime = 3;
+					}
+				}
+				else
+				{
+					acvec = 3;
+				}
+			}
+			//上チェック(下に行く処理)
+			if (((mouse_y - 3 <= hero_y && mouse_y - 1 >= hero_y &&
+				mouse_x - 1 <= hero_x && mouse_x + 1 >= hero_x) || acvec == 3 )&& mousemove == 0)
+			{
+				if (acvec == 0)
+					tiherovec = 3;
+				bool tib = true;
+				acvec = 3;
+				for (int i = 0; i < 99; i++)
+				{
+					if (m_map[mapnum][mouse_y + 1][mouse_x] == notonblock[i] && notonblock[i] != 0)
+					{
+						tib = false;
+					}
+				}
+				if ((tib == true && tiherovec != 4 && mousesvec != 3 && loop < 2) ||
+					(tib == true && tiherovec != 4 && loop == 2) ||
+					(tib == true && loop == 3))
+				{
+					mousemove = acvec;
+					if (mousemtime == 0)
+					{
+						mousemtime = 3;
+					}
+				}
+				else
+				{
+					acvec = 4;
+				}
+			}
+			//下チェック(上に行く処理)
+			if (((mouse_y + 1 <= hero_y && mouse_y + 3 >= hero_y &&
+				mouse_x - 1 <= hero_x && mouse_x + 1 >= hero_x) || acvec == 4) && mousemove == 0)
+			{
+				if (acvec == 0)
+					tiherovec = 4;
+				bool tib = true;
+				acvec = 4;
+				for (int i = 0; i < 99; i++)
+				{
+					if (m_map[mapnum][mouse_y - 1][mouse_x] == notonblock[i] && notonblock[i] != 0)
+					{
+						tib = false;
+					}
+				}
+				if ((tib == true && tiherovec != 3 && mousesvec != 4 && loop < 2) ||
+					(tib == true && tiherovec != 3 && loop == 2) ||
+					(tib == true && loop == 3))
+				{
+					mousemove = acvec;
+					if (mousemtime == 0)
+					{
+						mousemtime = 3;
+					}
+				}
+				else
+				{
+					acvec = 1;
+				}
+			}
+
+			loop++;
+			if (loop == 5)
+			{
+				acvec = 0;
+				tiherovec = 0;
+				mousemtime = 0;
+			}
+		}
+		if (acvec >= 1)
+		{
+			if (acvec == 1 && mousemtime >= 1)
+			{
+				mousemtime--;
+				if (mousemtime == 0)
+				{
+					acvec = 0;
+					tiherovec = 0;
+				}
+				mouse->SetMovevec(2);
+				mouse_x -= 1;
+			}
+			if (acvec == 2 && mousemtime >= 1)
+			{
+				mousemtime--;
+				if (mousemtime == 0)
+				{
+					acvec = 0;
+					tiherovec = 0;
+				}
+				mouse->SetMovevec(1);
+				mouse_x += 1;
+			}
+			if (acvec == 3 && mousemtime >= 1)
+			{
+				mousemtime--;
+				if (mousemtime == 0)
+				{
+					acvec = 0;
+					tiherovec = 0;
+				}
+				mouse->SetMovevec(4);
+				mouse_y += 1;
+			}
+			if (acvec == 4 && mousemtime >= 1)
+			{
+				mousemtime--;
+				if (mousemtime == 0)
+				{
+					acvec = 0;
+					tiherovec = 0;
+				}
+				mouse->SetMovevec(3);
+				mouse_y -= 1;
+			}
+			mouseplo = true;
+		}
+		else
+		{
+			mouseplo = true;
+			acvec = 0;
+			tiherovec = 0;
+			mousemtime = 0;
+		}
+	}
 
 	//壁開ける用イベントフラグ
 	if (eventclockflag == true)
@@ -794,6 +995,8 @@ void CObjBlock::Action()
 			blocky = 0;
 		}
 	}
+
+	//
 
 	//アニメーション動かす用
 	animationtime++;
@@ -2052,6 +2255,9 @@ void CObjBlock::Mapchange(int mapn)
 {
 	//主人公の位置を設定
 	CObjBackGround* bgro = (CObjBackGround*)Objs::GetObj(OBJ_BGROUND);
+	//鼠設定
+	CObjMouse* mouse = (CObjMouse*)Objs::GetObj(OBJ_MOUSE);
+
 	//マップ保存-------------------------------------------
 	for (int i = 0; i < 15; i++)
 	{
@@ -2078,6 +2284,9 @@ void CObjBlock::Mapchange(int mapn)
 			bgro->SetMapChip(mapnum, i, j, m_map[mapnum][i][j]);
 		}
 	}
+
+	//鼠にマップ状況を送る
+	mouse->SetnowMap(mapn);
 }
 
 //主人公の位置をセットする

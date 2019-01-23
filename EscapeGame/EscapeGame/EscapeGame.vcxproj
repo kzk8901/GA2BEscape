@@ -139,6 +139,7 @@
     <ClInclude Include="ObjHero.h" />
     <ClInclude Include="ObjItem.h" />
     <ClInclude Include="ObjKanata.h" />
+    <ClInclude Include="Objmouse.h" />
     <ClInclude Include="ObjTitle.h" />
     <ClInclude Include="ObjTowa.h" />
     <ClInclude Include="SceneMain.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="ObjHero.cpp" />
     <ClCompile Include="ObjItem.cpp" />
     <ClCompile Include="ObjKanata.cpp" />
+    <ClCompile Include="Objmouse.cpp" />
     <ClCompile Include="Objtitle.cpp" />
     <ClCompile Include="ObjTowa.cpp" />
     <ClCompile Include="SceneMain.cpp" />

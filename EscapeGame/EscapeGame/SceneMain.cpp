@@ -68,6 +68,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"chair.png", 34, TEX_SIZE_16);
 	Draw::LoadImageW(L"stairs.png", 35, TEX_SIZE_128);
 	Draw::LoadImageW(L"door.png", 36, TEX_SIZE_64);
+	Draw::LoadImageW(L"mouse.png", 37, TEX_SIZE_128);
 
 	//アイテム関連
 	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_512);
@@ -78,6 +79,10 @@ void CSceneMain::InitScene()
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
 	Objs::InsertObj(obji, OBJ_ITEM, 99);
+
+	//鼠オブジェクト作成
+	CObjMouse* objm = new CObjMouse();
+	Objs::InsertObj(objm, OBJ_MOUSE, 50);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();
