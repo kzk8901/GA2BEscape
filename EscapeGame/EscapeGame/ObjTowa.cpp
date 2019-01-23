@@ -153,6 +153,57 @@ void CObjTowa::Action()
 		}
 		//イベント3終了
 		//オープニング終了-----------------------------------------------------
+
+		//F2スタートイベ開始-----------------------------------------------------
+		//イベントナンバー4
+		if (eventnumber == 4 && move_flag == false)
+		{
+			if (anime_move == 3)
+			{
+				//1,右 2,左 3,上 4,下
+				if (block->TowaGetX() > 9 && block->ThereIsBlock(2, 3) == true)
+				{
+					SetMoveVec(2);
+				}
+				else if (block->TowaGetY() > 1 && block->ThereIsBlock(3, 3) == true)
+				{
+					SetMoveVec(3);
+				}
+				else
+				{
+					towa_vec = 4;
+					block->SetEventNum(33);
+					eventflag = false;
+					eventnumber = 0;
+					skip_anime = false;
+				}
+			}
+		}
+		//イベント4終了
+
+		//イベントナンバー5
+		if (eventnumber == 5 && move_flag == false)
+		{
+			if (anime_move == 4 )
+			{
+				//1,右 2,左 3,上 4,下
+				if (block->TowaGetY() > 0 && block->ThereIsBlock(3, 3) == true)
+				{
+					SetMoveVec(3);
+				}
+				else
+				{
+					eventflag = false;
+					eventnumber = 0;
+					block->SetEventNum(98);
+					towa_in = false;
+					towa_vec = 4;
+					skip_anime = false;
+				}
+			}
+		}
+		//イベント5終了
+		//F2スタートイベ終了-----------------------------------------------------
 	}
 
 	if (m_vec == 1)

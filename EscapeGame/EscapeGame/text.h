@@ -9,6 +9,7 @@ extern int anime_move;
 extern bool hero_move;
 extern bool text_hide;
 extern bool skip_anime;//アニメーション中テキストを進めなくするフラグ
+extern int item_word;//物を調べた時の文章
 //オブジェクト:タイトル
 class CObjText :public CObj
 {
@@ -21,6 +22,7 @@ public:
 private:
 	bool m_key_flag;//キーフラグ
 	bool skip_flag;//スキップフラグ
+	bool anime_flag;
 	int time;//テキスト表示上部管理時間
 	int time_x;//テキスト表示下部管理時間
 	int g;//テキストが２行か1行かの確認用

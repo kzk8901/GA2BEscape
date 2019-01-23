@@ -26,7 +26,7 @@ CSceneMain::~CSceneMain()
 void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
-	Draw::LoadImageW(L"image2.png", 0, TEX_SIZE_512);
+	Draw::LoadImageW(L"kagi.png", 0, TEX_SIZE_64);
 	Draw::LoadImageW(L"mes11_01_bk.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
 	Draw::LoadImageW(L"zyo-zi.png", 4, TEX_SIZE_512);
@@ -68,6 +68,8 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"chair.png", 34, TEX_SIZE_16);
 	Draw::LoadImageW(L"stairs.png", 35, TEX_SIZE_128);
 	Draw::LoadImageW(L"door.png", 36, TEX_SIZE_64);
+	Draw::LoadImageW(L"hako.png", 37, TEX_SIZE_64);
+	Draw::LoadImageW(L"iceyuka.png", 38, TEX_SIZE_64);
 	Draw::LoadImageW(L"mouse.png", 37, TEX_SIZE_128);
 
 	//アイテム関連
