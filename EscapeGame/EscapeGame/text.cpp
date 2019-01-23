@@ -10,11 +10,11 @@
 //使用するネームスペース
 using namespace GameL;
 
-bool text_hide = false;
-bool hero_move=false;
-bool text_move=true;
-int anime_move = 0;
-int word=0;
+bool text_hide = false;//テキスト隠し表示確認用
+bool hero_move=false;//ヒーローの動作確認用
+bool text_move=true;//テキストの動作確認用
+int anime_move = 0;//アニメ―ション番号
+int word=0;//テキスト番号
 bool skip_anime = false;//アニメーション中テキストを進めなくするフラグ
 //イニシャライズ
 void CObjText::Init()
@@ -50,7 +50,7 @@ void CObjText::Action()
 							if (time > 210)
 							{
 								if (text_m == 0 && word < 10 || text_m == 3 && word < 23 ||
-									text_m == 1 && word < 13 || text_m == 2 && word < 9 || text_m == -1 && word < 54 ||
+									text_m == 1 && word < 13 || text_m == 2 && word < 9  || text_m == -1 && word < 54 ||
 									text_m == 5 && word < 20 || text_m == 4 && word < 19 || text_m == 7 && word < 9 ||
 									text_m == 6 && word < 7)
 								{
@@ -1015,6 +1015,8 @@ void CObjText::Draw()
 	}
 	//2階層きらら部屋-------------------------------------------------
 
+	//
+
 	//2階層奏多部屋-------------------------------------------------
 	else if (text_m == 10)
 	{
@@ -1092,6 +1094,7 @@ void CObjText::Draw()
 			text_loop = false;
 		}
 	}
+	//ここから倉庫番-----------------------------------------------
 	//倉庫番終了後-------------------------------------------------
 	if (text_m == 11)
 	{
@@ -1134,12 +1137,143 @@ void CObjText::Draw()
 		else if (word == 6)
 		{
 			d = 1;
+			Font::StrDraw(L"なら俺が先に本物か調べてくるから", x, y_a, m_z, c);
+			Font::StrDraw(L"岸野さんはみんなを呼んでおいてくれないか?", x, y_b, m_z, c);
+		}
+		else if (word == 7)
+		{
+			d = 3;
 			g = 2;
-			Font::StrDraw(L"", x, y_a, m_z, c);
+			Font::StrDraw(L"わかりました", x, y_a, m_z, c);
+		}
+		else if (word == 8)
+		{
+			Font::StrDraw(L"入口の方はお願いしますね", x, y_a, m_z, c);
+		}
+		else if (word == 9)
+		{
+			hero_move = true;
+			d = 0;
+			g = 3;
+			text_move = false;
+			Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
+			text_loop = false;
 		}
 	}
 	//2階層永遠部屋-------------------------------------------------
+	
+	//
 
+	//エンディング　きらら-------------------------------------------
+
+	//エンディング　奏多---------------------------------------------
+	if (text_m == 15)
+	{
+		if (word == 0)
+		{
+			hero_move = false;
+			text_move = true;
+			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
+		}
+		else if (word == 1)
+		{
+			d = 3;
+			g = 2;
+			Font::StrDraw(L"鳳君", x, y_a, m_z, c);
+		}
+		else if (word == 2)
+		{
+			d = 1;
+			Font::StrDraw(L"どうしたんだ?", x, y_a, m_z, c);
+		}
+		else if (word == 3)
+		{
+			d = 3;
+			Font::StrDraw(L"将来うちの執事になりませんか?", x, y_a, m_z, c);
+		}
+		else if (word == 4)
+		{
+			d = 1;
+			Font::StrDraw(L"どうかした?", x, y_a, m_z, c);
+		}
+		else if (word == 5)
+		{
+			d = 3;
+			Font::StrDraw(L"将来うちの執事になりませんか?", x, y_a, m_z, c);
+		}
+		else if (word == 6)
+		{
+			d = 1;
+			Font::StrDraw(L"急にどうしたんだ?", x, y_a, m_z, c);
+		}
+		else if (word == 7)
+		{
+			d = 3;
+			g = 1;
+			Font::StrDraw(L"今うちに執事がいないのと", x, y_a, m_z, c);
+			Font::StrDraw(L"鳳君の手際の良さを考慮した結果ですね", x, y_b, m_z, c);
+		}
+		else if (word == 8)
+		{
+			d = 2;
+			Font::StrDraw(L"まあ今回鍵を見つけたのは鳳君らしいし", x, y_a, m_z, c);
+			Font::StrDraw(L"奏多が選んだのなら別に構わないわ", x, y_b, m_z, c);
+		}
+		else if (word == 9)
+		{
+			d = 3;
+			Font::StrDraw(L"…一緒にお仕事できるなら", x, y_a, m_z, c);
+			Font::StrDraw(L"私もうれしいですしね", x, y_b, m_z, c);
+		}
+		else if (word == 10)
+		{
+			d = 1;
+			g = 2;
+			Font::StrDraw(L"岸野さんどうかした?", x, y_a, m_z, c);
+		}
+		else if (word == 11)
+		{
+			d = 3;
+			Font::StrDraw(L"いえ何でもありません", x, y_a, m_z, c);
+		}
+		else if (word == 12)
+		{
+			Font::StrDraw(L"返事は後日で結構です", x, y_a, m_z, c);
+		}
+		else if (word == 13)
+		{
+			Font::StrDraw(L"いい返事を期待しています", x, y_a, m_z, c);
+		}
+		else if (word == 14)
+		{
+			Font::StrDraw(L"それではお嬢様帰りましょう", x, y_a, m_z, c);
+		}
+		else if (word == 15)
+		{
+			d = 2;
+			Font::StrDraw(L"奏多の機嫌がいいけど何かあったの?", x, y_a, m_z, c);
+		}
+		else if (word == 16)
+		{
+			d = 1;
+			Font::StrDraw(L"さあ?", x, y_a, m_z, c);
+		}
+		else if (word == 17)
+		{
+			d = 2;
+			Font::StrDraw(L"帰りましょうか", x, y_a, m_z, c);
+		}
+		else if (word == 18)
+		{
+			d = 1;
+			Font::StrDraw(L"そうだな", x, y_a, m_z, c);
+		}
+	}
+	//エンディング　永遠---------------------------------------------
+
+	//エンドロール---------------------------------------------------
+
+	//名前欄---------------------------------------------------------
 	if (d == 1)
 	{
 		if (text_m == -1 && word == 5 || text_m == -1 && word == 7 || text_m == -1 && word == 8)
