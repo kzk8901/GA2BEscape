@@ -36,7 +36,7 @@ class CObjHero : public CObj
 	  float m_speed; //歩く速度
 
 	  int m_ani_time;
-	  int m_ani_frame;
+	  int m_ani_frame;   //通常時のアニメーション
 	  int locknum;    //解いているロックナンバー
 	  int m_vec;      //動く方向を決める変数
 	  int m_time;     //動いてる時の時間管理
@@ -55,4 +55,5 @@ class CObjHero : public CObj
 	  bool Itemcheck;    //アイテム詳細確認中フラグ
 	  bool hero_in;    //主人公を表示するかどうか
 	  bool eventflag;//イベントフラグ
+	  bool iceflag;//氷床を踏んでいるか判定
 };
