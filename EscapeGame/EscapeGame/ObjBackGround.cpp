@@ -75,6 +75,25 @@ void CObjBackGround::Draw()
 
 			//描画
 			Draw::Draw(10, &src, &dst, c, 0.0f);
+
+			//滑る床（仮）
+			if (m_map[mapnum][i][j] == 61|| m_map[mapnum][i][j] == 62)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(38, &src, &dst, c, 0.0f);
+			}
 		}
 	}
 
@@ -421,24 +440,6 @@ void CObjBackGround::Draw()
 
 				//描画
 				Draw::Draw(36, &src, &dst, c, 0.0f);
-			}
-			//滑る床（仮）
-			if (m_map[mapnum][i][j] == 61)
-			{
-				//切り取り位置の設定
-				src.m_top = 0.0f;
-				src.m_left = 0.0f;
-				src.m_right = src.m_left + 64.0f;
-				src.m_bottom = src.m_top + 64.0f;
-
-				//表示位置の設定
-				dst.m_top = i*32.0f;
-				dst.m_left = j*32.0f;
-				dst.m_right = dst.m_left + 32.0f;
-				dst.m_bottom = dst.m_top + 32.0f;
-
-				//描画
-				Draw::Draw(38, &src, &dst, c, 0.0f);
 			}
 		}
 	}
