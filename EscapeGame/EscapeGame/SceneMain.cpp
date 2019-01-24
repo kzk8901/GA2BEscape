@@ -74,6 +74,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"tana.png", 41, TEX_SIZE_256);
 	Draw::LoadImageW(L"food.png", 42, TEX_SIZE_256);
 
+	Draw::LoadImageW(L"mouse.png", 39, TEX_SIZE_128);
 
 	//アイテム関連
 	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_512);
@@ -84,6 +85,10 @@ void CSceneMain::InitScene()
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
 	Objs::InsertObj(obji, OBJ_ITEM, 99);
+
+	//鼠オブジェクト作成
+	CObjMouse* objm = new CObjMouse();
+	Objs::InsertObj(objm, OBJ_MOUSE, 50);
 
 	//主人公オブジェクト作成
 	CObjHero* obj = new CObjHero();

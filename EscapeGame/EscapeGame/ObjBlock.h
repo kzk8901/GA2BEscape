@@ -27,6 +27,8 @@ public:
 	int  TowaGetY() { return towa_y; }
 	int  KanataGetX() { return kanata_x; }
 	int  KanataGetY() { return kanata_y; }
+	int  MouseGetX() { return mouse_x; }
+	int  MouseGetY() { return mouse_y; }
 
 	bool ThereIsBlock(int vec ,int Characternum);//方向と動かすキャラ
 	void HeroAction(int vec);
@@ -54,6 +56,8 @@ private:
 	int towa_y;   //永遠位置（Y）
 	int kanata_x; //奏多位置（X）
 	int kanata_y; //奏多位置（Y）
+	int mouse_x;  //鼠位置(X)
+	int mouse_y;  //鼠位置(Y)
 
 	bool eventclockflag; //イベント中のフラグ
 	int  eventclocktime; //イベント中の時間管理
@@ -70,5 +74,9 @@ private:
 	int event_num;//イベントナンバー 0イベントなし
 	bool event_clock[8];//1回しか起こさないイベントチェック
 	int lockpasu;  //ナンバーロックのヒント表示用
+
+	int tiherovec;//鼠用主人公位置保存用変数
+	int acvec;    //鼠用仮移動方向保存用
+	int mousemtime;//鼠用行動回数保存用
 
 };
