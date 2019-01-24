@@ -202,7 +202,7 @@ void CObjBackGround::Draw()
 					dst.m_top = i*32.0f - 16.0f;
 					dst.m_left = j*32.0f;
 					dst.m_right = dst.m_left + 32.0f;
-					dst.m_bottom = dst.m_top + 32.0f;
+					dst.m_bottom = dst.m_top + 48.0f;
 
 					//•`‰æ
 					Draw::Draw(21, &src, &dst, c, 0.0f);

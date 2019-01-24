@@ -14,8 +14,8 @@ public:
 	void Action();  //アクション
 	void Draw();    //ドロー
 
+	void SetPos(float px, float py, int mapnum) { m_px = px; m_py = py; nezumap = mapnum; }
 	void SetnowMap(int mapnum) { nowmap = mapnum; }
-
 	void SetMovevec(int vec);
 
 	int GetSavevec() { return savevec; }

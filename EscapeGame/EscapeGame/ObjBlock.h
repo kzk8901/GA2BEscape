@@ -37,6 +37,7 @@ public:
 	void SetKirara();
 	void SetTowa();
 	void SetKanata();
+	void SetMouse();
 	bool CheckIceBlock();//主人公の乗っているブロックを調べる
 
 	void SetEventNum(int e) { event_num = e; }//起こしたい最初のイベントを入れる
@@ -78,5 +79,6 @@ private:
 	int tiherovec;//鼠用主人公位置保存用変数
 	int acvec;    //鼠用仮移動方向保存用
 	int mousemtime;//鼠用行動回数保存用
+	int mousemap;  //鼠用存在するマップ保存用
 
 };
