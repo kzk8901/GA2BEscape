@@ -10,6 +10,12 @@ extern bool hero_move;
 extern bool text_hide;
 extern bool skip_anime;//アニメーション中テキストを進めなくするフラグ
 extern int item_word;//物を調べた時の文章
+extern int kirara_word;
+extern int kanata_word;
+extern int towa_word;
+extern bool kirara_flag;
+extern bool kanata_flag;
+extern bool towa_flag;
 //オブジェクト:タイトル
 class CObjText :public CObj
 {

@@ -2105,6 +2105,21 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 13;
 		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y][hero_x + 1] == 8)
+		{
+			kirara_flag = true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y][hero_x + 1] == 9)
+		{
+			towa_flag = true;
+		}
+		//‘t‘½
+		if (m_map[mapnum][hero_y][hero_x + 1] == 10)
+		{
+			kanata_flag = true;
+		}
 	}
 	//¶
 	if (vec == 2)
@@ -2183,6 +2198,21 @@ void CObjBlock::HeroAction(int vec)
 		if (m_map[mapnum][hero_y][hero_x - 1] == 50)
 		{
 			item_word = 13;
+		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y][hero_x - 1] == 8)
+		{
+			kirara_flag = true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y][hero_x - 1] == 9)
+		{
+			towa_flag = true;
+		}
+		//‘t‘½
+		if (m_map[mapnum][hero_y][hero_x - 1] == 10)
+		{
+			kanata_flag = true;
 		}
 	}
 	//ã
@@ -2365,6 +2395,21 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 13;
 		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y - 1][hero_x] == 8)
+		{
+			kirara_flag = true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y - 1][hero_x] == 9)
+		{
+			towa_flag = true;
+		}
+		//‘t‘½
+		if (m_map[mapnum][hero_y - 1][hero_x] == 10)
+		{
+			kanata_flag = true;
+		}
 	}
 	//‰º
 	if (vec == 4)
@@ -2415,19 +2460,34 @@ void CObjBlock::HeroAction(int vec)
 			item_word = 4;
 		}
 		//Š÷
-		if (m_map[mapnum][hero_y - 1][hero_x] == 32)
+		if (m_map[mapnum][hero_y + 1][hero_x] == 32)
 		{
 			item_word = 9;
 		}
 		//‘å‚«‚¢Š÷
-		if (m_map[mapnum][hero_y - 1][hero_x] == 50)
+		if (m_map[mapnum][hero_y + 1][hero_x] == 50)
 		{
 			item_word = 13;
 		}
 		//‹ó‚Ì’I
-		if (m_map[mapnum][hero_y - 1][hero_x] == 35)
+		if (m_map[mapnum][hero_y + 1][hero_x] == 35)
 		{
 			item_word = 14;
+		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y + 1][hero_x] == 8)
+		{
+			kirara_flag=true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y + 1][hero_x] == 9)
+		{
+			towa_flag = true;
+		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y + 1][hero_x] == 10)
+		{
+			kanata_flag = true;
 		}
 	}
 }
