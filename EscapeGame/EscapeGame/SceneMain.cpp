@@ -70,6 +70,10 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"door.png", 36, TEX_SIZE_64);
 	Draw::LoadImageW(L"hako.png", 37, TEX_SIZE_64);
 	Draw::LoadImageW(L"iceyuka.png", 38, TEX_SIZE_64);
+	Draw::LoadImageW(L"taru.png", 40, TEX_SIZE_64);
+	Draw::LoadImageW(L"tana.png", 41, TEX_SIZE_256);
+	Draw::LoadImageW(L"food.png", 42, TEX_SIZE_256);
+
 
 	//アイテム関連
 	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_512);
