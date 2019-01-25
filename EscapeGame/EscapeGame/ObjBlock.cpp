@@ -166,19 +166,19 @@ int block_data_map[8][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 1
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2,86, },// 7
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
+		{ 1,35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,30, 1, },// 1
+		{ 1,35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 1, },// 2
+		{ 1,35, 0, 0,45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
+		{ 1,35, 0, 0, 0,50,50,50, 0, 0, 0, 0,50,50,50, 0, 0, 0, 0, 1, },// 4
+		{ 1, 0, 0, 0,48,50,50,50,48, 0, 0,48,50,50,50,48, 0, 0, 0, 1, },// 5
+		{ 1,35, 0, 0, 0,50,50,50, 0, 0, 0, 0,50,50,50, 0, 0, 0, 0, 1, },// 6
+		{ 1,35, 0, 0,48,50,50,50,48, 0, 0,48,50,50,50,48, 0, 0, 2,86, },// 7
+		{ 1,35, 0, 0, 0,50,50,50, 0, 0, 0, 0,50,50,50, 0, 0, 0, 0, 1, },// 8
+		{ 1, 0, 0, 0,48,50,50,50,48, 0, 0,48,50,50,50,48, 0, 0, 0, 1, },// 9
+		{ 1,35, 0, 0, 0,50,50,50, 0, 0, 0, 0,50,50,50, 0, 0, 0, 0, 1, },//10
+		{ 1,35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
+		{ 1,35, 0, 0, 0, 0,55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
+		{ 1,35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,30, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 };
@@ -198,10 +198,7 @@ void CObjBlock::Init()
 	SetKirara();
 	SetKanata();
 	SetTowa();
-
-	//‰¼’u‚«
-	mouse_x = 6;
-	mouse_y = 7;
+	SetMouse();
 
 	eventclockflag = false;
 	eventclocktime = 0;
@@ -953,8 +950,18 @@ void CObjBlock::Action()
 	}
 
 	//----------------------------------------------
+	bool cought = false;
 	bool mouseplo = mouse->GetMoveflag();
-	while (mouseplo == false && mapnum == 3)
+
+	//•ß‚Ü‚¦‚ç‚ê‚½‚©
+	if ((mouse_x + 1 == kirara_x && mouse_y == kirara_y) ||
+		(mouse_x - 1 == kirara_x && mouse_y == kirara_y) ||
+		(mouse_x == kirara_x && mouse_y + 1 == kirara_y) ||
+		(mouse_x == kirara_x && mouse_y - 1 == kirara_y))
+	{
+		cought = true;
+	}
+	while (mouseplo == false && mapnum == mousemap && cought == false)
 	{
 		//‘ls“®ƒvƒƒOƒ‰ƒ€
 		int mousemove = 0;
@@ -1642,7 +1649,7 @@ void CObjBlock::Draw()
 					dst.m_top = i*32.0f - 16.0f;
 					dst.m_left = j*32.0f;
 					dst.m_right = dst.m_left + 32.0f;
-					dst.m_bottom = dst.m_top + 32.0f;
+					dst.m_bottom = dst.m_top + 48.0f;
 
 					//•`‰æ
 					Draw::Draw(21, &src, &dst, c, 0.0f);
@@ -2461,6 +2468,21 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 13;
 		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y][hero_x + 1] == 8)
+		{
+			kirara_flag = true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y][hero_x + 1] == 9)
+		{
+			towa_flag = true;
+		}
+		//‘t‘½
+		if (m_map[mapnum][hero_y][hero_x + 1] == 10)
+		{
+			kanata_flag = true;
+		}
 		//Š÷‚Ìã‚ÌŒ®‚ğæ‚é”»’è
 		if (m_map[mapnum][hero_y][hero_x + 1] == 68)
 		{
@@ -2546,6 +2568,22 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 13;
 		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y][hero_x - 1] == 8)
+		{
+			kirara_flag = true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y][hero_x - 1] == 9)
+		{
+			towa_flag = true;
+		}
+		//‘t‘½
+		if (m_map[mapnum][hero_y][hero_x - 1] == 10)
+		{
+			kanata_flag = true;
+		}
+	}
 		//Š÷‚Ìã‚ÌŒ®‚ğæ‚é”»’è
 		if (m_map[mapnum][hero_y][hero_x - 1] == 68)
 		{
@@ -2733,6 +2771,22 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 13;
 		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y - 1][hero_x] == 8)
+		{
+			kirara_flag = true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y - 1][hero_x] == 9)
+		{
+			towa_flag = true;
+		}
+		//‘t‘½
+		if (m_map[mapnum][hero_y - 1][hero_x] == 10)
+		{
+			kanata_flag = true;
+		}
+	}
 		//Š÷‚Ìã‚ÌŒ®‚ğæ‚é”»’è
 		if (m_map[mapnum][hero_y - 1][hero_x] == 68)
 		{
@@ -2789,20 +2843,37 @@ void CObjBlock::HeroAction(int vec)
 			item_word = 4;
 		}
 		//Š÷
-		if (m_map[mapnum][hero_y - 1][hero_x] == 32)
+		if (m_map[mapnum][hero_y + 1][hero_x] == 32)
 		{
 			item_word = 9;
 		}
 		//‘å‚«‚¢Š÷
-		if (m_map[mapnum][hero_y - 1][hero_x] == 50)
+		if (m_map[mapnum][hero_y + 1][hero_x] == 50)
 		{
 			item_word = 13;
 		}
 		//‹ó‚Ì’I
-		if (m_map[mapnum][hero_y - 1][hero_x] == 35)
+		if (m_map[mapnum][hero_y + 1][hero_x] == 35)
 		{
 			item_word = 14;
 		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y + 1][hero_x] == 8)
+		{
+			kirara_flag=true;
+		}
+		//‰i‰“
+		if (m_map[mapnum][hero_y + 1][hero_x] == 9)
+		{
+			towa_flag = true;
+		}
+		//‚«‚ç‚ç
+		if (m_map[mapnum][hero_y + 1][hero_x] == 10)
+		{
+			kanata_flag = true;
+		}
+	}
+}
 		//Š÷‚Ìã‚ÌŒ®‚ğæ‚é”»’è
 		if (m_map[mapnum][hero_y + 1][hero_x] == 68)
 		{
@@ -2940,6 +3011,29 @@ void CObjBlock::SetKirara()
 				kirara_x = j; kirara_y = i;
 				kirara->SetPX(32.0f*j);
 				kirara->SetPY(32.0f*i);
+			}
+		}
+	}
+}
+
+//‘l‚ÌˆÊ’u‚ğƒZƒbƒg‚·‚é
+void CObjBlock::SetMouse()
+{
+	//‚«‚ç‚ç‚ÌˆÊ’u‚ğİ’è
+	CObjMouse* mouse = (CObjMouse*)Objs::GetObj(OBJ_MOUSE);
+
+	for (int m = 0; m < 8; m++)
+	{
+		for (int i = 0; i < 15; i++)
+		{
+			for (int j = 0; j < 20; j++)
+			{
+				if (m_map[m][i][j] == 55)
+				{
+					mouse_x = j; mouse_y = i;
+					mousemap = m;
+					mouse->SetPos(j * 32.0f, i * 32.0f, m);
+				}
 			}
 		}
 	}
