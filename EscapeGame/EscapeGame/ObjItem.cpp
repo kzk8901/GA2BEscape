@@ -18,9 +18,7 @@ void CObjItem::Init()
 	{
 		((UserData*)Save::GetData())->item[i] = 0;
 	}
-	((UserData*)Save::GetData())->item[0] = 9;
-	((UserData*)Save::GetData())->item[1] = 10;
-	((UserData*)Save::GetData())->item[2] = 11;
+	((UserData*)Save::GetData())->item[0] = 3;
 }
 
 void CObjItem::Action()

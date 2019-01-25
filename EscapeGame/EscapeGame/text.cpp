@@ -103,10 +103,8 @@ void CObjText::Action()
 				}
 				else if(time>230&&time_x<-20)
 				{
-					skip_flag = false;
-				  
+					skip_flag = false; 
 				}
-
 			}
 		}
 	else
@@ -160,6 +158,10 @@ void CObjText::Draw()
 	dst_D.m_left = 192.0f;
 	dst_D.m_right = 448.0f;
 	dst_D.m_bottom = 480.0f;
+	if (text_m == 10)
+	{
+		Font::StrDraw(L"Rキー：リセット", 650, 350, 15, c_C);
+	}
 	Font::StrDraw(L"十字キー：移動", 650, 370, 15, c_C);
 	Font::StrDraw(L"Zキー：", 650, 390, 15, c_C);
 	Font::StrDraw(L"決定・会話進行", 650, 410, 15, c_C);
@@ -918,10 +920,10 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
-			d = 1;
-			g = 2;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
+			d = 1;
+			g = 2;
 			Font::StrDraw(L"3つのメモがそろったみたいだな", x, y_a, m_z, c);
 		}
 		else if (word == 2)
@@ -971,6 +973,7 @@ void CObjText::Draw()
 			anime_move = 0;
 			hero_move = false;
 			text_move = true;
+			f = false;
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 1)
@@ -997,13 +1000,13 @@ void CObjText::Draw()
 		else if (word == 4)
 		{
 			anime_move = 1;
-			d = 2;
-			g = 2;
 			if (f == false)
 			{
 				skip_anime = true;
 				f = true;
 			}
+			d = 2;
+			g = 2;
 			Font::StrDraw(L"なら私はこっちに行くわ！", x, y_a, m_z, c);
 		}
 		else if (word == 5)
@@ -1139,6 +1142,8 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 2;
 			g = 2;
 			Font::StrDraw(L"捕まえたわ!!", x, y_a, m_z, c);
@@ -1282,6 +1287,8 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 1;
 			g = 2;
 			Font::StrDraw(L"部屋の整理完了だな", x, y_a, m_z, c);
@@ -1414,6 +1421,8 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 4;
 			g = 2;
 			Font::StrDraw(L"…鍵あったね", x, y_a, m_z, c);
@@ -1482,6 +1491,8 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 4;
 			g = 2;
 			Font::StrDraw(L"無事脱出できるねぇ", x, y_a, m_z, c);
@@ -1577,6 +1588,8 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 3;
 			g = 2;
 			Font::StrDraw(L"鳳君", x, y_a, m_z, c);
@@ -1681,6 +1694,8 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			c_A[3] = 1.0 - time*0.005;
+			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 1;
 			g = 2;
 			Font::StrDraw(L"それで話って何ですか?", x, y_a, m_z, c);
@@ -1777,7 +1792,6 @@ void CObjText::Draw()
 	}
 	 else if (kirara_word == 2)
 	 {
-
 		 kirara_flag = false;
 		 kirara_word = 0;
 	 }
@@ -1791,7 +1805,6 @@ void CObjText::Draw()
 	}
 	else if (kanata_word == 2)
 	{
-
 		kanata_flag = false;
 		kanata_word = 0;
 	}
@@ -1805,7 +1818,6 @@ void CObjText::Draw()
 	}
 	else if (towa_word == 2)
 	{
-
 		towa_flag = false;
 		towa_word = 0;
 	}
@@ -1997,12 +2009,31 @@ void CObjText::Draw()
 		Font::StrDraw(L"1F", 730, 503, 30, c);
 		Font::StrDraw(L"和室", 700, 553, 30, c);
 	}
-	else if (text_m == 7)
+	else if (text_m == 7|| text_m == 9|| text_m == 11||text_m == 13 || text_m == -7)
 	{
 		Font::StrDraw(L"2F", 730, 503, 30, c);
+		Font::StrDraw(L"ロビー", 700, 553, 30, c);
+	}
+	else if (text_m == 8)
+	{
+		Font::StrDraw(L"2F", 730, 503, 30, c);
+		Font::StrDraw(L"応接室", 700, 553, 30, c);
+	}
+	else if (text_m == 10)
+	{
+		Font::StrDraw(L"2F", 730, 503, 30, c);
+		Font::StrDraw(L"倉庫", 700, 553, 30, c);
+	}
+	else if (text_m == 12)
+	{
+		Font::StrDraw(L"2F", 730, 503, 30, c);
+		Font::StrDraw(L"冷蔵室", 700, 553, 30, c);
 	}
 	//暗転
-	if (text_m == -1 && word == 0 || text_m == -1 && word == 1 || text_m == -1 && word == 2||text_m == 6 && word == 0 || text_m == 7 && word == 0)
+	if (text_m == -1 && word == 0 || text_m == -1 && word == 1 || text_m == -1 && word == 2||
+		text_m == 6 && word == 0 || text_m == 7 && word == 0|| text_m == 9 && word == 0||
+		text_m == 11 && word == 0 || text_m == 13 && word == 0 || text_m == 14 && word == 0 || 
+		text_m == 15 && word == 0 || text_m == 16 && word == 0  )
 	{
 		Draw::Draw(12, &src_A, &dst_A, c, 0.0f);
 		Draw::Draw(12, &src_D, &dst_D, c, 0.0f);
