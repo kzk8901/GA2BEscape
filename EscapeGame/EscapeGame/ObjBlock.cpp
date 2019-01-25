@@ -212,7 +212,7 @@ void CObjBlock::Init()
 	event_num = 0;
 	lockpasu = 0;
 	mousemtime = 0;
-	for (int i=0; i < 6; i++)
+	for (int i=0; i < 9; i++)
 		event_clock[i] = false;
 
 	((UserData*)Save::GetData())->number[0] = 402;
@@ -490,7 +490,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][11] = 9;
 			block_data_map[4][7][1] = 0;
 			towa->SetVec(2);
-			event_num = 34;
+			event_clock[6] = true;
 		}
 		//‘t‘½‚ÅE‚Á‚½
 		else if (mapnum == 6)
@@ -498,7 +498,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][11] = 10;
 			block_data_map[4][7][18] = 0;
 			kanata->SetVec(2);
-			event_num = 35;
+			event_clock[7] = true;
 		}
 		//‚«‚ç‚ç‚ÅE‚Á‚½
 		else if (mapnum == 7)
@@ -506,7 +506,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][11] = 8;
 			block_data_map[4][1][9]  = 0;
 			kirara->SetVec(2);
-			event_num = 36;
+			event_clock[8] = true;
 		}
 		//ŽålŒö‚ðÄ”z’u
 		block_data_map[4][7][8] = 2;
@@ -642,6 +642,12 @@ void CObjBlock::Action()
 		}
 		//ƒqƒƒCƒ“•\Ž¦
 		if (event_clock[3] == false)
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
+		else if (event_clock[5] == true)
 		{
 			kanata->SetKanataIn(false);
 			towa->SetTowaIn(false);
@@ -847,9 +853,21 @@ void CObjBlock::Action()
 		//ƒqƒƒCƒ“•\Ž¦
 		if (event_clock[4] == true)
 		{
-			kanata->SetKanataIn(false);
-			towa->SetTowaIn(false);
-			kirara->SetKiraraIn(false);
+			
+			if (event_clock[6] == true)
+				towa->SetTowaIn(true);
+			else
+				towa->SetTowaIn(false);
+
+			if (event_clock[7] == true)
+				kanata->SetKanataIn(true);
+			else
+				kanata->SetKanataIn(false);
+
+			if (event_clock[8] == true)
+				kirara->SetKiraraIn(true);
+			else
+				kirara->SetKiraraIn(false);
 		}
 		else
 		{
