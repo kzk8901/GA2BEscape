@@ -35,11 +35,11 @@ int block_data_map[8][15][20] =
 		{ 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,97, },// 7
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 9
-		{  1, 0, 0, 0,68, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
+		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//10
 		{  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
 		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//12
 		{  1, 1, 1, 1, 1, 1, 0, 0, 0, 2, 9, 0, 0, 0, 1, 1, 1, 1, 1, 1, },//13
-		{  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
+		{  1, 1, 1, 1, 1, 1, 1, 1, 1,82,82, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 
 	//奏多マップ1Fmapnum==1
@@ -212,7 +212,7 @@ void CObjBlock::Init()
 	event_num = 0;
 	lockpasu = 0;
 	mousemtime = 0;
-	for (int i=0; i < 6; i++)
+	for (int i=0; i < 9; i++)
 		event_clock[i] = false;
 
 	((UserData*)Save::GetData())->number[0] = 402;
@@ -222,10 +222,10 @@ void CObjBlock::Init()
 	//当たり判定のあるブロックはナンバーをここに入れる
 	int blocknumber[99] =
 	{
-		1, 3, 5, 7, 8, 9,10,30,31,32,
+		 1, 3, 5, 7, 8, 9,10,30,31,32,
 		33,34,35,36,37,38,39,40,41,42,
 		43,44,50,51,52,60,62,63,64,65,
-		66,67,68,80,81,
+		66,67,68,80,81,82,
 	};
 
 	for (int i = 0; i < 99; i++)
@@ -493,7 +493,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][11] = 9;
 			block_data_map[4][7][1] = 0;
 			towa->SetVec(2);
-			event_num = 34;
+			event_clock[6] = true;
 		}
 		//奏多で拾った
 		else if (mapnum == 6)
@@ -504,7 +504,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][11] = 10;
 			block_data_map[4][7][18] = 0;
 			kanata->SetVec(2);
-			event_num = 35;
+			event_clock[7] = true;
 		}
 		//きららで拾った
 		else if (mapnum == 7)
@@ -515,7 +515,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][11] = 8;
 			block_data_map[4][1][9]  = 0;
 			kirara->SetVec(2);
-			event_num = 36;
+			event_clock[8] = true;
 		}
 		//主人公を再配置
 		block_data_map[4][7][8] = 2;
@@ -536,6 +536,31 @@ void CObjBlock::Action()
 		event_clock[5] = true;
 	}
 	//玄関の鍵ゲット後イベント終了-----------------------
+
+	//エンディング開始-----------------------------------
+	if (event_num == 101)
+	{
+		//キャラの位置を一度リセット
+		block_data_map[0][hero_y][hero_x] = 0;
+		block_data_map[1][kanata_y][kanata_x] = 0;
+		block_data_map[2][towa_y][towa_x] = 0;
+		block_data_map[3][kirara_y][kirara_x] = 0;
+
+		//キャラを配置
+		m_map[0][8][6] = 2;
+		m_map[0][8][13] = 9;
+		m_map[0][4][13] = 10;
+		m_map[0][4][6] = 8;
+		SetTowa();
+		SetKanata();
+		SetKirara();
+		SetHero();
+		event_num = 0;
+		kanata->SetKanataIn(true);
+		towa->SetTowaIn(true);
+		kirara->SetKiraraIn(true);
+	}
+	//エンディング終了-----------------------------------
 
 	//移動マスを配置する---------------------------------
 	if (event_num == 98)
@@ -629,6 +654,12 @@ void CObjBlock::Action()
 		}
 		//ヒロイン表示
 		if (event_clock[3] == false)
+		{
+			kanata->SetKanataIn(false);
+			towa->SetTowaIn(false);
+			kirara->SetKiraraIn(false);
+		}
+		else if (event_clock[5] == true)
 		{
 			kanata->SetKanataIn(false);
 			towa->SetTowaIn(false);
@@ -846,9 +877,21 @@ void CObjBlock::Action()
 		//ヒロイン表示
 		if (event_clock[4] == true)
 		{
-			kanata->SetKanataIn(false);
-			towa->SetTowaIn(false);
-			kirara->SetKiraraIn(false);
+			
+			if (event_clock[6] == true)
+				towa->SetTowaIn(true);
+			else
+				towa->SetTowaIn(false);
+
+			if (event_clock[7] == true)
+				kanata->SetKanataIn(true);
+			else
+				kanata->SetKanataIn(false);
+
+			if (event_clock[8] == true)
+				kirara->SetKiraraIn(true);
+			else
+				kirara->SetKiraraIn(false);
 		}
 		else
 		{
@@ -2959,6 +3002,12 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 32;
 			itm->GetItem(12);
+		}
+		//玄関を開ける判定
+		if (m_map[mapnum][hero_y + 1][hero_x] == 82 && itm->CheckItem(12))
+		{
+			itm->DeleteItem(12, false);
+			event_num = 101;
 		}
 	}
 }
