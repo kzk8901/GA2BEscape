@@ -1061,6 +1061,7 @@ void CObjBlock::Action()
 		(mouse_x == kirara_x && mouse_y - 1 == kirara_y))
 	{
 		cought = true;
+		itm->GetItem(12);
 	}
 	while (mouseplo == false && mapnum == mousemap && cought == false)
 	{
