@@ -2583,7 +2583,6 @@ void CObjBlock::HeroAction(int vec)
 		{
 			kanata_flag = true;
 		}
-	}
 		//Š÷‚Ìã‚ÌŒ®‚ğæ‚é”»’è
 		if (m_map[mapnum][hero_y][hero_x - 1] == 68)
 		{
@@ -2786,7 +2785,6 @@ void CObjBlock::HeroAction(int vec)
 		{
 			kanata_flag = true;
 		}
-	}
 		//Š÷‚Ìã‚ÌŒ®‚ğæ‚é”»’è
 		if (m_map[mapnum][hero_y - 1][hero_x] == 68)
 		{
@@ -2872,8 +2870,6 @@ void CObjBlock::HeroAction(int vec)
 		{
 			kanata_flag = true;
 		}
-	}
-}
 		//Š÷‚Ìã‚ÌŒ®‚ğæ‚é”»’è
 		if (m_map[mapnum][hero_y + 1][hero_x] == 68)
 		{
