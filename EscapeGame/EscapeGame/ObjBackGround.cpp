@@ -121,7 +121,7 @@ void CObjBackGround::Draw()
 		{
 			//ギミック等主人公関連-------------------
 			//壁表示
-			if (m_map[mapnum][i][j] == 1)
+			if (m_map[mapnum][i][j] == 1|| m_map[mapnum][i][j] == 82)
 			{
 				if (i != 14)
 				{
