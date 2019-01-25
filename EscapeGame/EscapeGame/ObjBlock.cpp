@@ -17,6 +17,8 @@ bool room_c[3] = { false,false,false };
 bool text_loop = true;
 int text_m = -1;
 bool event_skip = false;
+int key_w = 0;
+
 //マップ情報--------------------------------------------
 //1 = 壁, 2 = 主人公初期位置, 3 = 鍵付き壁(特定のカギ持っていれば開く)
 //4 = 鍵おいてます, 5 = ナンバーロックドア , 6 = 偽アイテム
@@ -489,6 +491,7 @@ void CObjBlock::Action()
 		{
 			text_loop = true;
 			text_m = 13;
+			key_w = 3;
 			word = 0;
 			block_data_map[4][7][11] = 9;
 			block_data_map[4][7][1] = 0;
@@ -500,6 +503,7 @@ void CObjBlock::Action()
 		{
 			text_loop=true;
 			text_m = 11;
+			key_w = 2;
 			word = 0;
 			block_data_map[4][7][11] = 10;
 			block_data_map[4][7][18] = 0;
@@ -511,6 +515,7 @@ void CObjBlock::Action()
 		{
 			text_loop = true;
 			text_m = 9;
+			key_w = 1;
 			word = 0;
 			block_data_map[4][7][11] = 8;
 			block_data_map[4][1][9]  = 0;
@@ -540,6 +545,19 @@ void CObjBlock::Action()
 	//エンディング開始-----------------------------------
 	if (event_num == 101)
 	{
+	
+		if (key_w == 1)
+		{
+			text_m = 14;
+		}
+		else if (key_w == 2)
+		{
+			text_m = 15;
+		}
+		else if (key_w == 3)
+		{
+			text_m = 16;
+		}
 		//キャラの位置を一度リセット
 		block_data_map[0][hero_y][hero_x] = 0;
 		block_data_map[1][kanata_y][kanata_x] = 0;
@@ -559,6 +577,10 @@ void CObjBlock::Action()
 		kanata->SetKanataIn(true);
 		towa->SetTowaIn(true);
 		kirara->SetKiraraIn(true);
+		hero->SetVec(1);
+		kanata->SetVec(2);
+		towa->SetVec(2);
+		kirara->SetVec(1);
 	}
 	//エンディング終了-----------------------------------
 

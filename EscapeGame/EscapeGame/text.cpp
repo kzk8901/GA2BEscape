@@ -4,6 +4,8 @@
 #include "GameL\DrawTexture.h"
 #include "stdio.h"
 
+#include"GameL\SetWindow.h"
+
 #include"GameHead.h"
 #include"ObjBlock.h"
 #include"text.h"
@@ -33,12 +35,15 @@ void CObjText::Init()
 	g = 1;
 	d = 0;
 	f = false;
+	ending = false;
+	end_time = 0;
 }
 //アクション
 void CObjText::Action()
 {
 	time += 1;
 	time_x -= 1;
+	end_time += 1;
 	//オープニング　-1
 	//きらら　-3 0 3
 	//奏多 -4 1 4
@@ -60,7 +65,7 @@ void CObjText::Action()
 									text_m == 2 && word < 9  || text_m == -1 && word < 54 ||text_m == 5 && word < 20 ||
 									text_m == 4 && word < 19 || text_m == 7 && word < 9 ||text_m == 6 && word < 7 || 
 									text_m == 8 && word < 11 || text_m == 9 && word < 9 || text_m == 10 && word < 11 ||
-									text_m == 11 && word < 9 || text_m == 12 && word < 10 ||text_m == 13 && word < 9 || 
+									text_m == 11 && word < 9 || text_m == 12 && word < 11 ||text_m == 13 && word < 9 || 
 									text_m == 14 && word < 18 || text_m == 15 && word < 19 ||text_m == 16 && word < 16)
 								{
 									word += 1;
@@ -1086,7 +1091,7 @@ void CObjText::Draw()
 		else if (word == 4)
 		{
 			d = 1;
-			Font::StrDraw(L"ちょっと手伝いなさい", x, y_a, m_z, c);
+			Font::StrDraw(L"急にどうしたんだ?", x, y_a, m_z, c);
 		}
 		else if (word == 5)
 		{
@@ -1408,6 +1413,15 @@ void CObjText::Draw()
 			Font::StrDraw(L"まあ探してみないことにはわからないし", x, y_a, m_z, c);
 			Font::StrDraw(L"やるだけやってみようか", x, y_b, m_z, c);
 		}
+		else if (word == 11)
+		{
+			hero_move = true;
+			d = 0;
+			g = 3;
+			text_move = false;
+			Font::StrDraw(L"滑ってみよう！", x, y_a, 32, c);
+			text_loop = false;
+		}
 	}
 	//鍵入手後
 	if (text_m == 13)
@@ -1421,6 +1435,9 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			item_word = 0;
+			hero_move = false;
+			text_move = true;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 4;
@@ -1574,7 +1591,14 @@ void CObjText::Draw()
 		{
 			Font::StrDraw(L"君の付き合いなさいよね", x, y_a, m_z, c);
 		}
-
+		else if (word == 18)
+		{
+			d = 0;
+			g = 0;
+			end_time = 0;
+			ending = true;
+			word = 300;
+		}
 	}
 	//エンディング　奏多---------------------------------------------
 	if (text_m == 15)
@@ -1681,6 +1705,14 @@ void CObjText::Draw()
 			d = 1;
 			Font::StrDraw(L"そうだな", x, y_a, m_z, c);
 		}
+		else if (word == 19)
+		{
+			d = 0;
+			g = 0;
+			end_time = 0;
+			ending = true;
+			word = 300;
+		}
 	}
 	//エンディング　永遠---------------------------------------------
 	if (text_m == 16)
@@ -1776,10 +1808,40 @@ void CObjText::Draw()
 			d = 1;
 			Font::StrDraw(L"それはやめときますよ永遠先輩", x, y_a, m_z, c);
 		}
+		else if (word == 16)
+		{
+			d = 0;
+			g = 0;
+			end_time = 0;
+			ending = true;
+			word = 300;
+		}
 
 	}
 	//エンドロール---------------------------------------------------
-
+	if (ending == true)
+	{
+		m_key_flag = false;
+		dst_A.m_top = 0.0f;
+		dst_A.m_left = 0.0f;
+		dst_A.m_right = 800.0f;
+		dst_A.m_bottom = 600.0f;
+		Draw::Draw(12, &src_A, &dst_A, c, 0.0f);
+		
+		Font::StrDraw(L"スタッフ", 50, 700-end_time, 40, c_C);
+		Font::StrDraw(L"総合ディレクター：田中　和樹", 50, 750 - end_time, 40, c_C);
+		Font::StrDraw(L"プランナー・シナリオライター", 50, 800 - end_time, 40, c_C);
+		Font::StrDraw(L"山﨑　勇輝", 50, 850 - end_time, 40, c_C);
+		Font::StrDraw(L"プログラマー・サウンドディレクター", 50, 900 - end_time, 40, c_C);
+		Font::StrDraw(L"橋本　正", 50, 950 - end_time, 40, c_C);
+		Font::StrDraw(L"プログラマー（主にテキスト)", 50, 1000 - end_time, 40, c_C);
+		Font::StrDraw(L"野山　陸", 50, 1050 - end_time, 40, c_C);
+		Font::StrDraw(L"Thank you for Playing!", 50, 1100 - end_time, 50, c_C);
+		if (end_time == 1200)
+		{
+			//LSetWindow::DeleteWindow();
+		}
+	}
 	//---------------------------------------------------------------
 	//通常時キャラ会話
 	 if (kirara_word == 1)
