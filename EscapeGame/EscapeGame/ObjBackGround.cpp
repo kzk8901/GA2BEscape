@@ -425,7 +425,9 @@ void CObjBackGround::Draw()
 				Draw::Draw(12, &src, &dst, c, 0.0f);
 			}
 			//”à
-			if (m_map[mapnum][i][j] == 99 && (block->HeroGetX() != j || block->HeroGetY() != i))
+			if (m_map[mapnum][i][j] == 99 && (block->HeroGetX() != j || block->HeroGetY() != i)||
+				m_map[mapnum][i][j] == 91 && (block->HeroGetX() != j || block->HeroGetY() != i) ||
+				m_map[mapnum][i][j] == 80 )
 			{
 				//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 				src.m_top = 5.0f;

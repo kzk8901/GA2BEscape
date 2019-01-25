@@ -72,7 +72,7 @@ private:
 	int animationtime;   //アニメーションのための時間管理
 
 	int event_num;//イベントナンバー 0イベントなし
-	bool event_clock[8];//1回しか起こさないイベントチェック
+	bool event_clock[6];//1回しか起こさないイベントチェック
 	int lockpasu;  //ナンバーロックのヒント表示用
 
 	int tiherovec;//鼠用主人公位置保存用変数

@@ -52,8 +52,8 @@ void CObjItem::Draw()
 				((UserData*)Save::GetData())->item[i] == 4)
 			{
 				src.m_top = 0.0f;
-				src.m_left = 384.0f;
-				src.m_right = 448.0f;
+				src.m_left = 0.0f;
+				src.m_right = 64.0f;
 				src.m_bottom = 64.0f;
 				Draw::Draw(0, &src, &dst, c, 0.0f);
 			}
@@ -124,6 +124,14 @@ void CObjItem::Draw()
 				src.m_bottom = 512.0f;
 				Draw::Draw(29, &src, &dst, c, 0.0f);
 			}
+			if (((UserData*)Save::GetData())->item[i] == 12)
+			{
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = 64.0f;
+				src.m_bottom = 64.0f;
+				Draw::Draw(43, &src, &dst, c, 0.0f);
+			}
 		}
 	}
 
@@ -153,8 +161,8 @@ void CObjItem::Draw()
 		if (ShowItem == 1)
 		{
 			src.m_top = 0.0f;
-			src.m_left = 384.0f;
-			src.m_right = 448.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
 			src.m_bottom = 64.0f;
 			Draw::Draw(0, &src, &dst, c, 0.0f);
 		}
@@ -244,6 +252,15 @@ void CObjItem::Draw()
 			src.m_right = 512.0f;
 			src.m_bottom = 512.0f;
 			Draw::Draw(29, &src, &dst, c, 0.0f);
+		}
+		if (ShowItem == 12)
+		{
+			//ŒºŠÖ‚ÌŒ®
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 64.0f;
+			src.m_bottom = 64.0f;
+			Draw::Draw(43, &src, &dst, c, 0.0f);
 		}
 	}
 }

@@ -73,6 +73,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"taru.png", 40, TEX_SIZE_64);
 	Draw::LoadImageW(L"tana.png", 41, TEX_SIZE_256);
 	Draw::LoadImageW(L"food.png", 42, TEX_SIZE_256);
+	Draw::LoadImageW(L"kagisetdesk.png", 44, TEX_SIZE_128);
 
 	Draw::LoadImageW(L"mouse.png", 39, TEX_SIZE_128);
 
@@ -81,6 +82,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"nezumi.png", 31, TEX_SIZE_512);
 	Draw::LoadImageW(L"usagi.png", 32, TEX_SIZE_512);
 	Draw::LoadImageW(L"tori.png", 33, TEX_SIZE_512);
+	Draw::LoadImageW(L"kagi2.png", 43, TEX_SIZE_64);
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
