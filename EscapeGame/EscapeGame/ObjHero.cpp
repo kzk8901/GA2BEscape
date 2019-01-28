@@ -71,9 +71,6 @@ void CObjHero::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		//主人公イベント中動けるようにする
-		SetActionflag(false);
-
 		//オープニング開始-----------------------------------------------------
 		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
