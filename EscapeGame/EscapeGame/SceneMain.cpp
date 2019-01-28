@@ -36,10 +36,10 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"kanata.png", 51, TEX_SIZE_512);
 	Draw::LoadImageW(L"towa.png", 52, TEX_SIZE_512);
 
-	Draw::LoadImageW(L"kiraraMT.png", 60, TEX_SIZE_128);
-	Draw::LoadImageW(L"kanataMT.png", 61, TEX_SIZE_128);
-	Draw::LoadImageW(L"towaMT.png", 62, TEX_SIZE_128);
-	Draw::LoadImageW(L"hero.png", 53, TEX_SIZE_128);
+	Draw::LoadImageW(L"kiraraMT.png", 60, TEX_SIZE_256);
+	Draw::LoadImageW(L"kanataMT.png", 61, TEX_SIZE_256);
+	Draw::LoadImageW(L"towaMT.png", 62, TEX_SIZE_256);
+	Draw::LoadImageW(L"heroMT.png", 53, TEX_SIZE_256);
 
 	Draw::LoadImageW(L"TemporaryPlacement.png", 6, TEX_SIZE_256);
 	Draw::LoadImageW(L"plant.png", 7, TEX_SIZE_32);
