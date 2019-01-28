@@ -48,13 +48,13 @@ int block_data_map[8][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1,93, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1,39,39,39,39,39,39,39,47, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 1
+		{ 1,39,39,39,39,39,39,39,47, 0, 0, 0,75,75,75,75,75,75,75, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
-		{ 1,35,38,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 4
+		{ 1,71,38,71,70,70,70,70, 0, 0, 0, 0,74,74,74,74,74,74,74, 1, },// 4
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 5
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 6
-		{ 1,35,35,35,35,35,35,35, 0, 0, 0, 0,35,35,35,35,35,35,35, 1, },// 7
+		{ 1,72,72,72,72,72,72,72, 0, 0, 0, 0,73,73,73,73,73,73,73, 1, },// 7
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,48,50,50,50,50,50,48, 1, },// 9
 		{ 1, 0, 0, 0,10, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },//10
@@ -227,7 +227,7 @@ void CObjBlock::Init()
 		 1, 3, 5, 7, 8, 9,10,30,31,32,
 		33,34,35,36,37,38,39,40,41,42,
 		43,44,50,51,52,60,62,63,64,65,
-		66,67,68,80,81,82,
+		66,67,68,70,71,72,73,74,75,80,81,82,
 	};
 
 	for (int i = 0; i < 99; i++)
@@ -426,8 +426,6 @@ void CObjBlock::Action()
 	//イベントナンバー(27、28)---------------------------
 	if (event_num == 27)
 	{
-		word = 0;
-		text_m = 6;
 		hero->SetActionflag(true);
 		hero->SetVec(1);
 		kirara->SetVec(1);
@@ -446,8 +444,6 @@ void CObjBlock::Action()
 	//イベントナンバー(29～33)---------------------------
 	if (event_num == 29)
 	{
-		word = 0;
-		text_m = 7;
 		hero->SetActionflag(true);
 		hero->SetVec(1);
 		kirara->SetVec(1);
@@ -540,30 +536,36 @@ void CObjBlock::Action()
 	//エンディング開始-----------------------------------
 	if (event_num == 101)
 	{
-	
-		if (key_w == 1)
-		{
-			text_m = 14;
-		}
-		else if (key_w == 2)
-		{
-			text_m = 15;
-		}
-		else if (key_w == 3)
-		{
-			text_m = 16;
-		}
 		//キャラの位置を一度リセット
 		block_data_map[0][hero_y][hero_x] = 0;
 		block_data_map[1][kanata_y][kanata_x] = 0;
 		block_data_map[2][towa_y][towa_x] = 0;
 		block_data_map[3][kirara_y][kirara_x] = 0;
 
-		//キャラを配置
-		m_map[0][8][6] = 2;
-		m_map[0][8][13] = 9;
-		m_map[0][4][13] = 10;
-		m_map[0][4][6] = 8;
+		if (key_w == 1)
+		{
+			m_map[0][8][6] = 2;
+			m_map[0][8][13] = 8;
+			m_map[0][4][13] = 10;
+			m_map[0][4][6] = 9;
+			text_m = 14;
+		}
+		else if (key_w == 2)
+		{
+			m_map[0][8][6] = 2;
+			m_map[0][8][13] = 10;
+			m_map[0][4][13] = 9;
+			m_map[0][4][6] = 8;
+			text_m = 15;
+		}
+		else if (key_w == 3)
+		{
+			m_map[0][8][6] = 2;
+			m_map[0][8][13] = 9;
+			m_map[0][4][13] = 10;
+			m_map[0][4][6] = 8;
+			text_m = 16;
+		}
 		SetTowa();
 		SetKanata();
 		SetKirara();
@@ -572,10 +574,21 @@ void CObjBlock::Action()
 		kanata->SetKanataIn(true);
 		towa->SetTowaIn(true);
 		kirara->SetKiraraIn(true);
-		hero->SetVec(1);
-		kanata->SetVec(2);
-		towa->SetVec(2);
-		kirara->SetVec(1);
+		if (key_w == 1)
+		{
+			hero->SetVec(1);
+			kanata->SetVec(2);
+			towa->SetVec(1);
+			kirara->SetVec(2);
+		}
+		else
+		{
+			hero->SetVec(1);
+			kanata->SetVec(2);
+			towa->SetVec(2);
+			kirara->SetVec(1);
+		}
+		
 	}
 	//エンディング終了-----------------------------------
 
@@ -640,6 +653,8 @@ void CObjBlock::Action()
 			itm->CheckItem(11) == true && 
 			event_clock[3] == false)
 		{
+			word = 0;
+			text_m = 6;
 			//キャラの位置を一度リセット
 			block_data_map[0][hero_y][hero_x] = 0;
 			block_data_map[1][kanata_y][kanata_x] = 0;
@@ -864,6 +879,8 @@ void CObjBlock::Action()
 		//初めて入ったらイベントを起こす
 		if (event_clock[4] == false)
 		{
+			word = 0;
+			text_m = 7;
 			//キャラの位置を一度リセット
 			block_data_map[4][hero_y][hero_x] = 0;
 			block_data_map[0][kanata_y][kanata_x] = 0;
@@ -1048,6 +1065,7 @@ void CObjBlock::Action()
 		cought = true;
 		if(itm->CheckItem(12)==false)
 		itm->GetItem(12);
+		text_m = 9;
 	}
 	while (mouseplo == false && mapnum == mousemap && cought == false)
 	{
@@ -1705,10 +1723,18 @@ void CObjBlock::Draw()
 			if ((m_map[mapnum][i][j] == 35  
 				|| m_map[mapnum][i][j] == 36 
 				|| m_map[mapnum][i][j] == 37
-				|| m_map[mapnum][i][j] == 38) 
+				|| m_map[mapnum][i][j] == 38
+				|| m_map[mapnum][i][j] == 70
+				|| m_map[mapnum][i][j] == 71
+				|| m_map[mapnum][i][j] == 72
+				|| m_map[mapnum][i][j] == 73
+				|| m_map[mapnum][i][j] == 74
+				|| m_map[mapnum][i][j] == 75)
 				&& hero_y < i)
 			{
-				if (m_map[mapnum][i + 1][j] == 35 || m_map[mapnum][i + 1][j] == 36 || m_map[mapnum][i + 1][j] == 37 || m_map[mapnum][i + 1][j] == 38)
+				if (m_map[mapnum][i + 1][j] == 35 || m_map[mapnum][i + 1][j] == 36 || m_map[mapnum][i + 1][j] == 37 || m_map[mapnum][i + 1][j] == 38
+					||m_map[mapnum][i + 1][j] == 70 || m_map[mapnum][i + 1][j] == 71 || m_map[mapnum][i + 1][j] == 72 || m_map[mapnum][i + 1][j] == 73
+					|| m_map[mapnum][i + 1][j] == 74 || m_map[mapnum][i + 1][j] == 75)
 				{
 					//切り取り位置の設定
 					src.m_top = 0.0f;
@@ -1725,7 +1751,9 @@ void CObjBlock::Draw()
 					//描画
 					Draw::Draw(21, &src, &dst, c, 0.0f);
 				}
-				else if (m_map[mapnum][i - 1][j] == 35 || m_map[mapnum][i - 1][j] == 36 || m_map[mapnum][i - 1][j] == 37 || m_map[mapnum][i - 1][j] == 38)
+				else if (m_map[mapnum][i - 1][j] == 35 || m_map[mapnum][i - 1][j] == 36 || m_map[mapnum][i - 1][j] == 37 || m_map[mapnum][i - 1][j] == 38 
+					|| m_map[mapnum][i - 1][j] == 70 || m_map[mapnum][i - 1][j] == 71 || m_map[mapnum][i - 1][j] == 72 || m_map[mapnum][i - 1][j] == 73
+					|| m_map[mapnum][i - 1][j] == 74 || m_map[mapnum][i - 1][j] == 75)
 				{
 					//切り取り位置の設定
 					src.m_top = 0.0f;
@@ -1747,7 +1775,9 @@ void CObjBlock::Draw()
 					int skipcountx = 0;
 					int overcount = 0;
 
-					for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37 || m_map[mapnum][i][j + s] == 38; s++)
+					for (int s = 1; m_map[mapnum][i][j + s] == 35 || m_map[mapnum][i][j + s] == 36 || m_map[mapnum][i][j + s] == 37 || m_map[mapnum][i][j + s] == 38
+						|| m_map[mapnum][i][j + s] == 70 || m_map[mapnum][i][j + s] == 71 || m_map[mapnum][i][j + s] == 72 || m_map[mapnum][i][j + s] == 73 
+						|| m_map[mapnum][i][j + s] == 74 || m_map[mapnum][i][j + s] == 75; s++)
 					{
 						skipcountx++;
 						if (skipcountx == 5)
@@ -2589,6 +2619,18 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y][hero_x + 1] = 32;
 			itm->GetItem(12);
 		}
+		if (m_map[mapnum][hero_y][hero_x + 1] == 73)
+		{
+			item_word=22;
+		}
+		if (m_map[mapnum][hero_y][hero_x + 1] == 74)
+		{
+			item_word = 23;
+		}
+		if (m_map[mapnum][hero_y][hero_x + 1] == 75)
+		{
+			item_word = 24;
+		}
 	}
 	//左
 	if (vec == 2)
@@ -2701,6 +2743,14 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y][hero_x - 1] = 32;
 			itm->GetItem(12);
 		}
+		if (m_map[mapnum][hero_y][hero_x - 1] == 70)
+		{
+			item_word = 25;
+		}
+		if (m_map[mapnum][hero_y][hero_x - 1] == 72)
+		{
+			item_word = 26;
+		}
 	}
 	//上
 	if (vec == 3)
@@ -2779,6 +2829,10 @@ void CObjBlock::HeroAction(int vec)
 			text_m = 4;
 			itm->DeleteItem(4, false);
 			itm->GetItem(11);
+		}
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 51)
+		{
+			item_word = 15;
 		}
 		//棚判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 38)
@@ -2915,6 +2969,36 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y - 1][hero_x] = 32;
 			itm->GetItem(12);
 		}
+		//左中段本棚
+		if (m_map[mapnum][hero_y - 1][hero_x] == 70)
+		{
+			item_word = 16;
+		}
+		//メモ挟まり本棚の隣
+		if (m_map[mapnum][hero_y - 1][hero_x] == 71)
+		{
+			item_word = 17;
+		}
+		//左下段本棚
+		if (m_map[mapnum][hero_y - 1][hero_x] == 72)
+		{
+			item_word = 18;
+		}
+		//右下段本棚
+		if (m_map[mapnum][hero_y - 1][hero_x] == 73)
+		{
+			item_word = 19;
+		}
+		//左下段本棚
+		if (m_map[mapnum][hero_y - 1][hero_x] == 74)
+		{
+			item_word = 20;
+		}
+		//左下段本棚
+		if (m_map[mapnum][hero_y - 1][hero_x] == 75)
+		{
+			item_word = 21;
+		}
 	}
 	//下
 	if (vec == 4)
@@ -2975,7 +3059,9 @@ void CObjBlock::HeroAction(int vec)
 			item_word = 13;
 		}
 		//空の棚
-		if (m_map[mapnum][hero_y + 1][hero_x] == 35)
+		if (m_map[mapnum][hero_y + 1][hero_x] == 35|| m_map[mapnum][hero_y + 1][hero_x] == 70 || m_map[mapnum][hero_y + 1][hero_x] == 71
+			|| m_map[mapnum][hero_y + 1][hero_x] == 72 || m_map[mapnum][hero_y + 1][hero_x] == 73 || m_map[mapnum][hero_y + 1][hero_x] == 74
+			|| m_map[mapnum][hero_y + 1][hero_x] == 75)
 		{
 			item_word = 14;
 		}
@@ -2997,7 +3083,7 @@ void CObjBlock::HeroAction(int vec)
 		{
 			towa_flag = false;
 		}
-		//きらら
+		//奏多
 		if (m_map[mapnum][hero_y + 1][hero_x] == 10)
 		{
 			kanata_flag = true;

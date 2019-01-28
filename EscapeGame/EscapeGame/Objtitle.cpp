@@ -34,7 +34,7 @@ void CObjTitle::Action()
 void CObjTitle::Draw()
 {
 	float c[4] = { 1.0f,1.0f,1.0f,1.0f };
-	Font::StrDraw(L"脱出ゲーム（仮）", 170, 200, 64, c);
+	Font::StrDraw(L"放課後の災難", 150, 200, 80, c);
 
-	Font::StrDraw(L"GameStart: PushEnterKey", 200, 400, 32, c);
+	Font::StrDraw(L"GameStart: PushEnterKey", 210, 400, 32, c);
 }

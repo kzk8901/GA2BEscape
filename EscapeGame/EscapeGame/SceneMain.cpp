@@ -29,12 +29,12 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"kagi.png", 0, TEX_SIZE_64);
 	Draw::LoadImageW(L"mes11_01_bk.png", 1, TEX_SIZE_512);
 	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
-	Draw::LoadImageW(L"zyo-zi.png", 4, TEX_SIZE_512);
+	Draw::LoadImageW(L"éÂêlåˆ.png", 4, TEX_SIZE_128);
 	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
 	Draw::LoadImageW(L"whitewindow.png", 5, TEX_SIZE_1024);
-	Draw::LoadImageW(L"kirara.png", 50, TEX_SIZE_512);
-	Draw::LoadImageW(L"kanata.png", 51, TEX_SIZE_512);
-	Draw::LoadImageW(L"towa.png", 52, TEX_SIZE_512);
+	Draw::LoadImageW(L"Ç´ÇÁÇÁ.png", 50, TEX_SIZE_128);
+	Draw::LoadImageW(L"ëtëΩ.png", 51, TEX_SIZE_128);
+	Draw::LoadImageW(L"âiâì.png", 52, TEX_SIZE_128);
 
 	Draw::LoadImageW(L"kiraraMT.png", 60, TEX_SIZE_256);
 	Draw::LoadImageW(L"kanataMT.png", 61, TEX_SIZE_256);
