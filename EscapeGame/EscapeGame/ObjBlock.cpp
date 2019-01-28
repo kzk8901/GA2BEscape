@@ -318,10 +318,9 @@ void CObjBlock::Action()
 	}
 	if (event_num == 9)
 	{
-		towa->SetTowaEventFlag(true, 3);
 		kanata->SetKanataEventFlag(true, 3);
+		towa->SetTowaEventFlag(true, 3);
 		kirara->SetKiraraEventFlag(true, 2);
-		hero_move = true;
 	}
 	//オープニング終了---------------------------------
 
@@ -339,7 +338,6 @@ void CObjBlock::Action()
 		}
 		if (event_num == 12)
 		{
-			event_num = 99;
 			event_clock[0] = true;
 		}	
 	}
@@ -355,7 +353,6 @@ void CObjBlock::Action()
 	{
 		//ドアを開ける
 		m_map[mapnum][14][9] = 98;
-		event_num = 99;
 	}
 	//奏多マップ1Fイベ終了-----------------------------
 
@@ -373,7 +370,6 @@ void CObjBlock::Action()
 		}
 		if (event_num == 18)
 		{
-			event_num = 99;
 			event_clock[1] = true;
 		}
 	}
@@ -440,7 +436,6 @@ void CObjBlock::Action()
 	if (event_num == 28)
 	{
 		event_clock[3] = true;
-		event_num = 99;
 		event_skip = false;
 	}
 	//1F集合イベント終了---------------------------------
@@ -480,7 +475,7 @@ void CObjBlock::Action()
 
 	//玄関の鍵ゲット後イベント開始-----------------------
 	//イベントナンバー(34～36)---------------------------
-	if (itm->CheckItem(12) == true && event_clock[5] ==false)
+	if (itm->CheckItem(12) == true && event_clock[5] ==false && hero->GetMoveFlag() == false)
 	{
 		//永遠で拾った
 		if (mapnum == 5)
@@ -612,17 +607,7 @@ void CObjBlock::Action()
 			m_map[mapnum][towa_y][towa_x] = 91;
 			m_map[mapnum][kanata_y][kanata_x] = 89;
 		}
-		event_num = 99;
 	}
-
-	//主人公が探索を開始する---------------------------
-	//イベントナンバー(99)
-	if (event_num == 99)
-	{
-		hero->SetActionflag(false);
-		event_num = 0;
-	}
-
 	//会話イベント動き↑-------------------------------------------------
 
 	//氷床を歩く
@@ -1078,6 +1063,7 @@ void CObjBlock::Action()
 		(mouse_x == kirara_x && mouse_y - 1 == kirara_y))
 	{
 		cought = true;
+		if(itm->CheckItem(12)==false)
 		itm->GetItem(12);
 		text_m = 9;
 	}
