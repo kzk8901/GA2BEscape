@@ -82,7 +82,7 @@ void CObjKanata::Action()
 		//イベントナンバー１　
 		if (eventnumber == 1 && move_flag == false)
 		{
-			if (anime_move == 4 || event_skip == true)
+			if (anime_move == 4 )
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->KanataGetX() > 10 && block->ThereIsBlock(2, 4) == true)
@@ -108,7 +108,7 @@ void CObjKanata::Action()
 		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (anime_move == 6 || event_skip == true)
+			if (anime_move == 6 )
 			{
 				//1,右 2,左 3,上 4,下
 
@@ -139,7 +139,7 @@ void CObjKanata::Action()
 		//イベントナンバー3
 		if (eventnumber == 3 && move_flag == false)
 		{
-			if (anime_move == 8 || event_skip == true)
+			if (anime_move == 8 )
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->KanataGetY() > 0 && block->ThereIsBlock(3, 4) == true)

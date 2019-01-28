@@ -16,7 +16,6 @@ using namespace GameL;
 bool room_c[3] = { false,false,false };
 bool text_loop = true;
 int text_m = -1;
-bool event_skip = false;
 int key_w = 0;
 
 //マップ情報--------------------------------------------
@@ -254,30 +253,6 @@ void CObjBlock::Action()
 	//鼠情報を設定
 	CObjMouse* mouse = (CObjMouse*)Objs::GetObj(OBJ_MOUSE);
 
-	//会話イベント動き↓-------------------------------------------------
-	if (Input::GetVKey('O') == true)
-	{
-		event_num = 1;
-		event_skip = true;
-	}
-	//デバック用------------------------------------------------
-	if (Input::GetVKey('P') == true)
-	{
-		event_num = 9;
-	}
-	if (Input::GetVKey('L') == true)
-	{
-		event_num = 19;
-	}
-	if (Input::GetVKey('K') == true)
-	{
-		event_num = 13;
-	}
-	if (Input::GetVKey('J') == true)
-	{
-		event_num = 30;
-	}
-	//----------------------------------------------------------
 
 
 	//オープニング開始---------------------------------
@@ -436,7 +411,6 @@ void CObjBlock::Action()
 	if (event_num == 28)
 	{
 		event_clock[3] = true;
-		event_skip = false;
 	}
 	//1F集合イベント終了---------------------------------
 
@@ -469,7 +443,6 @@ void CObjBlock::Action()
 		kanata->SetKanataEventFlag(true, 5);
 		towa->SetTowaEventFlag(true, 5);
 		event_clock[4] = true;
-		event_skip = false;
 	}
 	//2F集合イベント終了---------------------------------
 
