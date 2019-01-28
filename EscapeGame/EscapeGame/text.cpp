@@ -2,6 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include "GameL\DrawTexture.h"
+#include"GameL\DirectXDevice.h"
 #include "stdio.h"
 
 #include"GameL\SetWindow.h"
@@ -141,12 +142,12 @@ void CObjText::Draw()
 	RECT_F dst_D;//下暗転描画表示位置
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 465.0f;
-	src.m_bottom = 463.0f;
+	src.m_right = 128.0f;
+	src.m_bottom = 128.0f;
 	dst.m_top = 490.0f;
 	dst.m_left = 10.0f;
 	dst.m_right = 95.0f;
-	dst.m_bottom = 560.0f;
+	dst.m_bottom = 570.0f;
 	src_A.m_top = 0.0f;
 	src_A.m_left = 0.0f;
 	src_A.m_right = 32.0f;
@@ -1828,18 +1829,18 @@ void CObjText::Draw()
 		dst_A.m_bottom = 600.0f;
 		Draw::Draw(12, &src_A, &dst_A, c, 0.0f);
 		
-		Font::StrDraw(L"スタッフ", 50, 700-end_time, 40, c_C);
-		Font::StrDraw(L"総合ディレクター：田中　和樹", 50, 750 - end_time, 40, c_C);
-		Font::StrDraw(L"プランナー・シナリオライター", 50, 800 - end_time, 40, c_C);
-		Font::StrDraw(L"山﨑　勇輝", 50, 850 - end_time, 40, c_C);
-		Font::StrDraw(L"プログラマー・サウンドディレクター", 50, 900 - end_time, 40, c_C);
-		Font::StrDraw(L"橋本　正", 50, 950 - end_time, 40, c_C);
-		Font::StrDraw(L"プログラマー（主にテキスト)", 50, 1000 - end_time, 40, c_C);
-		Font::StrDraw(L"野山　陸", 50, 1050 - end_time, 40, c_C);
-		Font::StrDraw(L"Thank you for Playing!", 50, 1100 - end_time, 50, c_C);
+		Font::StrDraw(L"スタッフ", 50, 650-end_time, 40, c_C);
+		Font::StrDraw(L"総合ディレクター：田中　和樹", 50, 700 - end_time, 40, c_C);
+		Font::StrDraw(L"プランナー・シナリオライター", 50, 750 - end_time, 40, c_C);
+		Font::StrDraw(L"山﨑　勇輝", 50, 800 - end_time, 40, c_C);
+		Font::StrDraw(L"プログラマー・サウンドディレクター", 50, 850 - end_time, 40, c_C);
+		Font::StrDraw(L"橋本　正", 50, 900 - end_time, 40, c_C);
+		Font::StrDraw(L"プログラマー（主にテキスト)", 50, 950 - end_time, 40, c_C);
+		Font::StrDraw(L"野山　陸", 50, 1000 - end_time, 40, c_C);
+		Font::StrDraw(L"Thank you for Playing!", 50, 1050 - end_time, 50, c_C);
 		if (end_time == 1200)
 		{
-			//LSetWindow::DeleteWindow();
+			exit(0);
 		}
 	}
 	//---------------------------------------------------------------
@@ -1888,33 +1889,33 @@ void CObjText::Draw()
 	{
 		if (text_m == -1 && word == 5 || text_m == -1 && word == 7 || text_m == -1 && word == 8)
 		{
-			Font::StrDraw(L"???", 30, 560, 25, c);
+			Font::StrDraw(L"???", 30, 572, 25, c);
 		}
 		else
 		{
-			Font::StrDraw(L"鳳", 39, 560, 20, c);
+			Font::StrDraw(L"鳳", 39, 575, 20, c);
 		}
 		Draw::Draw(4, &src, &dst, c_C, 0.0f);
 	}
 	else if (d == 2)
 	{
-		Font::StrDraw(L"きらら", 20, 560, 20, c);
+		Font::StrDraw(L"きらら", 20, 575, 20, c);
 		Draw::Draw(50, &src, &dst, c_C, 0.0f);
 	}
 	else if (d == 3)
 	{
-		Font::StrDraw(L"奏多", 30, 560, 20, c);
+		Font::StrDraw(L"奏多", 30, 575, 20, c);
 		Draw::Draw(51, &src, &dst, c_C, 0.0f);
 	}
 	else if (d == 4)
 	{
 		if (text_m == -1 && word == 16)
 		{
-			Font::StrDraw(L"???", 30, 560, 25, c);
+			Font::StrDraw(L"???", 30, 572, 25, c);
 		}
 		else
 		{
-			Font::StrDraw(L"永遠", 30, 560, 20, c);
+			Font::StrDraw(L"永遠", 30, 575, 20, c);
 		}
 		Draw::Draw(52, &src, &dst, c_C, 0.0f);
 	}
@@ -1989,7 +1990,65 @@ void CObjText::Draw()
 	{
 		Font::StrDraw(L"とても背の高い本棚のようだ", x, y_a, m_z, c);
 	}
-
+	//金庫
+	else if (item_word == 15)
+	{
+		Font::StrDraw(L"鍵がかかっていて開かないようだ", x, y_a, m_z, c);
+	}
+	//左中段本棚
+	else if (item_word == 16)
+	{
+		Font::StrDraw(L"自然にまつわる本が入っている", x, y_a, m_z, c);
+	}
+	//メモ挟まり本棚の隣
+	else if (item_word == 17)
+	{
+		Font::StrDraw(L"横の本棚から何かはみ出ているようだ", x, y_a, m_z, c);
+	}
+	//左下段本棚
+	else if (item_word == 18)
+	{
+		Font::StrDraw(L"宇宙にまつわる本が入っている", x, y_a, m_z, c);
+	}
+	//右下段本棚
+	else if (item_word == 19)
+	{
+		Font::StrDraw(L"小説が沢山入っている", x, y_a, m_z, c);
+	}
+	//右中段本棚
+	else if (item_word == 20)
+	{
+		Font::StrDraw(L"歴史についてが沢山入っている", x, y_a, m_z, c);
+	}
+	//右上段本棚
+	else if (item_word == 21)
+	{
+		Font::StrDraw(L"絵本が沢山入っている", x, y_a, m_z, c);
+	}
+	else if (item_word == 22)
+	{
+		Font::StrDraw(L"→小説", x, y_a, m_z, c);
+		Font::StrDraw(L"←歴史", x, y_b, m_z, c);
+	}
+	else if (item_word == 23)
+	{
+		Font::StrDraw(L"→歴史", x, y_a, m_z, c);
+		Font::StrDraw(L"←絵本", x, y_b, m_z, c);
+	}
+	else if (item_word == 24)
+	{
+		Font::StrDraw(L"→絵本", x, y_a, m_z, c);
+	}
+	else if (item_word == 25)
+	{
+		Font::StrDraw(L"→???", x, y_a, m_z, c);
+		Font::StrDraw(L"←自然", x, y_b, m_z, c);
+	}
+	else if (item_word == 26)
+	{
+		Font::StrDraw(L"→自然", x, y_a, m_z, c);
+		Font::StrDraw(L"←宇宙", x, y_b, m_z, c);
+	}
 	//テキスト移動2行用
 	if (time < 210 && g == 1)
 	{
