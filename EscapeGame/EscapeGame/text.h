@@ -31,7 +31,9 @@ private:
 	bool anime_flag;
 	int time;//テキスト表示上部管理時間
 	int time_x;//テキスト表示下部管理時間
+	int end_time;
 	int g;//テキストが２行か1行かの確認用
 	int d;//だれが話しているか確認用
 	bool f;//アニメーション中テキストを進めなくするフラグ
+	bool ending;
 };

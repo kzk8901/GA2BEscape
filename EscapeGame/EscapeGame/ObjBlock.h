@@ -7,6 +7,7 @@ extern int text_m;//テキストの種類管理
 extern bool text_loop;//テキストループ対策
 extern bool room_c[3];
 extern bool event_skip;//イベント飛ばし用
+extern int key_w;//誰の部屋の鍵か
 //オブジェクト：ブロック＆背景
 class CObjBlock : public CObj
 {
