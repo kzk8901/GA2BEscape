@@ -26,6 +26,7 @@ int towa_word=0;
 bool kirara_flag=false;
 bool kanata_flag = false;
 bool towa_flag = false;
+bool gate_flag=false;
 void CObjText::Init()
 {
 	m_key_flag = false;
@@ -1184,8 +1185,8 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
 			text_loop = false;
+			gate_flag=true;
 		}
 		
 	}
@@ -1333,8 +1334,8 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
 			text_loop = false;
+			gate_flag = true;
 		}
 	}
 	//2階層永遠部屋-------------------------------------------------
@@ -1480,8 +1481,8 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
 			text_loop = false;
+			gate_flag = true;
 		}
 	}
 
@@ -1497,6 +1498,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			gate_flag = false;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 4;
@@ -1601,6 +1603,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			gate_flag = false;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 3;
@@ -1715,6 +1718,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			gate_flag = false;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 1;
@@ -1832,6 +1836,11 @@ void CObjText::Draw()
 		}
 	}
 	//---------------------------------------------------------------
+	//玄関テキスト表示
+	if (gate_flag == true)
+	{
+		Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
+	}
 	//通常時キャラ会話
 	 if (kirara_word == 1)
 	{

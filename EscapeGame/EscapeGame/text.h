@@ -16,6 +16,7 @@ extern int towa_word;
 extern bool kirara_flag;
 extern bool kanata_flag;
 extern bool towa_flag;
+extern bool gate_flag;
 //オブジェクト:タイトル
 class CObjText :public CObj
 {
