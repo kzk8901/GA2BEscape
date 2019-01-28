@@ -430,8 +430,6 @@ void CObjBlock::Action()
 	//イベントナンバー(27、28)---------------------------
 	if (event_num == 27)
 	{
-		word = 0;
-		text_m = 6;
 		hero->SetActionflag(true);
 		hero->SetVec(1);
 		kirara->SetVec(1);
@@ -451,8 +449,6 @@ void CObjBlock::Action()
 	//イベントナンバー(29～33)---------------------------
 	if (event_num == 29)
 	{
-		word = 0;
-		text_m = 7;
 		hero->SetActionflag(true);
 		hero->SetVec(1);
 		kirara->SetVec(1);
@@ -672,6 +668,8 @@ void CObjBlock::Action()
 			itm->CheckItem(11) == true && 
 			event_clock[3] == false)
 		{
+			word = 0;
+			text_m = 6;
 			//キャラの位置を一度リセット
 			block_data_map[0][hero_y][hero_x] = 0;
 			block_data_map[1][kanata_y][kanata_x] = 0;
@@ -896,6 +894,8 @@ void CObjBlock::Action()
 		//初めて入ったらイベントを起こす
 		if (event_clock[4] == false)
 		{
+			word = 0;
+			text_m = 7;
 			//キャラの位置を一度リセット
 			block_data_map[4][hero_y][hero_x] = 0;
 			block_data_map[0][kanata_y][kanata_x] = 0;

@@ -138,8 +138,6 @@ void CObjText::Draw()
 	RECT_F dst_B;//テキスト表示隠し(上部）描画表示位置
 	RECT_F src_C;//テキスト表示隠し(下部）描画元切り取り位置
 	RECT_F dst_C;//テキスト表示隠し(下部）描画表示位置
-	RECT_F src_D;//下暗転描画元切り取り位置
-	RECT_F dst_D;//下暗転描画表示位置
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
 	src.m_right = 128.0f;
@@ -156,14 +154,6 @@ void CObjText::Draw()
 	dst_A.m_left = 0.0f;
 	dst_A.m_right = 640.0f;
 	dst_A.m_bottom = 480.0f;
-	src_D.m_top = 0.0f;
-	src_D.m_left = 0.0f;
-	src_D.m_right = 32.0f;
-	src_D.m_bottom = 32.0f;
-	dst_D.m_top = 384.0f;
-	dst_D.m_left = 192.0f;
-	dst_D.m_right = 448.0f;
-	dst_D.m_bottom = 480.0f;
 	if (text_m == 10)
 	{
 		Font::StrDraw(L"Rキー：リセット", 650, 350, 15, c_C);
@@ -212,8 +202,6 @@ void CObjText::Draw()
 		}
 		else if (word == 5)
 		{
-			c_D[3] = 1.0 - time*0.005;
-			Draw::Draw(12, &src_D, &dst_D, c_D, 0.0f);
 			skip_anime = true;
 			anime_move = 1;
 			d = 1;
@@ -2128,7 +2116,7 @@ void CObjText::Draw()
 	else if (text_m == -5 || text_m == 2 || text_m == 5)
 	{
 		Font::StrDraw(L"1F", 730, 503, 30, c);
-		Font::StrDraw(L"和室", 700, 553, 30, c);
+		Font::StrDraw(L"寝室", 700, 553, 30, c);
 	}
 	else if (text_m == 7|| text_m == 9|| text_m == 11||text_m == 13 || text_m == -7)
 	{
@@ -2157,11 +2145,6 @@ void CObjText::Draw()
 		text_m == 15 && word == 0 || text_m == 16 && word == 0  )
 	{
 		Draw::Draw(12, &src_A, &dst_A, c, 0.0f);
-		Draw::Draw(12, &src_D, &dst_D, c, 0.0f);
-	}
-	else if (text_m == -1 && word == 3 || text_m == -1 && word == 4)
-	{
-		Draw::Draw(12, &src_D, &dst_D, c, 0.0f);
 	}
 
 }
