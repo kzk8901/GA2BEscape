@@ -2,10 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include "GameL\DrawTexture.h"
-#include"GameL\DirectXDevice.h"
-#include "stdio.h"
 
-#include"GameL\SetWindow.h"
 
 #include"GameHead.h"
 #include"ObjBlock.h"
@@ -160,8 +157,8 @@ void CObjText::Draw()
 		Font::StrDraw(L"Rキー：リセット", 650, 350, 15, c_C);
 	}
 	Font::StrDraw(L"十字キー：移動", 650, 370, 15, c_C);
-	Font::StrDraw(L"Zキー：", 650, 390, 15, c_C);
-	Font::StrDraw(L"決定・会話進行", 650, 410, 15, c_C);
+	Font::StrDraw(L"Zキー：決定", 650, 390, 15, c_C);
+	Font::StrDraw(L"・会話進行・調べる", 650, 410, 15, c_C);
 	Font::StrDraw(L"テンキー：", 650, 430, 15, c_C);
 	Font::StrDraw(L"入手アイテム詳細", 650, 450, 15, c_C);
 

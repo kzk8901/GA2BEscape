@@ -36,6 +36,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"‘t‘½.png", 51, TEX_SIZE_128);
 	Draw::LoadImageW(L"‰i‰“.png", 52, TEX_SIZE_128);
 
+
 	Draw::LoadImageW(L"kiraraMT.png", 60, TEX_SIZE_256);
 	Draw::LoadImageW(L"kanataMT.png", 61, TEX_SIZE_256);
 	Draw::LoadImageW(L"towaMT.png", 62, TEX_SIZE_256);
