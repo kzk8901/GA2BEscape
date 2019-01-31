@@ -38,7 +38,7 @@ public:
 	void SetTowa();
 	void SetKanata();
 	void SetMouse();
-	bool CheckIceBlock();//主人公の乗っているブロックを調べる
+	int  CheckIceBlock();//主人公の乗っているブロックを調べる
 
 	void SetEventNum(int e) { event_num = e; }//起こしたい最初のイベントを入れる
 

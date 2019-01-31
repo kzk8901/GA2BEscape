@@ -253,19 +253,19 @@ void CObjHero::Action()
 		{
 			iceflag = true;
 			//1,‰E 2,¶ 3,ã 4,‰º
-			if (hero_vec==1 && block->CheckIceBlock()==true && block->ThereIsBlock(1, 1) == true)
+			if (block->CheckIceBlock()== 2 && block->ThereIsBlock(1, 1) == true)
 			{
 				SetMoveVec(1);
 			}
-			else if (hero_vec == 2 && block->CheckIceBlock() == true && block->ThereIsBlock(2, 1) == true)
+			else if (block->CheckIceBlock() == 1 && block->ThereIsBlock(2, 1) == true)
 			{
 				SetMoveVec(2);
 			}
-			else if (hero_vec == 3 && block->CheckIceBlock() == true && block->ThereIsBlock(3, 1) == true)
+			else if (block->CheckIceBlock() == 3 && block->ThereIsBlock(3, 1) == true)
 			{
 				SetMoveVec(3);
 			}
-			else if (hero_vec == 4 && block->CheckIceBlock() == true && block->ThereIsBlock(4, 1) == true)
+			else if (block->CheckIceBlock() == 4 && block->ThereIsBlock(4, 1) == true)
 			{
 				SetMoveVec(4);
 			}
@@ -369,6 +369,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[0] != 0)
 						{
 							SetShowItemNumber(1);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -379,6 +380,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[1] != 0)
 						{
 							SetShowItemNumber(2);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -389,6 +391,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[2] != 0)
 						{
 							SetShowItemNumber(3);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -399,6 +402,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[3] != 0)
 						{
 							SetShowItemNumber(4);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -409,6 +413,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[4] != 0)
 						{
 							SetShowItemNumber(5);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -419,6 +424,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[5] != 0)
 						{
 							SetShowItemNumber(6);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -429,6 +435,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[6] != 0)
 						{
 							SetShowItemNumber(7);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -439,6 +446,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[7] != 0)
 						{
 							SetShowItemNumber(8);
+							Audio::Start(17);
 						}
 					}
 				}
