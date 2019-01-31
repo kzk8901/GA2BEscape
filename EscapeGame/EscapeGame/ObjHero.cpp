@@ -369,6 +369,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[0] != 0)
 						{
 							SetShowItemNumber(1);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -379,6 +380,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[1] != 0)
 						{
 							SetShowItemNumber(2);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -389,6 +391,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[2] != 0)
 						{
 							SetShowItemNumber(3);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -399,6 +402,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[3] != 0)
 						{
 							SetShowItemNumber(4);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -409,6 +413,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[4] != 0)
 						{
 							SetShowItemNumber(5);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -419,6 +424,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[5] != 0)
 						{
 							SetShowItemNumber(6);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -429,6 +435,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[6] != 0)
 						{
 							SetShowItemNumber(7);
+							Audio::Start(17);
 						}
 					}
 				}
@@ -439,6 +446,7 @@ void CObjHero::Action()
 						if (((UserData*)Save::GetData())->item[7] != 0)
 						{
 							SetShowItemNumber(8);
+							Audio::Start(17);
 						}
 					}
 				}
