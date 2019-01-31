@@ -4,8 +4,9 @@
 #include "GameL\SceneManager.h"
 #include "GameL\SceneManager.h"
 #include "GameL\UserData.h"
-
 #include "GameHead.h"
+#include "GameL\\Audio.h"
+
 #include "ObjItem.h"
 #include "ObjBlock.h"
 #include "ObjBackGround.h"
@@ -576,6 +577,8 @@ void CObjBlock::Action()
 		}
 		//主人公の位置更新
 		SetHero();
+		//ドアの音を鳴らす
+		Audio::Start(10);
 	}
 
 	//奏多マップ1Fへ移動-------------------------------
@@ -607,6 +610,11 @@ void CObjBlock::Action()
 		}
 		//次に行くナンバーを渡す
 		Mapchange(1);
+		//階段からじゃない場合ドアの音を鳴らす
+		if (mapnum != 4)
+		{
+			Audio::Start(10);
+		}
 		//次のmapnumを入れる
 		mapnum = 1;
 		//奏多表示
@@ -624,6 +632,8 @@ void CObjBlock::Action()
 		SetKanata();
 		//初めて部屋に入ったらイベントを起こす
 		event_num = 10;
+		//ドアの音を鳴らす
+		Audio::Start(10);
 	}
 
 	//永遠マップ1Fへ移動-------------------------------
@@ -662,6 +672,8 @@ void CObjBlock::Action()
 		SetTowa();
 		//初めて部屋に入ったらイベントを起こす
 		event_num = 16;
+		//ドアの音を鳴らす
+		Audio::Start(10);
 	}
 
 	//きららマップ1Fへ移動-------------------------------
@@ -700,6 +712,8 @@ void CObjBlock::Action()
 		SetKirara();
 		//初めて部屋に入ったらイベントを起こす
 		event_num = 22;
+		//ドアの音を鳴らす
+		Audio::Start(10);
 	}
 
 	//ロビーF2へ移動---------------------------------------
@@ -734,6 +748,11 @@ void CObjBlock::Action()
 		}
 		//次に行くナンバーを渡す
 		Mapchange(4);
+		//階段からじゃない場合ドアの音を鳴らす
+		if (mapnum != 1)
+		{
+			Audio::Start(10);
+		}
 		//次のmapnumを入れる
 		mapnum = 4;
 		//初めて入ったらイベントを起こす
@@ -802,6 +821,8 @@ void CObjBlock::Action()
 		SetTowa();
 		//初めて部屋に入ったらイベントを起こす
 		//event_num = ;
+		//ドアの音を鳴らす
+		Audio::Start(10);
 	}
 
 	//奏多マップ2Fへ移動-------------------------------
@@ -833,6 +854,8 @@ void CObjBlock::Action()
 		SetKanata();
 		//初めて部屋に入ったらイベントを起こす
 		//event_num = ;
+		//ドアの音を鳴らす
+		Audio::Start(10);
 	}
 	//奏多F2部屋つみ防止リセットボタン-----------------------
 	if (Input::GetVKey('R') == true&&mapnum==6)
@@ -878,6 +901,8 @@ void CObjBlock::Action()
 		SetKirara();
 		//初めて部屋に入ったらイベントを起こす
 		//event_num = ;
+		//ドアの音を鳴らす
+		Audio::Start(10);
 	}
 
 	//----------------------------------------------
@@ -924,6 +949,8 @@ void CObjBlock::Action()
 					if (mousemtime == 0)
 					{
 						mousemtime = 3;
+						//鼠の声を一度だけ鳴らす
+						Audio::Start(15);
 					}
 				}
 				else
@@ -954,6 +981,8 @@ void CObjBlock::Action()
 					if (mousemtime == 0)
 					{
 						mousemtime = 3;
+						//鼠の声を一度だけ鳴らす
+						Audio::Start(15);
 					}
 				}
 				else
@@ -984,6 +1013,8 @@ void CObjBlock::Action()
 					if (mousemtime == 0)
 					{
 						mousemtime = 3;
+						//鼠の声を一度だけ鳴らす
+						Audio::Start(15);
 					}
 				}
 				else
@@ -1014,6 +1045,8 @@ void CObjBlock::Action()
 					if (mousemtime == 0)
 					{
 						mousemtime = 3;
+						//鼠の声を一度だけ鳴らす
+						Audio::Start(15);
 					}
 				}
 				else
@@ -2307,12 +2340,16 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
 			itm->GetItem(1);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//偽鍵判定
 		if (m_map[mapnum][hero_y][hero_x + 1] == 6)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
 			itm->GetItem(2);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//偽壁判定
 		if (m_map[mapnum][hero_y][hero_x + 1] == 7)
@@ -2327,24 +2364,32 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 32;
 			itm->GetItem(5);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ2を取る判定
 		if (m_map[mapnum][hero_y][hero_x + 1] == 41)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 33;
 			itm->GetItem(6);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ3を取る判定
 		if (m_map[mapnum][hero_y][hero_x + 1] == 42)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 33;
 			itm->GetItem(7);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y][hero_x + 1] == 46)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
 			itm->GetItem(8);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//壺
 		if (m_map[mapnum][hero_y][hero_x + 1] == 34)
@@ -2409,36 +2454,48 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(1);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//偽鍵判定
 		if (m_map[mapnum][hero_y][hero_x - 1] == 6)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(2);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//机の上のメモ1を取る判定
 		if (m_map[mapnum][hero_y][hero_x - 1] == 40)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 32;
 			itm->GetItem(5);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ2を取る判定
 		if (m_map[mapnum][hero_y][hero_x - 1] == 41)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 33;
 			itm->GetItem(6);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ3を取る判定
 		if (m_map[mapnum][hero_y][hero_x - 1] == 42)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 33;
 			itm->GetItem(7);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y][hero_x - 1] == 46)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(8);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//観葉植物
 		if (m_map[mapnum][hero_y][hero_x - 1] == 30)
@@ -2516,6 +2573,8 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(1);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ナンバーロックドア判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 5)
@@ -2532,6 +2591,8 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(2);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//棚判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 37 && itm->CheckItem(9) && itm->CheckItem(10) && itm->CheckItem(11))
@@ -2555,6 +2616,8 @@ void CObjBlock::HeroAction(int vec)
 			itm->DeleteItem(9, false);
 			itm->DeleteItem(10, false);
 			itm->DeleteItem(11, false);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		else if (m_map[mapnum][hero_y - 1][hero_x] == 37)
 		{
@@ -2568,12 +2631,16 @@ void CObjBlock::HeroAction(int vec)
 			text_m = 4;
 			itm->DeleteItem(4, false);
 			itm->GetItem(11);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//棚判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 38)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 36;
 			itm->GetItem(4);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//空の棚判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 35)
@@ -2586,6 +2653,8 @@ void CObjBlock::HeroAction(int vec)
 			blockx = hero_x; blocky = hero_y - 1;
 			itm->DeleteItem(3, false);
 			moveshelf = 1.0f;
+			//棚を動かす音を鳴らす
+			Audio::Start(16);
 		}
 		else if (m_map[mapnum][hero_y - 1][hero_x] == 39)
 		{
@@ -2596,24 +2665,32 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 32;
 			itm->GetItem(5);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ2を取る判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 41)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 33;
 			itm->GetItem(6);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ3を取る判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 42)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 33;
 			itm->GetItem(7);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y - 1][hero_x] == 46)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(8);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//棚のナンバーロック解除
 		if (m_map[mapnum][hero_y - 1][hero_x] == 43)
@@ -2699,36 +2776,48 @@ void CObjBlock::HeroAction(int vec)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(1);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//偽鍵判定
 		if (m_map[mapnum][hero_y + 1][hero_x] == 6)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(2);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//机の上のメモを取る判定
 		if (m_map[mapnum][hero_y + 1][hero_x] == 40)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 32;
 			itm->GetItem(5);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ2を取る判定
 		if (m_map[mapnum][hero_y + 1][hero_x] == 41)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 33;
 			itm->GetItem(6);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//ベッドの上のメモ3を取る判定
 		if (m_map[mapnum][hero_y + 1][hero_x] == 42)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 33;
 			itm->GetItem(7);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//絨毯の下のメモ4を取る判定
 		if (m_map[mapnum][hero_y + 1][hero_x] == 46)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(8);
+			//アイテムゲットのSEを鳴らす
+			Audio::Start(14);
 		}
 		//観葉植物
 		if (m_map[mapnum][hero_y + 1][hero_x] == 30)
@@ -2937,7 +3026,7 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 		m_map[mapnum][hero_y - 1][hero_x] = 0;
 	}
 	//永遠部屋
-	if (((UserData*)Save::GetData())->number[1] == num && locknum == 2)
+	else if (((UserData*)Save::GetData())->number[1] == num && locknum == 2)
 	{
 		itm->GetItem(10);
 		//手元のメモを捨てる
@@ -2954,14 +3043,24 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 		m_map[2][7][18] = 32;
 		text_m = 5;
 		event_num = 19;
+		//正解の音を鳴らす
+		Audio::Start(11);
 	}
 	//きらら部屋
-	if (((UserData*)Save::GetData())->number[2] == num && locknum == 3)
+	else if (((UserData*)Save::GetData())->number[2] == num && locknum == 3)
 	{
 		itm->GetItem(9);
 		m_map[mapnum][hero_y - 1][hero_x] = 31;
 		text_m = 3;
 		event_num = 24;
+		//正解の音を鳴らす
+		Audio::Start(11);
+	}
+	//ナンバーがどれにも当てはまらなかったとき
+	else
+	{
+		//不正解の音を鳴らす
+		Audio::Start(12);
 	}
 
 	//画像を消す

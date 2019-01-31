@@ -5,6 +5,7 @@
 //GameLで使用するヘッダー
 #include "GameL\SceneObjManager.h"
 #include"GameL\DrawTexture.h"
+#include "GameL\\Audio.h"
 //使用するネームスペース
 using namespace GameL;
 
@@ -26,61 +27,70 @@ CSceneMain::~CSceneMain()
 void CSceneMain::InitScene()
 {
 	//グラフィック読み込み
-	Draw::LoadImageW(L"kagi.png", 0, TEX_SIZE_64);
-	Draw::LoadImageW(L"mes11_01_bk.png", 1, TEX_SIZE_512);
-	Draw::LoadImageW(L"text2.png", 2, TEX_SIZE_512);
-	Draw::LoadImageW(L"zyo-zi.png", 4, TEX_SIZE_512);
-	Draw::LoadImageW(L"image3.png", 3, TEX_SIZE_64);
-	Draw::LoadImageW(L"whitewindow.png", 5, TEX_SIZE_1024);
-	Draw::LoadImageW(L"kirara.png", 50, TEX_SIZE_512);
-	Draw::LoadImageW(L"kanata.png", 51, TEX_SIZE_512);
-	Draw::LoadImageW(L"towa.png", 52, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\kagi.png", 0, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\mes11_01_bk.png", 1, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\text2.png", 2, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\zyo-zi.png", 4, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\image3.png", 3, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\whitewindow.png", 5, TEX_SIZE_1024);
+	Draw::LoadImageW(L"Image\\kirara.png", 50, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\kanata.png", 51, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\towa.png", 52, TEX_SIZE_512);
 
-	Draw::LoadImageW(L"kiraraMT.png", 60, TEX_SIZE_128);
-	Draw::LoadImageW(L"kanataMT.png", 61, TEX_SIZE_128);
-	Draw::LoadImageW(L"towaMT.png", 62, TEX_SIZE_128);
-	Draw::LoadImageW(L"hero.png", 53, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\kiraraMT.png", 60, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\kanataMT.png", 61, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\towaMT.png", 62, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\hero.png", 53, TEX_SIZE_128);
 
-	Draw::LoadImageW(L"TemporaryPlacement.png", 6, TEX_SIZE_256);
-	Draw::LoadImageW(L"plant.png", 7, TEX_SIZE_32);
-	Draw::LoadImageW(L"shelf.png", 8, TEX_SIZE_64);
-	Draw::LoadImageW(L"carpet.png", 9, TEX_SIZE_512);
-	Draw::LoadImageW(L"floor.png", 10, TEX_SIZE_64);
-	Draw::LoadImageW(L"wall.png", 11, TEX_SIZE_64);
-	Draw::LoadImageW(L"BlackBlock.png", 12, TEX_SIZE_32);
-	Draw::LoadImageW(L"littledesk.png", 13, TEX_SIZE_128);
-	Draw::LoadImageW(L"bed.png", 14, TEX_SIZE_64);
-	Draw::LoadImageW(L"vase.png", 15, TEX_SIZE_32);
-	Draw::LoadImageW(L"bookshelf.png", 16, TEX_SIZE_64);
-	Draw::LoadImageW(L"flagcarpet.png", 17, TEX_SIZE_32);
-	Draw::LoadImageW(L"fictionbookkey.png", 18, TEX_SIZE_64);
-	Draw::LoadImageW(L"darkfloor.png", 19, TEX_SIZE_64);
-	Draw::LoadImageW(L"memosetdesk.png", 20, TEX_SIZE_128);
-	Draw::LoadImageW(L"spebookshelf.png", 21, TEX_SIZE_64);
-	Draw::LoadImageW(L"desk.png", 22, TEX_SIZE_256);
-	Draw::LoadImageW(L"safe.png", 23, TEX_SIZE_128);
-	Draw::LoadImageW(L"pasu.png", 24, TEX_SIZE_256);
-	Draw::LoadImageW(L"pasu2.png", 25, TEX_SIZE_256);
-	Draw::LoadImageW(L"book.png", 26, TEX_SIZE_512);
-	Draw::LoadImageW(L"memo1.png", 27, TEX_SIZE_512);
-	Draw::LoadImageW(L"memo2.png", 28, TEX_SIZE_512);
-	Draw::LoadImageW(L"memo3.png", 29, TEX_SIZE_512);
-	Draw::LoadImageW(L"chair.png", 34, TEX_SIZE_16);
-	Draw::LoadImageW(L"stairs.png", 35, TEX_SIZE_128);
-	Draw::LoadImageW(L"door.png", 36, TEX_SIZE_64);
-	Draw::LoadImageW(L"hako.png", 37, TEX_SIZE_64);
-	Draw::LoadImageW(L"iceyuka.png", 38, TEX_SIZE_64);
-	Draw::LoadImageW(L"taru.png", 40, TEX_SIZE_64);
-	Draw::LoadImageW(L"tana.png", 41, TEX_SIZE_256);
-	Draw::LoadImageW(L"food.png", 42, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\TemporaryPlacement.png", 6, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\plant.png", 7, TEX_SIZE_32);
+	Draw::LoadImageW(L"Image\\shelf.png", 8, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\carpet.png", 9, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\floor.png", 10, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\wall.png", 11, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\BlackBlock.png", 12, TEX_SIZE_32);
+	Draw::LoadImageW(L"Image\\littledesk.png", 13, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\bed.png", 14, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\vase.png", 15, TEX_SIZE_32);
+	Draw::LoadImageW(L"Image\\bookshelf.png", 16, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\flagcarpet.png", 17, TEX_SIZE_32);
+	Draw::LoadImageW(L"Image\\IceBlock.png", 18, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\darkfloor.png", 19, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\memosetdesk.png", 20, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\spebookshelf.png", 21, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\desk.png", 22, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\safe.png", 23, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\pasu.png", 24, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\pasu2.png", 25, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\book.png", 26, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\memo1.png", 27, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\memo2.png", 28, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\memo3.png", 29, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\chair.png", 34, TEX_SIZE_16);
+	Draw::LoadImageW(L"Image\\stairs.png", 35, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\door.png", 36, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\hako.png", 37, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\iceyuka.png", 38, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\taru.png", 40, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\tana.png", 41, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\food.png", 42, TEX_SIZE_256);
 
-	Draw::LoadImageW(L"mouse.png", 39, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\mouse.png", 39, TEX_SIZE_128);
 
 	//アイテム関連
-	Draw::LoadImageW(L"inu.png", 30, TEX_SIZE_512);
-	Draw::LoadImageW(L"nezumi.png", 31, TEX_SIZE_512);
-	Draw::LoadImageW(L"usagi.png", 32, TEX_SIZE_512);
-	Draw::LoadImageW(L"tori.png", 33, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\inu.png", 30, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\nezumi.png", 31, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\usagi.png", 32, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\tori.png", 33, TEX_SIZE_512);
+
+	//SE設定
+	Audio::LoadAudio(10, L"Sound\\SE\\SEDoor.wav", EFFECT);
+	Audio::LoadAudio(11, L"Sound\\SE\\SECorrect.wav", EFFECT);
+	Audio::LoadAudio(12, L"Sound\\SE\\SENocorrect.wav", EFFECT);
+	Audio::LoadAudio(13, L"Sound\\SE\\SENumberlock.wav", EFFECT);
+	Audio::LoadAudio(14, L"Sound\\SE\\SEItemGet.wav", EFFECT);
+	Audio::LoadAudio(15, L"Sound\\SE\\SEMouse.wav", EFFECT);
+	Audio::LoadAudio(16, L"Sound\\SE\\SEMovesound.wav", EFFECT);
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();

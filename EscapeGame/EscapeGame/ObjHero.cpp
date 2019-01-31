@@ -5,6 +5,7 @@
 #include"GameL\Scenemanager.h"
 #include"GameL\DrawFont.h"
 #include"GameL\UserData.h"
+#include"GameL\\Audio.h"
 
 #include "GameHead.h"
 #include "ObjHero.h"
@@ -565,6 +566,8 @@ void CObjHero::Action()
 						unlocknum[selectnum] = 0;
 					}
 					Key_flag = true;
+					//ナンバーロック用のSEを鳴らす
+					Audio::Start(13);
 				}
 			}
 			//数を一つ下げる
@@ -578,6 +581,8 @@ void CObjHero::Action()
 						unlocknum[selectnum] = 9;
 					}
 					Key_flag = true;
+					//ナンバーロック用のSEを鳴らす
+					Audio::Start(13);
 				}
 			}
 			//決定
