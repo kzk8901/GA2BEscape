@@ -418,7 +418,6 @@ void CObjBlock::Action()
 	//イベントナンバー(29～33)---------------------------
 	if (event_num == 29)
 	{
-		hero->SetActionflag(true);
 		hero->SetVec(1);
 		kirara->SetVec(1);
 		kanata->SetVec(2);
