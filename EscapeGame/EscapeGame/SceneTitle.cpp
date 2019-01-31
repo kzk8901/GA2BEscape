@@ -29,7 +29,7 @@ CSceneTitle::~CSceneTitle()
 void CSceneTitle::InitScene()
 {
 	Font::SetStrTex(L"脱出ゲーム");
-	Draw::LoadImageW(L"タイトル.png", 0, TEX_SIZE_1024);
+	Draw::LoadImageW(L"Image\\タイトル.png", 0, TEX_SIZE_1024);
 	//タイトルオブジェクト作成
 	CObjTitle* obj = new CObjTitle();
     Objs::InsertObj(obj,OBJ_TITLE, 10);
