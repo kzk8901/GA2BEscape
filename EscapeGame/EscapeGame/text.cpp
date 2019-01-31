@@ -168,8 +168,8 @@ void CObjText::Draw()
 	RECT_F dst_C;//テキスト表示隠し(下部）描画表示位置
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 128.0f;
-	src.m_bottom = 128.0f;
+	src.m_right = 512.0f;
+	src.m_bottom = 512.0f;
 	dst.m_top = 490.0f;
 	dst.m_left = 10.0f;
 	dst.m_right = 95.0f;
