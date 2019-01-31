@@ -81,7 +81,7 @@ void CObjTowa::Action()
 		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
-			if (anime_move == 2|| event_skip == true)
+			if (anime_move == 2)
 			{
 				towa_in = true;
 				//1,右 2,左 3,上 4,下
@@ -108,7 +108,7 @@ void CObjTowa::Action()
 		//イベントナンバー2
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (anime_move == 7|| event_skip == true)
+			if (anime_move == 7)
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->TowaGetY() > 7 && block->ThereIsBlock(3, 3) == true)
@@ -134,7 +134,7 @@ void CObjTowa::Action()
 		//イベントナンバー3
 		if (eventnumber == 3 && move_flag == false)
 		{
-			if (anime_move == 8 || event_skip == true)
+			if (anime_move == 8 )
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->TowaGetX() < 19 && block->ThereIsBlock(1, 3) == true)

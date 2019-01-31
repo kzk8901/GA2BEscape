@@ -2,10 +2,7 @@
 #include"GameL\DrawFont.h"
 #include"GameL\WinInputs.h"
 #include "GameL\DrawTexture.h"
-#include"GameL\DirectXDevice.h"
-#include "stdio.h"
 
-#include"GameL\SetWindow.h"
 
 #include"GameHead.h"
 #include"ObjBlock.h"
@@ -26,6 +23,7 @@ int towa_word=0;
 bool kirara_flag=false;
 bool kanata_flag = false;
 bool towa_flag = false;
+bool gate_flag=false;
 void CObjText::Init()
 {
 	m_key_flag = false;
@@ -38,6 +36,12 @@ void CObjText::Init()
 	f = false;
 	ending = false;
 	end_time = 0;
+	kirara_count = 0;
+	kanata_count = 0;
+	towa_count = 0;
+	kirara_anger = false;
+	kanata_anger = false;
+	towa_anger = false;
 }
 //アクション
 void CObjText::Action()
@@ -80,6 +84,14 @@ void CObjText::Action()
 									m_key_flag = false;
 									time = 0;
 									skip_flag = true;
+									if (kirara_count == 2)
+									{
+										kirara_anger = true;
+									}
+									if (kirara_word == 1)
+									{
+										kirara_count += 1;
+									}
 								}
 								else if (kanata_flag == true)
 								{
@@ -87,6 +99,14 @@ void CObjText::Action()
 									m_key_flag = false;
 									time = 0;
 									skip_flag = true;
+									if (kanata_count == 2)
+									{
+										kanata_anger = true;
+									}
+									if (kanata_word == 1)
+									{
+										kanata_count += 1;
+									}
 								}
 								else if (towa_flag == true)
 								{
@@ -94,6 +114,14 @@ void CObjText::Action()
 									m_key_flag = false;
 									time = 0;
 									skip_flag = true;
+									if (towa_count == 2)
+									{
+										towa_anger = true;
+									}
+									if (towa_word == 1)
+									{
+										towa_count += 1;
+									}
 								}
 							}
 						}
@@ -140,8 +168,8 @@ void CObjText::Draw()
 	RECT_F dst_C;//テキスト表示隠し(下部）描画表示位置
 	src.m_top = 0.0f;
 	src.m_left = 0.0f;
-	src.m_right = 128.0f;
-	src.m_bottom = 128.0f;
+	src.m_right = 512.0f;
+	src.m_bottom = 512.0f;
 	dst.m_top = 490.0f;
 	dst.m_left = 10.0f;
 	dst.m_right = 95.0f;
@@ -159,8 +187,8 @@ void CObjText::Draw()
 		Font::StrDraw(L"Rキー：リセット", 650, 350, 15, c_C);
 	}
 	Font::StrDraw(L"十字キー：移動", 650, 370, 15, c_C);
-	Font::StrDraw(L"Zキー：", 650, 390, 15, c_C);
-	Font::StrDraw(L"決定・会話進行", 650, 410, 15, c_C);
+	Font::StrDraw(L"Zキー：決定", 650, 390, 15, c_C);
+	Font::StrDraw(L"・会話進行・調べる", 650, 410, 15, c_C);
 	Font::StrDraw(L"テンキー：", 650, 430, 15, c_C);
 	Font::StrDraw(L"入手アイテム詳細", 650, 450, 15, c_C);
 
@@ -1184,8 +1212,8 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
 			text_loop = false;
+			gate_flag=true;
 		}
 		
 	}
@@ -1333,8 +1361,8 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
 			text_loop = false;
+			gate_flag = true;
 		}
 	}
 	//2階層永遠部屋-------------------------------------------------
@@ -1480,8 +1508,8 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
 			text_loop = false;
+			gate_flag = true;
 		}
 	}
 
@@ -1497,6 +1525,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			gate_flag = false;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 4;
@@ -1601,6 +1630,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			gate_flag = false;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 3;
@@ -1715,6 +1745,7 @@ void CObjText::Draw()
 		}
 		else if (word == 1)
 		{
+			gate_flag = false;
 			c_A[3] = 1.0 - time*0.005;
 			Draw::Draw(12, &src_A, &dst_A, c_A, 0.0f);
 			d = 1;
@@ -1832,8 +1863,21 @@ void CObjText::Draw()
 		}
 	}
 	//---------------------------------------------------------------
+	//玄関テキスト表示
+	if (gate_flag == true)
+	{
+		Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
+	}
 	//通常時キャラ会話
-	 if (kirara_word == 1)
+	if (kirara_word == 1 && kirara_anger == true)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 2;
+		g = 2;
+		Font::StrDraw(L"なんなのよ!", x, y_a, m_z, c);
+	}
+	else if (kirara_word == 1)
 	{
 		hero_move = false;
 		item_word = 0;
@@ -1846,18 +1890,34 @@ void CObjText::Draw()
 		 kirara_flag = false;
 		 kirara_word = 0;
 	 }
+	else if (kanata_word == 1 && kanata_anger == true)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 3;
+		g = 2;
+		Font::StrDraw(L"どうしたんですか?", x, y_a, m_z, c);
+	}
 	else if (kanata_word == 1)
 	{
 		hero_move = false;
 		item_word = 0;
 		d = 3;
 		g = 2;
-		Font::StrDraw(L"なにかございましたか？", x, y_a, m_z, c);
+		Font::StrDraw(L"なにかございましたか?", x, y_a, m_z, c);
 	}
 	else if (kanata_word == 2)
 	{
 		kanata_flag = false;
 		kanata_word = 0;
+	}
+	else if (towa_word == 1 && towa_anger == true)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 4;
+		g = 2;
+		Font::StrDraw(L"どうかしたのかい?", x, y_a, m_z, c);
 	}
 	else if (towa_word == 1)
 	{
@@ -1865,7 +1925,7 @@ void CObjText::Draw()
 		item_word = 0;
 		d = 4;
 		g = 2;
-		Font::StrDraw(L"なにかあったかい？", x, y_a, m_z, c);
+		Font::StrDraw(L"なにかあったかい?", x, y_a, m_z, c);
 	}
 	else if (towa_word == 2)
 	{
