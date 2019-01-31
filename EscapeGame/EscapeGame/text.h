@@ -32,9 +32,15 @@ private:
 	bool anime_flag;
 	int time;//テキスト表示上部管理時間
 	int time_x;//テキスト表示下部管理時間
-	int end_time;
+	int end_time;//エンディングスクロール
 	int g;//テキストが２行か1行かの確認用
 	int d;//だれが話しているか確認用
+	int kirara_count;//きららのしゃべりかけた回数
+	int kanata_count;//奏多のしゃべりかけた回数
+	int towa_count;//永遠のしゃべりかけた回数
+	bool kirara_anger;//きらら会話変更フラグ
+	bool kanata_anger;//奏多会話変更フラグ
+	bool towa_anger;//永遠会話変更フラグ
 	bool f;//アニメーション中テキストを進めなくするフラグ
 	bool ending;
 };
