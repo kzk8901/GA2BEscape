@@ -42,7 +42,7 @@ void CObjHero::Init()
 	numlock_flag = false;
 	Key_flag = false;
 	Itemcheck = false;
-	hero_in = true;
+	hero_in = false;
 	iceflag = false;
 }
 
@@ -72,14 +72,11 @@ void CObjHero::Action()
 	//イベント用フラグ
 	if (eventflag == true)
 	{
-		//主人公イベント中動けるようにする
-		SetActionflag(false);
-
 		//オープニング開始-----------------------------------------------------
 		//イベントナンバー１
 		if (eventnumber == 1 && move_flag == false)
 		{
-			if (anime_move == 1||event_skip==true)
+			if (anime_move == 1)
 			{
 				hero_in = true;
 				//1,右 2,左 3,上 4,下
@@ -106,7 +103,7 @@ void CObjHero::Action()
 		//イベントナンバー２
 		if (eventnumber == 2 && move_flag == false)
 		{
-			if (anime_move == 3 || event_skip == true)
+			if (anime_move == 3 )
 			{
 				//1,右 2,左 3,上 4,下
 				if (block->HeroGetX() < 9 && block->ThereIsBlock(1, 1) == true)
@@ -661,18 +658,18 @@ void CObjHero::Draw()
 		if (iceflag == false)
 		{
 			//切り取り位置の設定
-			src.m_top = 64.0f;
-			src.m_left = 32.0f + AniData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniData[m_ani_frame] * 32;
-			src.m_bottom = 96.0f;
+			src.m_top = 96.0f;
+			src.m_left = 48.0f + AniData[m_ani_frame] * 48;
+			src.m_right = 96.0f + AniData[m_ani_frame] * 48;
+			src.m_bottom = 144.0f;
 		}
 		else
 		{
 			//切り取り位置の設定
-			src.m_top = 64.0f;
-			src.m_left = 32.0f + AniIceData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniIceData[m_ani_frame] * 32;
-			src.m_bottom = 96.0f;
+			src.m_top = 96.0f;
+			src.m_left = 48.0f + AniIceData[m_ani_frame] * 48;
+			src.m_right = 96.0f + AniIceData[m_ani_frame] * 48;
+			src.m_bottom = 144.0f;
 		}
 	}
 
@@ -681,18 +678,18 @@ void CObjHero::Draw()
 		if (iceflag == false)
 		{
 			//切り取り位置の設定
-			src.m_top = 32.0f;
-			src.m_left = 32.0f + AniData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniData[m_ani_frame] * 32;
-			src.m_bottom = 64.0f; 
+			src.m_top = 48.0f;
+			src.m_left = 48.0f + AniData[m_ani_frame] * 48;
+			src.m_right = 96.0f + AniData[m_ani_frame] * 48;
+			src.m_bottom = 96.0f; 
 		}
 		else
 		{
 			//切り取り位置の設定
-			src.m_top = 32.0f;
-			src.m_left = 32.0f + AniIceData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniIceData[m_ani_frame] * 32;
-			src.m_bottom = 64.0f;
+			src.m_top = 48.0f;
+			src.m_left = 96.0f + AniIceData[m_ani_frame] * 48;
+			src.m_right = 144.0f + AniIceData[m_ani_frame] * 48;
+			src.m_bottom = 96.0f;
 		}
 	}
 
@@ -701,18 +698,18 @@ void CObjHero::Draw()
 		if (iceflag == false)
 		{
 			//切り取り位置の設定
-			src.m_top = 96.0f;
-			src.m_left = 32.0f + AniData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniData[m_ani_frame] * 32;
-			src.m_bottom = 128.0f;
+			src.m_top = 144.0f;
+			src.m_left = 48.0f + AniData[m_ani_frame] * 48;
+			src.m_right = 96.0f + AniData[m_ani_frame] * 48;
+			src.m_bottom = 192.0f;
 		}
 		else
 		{
 			//切り取り位置の設定
-			src.m_top = 96.0f;
-			src.m_left = 32.0f + AniIceData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniIceData[m_ani_frame] * 32;
-			src.m_bottom = 128.0f;
+			src.m_top = 144.0f;
+			src.m_left = 48.0f + AniIceData[m_ani_frame] * 48;
+			src.m_right = 96.0f + AniIceData[m_ani_frame] * 32;
+			src.m_bottom = 192.0f;
 		}
 	}
 
@@ -722,17 +719,17 @@ void CObjHero::Draw()
 		{
 			//切り取り位置の設定
 			src.m_top = 0.0f;
-			src.m_left = 32.0f + AniData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniData[m_ani_frame] * 32;
-			src.m_bottom = 32.0f;
+			src.m_left = 48.0f + AniData[m_ani_frame] * 48;
+			src.m_right = 96.0f + AniData[m_ani_frame] * 48;
+			src.m_bottom = 46.0f;
 		}
 		else
 		{
 			//切り取り位置の設定
 			src.m_top = 0.0f;
-			src.m_left = 32.0f + AniIceData[m_ani_frame] * 32;
-			src.m_right = 64.0f + AniIceData[m_ani_frame] * 32;
-			src.m_bottom = 32.0f;
+			src.m_left = 48.0f + AniIceData[m_ani_frame] * 48;
+			src.m_right = 96.0f + AniIceData[m_ani_frame] * 48;
+			src.m_bottom = 48.0f;
 		}
 	}
 
