@@ -493,11 +493,11 @@ void CObjBackGround::Draw()
 				//描画
 				Draw::Draw(12, &src, &dst, c, 0.0f);
 			}
-			//階段（下り）
+			//階段
 			if (m_map[mapnum][i][j] == 92)
 			{
 				//切り取り位置の設定
-				src.m_top = 64.0f;
+				src.m_top = 0.0f;
 				src.m_left = 0.0f;
 				src.m_right = src.m_left + 128.0f;
 				src.m_bottom = src.m_top + 64.0f;
@@ -508,7 +508,7 @@ void CObjBackGround::Draw()
 				dst.m_bottom = dst.m_top + 32.0f;
 
 				//描画
-				Draw::Draw(35, &src, &dst, c, 0.0f);
+				Draw::Draw(43, &src, &dst, c, 0.0f);
 
 				//切り取り位置の設定
 				src.m_top = 0.0f;

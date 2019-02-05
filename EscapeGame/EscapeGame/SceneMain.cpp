@@ -77,6 +77,12 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"Image\\danro.png", 45, TEX_SIZE_128);
 	Draw::LoadImageW(L"Image\\wall2.png", 46, TEX_SIZE_64);
 	Draw::LoadImageW(L"Image\\yazirusi.png", 63, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\food.png", 42, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\downstairs.png", 43, TEX_SIZE_128);
+	Draw::LoadImageW(L"kagisetdesk.png", 44, TEX_SIZE_128);
+	Draw::LoadImageW(L"danro.png", 45, TEX_SIZE_128);
+	Draw::LoadImageW(L"wall2.png", 46, TEX_SIZE_64);
+	Draw::LoadImageW(L"yazirusi.png", 63, TEX_SIZE_128);
 
 	Draw::LoadImageW(L"Image\\mouse.png", 39, TEX_SIZE_128);
 
