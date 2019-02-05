@@ -247,7 +247,7 @@ void CObjText::Draw()
 		}
 		else if (word == 8)
 		{
-			Font::StrDraw(L"俺の名前は鳳一樹。君と同じ学校の二年だ", x, y_a, m_z, c);
+			Font::StrDraw(L"俺の名前は鳳一樹、君と同じ学校の二年だ", x, y_a, m_z, c);
 		}
 		else if (word == 9)
 		{
@@ -275,7 +275,7 @@ void CObjText::Draw()
 		else if (word == 14)
 		{
 			d = 3;
-			Font::StrDraw(L"岸野奏多です。", x, y_a, m_z, c);
+			Font::StrDraw(L"岸野奏多です", x, y_a, m_z, c);
 		}
 		else if (word == 15)
 		{
@@ -332,7 +332,8 @@ void CObjText::Draw()
 		{
 			d = 3;
 			g = 1;
-			Font::StrDraw(L"かしこまりました。それでは失礼します", x, y_a, m_z, c);
+			Font::StrDraw(L"かしこまりました", x, y_a, m_z, c);
+			Font::StrDraw(L"それでは失礼します", x, y_b, m_z, c);
 		}
 		else if (word == 25)
 		{
