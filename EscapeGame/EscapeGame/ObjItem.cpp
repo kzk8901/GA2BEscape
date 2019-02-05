@@ -257,7 +257,7 @@ void CObjItem::Draw()
 			src.m_left = 0.0f;
 			src.m_right = 64.0f;
 			src.m_bottom = 64.0f;
-			Draw::Draw(43, &src, &dst, c, 0.0f);
+			Draw::Draw(64, &src, &dst, c, 0.0f);
 		}
 	}
 }
