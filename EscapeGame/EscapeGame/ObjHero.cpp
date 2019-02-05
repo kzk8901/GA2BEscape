@@ -680,7 +680,6 @@ void CObjHero::Draw()
 			src.m_bottom = 144.0f;
 		}
 	}
-
 	else if (hero_vec == 2)
 	{
 		if (iceflag == false)
@@ -700,7 +699,6 @@ void CObjHero::Draw()
 			src.m_bottom = 96.0f;
 		}
 	}
-
 	else if (hero_vec == 3)
 	{
 		if (iceflag == false)
@@ -720,7 +718,6 @@ void CObjHero::Draw()
 			src.m_bottom = 192.0f;
 		}
 	}
-
 	else if (hero_vec == 4)
 	{
 		if (iceflag == false)
