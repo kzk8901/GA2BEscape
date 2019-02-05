@@ -24,6 +24,12 @@ bool kirara_flag=false;
 bool kanata_flag = false;
 bool towa_flag = false;
 bool gate_flag=false;
+int kirara_num = 0;
+int kanata_num = 0;
+int towa_num = 0;
+bool kirara_anger = false;
+bool kanata_anger = false;
+bool towa_anger = false;
 void CObjText::Init()
 {
 	m_key_flag = false;
@@ -39,9 +45,6 @@ void CObjText::Init()
 	kirara_count = 0;
 	kanata_count = 0;
 	towa_count = 0;
-	kirara_anger = false;
-	kanata_anger = false;
-	towa_anger = false;
 }
 //アクション
 void CObjText::Action()
@@ -1142,14 +1145,13 @@ void CObjText::Draw()
 			d = 1;
 			Font::StrDraw(L"それじゃ行くか", x, y_a, m_z, c);
 		}
-		else if (word == 11)
+		else if (word == 11 && item_word == 0 && kirara_word == 0 && kanata_word == 0 && towa_word == 0)
 		{
 			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
 			Font::StrDraw(L"ネズミを捕まえよう！", x, y_a, 32, c);
-			text_loop = false;
 		}
 	}
 	//ネズミ捕まえた後
@@ -1212,7 +1214,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			text_loop = false;
 			gate_flag=true;
 		}
 		
@@ -1293,7 +1294,6 @@ void CObjText::Draw()
 			g = 3;
 			text_move = false;
 			Font::StrDraw(L"整理しよう！", x, y_a, 32, c);
-			text_loop = false;
 		}
 	}
 	//ここから倉庫番-----------------------------------------------
@@ -1361,7 +1361,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			text_loop = false;
 			gate_flag = true;
 		}
 	}
@@ -1393,23 +1392,24 @@ void CObjText::Draw()
 		else if (word == 4)
 		{
 			d = 1;
-			Font::StrDraw(L"それにしてもこの部屋寒いですね", x, y_a, m_z, c);
+			g = 1;
+			Font::StrDraw(L"それにしても", x, y_a, m_z, c);
+			Font::StrDraw(L"あの矢印ってなんなんですか?", x, y_b, m_z, c);
 		}
 		else if (word == 5)
 		{
+			g = 2;
 			d = 4;
 			Font::StrDraw(L"足元に気を付けてね", x, y_a, m_z, c);
 		}
 		else if (word == 6)
 		{
-			Font::StrDraw(L"めちゃくちゃ滑るから", x, y_a, m_z, c);
+			Font::StrDraw(L"めちゃくちゃ運ばれるから", x, y_a, m_z, c);
 		}
 		else if (word == 7)
 		{
 			d = 1;
-			g = 1;
-			Font::StrDraw(L"多分この部屋は冷凍庫みたいな", x, y_a, m_z, c);
-			Font::StrDraw(L"場所なのかもしれませんね", x, y_b, m_z, c);
+			Font::StrDraw(L"いや流石に命知らずすぎませんか!?", x, y_a, m_z, c);
 		}
 		else if (word == 8)
 		{
@@ -1430,14 +1430,13 @@ void CObjText::Draw()
 			Font::StrDraw(L"まあ探してみないことにはわからないし", x, y_a, m_z, c);
 			Font::StrDraw(L"やるだけやってみようか", x, y_b, m_z, c);
 		}
-		else if (word == 11)
+		else if (word == 11 && item_word == 0 && kirara_word == 0 && kanata_word == 0 && towa_word == 0)
 		{
 			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
 			Font::StrDraw(L"滑ってみよう！", x, y_a, 32, c);
-			text_loop = false;
 		}
 	}
 	//鍵入手後
@@ -1502,13 +1501,12 @@ void CObjText::Draw()
 			d = 4;
 			Font::StrDraw(L"それじゃあよろしく頼むよ", x, y_a, m_z, c);
 		}
-		else if (word == 9)
+		else if (word == 9 && item_word == 0 && kirara_word == 0 && kanata_word == 0 && towa_word == 0)
 		{
 			hero_move = true;
 			d = 0;
 			g = 3;
 			text_move = false;
-			text_loop = false;
 			gate_flag = true;
 		}
 	}
@@ -1864,12 +1862,13 @@ void CObjText::Draw()
 	}
 	//---------------------------------------------------------------
 	//玄関テキスト表示
-	if (gate_flag == true)
+	if (gate_flag == true && item_word == 0 && kirara_word == 0 && kanata_word == 0 && towa_word == 0)
 	{
 		Font::StrDraw(L"1階玄関に向かおう！", x, y_a, 32, c);
 	}
 	//通常時キャラ会話
-	if (kirara_word == 1 && kirara_anger == true)
+	//きらら　1F部屋
+	if (kirara_word == 1 && kirara_anger == true&&kirara_num==0)
 	{
 		hero_move = false;
 		item_word = 0;
@@ -1877,7 +1876,7 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"なんなのよ!", x, y_a, m_z, c);
 	}
-	else if (kirara_word == 1)
+	else if (kirara_word == 1 && kirara_num == 0)
 	{
 		hero_move = false;
 		item_word = 0;
@@ -1885,12 +1884,69 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"なにかあった？", x, y_a, m_z, c);
 	}
-	 else if (kirara_word == 2)
+	 else if (kirara_word == 2 && kirara_num == 0)
 	 {
 		 kirara_flag = false;
 		 kirara_word = 0;
 	 }
-	else if (kanata_word == 1 && kanata_anger == true)
+	//きらら　1F集合後
+	else if (kirara_word == 1 && kirara_anger == true && kirara_num == 1)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 2;
+		g = 1;
+		Font::StrDraw(L"そういえば私の部屋にあったような", x, y_a, m_z, c);
+	}
+	else if (kirara_word == 1 && kirara_num == 1)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 2;
+		g = 2;
+		Font::StrDraw(L"本なんてあった？", x, y_a, m_z, c);
+	}
+	//きらら　2F会話
+	else if (kirara_word == 1 && kirara_anger == true && kirara_num == 2)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 2;
+		g = 1;
+		Font::StrDraw(L"早く行きなさいよ！", x, y_a, m_z, c);
+	}
+	else if (kirara_word == 1 && kirara_num == 2)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 2;
+		g = 2;
+		Font::StrDraw(L"ほら！ねずみ捕まえるわよ！", x, y_a, m_z, c);
+	}
+	//きらら　2F終了後
+	else if (kirara_word == 1 && kirara_anger == true && kirara_num == 3)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 2;
+		g = 1;
+		Font::StrDraw(L"玄関確認しに行きなさいよ！", x, y_a, m_z, c);
+	}
+	else if (kirara_word == 1 && kirara_num == 3)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 2;
+		g = 2;
+		Font::StrDraw(L"みんなを呼んでくるわ！", x, y_a, m_z, c);
+	}
+	else if (kirara_word == 2)
+	{
+		kirara_flag = false;
+		kirara_word = 0;
+	}
+	//奏多　1F会話
+	else if (kanata_word == 1 && kanata_anger == true && kanata_num == 0)
 	{
 		hero_move = false;
 		item_word = 0;
@@ -1898,7 +1954,7 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"どうしたんですか?", x, y_a, m_z, c);
 	}
-	else if (kanata_word == 1)
+	else if (kanata_word == 1 &&kanata_num == 0)
 	{
 		hero_move = false;
 		item_word = 0;
@@ -1906,12 +1962,64 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"なにかございましたか?", x, y_a, m_z, c);
 	}
+	//奏多　1F集合後
+	else if (kanata_word == 1 && kanata_anger == true && kanata_num == 1)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 3;
+		g = 2;
+		Font::StrDraw(L"でも花の本はなかった気がします", x, y_a, m_z, c);
+	}
+	else if (kanata_word == 1 && kanata_num == 1)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 3;
+		g = 2;
+		Font::StrDraw(L"確か本棚がありましたね", x, y_a, m_z, c);
+	}
+	//奏多　2F会話
+	else if (kanata_word == 1 && kanata_anger == true && kanata_num == 2)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 3;
+		g = 2;
+		Font::StrDraw(L"ちゃんと片付くのでしょうか", x, y_a, m_z, c);
+	}
+	else if (kanata_word == 1 && kanata_num == 2)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 3;
+		g = 2;
+		Font::StrDraw(L"すごい量の箱ですね", x, y_a, m_z, c);
+	}
+	//奏多　2F終了後
+	else if (kanata_word == 1 && kanata_anger == true && kanata_num == 3)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 3;
+		g = 2;
+		Font::StrDraw(L"どうかしましたか？", x, y_a, m_z, c);
+	}
+	else if (kanata_word == 1 && kanata_num == 3)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 3;
+		g = 2;
+		Font::StrDraw(L"皆さんを呼んできます", x, y_a, m_z, c);
+	}
 	else if (kanata_word == 2)
 	{
 		kanata_flag = false;
 		kanata_word = 0;
 	}
-	else if (towa_word == 1 && towa_anger == true)
+	//永遠　1F会話
+	else if (towa_word == 1 && towa_anger == true&& towa_num == 0)
 	{
 		hero_move = false;
 		item_word = 0;
@@ -1919,7 +2027,7 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"どうかしたのかい?", x, y_a, m_z, c);
 	}
-	else if (towa_word == 1)
+	else if (towa_word == 1 && towa_num == 0)
 	{
 		hero_move = false;
 		item_word = 0;
@@ -1927,7 +2035,58 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"なにかあったかい?", x, y_a, m_z, c);
 	}
-	else if (towa_word == 2)
+	//永遠　1F集合後
+	else if (towa_word == 1 && towa_anger == true && towa_num == 1)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 4;
+		g = 2;
+		Font::StrDraw(L"僕のいた部屋には本がなかったよ", x, y_a, m_z, c);
+	}
+	else if (towa_word == 1 && towa_num == 1)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 4;
+		g = 2;
+		Font::StrDraw(L"花の本かー", x, y_a, m_z, c);
+	}
+	//永遠　2F会話
+	else if (towa_word == 1 && towa_anger == true && towa_num == 2)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 4;
+		g = 2;
+		Font::StrDraw(L"矢印の向きに動くのかな", x, y_a, m_z, c);
+	}
+	else if (towa_word == 1 && towa_num == 2)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 4;
+		g = 2;
+		Font::StrDraw(L"矢印の床だね", x, y_a, m_z, c);
+	}
+	//永遠　2F終了後
+	else if (towa_word == 1 && towa_anger == true && towa_num == 3)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 4;
+		g = 2;
+		Font::StrDraw(L"早く玄関に向かってね!", x, y_a, m_z, c);
+	}
+	else if (towa_word == 1 && towa_num == 3)
+	{
+		hero_move = false;
+		item_word = 0;
+		d = 4;
+		g = 2;
+		Font::StrDraw(L"みんなを呼んでくるよ", x, y_a, m_z, c);
+	}
+	else if (towa_word == 2 )
 	{
 		towa_flag = false;
 		towa_word = 0;
@@ -2046,7 +2205,7 @@ void CObjText::Draw()
 	//左中段本棚
 	else if (item_word == 16)
 	{
-		Font::StrDraw(L"自然にまつわる本が入っている", x, y_a, m_z, c);
+		Font::StrDraw(L"魚にまつわる本が入っている", x, y_a, m_z, c);
 	}
 	//メモ挟まり本棚の隣
 	else if (item_word == 17)
@@ -2089,8 +2248,8 @@ void CObjText::Draw()
 	}
 	else if (item_word == 25)
 	{
-		Font::StrDraw(L"→???", x, y_a, m_z, c);
-		Font::StrDraw(L"←自然", x, y_b, m_z, c);
+		Font::StrDraw(L"→自然", x, y_a, m_z, c);
+		Font::StrDraw(L"←魚", x, y_b, m_z, c);
 	}
 	else if (item_word == 26)
 	{
