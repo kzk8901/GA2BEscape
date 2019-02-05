@@ -17,6 +17,12 @@ extern bool kirara_flag;
 extern bool kanata_flag;
 extern bool towa_flag;
 extern bool gate_flag;
+extern int kirara_num;
+extern int kanata_num;
+extern int towa_num;
+extern bool kirara_anger;//きらら会話変更フラグ
+extern bool kanata_anger;//奏多会話変更フラグ
+extern bool towa_anger;//永遠会話変更フラグ
 //オブジェクト:タイトル
 class CObjText :public CObj
 {
@@ -38,9 +44,6 @@ private:
 	int kirara_count;//きららのしゃべりかけた回数
 	int kanata_count;//奏多のしゃべりかけた回数
 	int towa_count;//永遠のしゃべりかけた回数
-	bool kirara_anger;//きらら会話変更フラグ
-	bool kanata_anger;//奏多会話変更フラグ
-	bool towa_anger;//永遠会話変更フラグ
 	bool f;//アニメーション中テキストを進めなくするフラグ
 	bool ending;
 };

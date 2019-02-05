@@ -404,6 +404,12 @@ void CObjBlock::Action()
 		kirara->SetVec(1);
 		kanata->SetVec(2);
 		towa->SetVec(2);
+		kirara_num = 1;
+		kanata_num = 1;
+		towa_num = 1;
+		kirara_anger = false;
+		kanata_anger = false;
+		towa_anger = false;
 		event_num = 28;
 	}
 	if (event_num == 28)
@@ -450,6 +456,7 @@ void CObjBlock::Action()
 		//âiâìÇ≈èEÇ¡ÇΩ
 		if (mapnum == 5)
 		{
+			towa_num = 3;
 			text_loop = true;
 			text_m = 13;
 			key_w = 3;
@@ -462,6 +469,7 @@ void CObjBlock::Action()
 		//ëtëΩÇ≈èEÇ¡ÇΩ
 		else if (mapnum == 6)
 		{
+			kanata_num = 3;
 			text_loop=true;
 			text_m = 11;
 			key_w = 2;
@@ -474,6 +482,7 @@ void CObjBlock::Action()
 		//Ç´ÇÁÇÁÇ≈èEÇ¡ÇΩ
 		else if (mapnum == 7)
 		{
+			kirara_num = 3;
 			text_loop = true;
 			text_m = 9;
 			key_w = 1;
@@ -930,6 +939,8 @@ void CObjBlock::Action()
 		item_word = 0;
 		word = 0;
 		text_loop = true;
+		towa_anger = false;
+		towa_num = 2;
 		/*if (room_c[1] == false)
 		{
 			text_m = 2;
@@ -969,6 +980,8 @@ void CObjBlock::Action()
 		item_word = 0;
 		word = 0;
 		text_loop = true;
+		kanata_anger = false;
+		kanata_num = 2;
 		/*if (room_c[0] == false)
 		{
 			text_m = 1;
@@ -1022,6 +1035,8 @@ void CObjBlock::Action()
 		item_word = 0;
 		word = 0;
 		text_loop = true;
+		kirara_anger = false;
+		kirara_num = 2;
 		/*if (room_c[2] == false)
 		{
 			text_m = 0;
