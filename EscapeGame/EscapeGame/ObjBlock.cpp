@@ -612,6 +612,11 @@ void CObjBlock::Action()
 		item_word = 0;
 		text_loop = true;
 		text_m = -2;
+		if (event_clock[3] == true&& event_clock[4] == false)
+		{
+			text_m = 6;
+			word = 7;
+		}
 		//ålŒö‚ÌˆÊ’u•Û‘¶
 		//‘t‘½
 		if (m_map[mapnum][hero_y][hero_x] == 98)
