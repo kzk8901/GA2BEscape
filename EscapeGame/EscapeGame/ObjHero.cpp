@@ -253,19 +253,19 @@ void CObjHero::Action()
 		{
 			iceflag = true;
 			//1,‰E 2,¶ 3,ã 4,‰º
-			if (hero_vec==1 && block->CheckIceBlock()==true && block->ThereIsBlock(1, 1) == true)
+			if (block->CheckIceBlock()== 2 && block->ThereIsBlock(1, 1) == true)
 			{
 				SetMoveVec(1);
 			}
-			else if (hero_vec == 2 && block->CheckIceBlock() == true && block->ThereIsBlock(2, 1) == true)
+			else if (block->CheckIceBlock() == 1 && block->ThereIsBlock(2, 1) == true)
 			{
 				SetMoveVec(2);
 			}
-			else if (hero_vec == 3 && block->CheckIceBlock() == true && block->ThereIsBlock(3, 1) == true)
+			else if (block->CheckIceBlock() == 3 && block->ThereIsBlock(3, 1) == true)
 			{
 				SetMoveVec(3);
 			}
-			else if (hero_vec == 4 && block->CheckIceBlock() == true && block->ThereIsBlock(4, 1) == true)
+			else if (block->CheckIceBlock() == 4 && block->ThereIsBlock(4, 1) == true)
 			{
 				SetMoveVec(4);
 			}
@@ -680,7 +680,6 @@ void CObjHero::Draw()
 			src.m_bottom = 144.0f;
 		}
 	}
-
 	else if (hero_vec == 2)
 	{
 		if (iceflag == false)
@@ -700,7 +699,6 @@ void CObjHero::Draw()
 			src.m_bottom = 96.0f;
 		}
 	}
-
 	else if (hero_vec == 3)
 	{
 		if (iceflag == false)
@@ -720,7 +718,6 @@ void CObjHero::Draw()
 			src.m_bottom = 192.0f;
 		}
 	}
-
 	else if (hero_vec == 4)
 	{
 		if (iceflag == false)

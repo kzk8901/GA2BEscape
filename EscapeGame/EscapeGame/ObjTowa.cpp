@@ -165,13 +165,13 @@ void CObjTowa::Action()
 				{
 					SetMoveVec(2);
 				}
-				else if (block->TowaGetY() > 1 && block->ThereIsBlock(3, 3) == true)
+				else if (block->TowaGetY() < 13 && block->ThereIsBlock(4, 3) == true)
 				{
-					SetMoveVec(3);
+					SetMoveVec(4);
 				}
 				else
 				{
-					towa_vec = 4;
+					towa_vec = 3;
 					block->SetEventNum(33);
 					eventflag = false;
 					eventnumber = 0;
@@ -187,9 +187,9 @@ void CObjTowa::Action()
 			if (anime_move == 4 )
 			{
 				//1,‰E 2,¶ 3,ã 4,‰º
-				if (block->TowaGetY() > 0 && block->ThereIsBlock(3, 3) == true)
+				if (block->TowaGetY() < 14 && block->ThereIsBlock(4, 3) == true)
 				{
-					SetMoveVec(3);
+					SetMoveVec(4);
 				}
 				else
 				{
@@ -197,7 +197,7 @@ void CObjTowa::Action()
 					eventnumber = 0;
 					block->SetEventNum(98);
 					towa_in = false;
-					towa_vec = 4;
+					towa_vec = 1;
 					skip_anime = false;
 				}
 			}

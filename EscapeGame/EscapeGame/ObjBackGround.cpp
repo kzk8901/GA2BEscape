@@ -76,14 +76,44 @@ void CObjBackGround::Draw()
 			//描画
 			Draw::Draw(10, &src, &dst, c, 0.0f);
 
-			//滑る床（仮）
-			if (m_map[mapnum][i][j] == 61|| m_map[mapnum][i][j] == 62)
+			//移動マップ
+			if (m_map[mapnum][i][j] == 83||
+				m_map[mapnum][i][j] == 84||
+				m_map[mapnum][i][j] == 85||
+				m_map[mapnum][i][j] == 61)
 			{
-				//切り取り位置の設定
-				src.m_top = 0.0f;
-				src.m_left = 0.0f;
-				src.m_right = src.m_left + 64.0f;
-				src.m_bottom = src.m_top + 64.0f;
+				if (m_map[mapnum][i][j] == 83)
+				{
+					//切り取り位置の設定
+					src.m_top = 0.0f;
+					src.m_left = 64.0f;
+					src.m_right = src.m_left + 64.0f;
+					src.m_bottom = src.m_top + 64.0f;
+				}
+				else if (m_map[mapnum][i][j] == 84)
+				{
+					//切り取り位置の設定
+					src.m_top = 64.0f;
+					src.m_left = 64.0f;
+					src.m_right = src.m_left + 64.0f;
+					src.m_bottom = src.m_top + 64.0f;
+				}
+				else if (m_map[mapnum][i][j] == 85)
+				{
+					//切り取り位置の設定
+					src.m_top = 64.0f;
+					src.m_left = 0.0f;
+					src.m_right = src.m_left + 64.0f;
+					src.m_bottom = src.m_top + 64.0f;
+				}
+				else if (m_map[mapnum][i][j] == 61)
+				{
+					//切り取り位置の設定
+					src.m_top = 0.0f;
+					src.m_left = 0.0f;
+					src.m_right = src.m_left + 64.0f;
+					src.m_bottom = src.m_top + 64.0f;
+				}
 
 				//表示位置の設定
 				dst.m_top = i*32.0f;
@@ -92,7 +122,7 @@ void CObjBackGround::Draw()
 				dst.m_bottom = dst.m_top + 32.0f;
 
 				//描画
-				Draw::Draw(38, &src, &dst, c, 0.0f);
+				Draw::Draw(63, &src, &dst, c, 0.0f);
 			}
 		}
 	}
@@ -188,6 +218,37 @@ void CObjBackGround::Draw()
 					//描画
 					Draw::Draw(12, &src, &dst, c, 0.0f);
 				}
+			}
+		    //壁（窓付き）
+			if (m_map[mapnum][i][j] == 54)
+			{
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f + 16.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(46, &src, &dst, c, 0.0f);
+
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 16.0f;
+
+				//描画
+				Draw::Draw(12, &src, &dst, c, 0.0f);
 			}
 			//本棚表示
 			if (m_map[mapnum][i][j] == 35 || m_map[mapnum][i][j] == 36 || m_map[mapnum][i][j] == 37 || m_map[mapnum][i][j] == 38
@@ -401,7 +462,7 @@ void CObjBackGround::Draw()
 				//描画
 				Draw::Draw(34, &src, &dst, c, 0.0f);
 			}
-			//階段
+			//階段（上り）
 			if (m_map[mapnum][i][j] == 93)
 			{
 				//切り取り位置の設定
@@ -464,9 +525,7 @@ void CObjBackGround::Draw()
 				Draw::Draw(12, &src, &dst, c, 0.0f);
 			}
 			//扉
-			if (m_map[mapnum][i][j] == 99 && (block->HeroGetX() != j || block->HeroGetY() != i)||
-				m_map[mapnum][i][j] == 91 && (block->HeroGetX() != j || block->HeroGetY() != i) ||
-				m_map[mapnum][i][j] == 80 )
+			if (m_map[mapnum][i][j] == 99 && (block->HeroGetX() != j || block->HeroGetY() != i))
 			{
 				//切り取り位置の設定
 				src.m_top = 5.0f;
@@ -482,6 +541,26 @@ void CObjBackGround::Draw()
 				//描画
 				Draw::Draw(36, &src, &dst, c, 0.0f);
 			}
+
+			//暖炉
+			if (m_map[mapnum][i][j] == 53 && m_map[mapnum][i][j + 1] == 53)
+			{
+
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 106.0f;
+				src.m_bottom = src.m_top + 96.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f - 16.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 64.0f;
+				dst.m_bottom = dst.m_top + 48.0f;
+
+				//描画
+				Draw::Draw(45, &src, &dst, c, 0.0f);
+			}
+
 		}
 	}
 }
