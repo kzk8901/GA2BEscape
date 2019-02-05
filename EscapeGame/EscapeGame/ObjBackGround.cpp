@@ -432,6 +432,37 @@ void CObjBackGround::Draw()
 				//•`‰æ
 				Draw::Draw(12, &src, &dst, c, 0.0f);
 			}
+			//ŠK’i
+			if (m_map[mapnum][i][j] == 92)
+			{
+				//Ø‚èŽæ‚èˆÊ’u‚ÌÝ’è
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 128.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//•\Ž¦ˆÊ’u‚ÌÝ’è
+				dst.m_top = i*32.0f + 16.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//•`‰æ
+				Draw::Draw(43, &src, &dst, c, 0.0f);
+
+				//Ø‚èŽæ‚èˆÊ’u‚ÌÝ’è
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//•\Ž¦ˆÊ’u‚ÌÝ’è
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 16.0f;
+
+				//•`‰æ
+				Draw::Draw(12, &src, &dst, c, 0.0f);
+			}
 			//”à
 			if (m_map[mapnum][i][j] == 99 && (block->HeroGetX() != j || block->HeroGetY() != i)||
 				m_map[mapnum][i][j] == 91 && (block->HeroGetX() != j || block->HeroGetY() != i) ||

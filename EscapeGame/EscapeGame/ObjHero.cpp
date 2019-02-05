@@ -716,7 +716,7 @@ void CObjHero::Draw()
 			//Ø‚èæ‚èˆÊ’u‚Ìİ’è
 			src.m_top = 144.0f;
 			src.m_left = 48.0f + AniIceData[m_ani_frame] * 48;
-			src.m_right = 96.0f + AniIceData[m_ani_frame] * 32;
+			src.m_right = 96.0f + AniIceData[m_ani_frame] * 48;
 			src.m_bottom = 192.0f;
 		}
 	}

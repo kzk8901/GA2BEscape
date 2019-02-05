@@ -37,10 +37,10 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"Image\\‘t‘½.png", 51, TEX_SIZE_512);
 	Draw::LoadImageW(L"Image\\‰i‰“.png", 52, TEX_SIZE_512);
 
-	Draw::LoadImageW(L"Image\\kiraraMT.png", 60, TEX_SIZE_128);
-	Draw::LoadImageW(L"Image\\kanataMT.png", 61, TEX_SIZE_128);
-	Draw::LoadImageW(L"Image\\towaMT.png", 62, TEX_SIZE_128);
-	Draw::LoadImageW(L"Image\\heroMT.png", 53, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\kiraraMT.png", 60, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\kanataMT.png", 61, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\towaMT.png", 62, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\heroMT.png", 53, TEX_SIZE_256);
 
 	Draw::LoadImageW(L"Image\\TemporaryPlacement.png", 6, TEX_SIZE_256);
 	Draw::LoadImageW(L"Image\\plant.png", 7, TEX_SIZE_32);
@@ -74,6 +74,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"Image\\taru.png", 40, TEX_SIZE_64);
 	Draw::LoadImageW(L"Image\\tana.png", 41, TEX_SIZE_256);
 	Draw::LoadImageW(L"Image\\food.png", 42, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\downstairs.png", 43, TEX_SIZE_128);
 
 	Draw::LoadImageW(L"Image\\mouse.png", 39, TEX_SIZE_128);
 
