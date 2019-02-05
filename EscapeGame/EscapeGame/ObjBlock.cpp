@@ -465,6 +465,7 @@ void CObjBlock::Action()
 			block_data_map[4][13][ 9] = 0;
 			towa->SetVec(2);
 			event_clock[6] = true;
+			event_clock[5] = true;
 		}
 		//‘t‘½‚ÅE‚Á‚½
 		else if (mapnum == 6)
@@ -478,6 +479,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][18] = 0;
 			kanata->SetVec(2);
 			event_clock[7] = true;
+			event_clock[5] = true;
 		}
 		//‚«‚ç‚ç‚ÅE‚Á‚½
 		else if (mapnum == 7)
@@ -491,6 +493,7 @@ void CObjBlock::Action()
 			block_data_map[4][7][ 1]  = 0;
 			kirara->SetVec(2);
 			event_clock[8] = true;
+			event_clock[5] = true;
 		}
 		//ŽålŒö‚ðÄ”z’u
 		block_data_map[4][7][8] = 2;
@@ -508,7 +511,7 @@ void CObjBlock::Action()
 		SetKirara();
 		SetTowa();
 		hero->SetVec(1);
-		event_clock[5] = true;
+		event_num = 0;
 	}
 	//ŒºŠÖ‚ÌŒ®ƒQƒbƒgŒãƒCƒxƒ“ƒgI—¹-----------------------
 
@@ -725,7 +728,7 @@ void CObjBlock::Action()
 		if (event_clock[3] == false)
 		{
 			kanata->SetKanataIn(true);
-			//m_map[mapnum][14][9] = 81;
+			m_map[mapnum][14][9] = 81;
 		}
 		else
 		{
@@ -771,7 +774,7 @@ void CObjBlock::Action()
 		if (event_clock[3] == false)
 		{
 			towa->SetTowaIn(true);
-			//m_map[mapnum][7][0] = 81;
+			m_map[mapnum][7][0] = 81;
 		}
 		else
 		{
@@ -817,7 +820,7 @@ void CObjBlock::Action()
 		if (event_clock[3] == false)
 		{
 			kirara->SetKiraraIn(true);
-			//m_map[mapnum][7][19] = 81;
+			m_map[mapnum][7][19] = 81;
 		}
 		else
 		{
@@ -2845,7 +2848,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//’I”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 37 && itm->CheckItem(9) && itm->CheckItem(10) && itm->CheckItem(11))
+		if (m_map[mapnum][hero_y - 1][hero_x] == 37 && itm->CheckItem(9) && itm->CheckItem(10) && itm->CheckItem(11)&& event_clock[3] == true)
 		{
 			bool gby = false;
 			itm->GetItem(3);
