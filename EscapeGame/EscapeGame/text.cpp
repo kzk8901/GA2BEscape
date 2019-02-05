@@ -2356,7 +2356,7 @@ void CObjText::Draw()
 	else if (text_m == 12)
 	{
 		Font::StrDraw(L"2F", 730, 503, 30, c);
-		Font::StrDraw(L"—â‘ Žº", 700, 553, 30, c);
+		Font::StrDraw(L"ŽÀŒ±Žº", 700, 553, 30, c);
 	}
 	//ˆÃ“]
 	if (text_m == -1 && word == 0 || text_m == -1 && word == 1 || text_m == -1 && word == 2||
