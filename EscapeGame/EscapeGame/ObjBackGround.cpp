@@ -76,7 +76,7 @@ void CObjBackGround::Draw()
 			//描画
 			Draw::Draw(10, &src, &dst, c, 0.0f);
 
-			//左移動マップ
+			//移動マップ
 			if (m_map[mapnum][i][j] == 83||
 				m_map[mapnum][i][j] == 84||
 				m_map[mapnum][i][j] == 85||
