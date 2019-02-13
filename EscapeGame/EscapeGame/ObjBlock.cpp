@@ -1403,7 +1403,7 @@ void CObjBlock::Draw()
 	//テキストウィンドウ2（縦向き）
 	src.m_top = 10.0f;
 	src.m_left = 10.0f;
-	src.m_right = 230.0f;
+	src.m_right = 225.0f;
 	src.m_bottom = 495.0f;
 	dst.m_top = 0.0f;
 	dst.m_left =640.0f;
