@@ -60,7 +60,7 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"Image\\spebookshelf.png", 21, TEX_SIZE_64);
 	Draw::LoadImageW(L"Image\\desk.png", 22, TEX_SIZE_256);
 	Draw::LoadImageW(L"Image\\safe.png", 23, TEX_SIZE_128);
-	Draw::LoadImageW(L"Image\\pasu.png", 24, TEX_SIZE_256);
+	Draw::LoadImageW(L"Image\\pasu.png", 24, TEX_SIZE_512);
 	Draw::LoadImageW(L"Image\\pasu2.png", 25, TEX_SIZE_256);
 	Draw::LoadImageW(L"Image\\book.png", 26, TEX_SIZE_512);
 	Draw::LoadImageW(L"Image\\memo1.png", 27, TEX_SIZE_512);
@@ -85,10 +85,8 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"Image\\mouse.png", 39, TEX_SIZE_128);
 
 	//アイテム関連
-	Draw::LoadImageW(L"Image\\inu.png", 30, TEX_SIZE_512);
-	Draw::LoadImageW(L"Image\\nezumi.png", 31, TEX_SIZE_512);
-	Draw::LoadImageW(L"Image\\usagi.png", 32, TEX_SIZE_512);
-	Draw::LoadImageW(L"Image\\tori.png", 33, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\animal.png", 30, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\animal2.png", 33, TEX_SIZE_512);
 
 	//SE設定
 	Audio::LoadAudio(10, L"Sound\\SE\\SEDoor.wav", EFFECT);
