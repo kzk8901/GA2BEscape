@@ -967,7 +967,7 @@ void CObjBlock::Action()
 		//永遠表示
 		towa->SetTowaIn(true);
 		//ドアを閉める
-		//m_map[mapnum][14][9] = 81;
+		m_map[mapnum][14][9] = 81;
 		//主人公の位置更新
 		SetHero();
 		//永遠の位置更新
@@ -1008,7 +1008,7 @@ void CObjBlock::Action()
 		//奏多表示
 		kanata->SetKanataIn(true);
 		//ドアを閉める
-		//m_map[mapnum][7][0] = 81;
+		m_map[mapnum][7][0] = 81;
 		//主人公の位置更新
 		SetHero();
 		//奏多の位置更新
@@ -1063,7 +1063,7 @@ void CObjBlock::Action()
 		//きらら表示
 		kirara->SetKiraraIn(true);
 		//ドアを閉める
-		//m_map[mapnum][7][19] = 81;
+		m_map[mapnum][7][19] = 81;
 		//主人公の位置更新
 		SetHero();
 		//きららの位置更新
