@@ -59,6 +59,8 @@ void CObjText::Action()
     //幕間 6 7
 	if (Input::GetVKey('Z') == true)
 		{
+		 if (Input::GetVKey(VK_RIGHT) == false&& Input::GetVKey(VK_LEFT) == false && Input::GetVKey(VK_UP) == false && Input::GetVKey(VK_DOWN) == false )
+		  {
 			if (m_key_flag == true)
 			{
 				if (skip_flag == false)
@@ -69,19 +71,19 @@ void CObjText::Action()
 						{
 							if (time > 210)
 							{
-								if (text_m == 0 && word < 10 || text_m == 3 && word < 23 ||text_m == 1 && word < 13 || 
-									text_m == 2 && word < 9  || text_m == -1 && word < 54 ||text_m == 5 && word < 20 ||
-									text_m == 4 && word < 19 || text_m == 7 && word < 9 ||text_m == 6 && word < 7 || 
-									text_m == 8 && word < 11 || text_m == 9 && word < 9 || text_m == 10 && word < 11 ||
-									text_m == 11 && word < 9 || text_m == 12 && word < 11 ||text_m == 13 && word < 9 || 
-									text_m == 14 && word < 18 || text_m == 15 && word < 19 ||text_m == 16 && word < 16)
+								if (text_m == 0  && word <10|| text_m == 3  && word <23|| text_m == 1  && word <13||
+									text_m == 2  && word <9 || text_m == -1 && word <54|| text_m == 5  && word <20||
+									text_m == 4  && word <19|| text_m == 7  && word <9 || text_m == 6  && word <7 ||
+									text_m == 8  && word <11|| text_m == 9  && word <9 || text_m == 10 && word <11||
+									text_m == 11 && word <9 || text_m == 12 && word <11|| text_m == 13 && word <9 ||
+									text_m == 14 && word <18|| text_m == 15 && word <19|| text_m == 16 && word <16)
 								{
 									word += 1;
 									m_key_flag = false;
 									time = 0;
 									skip_flag = true;
 								}
-							    if (kirara_flag==true)
+								if (kirara_flag == true)
 								{
 									kirara_word += 1;
 									m_key_flag = false;
@@ -130,19 +132,20 @@ void CObjText::Action()
 						}
 					}
 				}
-				else if(time<210)
+				else if (time < 210)
 				{
 					time = 210;
 				}
-				else if (time > 230 && time_x < 210&&time_x>0)
+				else if (time > 230 && time_x < 210 && time_x>0)
 				{
 					time_x = 0;
 				}
-				else if(time>230&&time_x<-20)
+				else if (time > 230 && time_x < -20)
 				{
-					skip_flag = false; 
+					skip_flag = false;
 				}
 			}
+		  }
 		}
 	else
 	{
@@ -194,7 +197,14 @@ void CObjText::Draw()
 	Font::StrDraw(L"・会話進行・調べる", 650, 410, 15, c_C);
 	Font::StrDraw(L"テンキー：", 650, 430, 15, c_C);
 	Font::StrDraw(L"入手アイテム詳細", 650, 450, 15, c_C);
-
+	Font::StrDraw(L"1", 645, 30, 15, c_C);
+	Font::StrDraw(L"2", 645, 94, 15, c_C);
+	Font::StrDraw(L"3", 645, 158, 15, c_C);
+	Font::StrDraw(L"4", 645, 222, 15, c_C);
+	Font::StrDraw(L"5", 785, 30, 15, c_C);
+	Font::StrDraw(L"6", 785, 94, 15, c_C);
+	Font::StrDraw(L"7", 785, 158, 15, c_C);
+	Font::StrDraw(L"8", 785, 222, 15, c_C);
 	//d 誰が話しているか確認
 	//1 鳳　2 きらら 3 奏多 4 永遠
 	//オープニング
@@ -595,7 +605,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"探索しよう！", x, y_a, 32, c);
+			Font::StrDraw(L"色々な場所を調べよう！", x, y_a, 32, c);
 		}
 	}
 	//きらら答え入力後-----------------------------------------------------------------------
@@ -762,7 +772,7 @@ void CObjText::Draw()
 			g = 3;
 			hero_move = true;
 			text_move = false;
-			Font::StrDraw(L"探索しよう！", x, y_a, 32, c);
+			Font::StrDraw(L"本棚を見てみよう！", x, y_a, 32, c);
 		}
 	}
 	//鍵入手後-----------------------------------------------------------------------
@@ -864,7 +874,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"探索しよう！", x, y_a, 32, c);
+			Font::StrDraw(L"隅まで調べよう！", x, y_a, 32, c);
 		}
 	}
 	//永遠マップ解除時-------------------------------------------------------------------------
@@ -987,7 +997,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			Font::StrDraw(L"探そう！", x, y_a, 32, c);
+			Font::StrDraw(L"本棚を探そう！", x, y_a, 32, c);
 		}
 	}
 	//２階層-----------------------------------------------------------------------
