@@ -190,12 +190,14 @@ void CObjText::Draw()
 	dst_A.m_bottom = 480.0f;
 	if (text_m == 10)
 	{
-		Font::StrDraw(L"Rキー：リセット", 650, 350, 15, c_C);
+		Font::StrDraw(L"Rキー：リセット", 650, 310, 15, c_C);
 	}
-	Font::StrDraw(L"十字キー：移動", 650, 370, 15, c_C);
-	Font::StrDraw(L"Zキー：決定", 650, 390, 15, c_C);
-	Font::StrDraw(L"・会話進行・調べる", 650, 410, 15, c_C);
-	Font::StrDraw(L"テンキー：", 650, 430, 15, c_C);
+	Font::StrDraw(L"十字キー:", 650, 330, 15, c_C);
+	Font::StrDraw(L"移動", 650, 350, 15, c_C);
+	Font::StrDraw(L"Zキー:", 650, 370, 15, c_C);
+	Font::StrDraw(L"決定・話しかける", 650, 390, 15, c_C);
+	Font::StrDraw(L"会話進行・調べる", 650, 410, 15, c_C); 
+	Font::StrDraw(L"テンキー:", 650, 430, 15, c_C);
 	Font::StrDraw(L"入手アイテム詳細", 650, 450, 15, c_C);
 
 	//d 誰が話しているか確認
@@ -982,7 +984,7 @@ void CObjText::Draw()
 		else if (word == 6)
 		{
 			d = 2;
-			Font::StrDraw(L"なによそれ", x, y_a, m_z, c);
+			Font::StrDraw(L"なによそれ!", x, y_a, m_z, c);
 		}
 		else if (word == 7 && item_word == 0 && kirara_word == 0 && kanata_word == 0 && towa_word == 0)
 		{
@@ -1910,7 +1912,7 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"本なんてあった？", x, y_a, m_z, c);
 	}
-	//きらら　2F会話
+	//きらら　2F部屋
 	else if (kirara_word == 1 && kirara_anger == true && kirara_num == 2)
 	{
 		hero_move = false;
@@ -1983,7 +1985,7 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"確か本棚がありましたね", x, y_a, m_z, c);
 	}
-	//奏多　2F会話
+	//奏多　2F部屋
 	else if (kanata_word == 1 && kanata_anger == true && kanata_num == 2)
 	{
 		hero_move = false;
@@ -2056,7 +2058,7 @@ void CObjText::Draw()
 		g = 2;
 		Font::StrDraw(L"花の本かー", x, y_a, m_z, c);
 	}
-	//永遠　2F会話
+	//永遠　2F部屋
 	else if (towa_word == 1 && towa_anger == true && towa_num == 2)
 	{
 		hero_move = false;
@@ -2259,6 +2261,10 @@ void CObjText::Draw()
 	{
 		Font::StrDraw(L"→自然", x, y_a, m_z, c);
 		Font::StrDraw(L"←宇宙", x, y_b, m_z, c);
+	}
+	else if (item_word == 27)
+	{
+		Font::StrDraw(L"何か逆側から飛び出ている", x, y_a, m_z, c);
 	}
 	//テキスト移動2行用
 	if (time < 210 && g == 1)

@@ -226,8 +226,9 @@ void CObjBlock::Init()
 	{
 		 1, 3, 5, 7, 8, 9,10,30,31,32,
 		33,34,35,36,37,38,39,40,41,42,
-		43,44,50,51,52,53,54,60,63,64,65,
-		66,67,68,70,71,72,73,74,75,80,81,82,
+		43,44,50,51,52,53,54,60,63,64,
+		65,66,67,68,70,71,72,73,74,75,
+		80,81,82,
 	};
 
 	for (int i = 0; i < 99; i++)
@@ -2538,7 +2539,7 @@ void CObjBlock::HeroAction(int vec)
 			;
 		}
 		//Œ®”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 4)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 4)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
 			itm->GetItem(1);
@@ -2546,7 +2547,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//‹UŒ®”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 6)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 6)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
 			itm->GetItem(2);
@@ -2554,7 +2555,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//‹U•Ç”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 7)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 7)
 		{
 			blockmovevec = 4;
 			blockx = hero_x + 1; blocky = hero_y;
@@ -2562,7 +2563,7 @@ void CObjBlock::HeroAction(int vec)
 			eventclockflag = true;
 		}
 		//Š÷‚Ìã‚Ìƒƒ‚‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 40)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 40)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 32;
 			itm->GetItem(5);
@@ -2570,7 +2571,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚2‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 41)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 41)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 33;
 			itm->GetItem(6);
@@ -2578,7 +2579,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚3‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 42)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 42)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 33;
 			itm->GetItem(7);
@@ -2586,7 +2587,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ãOŸ~‚Ì‰º‚Ìƒƒ‚4‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 46)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 46)
 		{
 			m_map[mapnum][hero_y][hero_x + 1] = 0;
 			itm->GetItem(8);
@@ -2594,39 +2595,61 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//šâ
-		if (m_map[mapnum][hero_y][hero_x + 1] == 34)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 34)
 		{
 			item_word = 3;
 		}
 		//ŠÏ—tA•¨
-		if (m_map[mapnum][hero_y][hero_x + 1] == 30)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 30)
 		{
 			item_word = 4;
 		}
 		//‹ó‚Ìƒ^ƒ“ƒX
-		if (m_map[mapnum][hero_y][hero_x + 1] == 31)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 31)
 		{
 			item_word = 6;
 		}
 		//ƒxƒbƒh
-		if (m_map[mapnum][hero_y][hero_x + 1] == 33)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 33)
 		{
 			item_word = 7;
 		}
 		//Š÷
-		if (m_map[mapnum][hero_y][hero_x + 1] == 32)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 32)
 		{
 			item_word = 9;
 		}
 		//–{’I
-		if (m_map[mapnum][hero_y][hero_x + 1] == 35)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 35|| m_map[mapnum][hero_y][hero_x + 1] == 37)
 		{
 			item_word = 10;
 		}
 		//‘å‚«‚¢Š÷
-		if (m_map[mapnum][hero_y][hero_x + 1] == 50)
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 50)
 		{
 			item_word = 13;
+		}
+		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 68)
+		{
+			m_map[mapnum][hero_y][hero_x + 1] = 32;
+			itm->GetItem(12);
+		}
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 73)
+		{
+			item_word = 22;
+		}
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 74)
+		{
+			item_word = 23;
+		}
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 75)
+		{
+			item_word = 24;
+		}
+		else
+		{
+			item_word = 0;
 		}
 		//‚«‚ç‚ç
 		if (m_map[mapnum][hero_y][hero_x + 1] == 8)
@@ -2655,24 +2678,6 @@ void CObjBlock::HeroAction(int vec)
 		{
 			kanata_flag = false;
 		}
-		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x + 1] == 68)
-		{
-			m_map[mapnum][hero_y][hero_x + 1] = 32;
-			itm->GetItem(12);
-		}
-		if (m_map[mapnum][hero_y][hero_x + 1] == 73)
-		{
-			item_word=22;
-		}
-		if (m_map[mapnum][hero_y][hero_x + 1] == 74)
-		{
-			item_word = 23;
-		}
-		if (m_map[mapnum][hero_y][hero_x + 1] == 75)
-		{
-			item_word = 24;
-		}
 	}
 	//¶
 	if (vec == 2)
@@ -2682,7 +2687,7 @@ void CObjBlock::HeroAction(int vec)
 			;
 		}
 		//Œ®”»’è
-		if (m_map[mapnum][hero_y][hero_x - 1] == 4)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 4)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(1);
@@ -2690,7 +2695,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//‹UŒ®”»’è
-		if (m_map[mapnum][hero_y][hero_x - 1] == 6)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 6)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(2);
@@ -2698,7 +2703,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//Š÷‚Ìã‚Ìƒƒ‚1‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x - 1] == 40)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 40)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 32;
 			itm->GetItem(5);
@@ -2706,7 +2711,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚2‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x - 1] == 41)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 41)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 33;
 			itm->GetItem(6);
@@ -2714,7 +2719,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚3‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x - 1] == 42)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 42)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 33;
 			itm->GetItem(7);
@@ -2722,7 +2727,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ãOŸ~‚Ì‰º‚Ìƒƒ‚4‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x - 1] == 46)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 46)
 		{
 			m_map[mapnum][hero_y][hero_x - 1] = 0;
 			itm->GetItem(8);
@@ -2730,39 +2735,57 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ŠÏ—tA•¨
-		if (m_map[mapnum][hero_y][hero_x - 1] == 30)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 30)
 		{
 			item_word = 4;
 		}
 		//‹ó‚Ìƒ^ƒ“ƒX
-		if (m_map[mapnum][hero_y][hero_x - 1] == 31)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 31)
 		{
 			item_word = 6;
 		}
 		//šâ
-		if (m_map[mapnum][hero_y][hero_x - 1] == 34)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 34)
 		{
 			item_word = 3;
 		}
 		//ƒxƒbƒh
-		if (m_map[mapnum][hero_y][hero_x - 1] == 33)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 33)
 		{
 			item_word = 7;
 		}
 		//’I
-		if (m_map[mapnum][hero_y][hero_x - 1] == 35)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 35|| m_map[mapnum][hero_y][hero_x - 1] == 37)
 		{
 			item_word = 10;
 		}
 		//“®‚­–{’I
-		if (m_map[mapnum][hero_y][hero_x - 1] == 39)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 39)
 		{
 			item_word = 11;
 		}
 		//“®‚­–{’I
-		if (m_map[mapnum][hero_y][hero_x - 1] == 50)
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 50)
 		{
 			item_word = 13;
+		}
+		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 68)
+		{
+			m_map[mapnum][hero_y][hero_x - 1] = 32;
+			itm->GetItem(12);
+		}
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 70)
+		{
+			item_word = 25;
+		}
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 72)
+		{
+			item_word = 26;
+		}
+		else
+		{
+			item_word = 0;
 		}
 		//‚«‚ç‚ç
 		if (m_map[mapnum][hero_y][hero_x - 1] == 8)
@@ -2791,20 +2814,6 @@ void CObjBlock::HeroAction(int vec)
 		{
 			kanata_flag = false;
 		}
-		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y][hero_x - 1] == 68)
-		{
-			m_map[mapnum][hero_y][hero_x - 1] = 32;
-			itm->GetItem(12);
-		}
-		if (m_map[mapnum][hero_y][hero_x - 1] == 70)
-		{
-			item_word = 25;
-		}
-		if (m_map[mapnum][hero_y][hero_x - 1] == 72)
-		{
-			item_word = 26;
-		}
 	}
 	//ã
 	if (vec == 3)
@@ -2827,7 +2836,7 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y - 1][hero_x] = 99;
 		}
 		//Œ®”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 4)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 4)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(1);
@@ -2835,7 +2844,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒiƒ“ƒo[ƒƒbƒNƒhƒA”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 5)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 5)
 		{
 			//‰ð‚¢‚Ä‚éŠÔ“®‚©‚È‚¢‚æ‚¤‚É‚·‚é
 			hero->SetActionflag(true);
@@ -2845,7 +2854,7 @@ void CObjBlock::HeroAction(int vec)
 			hero->SetNumlock(true);
 		}
 		//‹UŒ®”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 6)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 6)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(2);
@@ -2853,7 +2862,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//’I”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 37 && itm->CheckItem(9) && itm->CheckItem(10) && itm->CheckItem(11)&& event_clock[3] == true)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 37 && itm->CheckItem(9) && itm->CheckItem(10) && itm->CheckItem(11)&& event_clock[3] == true)
 		{
 			bool gby = false;
 			itm->GetItem(3);
@@ -2882,7 +2891,7 @@ void CObjBlock::HeroAction(int vec)
 			item_word = 2;
 		}
 		//‹àŒÉ”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 51 && itm->CheckItem(4))
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 51 && itm->CheckItem(4))
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 52;
 			event_num = 13;
@@ -2897,7 +2906,7 @@ void CObjBlock::HeroAction(int vec)
 			item_word = 15;
 		}
 		//’I”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 38)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 38)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 36;
 			itm->GetItem(4);
@@ -2905,12 +2914,12 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//‹ó‚Ì’I”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 35)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 35)
 		{
 			item_word = 1;
 		}
 		//“®‚­’I”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 39 && itm->CheckItem(3))
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 39 && itm->CheckItem(3))
 		{
 			blockx = hero_x; blocky = hero_y - 1;
 			itm->DeleteItem(3, false);
@@ -2923,7 +2932,7 @@ void CObjBlock::HeroAction(int vec)
 			item_word = 12;
 		}
 		//Š÷‚Ìã‚Ìƒƒ‚1‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 40)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 40)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 32;
 			itm->GetItem(5);
@@ -2931,7 +2940,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚2‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 41)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 41)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 33;
 			itm->GetItem(6);
@@ -2939,7 +2948,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚3‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 42)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 42)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 33;
 			itm->GetItem(7);
@@ -2947,7 +2956,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ãOŸ~‚Ì‰º‚Ìƒƒ‚4‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 46)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 46)
 		{
 			m_map[mapnum][hero_y - 1][hero_x] = 0;
 			itm->GetItem(8);
@@ -2955,7 +2964,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//’I‚Ìƒiƒ“ƒo[ƒƒbƒN‰ðœ
-		if (m_map[mapnum][hero_y - 1][hero_x] == 43)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 43)
 		{
 			text_hide = true;
 			//‰ð‚¢‚Ä‚éŠÔ“®‚©‚È‚¢‚æ‚¤‚É‚·‚é
@@ -2968,7 +2977,7 @@ void CObjBlock::HeroAction(int vec)
 			lockpasu = 2;
 		}
 		//’I‚Ìƒiƒ“ƒo[ƒƒbƒN‰ðœ
-		if (m_map[mapnum][hero_y - 1][hero_x] == 44)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 44)
 		{
 			text_hide = true;
 			//‰ð‚¢‚Ä‚éŠÔ“®‚©‚È‚¢‚æ‚¤‚É‚·‚é
@@ -2981,34 +2990,74 @@ void CObjBlock::HeroAction(int vec)
 			lockpasu = 1;
 		}
 		//šâ
-		if (m_map[mapnum][hero_y - 1][hero_x] == 34)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 34)
 		{
 			item_word = 3;
 		}
 		//ŠÏ—tA•¨
-		if (m_map[mapnum][hero_y - 1][hero_x] == 30)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 30)
 		{
 			item_word = 4;
 		}
 		//‹ó‚Ìƒ^ƒ“ƒX
-		if (m_map[mapnum][hero_y - 1][hero_x] == 31)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 31)
 		{
 			item_word = 5;
 		}
 		//ƒxƒbƒh
-		if (m_map[mapnum][hero_y - 1][hero_x] == 33)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 33)
 		{
 			item_word = 8;
 		}
 		//Š÷
-		if (m_map[mapnum][hero_y - 1][hero_x] == 32)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 32)
 		{
 			item_word = 9;
 		}
 		//Š÷
-		if (m_map[mapnum][hero_y - 1][hero_x] == 50)
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 50)
 		{
 			item_word = 13;
+		}
+		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 68)
+		{
+			m_map[mapnum][hero_y - 1][hero_x] = 32;
+			itm->GetItem(12);
+		}
+		//¶’†’i–{’I
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 70)
+		{
+			item_word = 16;
+		}
+		//ƒƒ‚‹²‚Ü‚è–{’I‚Ì—×
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 71)
+		{
+			item_word = 17;
+		}
+		//¶‰º’i–{’I
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 72)
+		{
+			item_word = 18;
+		}
+		//‰E‰º’i–{’I
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 73)
+		{
+			item_word = 19;
+		}
+		//¶‰º’i–{’I
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 74)
+		{
+			item_word = 20;
+		}
+		//¶‰º’i–{’I
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 75)
+		{
+			item_word = 21;
+		}
+		else
+		{
+			item_word = 0;
 		}
 		//‚«‚ç‚ç
 		if (m_map[mapnum][hero_y - 1][hero_x] == 8)
@@ -3037,42 +3086,6 @@ void CObjBlock::HeroAction(int vec)
 		{
 			kanata_flag = false;
 		}
-		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y - 1][hero_x] == 68)
-		{
-			m_map[mapnum][hero_y - 1][hero_x] = 32;
-			itm->GetItem(12);
-		}
-		//¶’†’i–{’I
-		if (m_map[mapnum][hero_y - 1][hero_x] == 70)
-		{
-			item_word = 16;
-		}
-		//ƒƒ‚‹²‚Ü‚è–{’I‚Ì—×
-		if (m_map[mapnum][hero_y - 1][hero_x] == 71)
-		{
-			item_word = 17;
-		}
-		//¶‰º’i–{’I
-		if (m_map[mapnum][hero_y - 1][hero_x] == 72)
-		{
-			item_word = 18;
-		}
-		//‰E‰º’i–{’I
-		if (m_map[mapnum][hero_y - 1][hero_x] == 73)
-		{
-			item_word = 19;
-		}
-		//¶‰º’i–{’I
-		if (m_map[mapnum][hero_y - 1][hero_x] == 74)
-		{
-			item_word = 20;
-		}
-		//¶‰º’i–{’I
-		if (m_map[mapnum][hero_y - 1][hero_x] == 75)
-		{
-			item_word = 21;
-		}
 	}
 	//‰º
 	if (vec == 4)
@@ -3082,7 +3095,7 @@ void CObjBlock::HeroAction(int vec)
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 		}
 		//Œ®”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 4)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 4)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(1);
@@ -3090,7 +3103,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//‹UŒ®”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 6)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 6)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(2);
@@ -3098,7 +3111,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//Š÷‚Ìã‚Ìƒƒ‚‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 40)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 40)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 32;
 			itm->GetItem(5);
@@ -3106,7 +3119,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚2‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 41)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 41)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 33;
 			itm->GetItem(6);
@@ -3114,7 +3127,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ƒxƒbƒh‚Ìã‚Ìƒƒ‚3‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 42)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 42)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 33;
 			itm->GetItem(7);
@@ -3122,7 +3135,7 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ãOŸ~‚Ì‰º‚Ìƒƒ‚4‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 46)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 46)
 		{
 			m_map[mapnum][hero_y + 1][hero_x] = 0;
 			itm->GetItem(8);
@@ -3130,26 +3143,75 @@ void CObjBlock::HeroAction(int vec)
 			Audio::Start(14);
 		}
 		//ŠÏ—tA•¨
-		if (m_map[mapnum][hero_y + 1][hero_x] == 30)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 30)
 		{
 			item_word = 4;
 		}
 		//Š÷
-		if (m_map[mapnum][hero_y + 1][hero_x] == 32)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 32)
 		{
 			item_word = 9;
 		}
 		//‘å‚«‚¢Š÷
-		if (m_map[mapnum][hero_y + 1][hero_x] == 50)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 50)
 		{
 			item_word = 13;
 		}
 		//‹ó‚Ì’I
-		if (m_map[mapnum][hero_y + 1][hero_x] == 35|| m_map[mapnum][hero_y + 1][hero_x] == 70 || m_map[mapnum][hero_y + 1][hero_x] == 71
-			|| m_map[mapnum][hero_y + 1][hero_x] == 72 || m_map[mapnum][hero_y + 1][hero_x] == 73 || m_map[mapnum][hero_y + 1][hero_x] == 74
-			|| m_map[mapnum][hero_y + 1][hero_x] == 75)
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 35)
 		{
 			item_word = 14;
+		}
+		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 68)
+		{
+			m_map[mapnum][hero_y + 1][hero_x] = 32;
+			itm->GetItem(12);
+		}
+		//ŒºŠÖ‚ðŠJ‚¯‚é”»’è
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 82 && itm->CheckItem(12))
+		{
+			itm->DeleteItem(12, false);
+			event_num = 101;
+		}
+		//¶’†’i–{’I
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 70)
+		{
+			item_word = 16;
+		}
+		//ƒƒ‚‹²‚Ü‚è–{’I‚Ì—×
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 71)
+		{
+			item_word = 17;
+		}
+		//¶‰º’i–{’I
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 72)
+		{
+			item_word = 18;
+		}
+		//‰E‰º’i–{’I
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 73)
+		{
+			item_word = 19;
+		}
+		//¶‰º’i–{’I
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 74)
+		{
+			item_word = 20;
+		}
+		//¶‰º’i–{’I
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 75)
+		{
+			item_word = 21;
+		}
+		//–{’I
+		else if (m_map[mapnum][hero_y + 1][hero_x] == 38)
+		{
+			item_word = 27;
+		}
+		else
+		{
+			item_word = 0;
 		}
 		//‚«‚ç‚ç
 		if (m_map[mapnum][hero_y + 1][hero_x] == 8)
@@ -3177,18 +3239,6 @@ void CObjBlock::HeroAction(int vec)
 		else
 		{
 			kanata_flag = false;
-		}
-		//Š÷‚Ìã‚ÌŒ®‚ðŽæ‚é”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 68)
-		{
-			m_map[mapnum][hero_y + 1][hero_x] = 32;
-			itm->GetItem(12);
-		}
-		//ŒºŠÖ‚ðŠJ‚¯‚é”»’è
-		if (m_map[mapnum][hero_y + 1][hero_x] == 82 && itm->CheckItem(12))
-		{
-			itm->DeleteItem(12, false);
-			event_num = 101;
 		}
 	}
 }

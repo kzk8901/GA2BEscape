@@ -321,7 +321,7 @@ void CObjHero::Action()
 					}
 				}
 				//ã‰Ÿ‚µ‚½‚Æ‚«
-				else if (Input::GetVKey(VK_UP))
+				else if (Input::GetVKey(VK_UP) == true)
 				{
 					//ã‚ÉƒuƒƒbƒN‚ª‚È‚¯‚ê‚Î‚»‚Ì‚Ü‚Ü“®‚­
 					if (block->ThereIsBlock(3, 1) == true)
