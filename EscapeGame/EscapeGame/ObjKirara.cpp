@@ -5,6 +5,7 @@
 #include"GameL\Scenemanager.h"
 #include"GameL\DrawFont.h"
 #include"GameL\UserData.h"
+#include "GameL\Audio.h"
 
 #include"ObjKirara.h"
 #include "GameHead.h"
@@ -95,6 +96,7 @@ void CObjKirara::Action()
 					eventnumber = 0;
 					eventflag = false;
 					skip_anime = false;
+					Audio::Start(10);
 				}
 			  }
 		   }

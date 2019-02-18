@@ -33,14 +33,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ObjBGMusic.h" />
     <ClInclude Include="ObjBackGround.h" />
     <ClInclude Include="ObjBlock.h" />
     <ClInclude Include="GameHead.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="text.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ObjBGMusic.cpp" />
     <ClCompile Include="ObjBackGround.cpp" />
     <ClCompile Include="ObjBlock.cpp" />
     <ClCompile Include="GameL\Audio.cpp" />

@@ -68,7 +68,7 @@ int block_data_map[8][15][20] =
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
-		{ 1, 0, 0, 0, 0,33,41, 0, 0,43,34, 0, 0,42,33, 0, 0, 0, 0, 1, },// 1
+		{ 1, 0, 0, 0, 0,33,33, 0, 0,43,34, 0, 0,33,33, 0, 0, 0, 0, 1, },// 1
 		{ 1, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 0, 0,33,33, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0,45,33,33, 0, 0, 0, 0, 0, 0,33,33,46, 0, 0, 0, 1, },// 3
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 1, },// 4
@@ -219,7 +219,7 @@ void CObjBlock::Init()
 
 	((UserData*)Save::GetData())->number[0] = 402;
 	((UserData*)Save::GetData())->number[1] = 402;
-	((UserData*)Save::GetData())->number[2] = 112;
+	((UserData*)Save::GetData())->number[2] = 310;
 
 	//当たり判定のあるブロックはナンバーをここに入れる
 	int blocknumber[99] =
@@ -968,7 +968,7 @@ void CObjBlock::Action()
 		//永遠表示
 		towa->SetTowaIn(true);
 		//ドアを閉める
-		//m_map[mapnum][14][9] = 81;
+		m_map[mapnum][14][9] = 81;
 		//主人公の位置更新
 		SetHero();
 		//永遠の位置更新
@@ -1009,7 +1009,7 @@ void CObjBlock::Action()
 		//奏多表示
 		kanata->SetKanataIn(true);
 		//ドアを閉める
-		//m_map[mapnum][7][0] = 81;
+		m_map[mapnum][7][0] = 81;
 		//主人公の位置更新
 		SetHero();
 		//奏多の位置更新
@@ -1064,7 +1064,7 @@ void CObjBlock::Action()
 		//きらら表示
 		kirara->SetKiraraIn(true);
 		//ドアを閉める
-		//m_map[mapnum][7][19] = 81;
+		m_map[mapnum][7][19] = 81;
 		//主人公の位置更新
 		SetHero();
 		//きららの位置更新
@@ -1083,7 +1083,8 @@ void CObjBlock::Action()
 	if ((mouse_x + 1 == kirara_x && mouse_y == kirara_y) ||
 		(mouse_x - 1 == kirara_x && mouse_y == kirara_y) ||
 		(mouse_x == kirara_x && mouse_y + 1 == kirara_y) ||
-		(mouse_x == kirara_x && mouse_y - 1 == kirara_y))
+		(mouse_x == kirara_x && mouse_y - 1 == kirara_y) ||
+		(mouse_x == hero_x && mouse_y == hero_y))
 	{
 		cought = true;
 		if(itm->CheckItem(12)==false)
@@ -1097,7 +1098,7 @@ void CObjBlock::Action()
 		int mousesvec = mouse->GetSavevec();
 		int loop = 0;
 
-		while (mousemove == 0 && loop < 4)
+		while (mousemove == 0 && loop < 5)
 		{
 			//右チェック(左に行く処理)
 			if (((mouse_x + 1 <= hero_x && mouse_x + 3 >= hero_x &&
@@ -1115,8 +1116,8 @@ void CObjBlock::Action()
 					}
 				}
 				if ((tib == true && tiherovec != 2 && mousesvec != 1 && loop < 2 ) ||
-					(tib == true && tiherovec != 2 && loop == 2) || 
-					(tib == true && loop == 3))
+					(tib == true && tiherovec != 2 && loop == 3) || 
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
@@ -1146,9 +1147,10 @@ void CObjBlock::Action()
 						tib = false;
 					}
 				}
-				if ((tib == true && tiherovec != 1 && mousesvec != 2 && loop < 2) ||
-					(tib == true && tiherovec != 1 && loop == 2) ||
-					(tib == true && loop == 3))
+				if ((tib == true && mouse_x + 1 != 12  && mouse_y <= 4 && tiherovec != 1 && mousesvec != 2 && loop < 2) ||
+					(tib == true && mouse_x + 1 != 12 && mouse_y <= 4 && tiherovec != 1 && loop == 2) ||
+					(tib == true && tiherovec != 1 && loop == 3) ||
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
@@ -1179,8 +1181,8 @@ void CObjBlock::Action()
 					}
 				}
 				if ((tib == true && tiherovec != 4 && mousesvec != 3 && loop < 2) ||
-					(tib == true && tiherovec != 4 && loop == 2) ||
-					(tib == true && loop == 3))
+					(tib == true && tiherovec != 4 && loop == 3) ||
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
@@ -1211,8 +1213,8 @@ void CObjBlock::Action()
 					}
 				}
 				if ((tib == true && tiherovec != 3 && mousesvec != 4 && loop < 2) ||
-					(tib == true && tiherovec != 3 && loop == 2) ||
-					(tib == true && loop == 3))
+					(tib == true && tiherovec != 3 && loop == 3) ||
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
@@ -1404,7 +1406,7 @@ void CObjBlock::Draw()
 	//テキストウィンドウ2（縦向き）
 	src.m_top = 10.0f;
 	src.m_left = 10.0f;
-	src.m_right = 230.0f;
+	src.m_right = 225.0f;
 	src.m_bottom = 495.0f;
 	dst.m_top = 0.0f;
 	dst.m_left =640.0f;
@@ -2047,8 +2049,8 @@ void CObjBlock::Draw()
 			//切り取り位置の設定
 			src.m_top = 0.0f;
 			src.m_left = 0.0f;
-			src.m_right = src.m_left + 256.0f;
-			src.m_bottom = src.m_top + 256.0f;
+			src.m_right = src.m_left + 512.0f;
+			src.m_bottom = src.m_top + 512.0f;
 
 			//表示位置の設定
 			dst.m_top = 80.0f;

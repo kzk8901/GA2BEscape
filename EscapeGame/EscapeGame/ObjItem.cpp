@@ -18,6 +18,7 @@ void CObjItem::Init()
 	{
 		((UserData*)Save::GetData())->item[i] = 0;
 	}
+	((UserData*)Save::GetData())->item[0] = 3;
 }
 
 void CObjItem::Action()
@@ -70,7 +71,7 @@ void CObjItem::Draw()
 				src.m_bottom = 512.0f;
 				Draw::Draw(30, &src, &dst, c, 0.0f);
 			}
-			if (((UserData*)Save::GetData())->item[i] == 6)
+			/*if (((UserData*)Save::GetData())->item[i] == 6)
 			{
 				src.m_top = 0.0f;
 				src.m_left = 0.0f;
@@ -85,7 +86,7 @@ void CObjItem::Draw()
 				src.m_right = 512.0f;
 				src.m_bottom = 512.0f;
 				Draw::Draw(32, &src, &dst, c, 0.0f);
-			}
+			}*/
 			if (((UserData*)Save::GetData())->item[i] == 8)
 			{
 				src.m_top = 0.0f;
@@ -196,24 +197,24 @@ void CObjItem::Draw()
 			src.m_bottom = 512.0f;
 			Draw::Draw(30, &src, &dst, c, 0.0f);
 		}
-		if (ShowItem == 6)
-		{
-			//ネズミ
-			src.m_top = 0.0f;
-			src.m_left = 0.0f;
-			src.m_right = 512.0f;
-			src.m_bottom = 512.0f;
-			Draw::Draw(31, &src, &dst, c, 0.0f);
-		}
-		if (ShowItem == 7)
-		{
-			//ウサギ
-			src.m_top = 0.0f;
-			src.m_left = 0.0f;
-			src.m_right = 512.0f;
-			src.m_bottom = 512.0f;
-			Draw::Draw(32, &src, &dst, c, 0.0f);
-		}
+		//if (ShowItem == 6)
+		//{
+		//	//ネズミ
+		//	src.m_top = 0.0f;
+		//	src.m_left = 0.0f;
+		//	src.m_right = 512.0f;
+		//	src.m_bottom = 512.0f;
+		//	Draw::Draw(31, &src, &dst, c, 0.0f);
+		//}
+		//if (ShowItem == 7)
+		//{
+		//	//ウサギ
+		//	src.m_top = 0.0f;
+		//	src.m_left = 0.0f;
+		//	src.m_right = 512.0f;
+		//	src.m_bottom = 512.0f;
+		//	Draw::Draw(32, &src, &dst, c, 0.0f);
+		//}
 		if (ShowItem == 8)
 		{
 			//鳥

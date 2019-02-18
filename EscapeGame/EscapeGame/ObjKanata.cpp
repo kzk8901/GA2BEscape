@@ -5,6 +5,7 @@
 #include"GameL\Scenemanager.h"
 #include"GameL\DrawFont.h"
 #include"GameL\UserData.h"
+#include"GameL\Audio.h"
 
 #include "ObjKanata.h"
 #include "GameHead.h"
@@ -100,6 +101,7 @@ void CObjKanata::Action()
 					eventflag = false;
 					eventnumber = 0;
 					skip_anime = false;
+					Audio::Start(18);
 				}
 			}
 		}
