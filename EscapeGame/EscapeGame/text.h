@@ -46,4 +46,6 @@ private:
 	int towa_count;//永遠のしゃべりかけた回数
 	bool f;//アニメーション中テキストを進めなくするフラグ
 	bool ending;
+	bool onceSE;
+	bool twiceSE;
 };

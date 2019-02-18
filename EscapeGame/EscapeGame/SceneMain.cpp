@@ -88,6 +88,17 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"Image\\animal.png", 30, TEX_SIZE_512);
 	Draw::LoadImageW(L"Image\\animal2.png", 33, TEX_SIZE_512);
 
+	//BGM設定
+	Audio::LoadAudio(0, L"Sound\\BGM\\BGMOpening.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(1, L"Sound\\BGM\\BGMNowopening.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(2, L"Sound\\BGM\\BGMAdventure.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(3, L"Sound\\BGM\\BGMEvent_kanata.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(4, L"Sound\\BGM\\BGMEvent_kirara.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(5, L"Sound\\BGM\\BGMEvent_towa.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(6, L"Sound\\BGM\\BGMEnding_kanata.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(7, L"Sound\\BGM\\BGMEnding_kirara.wav", SOUND_TYPE::BACK_MUSIC);
+	Audio::LoadAudio(8, L"Sound\\BGM\\BGMEnding_towa.wav", SOUND_TYPE::BACK_MUSIC);
+
 	//SE設定
 	Audio::LoadAudio(10, L"Sound\\SE\\SEDoor.wav", EFFECT);
 	Audio::LoadAudio(11, L"Sound\\SE\\SECorrect.wav", EFFECT);
@@ -97,6 +108,7 @@ void CSceneMain::InitScene()
 	Audio::LoadAudio(15, L"Sound\\SE\\SEMouse.wav", EFFECT);
 	Audio::LoadAudio(16, L"Sound\\SE\\SEMovesound.wav", EFFECT);
 	Audio::LoadAudio(17, L"Sound\\SE\\SEItemcheck.wav", EFFECT);
+	Audio::LoadAudio(18, L"Sound\\SE\\SELockdoor.wav", EFFECT);
 
 	//アイテムオブジェクト作成
 	CObjItem* obji = new CObjItem();
@@ -133,6 +145,10 @@ void CSceneMain::InitScene()
 	//textオブジェクト作成
 	CObjText* objt = new CObjText();
 	Objs::InsertObj(objt, OBJ_TEXT, 100);
+
+	//音楽オブジェクト
+	CObjBGMusic* objbgm = new CObjBGMusic();
+	Objs::InsertObj(objbgm, OBJ_AUDIO, 1);
 
 }
 

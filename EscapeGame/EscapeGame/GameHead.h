@@ -15,6 +15,7 @@ enum OBJ_NAME
 	OBJ_KANATA,
 	OBJ_TOWA,
 	OBJ_MOUSE,
+	OBJ_AUDIO,
 
 	OBJ_TITLE,
 };
@@ -72,6 +73,7 @@ struct UserData
 #include"ObjKanata.h"
 #include"ObjTowa.h"
 #include "Objmouse.h"
+#include "ObjBGMusic.h"
 
 #include"ObjTitle.h"
 //------------------------------------------------
