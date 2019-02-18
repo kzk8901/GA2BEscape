@@ -47,6 +47,7 @@ void CObjText::Init()
 	kanata_count = 0;
 	towa_count = 0;
 	onceSE = false;
+	twiceSE = false;
 }
 //ƒAƒNƒVƒ‡ƒ“
 void CObjText::Action()
