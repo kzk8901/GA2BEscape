@@ -465,7 +465,6 @@ void CObjText::Draw()
 		else if (word == 38)
 		{
 			d = 4;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"でも、こんな機会滅多にないし", x, y_a, m_z, c);
 			Font::StrDraw(L"僕は探索に賛成かな", x, y_b, m_z, c);
 		}
@@ -576,6 +575,7 @@ void CObjText::Draw()
 				Audio::Start(10);
 				onceSE = true;
 			}
+			bgm->ChangeBGM(2);
 			Font::StrDraw(L"部屋をえらんで探索しよう", x, y_a, 32, c);
 			text_loop = false;
 		}
@@ -591,7 +591,6 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(4);
 			onceSE = false;
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
@@ -645,7 +644,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"色々な場所を調べよう！", x, y_a, 32, c);
 		}
 	}
@@ -657,7 +655,6 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(4);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		if (word == 12)
@@ -726,7 +723,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"他の部屋を探しに行こう", x, y_a, 32, c);
 			text_loop = false;
 		}
@@ -743,7 +739,6 @@ void CObjText::Draw()
 			hero_move = false;
 			text_move = true;
 			onceSE = false;
-			bgm->ChangeBGM(3);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		if (word == 1)
@@ -817,7 +812,6 @@ void CObjText::Draw()
 			g = 3;
 			hero_move = true;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"本棚を見てみよう！", x, y_a, 32, c);
 		}
 	}
@@ -829,7 +823,6 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(3);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 15)
@@ -859,7 +852,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"他の部屋を探しに行こう", x, y_a, 32, c);
 			text_loop = false;
 		}
@@ -876,7 +868,6 @@ void CObjText::Draw()
 			hero_move = false;
 			text_move = true;
 			onceSE = false;
-			bgm->ChangeBGM(5);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 1)
@@ -924,7 +915,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"隅まで調べよう！", x, y_a, 32, c);
 		}
 	}
@@ -936,7 +926,6 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(5);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 11)
@@ -991,7 +980,6 @@ void CObjText::Draw()
 			g = 3;
 			text_move = false;
 			hero_move = true;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"他の部屋を探しに行こう", x, y_a, 32, c);
 			text_loop = false;
 		}
@@ -1135,6 +1123,11 @@ void CObjText::Draw()
 			f = false;
 			anime_move = 4;
 			d = 1;
+			if (onceSE == false)
+			{
+				Audio::Start(10);
+				onceSE = true;
+			}
 			Font::StrDraw(L"(俺は誰かを手伝いに行こう）", x, y_a, m_z, c);
 		}
 		else if (word ==9 && item_word == 0 && kirara_word == 0 && kanata_word == 0 && towa_word == 0)
@@ -1143,6 +1136,7 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
+			onceSE = false;
 			Font::StrDraw(L"部屋をえらんで探索しよう", x, y_a, 32, c);
 			text_loop = false;
 		}
@@ -1216,7 +1210,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"ネズミを捕まえよう！", x, y_a, 32, c);
 		}
 	}
@@ -1228,7 +1221,7 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(4);
+			bgm->ChangeBGM(7);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 1)
@@ -1361,7 +1354,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"整理しよう！", x, y_a, 32, c);
 		}
 	}
@@ -1374,7 +1366,7 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(3);
+			bgm->ChangeBGM(6);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 1)
@@ -1507,7 +1499,6 @@ void CObjText::Draw()
 			d = 0;
 			g = 3;
 			text_move = false;
-			bgm->ChangeBGM(2);
 			Font::StrDraw(L"滑ってみよう！", x, y_a, 32, c);
 		}
 	}
@@ -1519,7 +1510,7 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(5);
+			bgm->ChangeBGM(8);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, m_z, c);
 		}
 		else if (word == 1)
@@ -1592,7 +1583,6 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(7);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, m_z, c);
 		}
 		else if (word == 1)
@@ -1698,7 +1688,6 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(6);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 1)
@@ -1814,7 +1803,6 @@ void CObjText::Draw()
 			item_word = 0;
 			hero_move = false;
 			text_move = true;
-			bgm->ChangeBGM(8);
 			Font::StrDraw(L"Zキーで会話進行", x, y_a, 32, c);
 		}
 		else if (word == 1)

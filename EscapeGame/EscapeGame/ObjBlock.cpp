@@ -1096,7 +1096,7 @@ void CObjBlock::Action()
 		int mousesvec = mouse->GetSavevec();
 		int loop = 0;
 
-		while (mousemove == 0 && loop < 4)
+		while (mousemove == 0 && loop < 5)
 		{
 			//右チェック(左に行く処理)
 			if (((mouse_x + 1 <= hero_x && mouse_x + 3 >= hero_x &&
@@ -1114,8 +1114,8 @@ void CObjBlock::Action()
 					}
 				}
 				if ((tib == true && tiherovec != 2 && mousesvec != 1 && loop < 2 ) ||
-					(tib == true && tiherovec != 2 && loop == 2) || 
-					(tib == true && loop == 3))
+					(tib == true && tiherovec != 2 && loop == 3) || 
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
@@ -1145,9 +1145,10 @@ void CObjBlock::Action()
 						tib = false;
 					}
 				}
-				if ((tib == true && tiherovec != 1 && mousesvec != 2 && loop < 2) ||
-					(tib == true && tiherovec != 1 && loop == 2) ||
-					(tib == true && loop == 3))
+				if ((tib == true && mouse_x + 1 != 12  && mouse_y <= 4 && tiherovec != 1 && mousesvec != 2 && loop < 2) ||
+					(tib == true && mouse_x + 1 != 12 && mouse_y <= 4 && tiherovec != 1 && loop == 2) ||
+					(tib == true && tiherovec != 1 && loop == 3) ||
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
@@ -1178,8 +1179,8 @@ void CObjBlock::Action()
 					}
 				}
 				if ((tib == true && tiherovec != 4 && mousesvec != 3 && loop < 2) ||
-					(tib == true && tiherovec != 4 && loop == 2) ||
-					(tib == true && loop == 3))
+					(tib == true && tiherovec != 4 && loop == 3) ||
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
@@ -1210,8 +1211,8 @@ void CObjBlock::Action()
 					}
 				}
 				if ((tib == true && tiherovec != 3 && mousesvec != 4 && loop < 2) ||
-					(tib == true && tiherovec != 3 && loop == 2) ||
-					(tib == true && loop == 3))
+					(tib == true && tiherovec != 3 && loop == 3) ||
+					(tib == true && loop == 4))
 				{
 					mousemove = acvec;
 					if (mousemtime == 0)
