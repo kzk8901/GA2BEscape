@@ -1082,7 +1082,8 @@ void CObjBlock::Action()
 	if ((mouse_x + 1 == kirara_x && mouse_y == kirara_y) ||
 		(mouse_x - 1 == kirara_x && mouse_y == kirara_y) ||
 		(mouse_x == kirara_x && mouse_y + 1 == kirara_y) ||
-		(mouse_x == kirara_x && mouse_y - 1 == kirara_y))
+		(mouse_x == kirara_x && mouse_y - 1 == kirara_y) ||
+		(mouse_x == hero_x && mouse_y == hero_y))
 	{
 		cought = true;
 		if(itm->CheckItem(12)==false)
