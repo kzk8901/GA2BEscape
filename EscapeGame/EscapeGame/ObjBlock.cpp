@@ -2651,6 +2651,10 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 24;
 		}
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 53)
+		{
+			item_word = 30;
+		}
 		else
 		{
 			item_word = 0;
@@ -2786,6 +2790,10 @@ void CObjBlock::HeroAction(int vec)
 		else if (m_map[mapnum][hero_y][hero_x - 1] == 72)
 		{
 			item_word = 26;
+		}
+		else if (m_map[mapnum][hero_y][hero_x - 1] == 53)
+		{
+			item_word = 30;
 		}
 		else
 		{
@@ -3058,6 +3066,14 @@ void CObjBlock::HeroAction(int vec)
 		else if (m_map[mapnum][hero_y - 1][hero_x] == 75)
 		{
 			item_word = 21;
+		}
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 53)
+		{
+			item_word = 28;
+		}
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 54)
+		{
+			item_word = 29;
 		}
 		else
 		{

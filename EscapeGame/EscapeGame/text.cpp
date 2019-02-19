@@ -2319,12 +2319,24 @@ void CObjText::Draw()
 	}
 	else if (item_word == 26)
 	{
-		Font::StrDraw(L"→自然", x, y_a, m_z, c);
+		Font::StrDraw(L"→魚", x, y_a, m_z, c);
 		Font::StrDraw(L"←宇宙", x, y_b, m_z, c);
 	}
 	else if (item_word == 27)
 	{
 		Font::StrDraw(L"何か逆側から飛び出ている", x, y_a, m_z, c);
+	}
+	else if (item_word == 28)
+	{
+		Font::StrDraw(L"火がついている", x, y_a, m_z, c);
+	}
+	else if (item_word == 29)
+	{
+		Font::StrDraw(L"窓がある、だが閉まっている", x, y_a, m_z, c);
+	}
+	else if (item_word == 30)
+	{
+		Font::StrDraw(L"横から見てもわかるくらいに火がついている", x, y_a, m_z, c);
 	}
 	//テキスト移動2行用
 	if (time < 210 && g == 1)
