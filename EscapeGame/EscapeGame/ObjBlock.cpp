@@ -121,7 +121,7 @@ int block_data_map[8][15][20] =
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//11
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//12
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,91, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
+		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,91, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
 	},
 
 	//永遠2F mapnum==5
@@ -328,6 +328,7 @@ void CObjBlock::Action()
 	{
 		//ドアを開ける
 		m_map[mapnum][14][9] = 98;
+		event_num = 0;
 	}
 	//奏多マップ1Fイベ終了-----------------------------
 
@@ -360,7 +361,7 @@ void CObjBlock::Action()
 	{
 		//ドアを開ける
 		m_map[mapnum][7][0] = 96;
-		event_num = 99;
+		event_num = 0;
 	}
 
 	//永遠マップ1Fイベ終了-----------------------------
@@ -392,7 +393,7 @@ void CObjBlock::Action()
 	{
 		//ドアを開ける
 		m_map[mapnum][7][19] = 94;
-		event_num = 99;
+		event_num = 0;
 	}
 
 	//きららマップ1Fイベ終了-----------------------------
@@ -463,7 +464,7 @@ void CObjBlock::Action()
 			key_w = 3;
 			word = 0;
 			block_data_map[4][ 7][11] = 9;
-			block_data_map[4][13][ 9] = 0;
+			block_data_map[4][13][10] = 0;
 			towa->SetVec(2);
 			event_clock[6] = true;
 			event_clock[5] = true;
@@ -491,7 +492,7 @@ void CObjBlock::Action()
 			key_w = 1;
 			word = 0;
 			block_data_map[4][7][11] = 8;
-			block_data_map[4][7][ 1]  = 0;
+			block_data_map[4][7][ 1] = 0;
 			kirara->SetVec(2);
 			event_clock[8] = true;
 			event_clock[5] = true;
@@ -503,7 +504,7 @@ void CObjBlock::Action()
 		//次のmapnumを入れる
 		mapnum = 4;
 		//各部屋への移動をできなくする
-		m_map[mapnum][14][ 9] = 81;
+		m_map[mapnum][14][10] = 81;
 		m_map[mapnum][ 7][ 0] = 81;
 		m_map[mapnum][ 7][19] = 81;
 		//主人公の位置更新
@@ -590,6 +591,7 @@ void CObjBlock::Action()
 			m_map[mapnum][towa_y][towa_x] = 91;
 			m_map[mapnum][kanata_y][kanata_x] = 89;
 		}
+		event_num = 0;
 	}
 	//会話イベント動き↑-------------------------------------------------
 
@@ -968,7 +970,7 @@ void CObjBlock::Action()
 		//永遠表示
 		towa->SetTowaIn(true);
 		//ドアを閉める
-		m_map[mapnum][14][9] = 81;
+		m_map[mapnum][0][10] = 81;
 		//主人公の位置更新
 		SetHero();
 		//永遠の位置更新
