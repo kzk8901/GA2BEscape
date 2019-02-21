@@ -21,6 +21,7 @@ class CObjHero : public CObj
 	   void SetPY(float y) { m_py = y; }
 	   void SetActionflag(bool a) { action_flag = a; }
 	   void SetNumlock(bool n) { numlock_flag = n; }
+	   void SetMemoflag(bool f) { hintmemo_flag = f; }
 	   void SetLockpiece(int num, int p) { locknum = num;  wpiece = p; }
 	   void SetHeroEventFlag(bool e, int number) { eventflag = e; eventnumber = number; }
 	   void SetMoveVec(int v) { m_vec = v;  m_savevec = v;  hero_vec=v;  move_flag = true; }
@@ -56,4 +57,5 @@ class CObjHero : public CObj
 	  bool hero_in;    //主人公を表示するかどうか
 	  bool eventflag;//イベントフラグ
 	  bool iceflag;//氷床を踏んでいるか判定
+	  bool hintmemo_flag;
 };

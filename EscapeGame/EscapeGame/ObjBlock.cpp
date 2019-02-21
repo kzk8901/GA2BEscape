@@ -47,7 +47,7 @@ int block_data_map[8][15][20] =
 	//奏多マップ1Fmapnum==1
 	{
 		//0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,16,17,18,19
-		{ 1,93, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
+		{ 1,93, 1, 1, 1, 1, 1, 1, 1, 1,57, 1, 1, 1, 1, 1, 1, 1, 1, 1, },// 0
 		{ 1,39,39,39,39,39,39,39,47, 0, 0, 0,75,75,75,75,75,75,75, 1, },// 1
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 2
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 3
@@ -58,7 +58,7 @@ int block_data_map[8][15][20] =
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },// 8
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,48,50,50,50,50,50,48, 1, },// 9
 		{ 1, 0, 0, 0,10, 0, 0, 0, 0, 0, 0, 0, 0,50,50,50,50,50, 0, 1, },//10
-		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,48,50,50,50,50,50,48, 1, },//11
+		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,48,58,50,50,50,50,48, 1, },//11
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,50,51,50,50,50, 0, 1, },//12
 		{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, },//13
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1,98, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, },//14
@@ -227,7 +227,7 @@ void CObjBlock::Init()
 		 1, 3, 5, 7, 8, 9,10,
 		30,31,32,33,34,35,36,37,38,39,
 		40,41,42,43,44,
-		50,51,52,53,54,55,56,
+		50,51,52,53,54,56,57,58,59,
 		60,63,64,65,66,67,68,
 		70,71,72,73,74,75,
 		80,81,82,
@@ -738,13 +738,17 @@ void CObjBlock::Action()
 		if (event_clock[3] == false)
 		{
 			kanata->SetKanataIn(true);
-			m_map[mapnum][14][9] = 81;
 		}
 		else
 		{
 			kanata->SetKanataIn(false);
 			towa->SetTowaIn(false);
 			kirara->SetKiraraIn(false);
+		}
+		//ドアを閉める
+		if (event_clock[0] == false)
+		{
+			m_map[mapnum][14][9] = 81;
 		}
 		//主人公の位置更新
 		SetHero();
@@ -784,13 +788,17 @@ void CObjBlock::Action()
 		if (event_clock[3] == false)
 		{
 			towa->SetTowaIn(true);
-			m_map[mapnum][7][0] = 81;
 		}
 		else
 		{
 			kanata->SetKanataIn(false);
 			towa->SetTowaIn(false);
 			kirara->SetKiraraIn(false);
+		}
+		//ドアを閉める
+		if (event_clock[1] == false)
+		{
+			m_map[mapnum][7][0] = 81;
 		}
 		//主人公の位置更新
 		SetHero();
@@ -830,7 +838,6 @@ void CObjBlock::Action()
 		if (event_clock[3] == false)
 		{
 			kirara->SetKiraraIn(true);
-			m_map[mapnum][7][19] = 81;
 		}
 		else
 		{
@@ -838,6 +845,12 @@ void CObjBlock::Action()
 			towa->SetTowaIn(false);
 			kirara->SetKiraraIn(false);	
 		}
+		//ドアを閉める
+		if (event_clock[2] == false)
+		{
+			m_map[mapnum][7][19] = 81;
+		}
+
 		//主人公の位置更新
 		SetHero();
 		//きららの位置更新
@@ -1539,7 +1552,7 @@ void CObjBlock::Draw()
 				Draw::Draw(7, &src, &dst, c, 0.0f);
 			}
 			//棚表示
-			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34 || m_map[mapnum][i][j] == 43 || m_map[mapnum][i][j] == 44 || m_map[mapnum][i][j] == 55 || m_map[mapnum][i][j] == 56)
+			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34 || m_map[mapnum][i][j] == 43 || m_map[mapnum][i][j] == 44 || m_map[mapnum][i][j] == 59 || m_map[mapnum][i][j] == 56)
 			{
 				int skipcount = 0;
 				int vase = 0;
@@ -1595,7 +1608,7 @@ void CObjBlock::Draw()
 				}
 
 				//金庫(開いている)を表示する
-				if (m_map[mapnum][i][j] == 55 || m_map[mapnum][i][j] == 56)
+				if (m_map[mapnum][i][j] == 59 || m_map[mapnum][i][j] == 56)
 				{
 					//切り取り位置の設定
 					src.m_top = 0.0f;
@@ -2000,7 +2013,7 @@ void CObjBlock::Draw()
 				Draw::Draw(44, &src, &dst, c, 0.0f);
 			}
 			//大机(51の位置に金庫を置く)
-			if (m_map[mapnum][i][j] == 50 || m_map[mapnum][i][j] == 51 || m_map[mapnum][i][j] == 52)
+			if (m_map[mapnum][i][j] == 50 || m_map[mapnum][i][j] == 51 || m_map[mapnum][i][j] == 52 || m_map[mapnum][i][j] == 58)
 			{
 				int skipcountx = 0;
 				int county = 0;
@@ -2012,15 +2025,15 @@ void CObjBlock::Draw()
 				src.m_right = src.m_left + 256.0f;
 				src.m_bottom = src.m_top + 256.0f;
 
-				if (m_map[mapnum][i + 1][j] == 50 || m_map[mapnum][i + 1][j] == 51 || m_map[mapnum][i + 1][j] == 52)
+				if (m_map[mapnum][i + 1][j] == 50 || m_map[mapnum][i + 1][j] == 51 || m_map[mapnum][i + 1][j] == 52 || m_map[mapnum][i + 1][j] == 58)
 				{
 					skip = true;
 				}
-				for (int s = 1; m_map[mapnum][i][j + s] == 50 || m_map[mapnum][i][j + s] == 51 || m_map[mapnum][i][j + s] == 52; s++)
+				for (int s = 1; m_map[mapnum][i][j + s] == 50 || m_map[mapnum][i][j + s] == 51 || m_map[mapnum][i][j + s] == 52 || m_map[mapnum][i][j + s] == 58; s++)
 				{
 					skipcountx++;
 				}
-				while (m_map[mapnum][i - 1 - county][j] == 50 || m_map[mapnum][i - 1 - county][j] == 51 || m_map[mapnum][i - 1 - county][j] == 52)
+				while (m_map[mapnum][i - 1 - county][j] == 50 || m_map[mapnum][i - 1 - county][j] == 51 || m_map[mapnum][i - 1 - county][j] == 52 || m_map[mapnum][i - 1 - county][j] == 58)
 				{
 					county++;
 				}
@@ -2077,6 +2090,23 @@ void CObjBlock::Draw()
 							//描画
 							Draw::Draw(23, &src, &dst, c, 0.0f);
 						}
+						if (m_map[mapnum][z][w] == 58)
+						{
+							//切り取り位置の設定
+							src.m_top = 0.0f;
+							src.m_left = 0.0f;
+							src.m_right = src.m_left + 128.0f;
+							src.m_bottom = src.m_top + 128.0f;
+
+							//表示位置の設定
+							dst.m_top = z*32.0f + 8.0f;
+							dst.m_left = w*32.0f + 8.0f;
+							dst.m_right = dst.m_left + 32.0f - 8.0f;
+							dst.m_bottom = dst.m_top + 32.0f - 8.0f;
+
+							//描画
+							Draw::Draw(67, &src, &dst, c, 0.0f);
+						}
 					}
 				}
 			}
@@ -2119,6 +2149,62 @@ void CObjBlock::Draw()
 
 			//描画
 			Draw::Draw(25, &src, &dst, c, 0.0f);
+		}
+		if (lockpasu == 3)
+		{
+			//ホワイトウインドウ表示
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 800.0f;
+			src.m_bottom = 600.0f;
+			dst.m_top = 64.0f;
+			dst.m_left = 64.0f;
+			dst.m_right = 576.0f;
+			dst.m_bottom = 416.0f;
+			Draw::Draw(5, &src, &dst, c, 0.0f);
+
+			//切り取り位置の設定
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = src.m_left + 512.0f;
+			src.m_bottom = src.m_top + 512.0f;
+
+			//表示位置の設定
+			dst.m_top = 80.0f;
+			dst.m_left = 150.0f;
+			dst.m_right = dst.m_left + 320.0f;
+			dst.m_bottom = dst.m_top + 320.0f;
+
+			//描画
+			Draw::Draw(65, &src, &dst, c, 0.0f);
+		}
+		if (lockpasu == 4)
+		{
+			//ホワイトウインドウ表示
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = 800.0f;
+			src.m_bottom = 600.0f;
+			dst.m_top = 64.0f;
+			dst.m_left = 64.0f;
+			dst.m_right = 576.0f;
+			dst.m_bottom = 416.0f;
+			Draw::Draw(5, &src, &dst, c, 0.0f);
+
+			//切り取り位置の設定
+			src.m_top = 0.0f;
+			src.m_left = 0.0f;
+			src.m_right = src.m_left + 512.0f;
+			src.m_bottom = src.m_top + 512.0f;
+
+			//表示位置の設定
+			dst.m_top = 80.0f;
+			dst.m_left = 150.0f;
+			dst.m_right = dst.m_left + 320.0f;
+			dst.m_bottom = dst.m_top + 320.0f;
+
+			//描画
+			Draw::Draw(66, &src, &dst, c, 0.0f);
 		}
 	}
 }
@@ -2673,6 +2759,15 @@ void CObjBlock::HeroAction(int vec)
 		{
 			item_word = 13;
 		}
+		//大きい机（メモ付き）
+		else if (m_map[mapnum][hero_y][hero_x + 1] == 58 && lockpasu == 0)
+		{
+			//解いてる間動かないようにする
+			hero->SetActionflag(true);
+			hero->SetMemoflag(true);
+			//ヒント用の画像を表示する
+			lockpasu = 3;
+		}
 		//机の上の鍵を取る判定
 		else if (m_map[mapnum][hero_y][hero_x + 1] == 68)
 		{
@@ -3070,6 +3165,15 @@ void CObjBlock::HeroAction(int vec)
 		else if (m_map[mapnum][hero_y - 1][hero_x] == 50)
 		{
 			item_word = 13;
+		}
+		//壁の額縁の絵表示
+		else if (m_map[mapnum][hero_y - 1][hero_x] == 57 && lockpasu == 0)
+		{
+			//解いてる間動かないようにする
+			hero->SetActionflag(true);
+			hero->SetMemoflag(true);
+			//ヒント用の画像を表示する
+			lockpasu = 4;
 		}
 		//机の上の鍵を取る判定
 		else if (m_map[mapnum][hero_y - 1][hero_x] == 68)
@@ -3487,7 +3591,7 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 		itm->DeleteItem(7,false);
 		itm->DeleteItem(8,false);
 		//戸棚に調べ終わったフラグを置く
-		m_map[mapnum][hero_y - 1][hero_x] = 55;
+		m_map[mapnum][hero_y - 1][hero_x] = 59;
 		//マップ上のメモに関するものを消す
 		m_map[2][1][6] = 33;
 		m_map[2][1][13] = 33;

@@ -80,6 +80,10 @@ void CSceneMain::InitScene()
 	Draw::LoadImageW(L"Image\\food.png", 42, TEX_SIZE_256);
 	Draw::LoadImageW(L"Image\\downstairs.png", 43, TEX_SIZE_128);
 	Draw::LoadImageW(L"Image\\kagi2.png", 64, TEX_SIZE_64);
+	Draw::LoadImageW(L"Image\\map.png", 65, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\nizi.png", 66, TEX_SIZE_512);
+	Draw::LoadImageW(L"Image\\Ondeskmemo.png", 67, TEX_SIZE_128);
+	Draw::LoadImageW(L"Image\\wall3.png", 68, TEX_SIZE_64);
 	
 
 	Draw::LoadImageW(L"Image\\mouse.png", 39, TEX_SIZE_128);

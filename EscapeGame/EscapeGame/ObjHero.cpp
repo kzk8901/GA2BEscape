@@ -44,6 +44,7 @@ void CObjHero::Init()
 	Itemcheck = false;
 	hero_in = false;
 	iceflag = false;
+	hintmemo_flag = false;
 }
 
 //アクション
@@ -615,6 +616,23 @@ void CObjHero::Action()
 				}
 			}
 			//キーフラグ制御
+			else
+			{
+				Key_flag = false;
+			}
+		}
+		else if (hintmemo_flag == true)
+		{
+			if (Input::GetVKey('X') == true)
+			{
+				if (Key_flag == false)
+				{
+					action_flag = false;
+					Key_flag = true;
+					hintmemo_flag = false;
+					block->Set_Pasu_Num(0);
+				}
+			}
 			else
 			{
 				Key_flag = false;

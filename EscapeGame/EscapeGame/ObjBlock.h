@@ -44,6 +44,7 @@ public:
 
 	void UnlockDoor(int vec, int num, int locknum);
 	void Set_Map_Num(int n) { mapnum = n; }//マップナンバーをセットする
+	void Set_Pasu_Num(int n) { lockpasu = n; }//パスナンバーをセットする
 	float GetMoveshelf() { return moveshelf; }
 private:
 	int m_map[8][15][20];//マップ情報

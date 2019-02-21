@@ -462,6 +462,39 @@ void CObjBackGround::Draw()
 				//描画
 				Draw::Draw(34, &src, &dst, c, 0.0f);
 			}
+			//額縁付き壁
+			if (m_map[mapnum][i][j] == 57)
+			{
+				//壁自身表示
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f + 16.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 32.0f;
+
+				//描画
+				Draw::Draw(68, &src, &dst, c, 0.0f);
+
+				//上の黒部分表示
+				//切り取り位置の設定
+				src.m_top = 0.0f;
+				src.m_left = 0.0f;
+				src.m_right = src.m_left + 64.0f;
+				src.m_bottom = src.m_top + 64.0f;
+				//表示位置の設定
+				dst.m_top = i*32.0f;
+				dst.m_left = j*32.0f;
+				dst.m_right = dst.m_left + 32.0f;
+				dst.m_bottom = dst.m_top + 16.0f;
+
+				//描画
+				Draw::Draw(12, &src, &dst, c, 0.0f);
+			}
 			//階段（上り）
 			if (m_map[mapnum][i][j] == 93)
 			{
