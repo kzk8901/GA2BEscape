@@ -224,10 +224,12 @@ void CObjBlock::Init()
 	//当たり判定のあるブロックはナンバーをここに入れる
 	int blocknumber[99] =
 	{
-		 1, 3, 5, 7, 8, 9,10,30,31,32,
-		33,34,35,36,37,38,39,40,41,42,
-		43,44,50,51,52,53,54,60,63,64,
-		65,66,67,68,70,71,72,73,74,75,
+		 1, 3, 5, 7, 8, 9,10,
+		30,31,32,33,34,35,36,37,38,39,
+		40,41,42,43,44,
+		50,51,52,53,54,55,56,
+		60,63,64,65,66,67,68,
+		70,71,72,73,74,75,
 		80,81,82,
 	};
 
@@ -1537,7 +1539,7 @@ void CObjBlock::Draw()
 				Draw::Draw(7, &src, &dst, c, 0.0f);
 			}
 			//棚表示
-			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34 || m_map[mapnum][i][j] == 43 || m_map[mapnum][i][j] == 44)
+			if (m_map[mapnum][i][j] == 31 || m_map[mapnum][i][j] == 34 || m_map[mapnum][i][j] == 43 || m_map[mapnum][i][j] == 44 || m_map[mapnum][i][j] == 55 || m_map[mapnum][i][j] == 56)
 			{
 				int skipcount = 0;
 				int vase = 0;
@@ -1572,6 +1574,44 @@ void CObjBlock::Draw()
 
 				//描画
 				Draw::Draw(8, &src, &dst, c, 0.0f);
+
+				//金庫(閉まっている)を表示する
+				if (m_map[mapnum][i][j] == 43 || m_map[mapnum][i][j] == 44)
+				{
+					//切り取り位置の設定
+					src.m_top = 0.0f;
+					src.m_left = 0.0f;
+					src.m_right = src.m_left + 64.0f;
+					src.m_bottom = src.m_top + 92.0f;
+
+					//表示位置の設定
+					dst.m_top = i * 32.0f - 16.0f;
+					dst.m_left = j * 32.0f + 2.0f;
+					dst.m_right = dst.m_left + 32.0f;
+					dst.m_bottom = dst.m_top + 28.0f;
+
+					//描画
+					Draw::Draw(23, &src, &dst, c, 0.0f);
+				}
+
+				//金庫(開いている)を表示する
+				if (m_map[mapnum][i][j] == 55 || m_map[mapnum][i][j] == 56)
+				{
+					//切り取り位置の設定
+					src.m_top = 0.0f;
+					src.m_left = 64.0f;
+					src.m_right = src.m_left + 64.0f;
+					src.m_bottom = src.m_top + 92.0f;
+
+					//表示位置の設定
+					dst.m_top = i * 32.0f - 16.0f;
+					dst.m_left = j * 32.0f+2.0f;
+					dst.m_right = dst.m_left + 32.0f;
+					dst.m_bottom = dst.m_top + 28.0f;
+
+					//描画
+					Draw::Draw(23, &src, &dst, c, 0.0f);
+				}
 
 				if (vase >= 1)
 				{
@@ -3447,7 +3487,7 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 		itm->DeleteItem(7,false);
 		itm->DeleteItem(8,false);
 		//戸棚に調べ終わったフラグを置く
-		m_map[mapnum][hero_y - 1][hero_x] = 31;
+		m_map[mapnum][hero_y - 1][hero_x] = 55;
 		//マップ上のメモに関するものを消す
 		m_map[2][1][6] = 33;
 		m_map[2][1][13] = 33;
@@ -3462,7 +3502,7 @@ void CObjBlock::UnlockDoor(int vec, int num, int locknum)
 	else if (((UserData*)Save::GetData())->number[2] == num && locknum == 3)
 	{
 		itm->GetItem(9);
-		m_map[mapnum][hero_y - 1][hero_x] = 31;
+		m_map[mapnum][hero_y - 1][hero_x] = 56;
 		text_m = 3;
 		event_num = 24;
 		//正解の音を鳴らす
