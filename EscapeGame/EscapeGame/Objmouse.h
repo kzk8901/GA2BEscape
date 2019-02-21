@@ -19,6 +19,7 @@ public:
 	void SetMovevec(int vec);
 
 	int GetSavevec() { return savevec; }
+	int GetSSavevec() { return ssavevec; }
 
 	bool GetMoveflag() { return move_flag; }
 private:
@@ -31,6 +32,7 @@ private:
 
 	int movevec; //動く方向
 	int savevec; //ひとつ前の行動セーブ用
+	int ssavevec; //ひとつ前の行動セーブ用
 	int m_ani_time;
 	int m_ani_frame;
 	int nowmap;  //現在マップ

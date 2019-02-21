@@ -177,6 +177,7 @@ void CObjMouse::Draw()
 void CObjMouse::SetMovevec(int vec)
 {
 	movevec = vec; 
+	ssavevec = savevec;
 	savevec = vec;
 	move_flag = true;
 }
